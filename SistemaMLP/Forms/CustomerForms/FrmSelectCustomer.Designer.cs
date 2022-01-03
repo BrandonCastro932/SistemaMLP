@@ -50,10 +50,11 @@
             this.DGVCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVCustomers.Size = new System.Drawing.Size(459, 394);
             this.DGVCustomers.TabIndex = 0;
+            this.DGVCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCustomers_CellClick);
             // 
             // BtnSelect
             // 
-            this.BtnSelect.Location = new System.Drawing.Point(12, 512);
+            this.BtnSelect.Location = new System.Drawing.Point(360, 512);
             this.BtnSelect.Name = "BtnSelect";
             this.BtnSelect.Size = new System.Drawing.Size(111, 42);
             this.BtnSelect.TabIndex = 1;
@@ -63,7 +64,7 @@
             // 
             // BtnCancel
             // 
-            this.BtnCancel.Location = new System.Drawing.Point(360, 512);
+            this.BtnCancel.Location = new System.Drawing.Point(12, 512);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(111, 42);
             this.BtnCancel.TabIndex = 2;
@@ -109,6 +110,7 @@
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnSelect);
             this.Controls.Add(this.DGVCustomers);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmSelectCustomer";

@@ -12,6 +12,10 @@
 
 namespace MLPlib.SistemaMLPDataSetTableAdapters
 {
+    partial class CreditTableAdapter
+    {
+    }
+
     partial class DetailedStockTableAdapter
     {
     }

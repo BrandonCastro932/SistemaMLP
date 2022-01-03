@@ -17,10 +17,26 @@ namespace SistemaMLP.Forms
             InitializeComponent();
         }
 
+
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            Utilities.Utilities.main = this;
+        }
         private void facturarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Forms.BillingForms.FrmBilling frm = new BillingForms.FrmBilling ();
-            frm.Show();
+            if (!Utilities.Utilities.frmBilling.Visible)
+            {
+                Utilities.Utilities.frmBilling.Show();
+            }
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Utilities.Utilities.frmCustomers.Visible)
+            {
+                Utilities.Utilities.frmCustomers.Show();
+            }
         }
     }
 }

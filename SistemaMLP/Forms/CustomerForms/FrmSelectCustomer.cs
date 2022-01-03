@@ -77,5 +77,11 @@ namespace SistemaMLP.Forms.CustomerForms
                 FillDGV();
             }
         }
+
+        private void DGVCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1 || e.ColumnIndex != 3) 
+                return;
+        }
     }
 }

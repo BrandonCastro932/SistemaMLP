@@ -31,6 +31,9 @@
             this.DGVProducts = new System.Windows.Forms.DataGridView();
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.GbStockType = new System.Windows.Forms.GroupBox();
+            this.RBtnChopped = new System.Windows.Forms.RadioButton();
+            this.RBtnFilet = new System.Windows.Forms.RadioButton();
             this.LblQuantity = new System.Windows.Forms.Label();
             this.UDQuantity = new System.Windows.Forms.NumericUpDown();
             this.BtnAddLine = new System.Windows.Forms.Button();
@@ -44,16 +47,19 @@
             this.LblTax = new System.Windows.Forms.Label();
             this.LblTotal = new System.Windows.Forms.Label();
             this.BtnDelLine = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DGVLines = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.LblCustomerName = new System.Windows.Forms.Label();
             this.CBTax = new System.Windows.Forms.CheckBox();
             this.BtnSelectCustomer = new System.Windows.Forms.Button();
+            this.TxtNotes = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGVProducts)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.GbStockType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UDQuantity)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVLines)).BeginInit();
             this.SuspendLayout();
             // 
             // DGVProducts
@@ -70,6 +76,7 @@
             this.DGVProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVProducts.Size = new System.Drawing.Size(733, 150);
             this.DGVProducts.TabIndex = 0;
+            this.DGVProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVProducts_CellClick);
             // 
             // TxtSearch
             // 
@@ -81,23 +88,58 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.GbStockType);
             this.groupBox1.Controls.Add(this.LblQuantity);
             this.groupBox1.Controls.Add(this.UDQuantity);
             this.groupBox1.Controls.Add(this.BtnAddLine);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.DGVProducts);
             this.groupBox1.Controls.Add(this.TxtSearch);
-            this.groupBox1.Location = new System.Drawing.Point(13, 69);
+            this.groupBox1.Location = new System.Drawing.Point(13, 67);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(911, 220);
+            this.groupBox1.Size = new System.Drawing.Size(911, 222);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Productos";
             // 
+            // GbStockType
+            // 
+            this.GbStockType.Controls.Add(this.RBtnChopped);
+            this.GbStockType.Controls.Add(this.RBtnFilet);
+            this.GbStockType.Location = new System.Drawing.Point(772, 55);
+            this.GbStockType.Name = "GbStockType";
+            this.GbStockType.Size = new System.Drawing.Size(133, 63);
+            this.GbStockType.TabIndex = 7;
+            this.GbStockType.TabStop = false;
+            this.GbStockType.Text = "Tipo de corte";
+            this.GbStockType.Visible = false;
+            // 
+            // RBtnChopped
+            // 
+            this.RBtnChopped.AutoSize = true;
+            this.RBtnChopped.Location = new System.Drawing.Point(9, 42);
+            this.RBtnChopped.Name = "RBtnChopped";
+            this.RBtnChopped.Size = new System.Drawing.Size(58, 17);
+            this.RBtnChopped.TabIndex = 7;
+            this.RBtnChopped.TabStop = true;
+            this.RBtnChopped.Text = "Picado";
+            this.RBtnChopped.UseVisualStyleBackColor = true;
+            // 
+            // RBtnFilet
+            // 
+            this.RBtnFilet.AutoSize = true;
+            this.RBtnFilet.Location = new System.Drawing.Point(9, 19);
+            this.RBtnFilet.Name = "RBtnFilet";
+            this.RBtnFilet.Size = new System.Drawing.Size(44, 17);
+            this.RBtnFilet.TabIndex = 6;
+            this.RBtnFilet.TabStop = true;
+            this.RBtnFilet.Text = "Filet";
+            this.RBtnFilet.UseVisualStyleBackColor = true;
+            // 
             // LblQuantity
             // 
             this.LblQuantity.AutoSize = true;
-            this.LblQuantity.Location = new System.Drawing.Point(778, 70);
+            this.LblQuantity.Location = new System.Drawing.Point(772, 121);
             this.LblQuantity.Name = "LblQuantity";
             this.LblQuantity.Size = new System.Drawing.Size(52, 13);
             this.LblQuantity.TabIndex = 5;
@@ -105,7 +147,7 @@
             // 
             // UDQuantity
             // 
-            this.UDQuantity.Location = new System.Drawing.Point(781, 86);
+            this.UDQuantity.Location = new System.Drawing.Point(775, 137);
             this.UDQuantity.Name = "UDQuantity";
             this.UDQuantity.Size = new System.Drawing.Size(124, 20);
             this.UDQuantity.TabIndex = 4;
@@ -119,12 +161,13 @@
             // 
             this.BtnAddLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BtnAddLine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAddLine.Location = new System.Drawing.Point(781, 128);
+            this.BtnAddLine.Location = new System.Drawing.Point(775, 163);
             this.BtnAddLine.Name = "BtnAddLine";
             this.BtnAddLine.Size = new System.Drawing.Size(124, 42);
             this.BtnAddLine.TabIndex = 3;
             this.BtnAddLine.Text = "Agregar a factura";
             this.BtnAddLine.UseVisualStyleBackColor = true;
+            this.BtnAddLine.Click += new System.EventHandler(this.BtnAddLine_Click);
             // 
             // label1
             // 
@@ -145,7 +188,7 @@
             this.groupBox2.Controls.Add(this.LblTax);
             this.groupBox2.Controls.Add(this.LblTotal);
             this.groupBox2.Controls.Add(this.BtnDelLine);
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.DGVLines);
             this.groupBox2.Location = new System.Drawing.Point(13, 295);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(911, 247);
@@ -174,6 +217,7 @@
             // 
             // CbPaymentMethod
             // 
+            this.CbPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbPaymentMethod.FormattingEnabled = true;
             this.CbPaymentMethod.Location = new System.Drawing.Point(772, 39);
             this.CbPaymentMethod.Name = "CbPaymentMethod";
@@ -230,17 +274,17 @@
             this.BtnDelLine.Text = "Eliminar línea";
             this.BtnDelLine.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // DGVLines
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(733, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.DGVLines.AllowUserToAddRows = false;
+            this.DGVLines.AllowUserToDeleteRows = false;
+            this.DGVLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVLines.Location = new System.Drawing.Point(24, 19);
+            this.DGVLines.Name = "DGVLines";
+            this.DGVLines.ReadOnly = true;
+            this.DGVLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVLines.Size = new System.Drawing.Size(733, 150);
+            this.DGVLines.TabIndex = 0;
             // 
             // label2
             // 
@@ -258,9 +302,9 @@
             this.LblCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCustomerName.Location = new System.Drawing.Point(90, 15);
             this.LblCustomerName.Name = "LblCustomerName";
-            this.LblCustomerName.Size = new System.Drawing.Size(134, 20);
+            this.LblCustomerName.Size = new System.Drawing.Size(145, 20);
             this.LblCustomerName.TabIndex = 5;
-            this.LblCustomerName.Text = "Cliente General";
+            this.LblCustomerName.Text = "Cliente particular";
             // 
             // CBTax
             // 
@@ -284,11 +328,30 @@
             this.BtnSelectCustomer.UseVisualStyleBackColor = true;
             this.BtnSelectCustomer.Click += new System.EventHandler(this.BtnSelectCustomer_Click);
             // 
+            // TxtNotes
+            // 
+            this.TxtNotes.Location = new System.Drawing.Point(633, 12);
+            this.TxtNotes.Multiline = true;
+            this.TxtNotes.Name = "TxtNotes";
+            this.TxtNotes.Size = new System.Drawing.Size(170, 46);
+            this.TxtNotes.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(544, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Notas de venta:";
+            // 
             // FrmBilling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 555);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.TxtNotes);
             this.Controls.Add(this.BtnSelectCustomer);
             this.Controls.Add(this.CBTax);
             this.Controls.Add(this.LblCustomerName);
@@ -303,13 +366,16 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facturación";
             this.Load += new System.EventHandler(this.FrmBilling_Load);
+            this.Shown += new System.EventHandler(this.FrmBilling_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.DGVProducts)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.GbStockType.ResumeLayout(false);
+            this.GbStockType.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UDQuantity)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVLines)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,7 +389,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnAddLine;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DGVLines;
         private System.Windows.Forms.NumericUpDown UDQuantity;
         private System.Windows.Forms.Label LblQuantity;
         private System.Windows.Forms.Button BtnBilling;
@@ -338,5 +404,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox CbPaymentMethod;
         private System.Windows.Forms.CheckBox CkbConfirmed;
+        private System.Windows.Forms.TextBox TxtNotes;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox GbStockType;
+        private System.Windows.Forms.RadioButton RBtnChopped;
+        private System.Windows.Forms.RadioButton RBtnFilet;
     }
 }

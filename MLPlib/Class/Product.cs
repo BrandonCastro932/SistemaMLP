@@ -37,6 +37,5 @@ namespace MLPlib.Class
             productsAdapter.FillBy(sistemaMLPDataSet.Product, filter);
             return sistemaMLPDataSet.Product;
         }
-
     }
 }

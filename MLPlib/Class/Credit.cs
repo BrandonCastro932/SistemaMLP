@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace MLPlib.Class
 {
@@ -19,6 +20,34 @@ namespace MLPlib.Class
             Canceled = false;
             Credit_Details = new List<CreditDetails>();
             Credit_Payments = new List<CreditPayments>();
+        }
+
+        public bool CustomerHasCredit()
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.CreditTableAdapter creditsAdapter = new SistemaMLPDataSetTableAdapters.CreditTableAdapter();
+
+            creditsAdapter.FillBy(sistemaMLPDataSet.Credit, this.Customer.IDCustomer);
+            if (sistemaMLPDataSet.Credit.Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void GetCustomerCredit()
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.CreditTableAdapter creditsAdapter = new SistemaMLPDataSetTableAdapters.CreditTableAdapter();
+
+            creditsAdapter.FillBy(sistemaMLPDataSet.Credit, this.Customer.IDCustomer);
+            this.IDCredit = Convert.ToInt32(sistemaMLPDataSet.Credit[0].IDCustomer);
+            this.Total = Convert.ToDecimal(sistemaMLPDataSet.Credit[0].Total);
+            this.Canceled = Convert.ToBoolean(sistemaMLPDataSet.Credit[0].Canceled);
+            this.RegDate = Convert.ToDateTime(sistemaMLPDataSet.Credit[0].RegDate);
         }
     }
 }

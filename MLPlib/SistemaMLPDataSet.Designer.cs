@@ -3521,6 +3521,8 @@ namespace MLPlib {
                 this.columnBarCode.MaxLength = 255;
                 this.columnUnitPrice.AllowDBNull = false;
                 this.columnTax.AllowDBNull = false;
+                this.columnStockType.AllowDBNull = false;
+                this.columnGeneralStock.AllowDBNull = false;
                 this.columnRegDate.AllowDBNull = false;
                 this.columnLastUpdate.AllowDBNull = false;
                 this.columnActive.AllowDBNull = false;
@@ -3669,6 +3671,8 @@ namespace MLPlib {
             
             private global::System.Data.DataColumn columnPaymentConfirmed;
             
+            private global::System.Data.DataColumn columnNotes;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ReceiptDataTable() {
@@ -3752,6 +3756,14 @@ namespace MLPlib {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NotesColumn {
+                get {
+                    return this.columnNotes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3787,7 +3799,7 @@ namespace MLPlib {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReceiptRow AddReceiptRow(CustomerRow parentCustomerRowByFKReceipt563789, PaymentMethodsRow parentPaymentMethodsRowByFKReceipt336046, System.DateTime Date, decimal Total, bool PaymentConfirmed) {
+            public ReceiptRow AddReceiptRow(CustomerRow parentCustomerRowByFKReceipt563789, PaymentMethodsRow parentPaymentMethodsRowByFKReceipt336046, System.DateTime Date, decimal Total, bool PaymentConfirmed, string Notes) {
                 ReceiptRow rowReceiptRow = ((ReceiptRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3795,7 +3807,8 @@ namespace MLPlib {
                         null,
                         Date,
                         Total,
-                        PaymentConfirmed};
+                        PaymentConfirmed,
+                        Notes};
                 if ((parentCustomerRowByFKReceipt563789 != null)) {
                     columnValuesArray[1] = parentCustomerRowByFKReceipt563789[0];
                 }
@@ -3837,6 +3850,7 @@ namespace MLPlib {
                 this.columnDate = base.Columns["Date"];
                 this.columnTotal = base.Columns["Total"];
                 this.columnPaymentConfirmed = base.Columns["PaymentConfirmed"];
+                this.columnNotes = base.Columns["Notes"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3854,6 +3868,8 @@ namespace MLPlib {
                 base.Columns.Add(this.columnTotal);
                 this.columnPaymentConfirmed = new global::System.Data.DataColumn("PaymentConfirmed", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPaymentConfirmed);
+                this.columnNotes = new global::System.Data.DataColumn("Notes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNotes);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIDReceipt}, true));
                 this.columnIDReceipt.AutoIncrement = true;
@@ -5334,12 +5350,7 @@ namespace MLPlib {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int StockType {
                 get {
-                    try {
-                        return ((int)(this[this.tableProduct.StockTypeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'StockType\' in table \'Product\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tableProduct.StockTypeColumn]));
                 }
                 set {
                     this[this.tableProduct.StockTypeColumn] = value;
@@ -5350,12 +5361,7 @@ namespace MLPlib {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public decimal GeneralStock {
                 get {
-                    try {
-                        return ((decimal)(this[this.tableProduct.GeneralStockColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GeneralStock\' in table \'Product\' is DBNull.", e);
-                    }
+                    return ((decimal)(this[this.tableProduct.GeneralStockColumn]));
                 }
                 set {
                     this[this.tableProduct.GeneralStockColumn] = value;
@@ -5416,30 +5422,6 @@ namespace MLPlib {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetBarCodeNull() {
                 this[this.tableProduct.BarCodeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsStockTypeNull() {
-                return this.IsNull(this.tableProduct.StockTypeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetStockTypeNull() {
-                this[this.tableProduct.StockTypeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsGeneralStockNull() {
-                return this.IsNull(this.tableProduct.GeneralStockColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetGeneralStockNull() {
-                this[this.tableProduct.GeneralStockColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5547,6 +5529,22 @@ namespace MLPlib {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Notes {
+                get {
+                    try {
+                        return ((string)(this[this.tableReceipt.NotesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Notes\' in table \'Receipt\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReceipt.NotesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PaymentMethodsRow PaymentMethodsRow {
                 get {
                     return ((PaymentMethodsRow)(this.GetParentRow(this.Table.ParentRelations["FKReceipt336046"])));
@@ -5565,6 +5563,18 @@ namespace MLPlib {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FKReceipt563789"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNotesNull() {
+                return this.IsNull(this.tableReceipt.NotesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNotesNull() {
+                this[this.tableReceipt.NotesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6306,11 +6316,17 @@ SELECT IDCredit, IDCustomer, Total, Canceled, RegDate FROM Credit WHERE (IDCredi
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT IDCredit, IDCustomer, Total, Canceled, RegDate FROM dbo.Credit";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "dbo.SPCustomerCredit";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IDCustomer", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6332,6 +6348,42 @@ SELECT IDCredit, IDCustomer, Total, Canceled, RegDate FROM Credit WHERE (IDCredi
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual SistemaMLPDataSet.CreditDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            SistemaMLPDataSet.CreditDataTable dataTable = new SistemaMLPDataSet.CreditDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(SistemaMLPDataSet.CreditDataTable dataTable, global::System.Nullable<int> IDCustomer) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((IDCustomer.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IDCustomer.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual SistemaMLPDataSet.CreditDataTable GetDataBy(global::System.Nullable<int> IDCustomer) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((IDCustomer.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IDCustomer.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             SistemaMLPDataSet.CreditDataTable dataTable = new SistemaMLPDataSet.CreditDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -7742,12 +7794,18 @@ SELECT IDDetailedStock, IDProduct, FiletStock, ChoppedStock, Waste, RegDate FROM
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT IDDetailedStock, IDProduct, FiletStock, ChoppedStock, Waste, RegDate FROM " +
                 "dbo.DetailedStock";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "dbo.SPGetProductDetailedStock";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IDProduct", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7769,6 +7827,42 @@ SELECT IDDetailedStock, IDProduct, FiletStock, ChoppedStock, Waste, RegDate FROM
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual SistemaMLPDataSet.DetailedStockDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            SistemaMLPDataSet.DetailedStockDataTable dataTable = new SistemaMLPDataSet.DetailedStockDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(SistemaMLPDataSet.DetailedStockDataTable dataTable, global::System.Nullable<int> IDProduct) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((IDProduct.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IDProduct.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual SistemaMLPDataSet.DetailedStockDataTable GetDataBy(global::System.Nullable<int> IDProduct) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((IDProduct.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IDProduct.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             SistemaMLPDataSet.DetailedStockDataTable dataTable = new SistemaMLPDataSet.DetailedStockDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -9223,7 +9317,7 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_IDProduct, string Original_ProductName, string Original_BarCode, decimal Original_KiloPrice, decimal Original_Tax, global::System.Nullable<int> Original_StockType, global::System.Nullable<decimal> Original_GeneralStock, System.DateTime Original_RegDate, System.DateTime Original_LastUpdate, bool Original_Active) {
+        public virtual int Delete(int Original_IDProduct, string Original_ProductName, string Original_BarCode, decimal Original_KiloPrice, decimal Original_Tax, int Original_StockType, decimal Original_GeneralStock, System.DateTime Original_RegDate, System.DateTime Original_LastUpdate, bool Original_Active) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_IDProduct));
             if ((Original_ProductName == null)) {
                 throw new global::System.ArgumentNullException("Original_ProductName");
@@ -9241,22 +9335,10 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
             }
             this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_KiloPrice));
             this.Adapter.DeleteCommand.Parameters[5].Value = ((decimal)(Original_Tax));
-            if ((Original_StockType.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_StockType.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((Original_GeneralStock.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((decimal)(Original_GeneralStock.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_StockType));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((decimal)(Original_GeneralStock));
             this.Adapter.DeleteCommand.Parameters[10].Value = ((System.DateTime)(Original_RegDate));
             this.Adapter.DeleteCommand.Parameters[11].Value = ((System.DateTime)(Original_LastUpdate));
             this.Adapter.DeleteCommand.Parameters[12].Value = ((bool)(Original_Active));
@@ -9280,7 +9362,7 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ProductName, string BarCode, decimal KiloPrice, decimal Tax, global::System.Nullable<int> StockType, global::System.Nullable<decimal> GeneralStock, System.DateTime RegDate, System.DateTime LastUpdate, bool Active) {
+        public virtual int Insert(string ProductName, string BarCode, decimal KiloPrice, decimal Tax, int StockType, decimal GeneralStock, System.DateTime RegDate, System.DateTime LastUpdate, bool Active) {
             if ((ProductName == null)) {
                 throw new global::System.ArgumentNullException("ProductName");
             }
@@ -9295,18 +9377,8 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
             }
             this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(KiloPrice));
             this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(Tax));
-            if ((StockType.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(StockType.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((GeneralStock.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(GeneralStock.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(StockType));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(GeneralStock));
             this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(RegDate));
             this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(LastUpdate));
             this.Adapter.InsertCommand.Parameters[8].Value = ((bool)(Active));
@@ -9335,8 +9407,8 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
                     string BarCode, 
                     decimal KiloPrice, 
                     decimal Tax, 
-                    global::System.Nullable<int> StockType, 
-                    global::System.Nullable<decimal> GeneralStock, 
+                    int StockType, 
+                    decimal GeneralStock, 
                     System.DateTime RegDate, 
                     System.DateTime LastUpdate, 
                     bool Active, 
@@ -9345,8 +9417,8 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
                     string Original_BarCode, 
                     decimal Original_KiloPrice, 
                     decimal Original_Tax, 
-                    global::System.Nullable<int> Original_StockType, 
-                    global::System.Nullable<decimal> Original_GeneralStock, 
+                    int Original_StockType, 
+                    decimal Original_GeneralStock, 
                     System.DateTime Original_RegDate, 
                     System.DateTime Original_LastUpdate, 
                     bool Original_Active, 
@@ -9365,18 +9437,8 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
             }
             this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(KiloPrice));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(Tax));
-            if ((StockType.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(StockType.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((GeneralStock.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(GeneralStock.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(StockType));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(GeneralStock));
             this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(RegDate));
             this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(LastUpdate));
             this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(Active));
@@ -9397,22 +9459,10 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
             }
             this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(Original_KiloPrice));
             this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_Tax));
-            if ((Original_StockType.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_StockType.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
-            }
-            if ((Original_GeneralStock.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((decimal)(Original_GeneralStock.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_StockType));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((decimal)(Original_GeneralStock));
             this.Adapter.UpdateCommand.Parameters[19].Value = ((System.DateTime)(Original_RegDate));
             this.Adapter.UpdateCommand.Parameters[20].Value = ((System.DateTime)(Original_LastUpdate));
             this.Adapter.UpdateCommand.Parameters[21].Value = ((bool)(Original_Active));
@@ -9442,8 +9492,8 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
                     string BarCode, 
                     decimal KiloPrice, 
                     decimal Tax, 
-                    global::System.Nullable<int> StockType, 
-                    global::System.Nullable<decimal> GeneralStock, 
+                    int StockType, 
+                    decimal GeneralStock, 
                     System.DateTime RegDate, 
                     System.DateTime LastUpdate, 
                     bool Active, 
@@ -9452,8 +9502,8 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
                     string Original_BarCode, 
                     decimal Original_KiloPrice, 
                     decimal Original_Tax, 
-                    global::System.Nullable<int> Original_StockType, 
-                    global::System.Nullable<decimal> Original_GeneralStock, 
+                    int Original_StockType, 
+                    decimal Original_GeneralStock, 
                     System.DateTime Original_RegDate, 
                     System.DateTime Original_LastUpdate, 
                     bool Original_Active) {
