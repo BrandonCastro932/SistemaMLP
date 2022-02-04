@@ -49,9 +49,10 @@
             this.DGVCustomers.Name = "DGVCustomers";
             this.DGVCustomers.ReadOnly = true;
             this.DGVCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVCustomers.Size = new System.Drawing.Size(962, 341);
+            this.DGVCustomers.Size = new System.Drawing.Size(1018, 341);
             this.DGVCustomers.TabIndex = 0;
             this.DGVCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCustomers_CellClick);
+            this.DGVCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCustomers_CellContentClick);
             // 
             // TxtSearch
             // 
@@ -73,7 +74,7 @@
             // BtnCreate
             // 
             this.BtnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCreate.Location = new System.Drawing.Point(176, 399);
+            this.BtnCreate.Location = new System.Drawing.Point(108, 399);
             this.BtnCreate.Name = "BtnCreate";
             this.BtnCreate.Size = new System.Drawing.Size(126, 46);
             this.BtnCreate.TabIndex = 3;
@@ -84,7 +85,7 @@
             // BtnEdit
             // 
             this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEdit.Location = new System.Drawing.Point(431, 399);
+            this.BtnEdit.Location = new System.Drawing.Point(478, 399);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(126, 46);
             this.BtnEdit.TabIndex = 4;
@@ -95,7 +96,7 @@
             // BtnDelete
             // 
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.Location = new System.Drawing.Point(698, 399);
+            this.BtnDelete.Location = new System.Drawing.Point(838, 399);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(126, 46);
             this.BtnDelete.TabIndex = 5;
@@ -116,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(986, 466);
+            this.ClientSize = new System.Drawing.Size(1043, 466);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnEdit);

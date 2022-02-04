@@ -39,6 +39,10 @@
             this.BtnAccept = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.LblTitle = new System.Windows.Forms.Label();
+            this.TxtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.TxtBusinessPhoneNum = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -120,7 +124,7 @@
             // BtnAccept
             // 
             this.BtnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAccept.Location = new System.Drawing.Point(188, 331);
+            this.BtnAccept.Location = new System.Drawing.Point(198, 431);
             this.BtnAccept.Name = "BtnAccept";
             this.BtnAccept.Size = new System.Drawing.Size(94, 36);
             this.BtnAccept.TabIndex = 8;
@@ -132,7 +136,7 @@
             // BtnCancel
             // 
             this.BtnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancel.Location = new System.Drawing.Point(21, 331);
+            this.BtnCancel.Location = new System.Drawing.Point(21, 431);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(94, 36);
             this.BtnCancel.TabIndex = 9;
@@ -151,11 +155,51 @@
             this.LblTitle.TabIndex = 10;
             this.LblTitle.Text = "Crear usuario";
             // 
+            // TxtPhoneNumber
+            // 
+            this.TxtPhoneNumber.Location = new System.Drawing.Point(21, 324);
+            this.TxtPhoneNumber.MaxLength = 255;
+            this.TxtPhoneNumber.Name = "TxtPhoneNumber";
+            this.TxtPhoneNumber.Size = new System.Drawing.Size(261, 20);
+            this.TxtPhoneNumber.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(18, 305);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(238, 16);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Número de teléfono (Obligatorio):";
+            // 
+            // TxtBusinessPhoneNum
+            // 
+            this.TxtBusinessPhoneNum.Location = new System.Drawing.Point(21, 377);
+            this.TxtBusinessPhoneNum.MaxLength = 255;
+            this.TxtBusinessPhoneNum.Name = "TxtBusinessPhoneNum";
+            this.TxtBusinessPhoneNum.Size = new System.Drawing.Size(261, 20);
+            this.TxtBusinessPhoneNum.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(18, 358);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(160, 16);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Teléfono de empresa:";
+            // 
             // FrmCustomersCU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 395);
+            this.ClientSize = new System.Drawing.Size(304, 489);
+            this.Controls.Add(this.TxtBusinessPhoneNum);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.TxtPhoneNumber);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.LblTitle);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnAccept);
@@ -193,5 +237,9 @@
         private System.Windows.Forms.Button BtnAccept;
         private System.Windows.Forms.Button BtnCancel;
         private System.Windows.Forms.Label LblTitle;
+        private System.Windows.Forms.TextBox TxtPhoneNumber;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox TxtBusinessPhoneNum;
+        private System.Windows.Forms.Label label6;
     }
 }

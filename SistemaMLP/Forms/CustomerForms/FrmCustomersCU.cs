@@ -28,11 +28,16 @@ namespace SistemaMLP.Forms.CustomerForms
             if (isCreating)
             {
                 LblTitle.Text = "Crear usuario";
+                this.Text = "Crear usuario";
+                TxtPersonalID.Enabled = true;
                 BtnAccept.Text = "Crear usuario";
+                
             }
             else if (isEditing)
             {
                 LblTitle.Text = "Editar usuario";
+                TxtPersonalID.Enabled = false;
+                this.Text = "Editar usuario";
                 BtnAccept.Text = "Editar usuario";
                 FillForm();
             }
@@ -42,7 +47,32 @@ namespace SistemaMLP.Forms.CustomerForms
         {
             if (isCreating)
             {
-                this.DialogResult = DialogResult.OK;
+                Customer customer = new Customer
+                {
+                    PersonalID = TxtPersonalID.Text,
+                    Fullname = TxtFullname.Text,
+                    BusinessName = TxtBusinessName.Text,
+                    Email = TxtEmail.Text,
+                    PhoneNumber = TxtPhoneNumber.Text,
+                    BusinessPhoneNum = TxtBusinessPhoneNum.Text
+                };
+
+                int result = customer.CreateCustomer();
+                if (result == 1)
+                {
+                    MessageBox.Show("Se ha registrado el cliente.", "Éxito", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
+                }
+                else if (result == 2)
+                {
+                    MessageBox.Show("Cédula o correo electrónico duplicados en el sistema.", "Datos duplicados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if(result == 0)
+                {
+                    MessageBox.Show("Error desconocido.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.DialogResult = DialogResult.Cancel;
+                }
+                
             }
             else if (isEditing)
             {

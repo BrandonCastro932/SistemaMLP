@@ -44,12 +44,20 @@ namespace SistemaMLP.Forms.CustomerForms
 
         private void FillDGV(string Filter = "")
         {
+            //Llamada de datos
             DGVCustomers.DataSource = customer.GetCustomers(Filter);
+
+            //Visual
             DGVCustomers.Columns["Active"].Visible = false;
             DGVCustomers.Columns["IDCustomer"].Visible = false;
             DGVCustomers.Columns["Fullname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DGVCustomers.Columns["PhoneNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DGVCustomers.Columns["BusinessPhoneNum"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DGVCustomers.Columns["Fullname"].HeaderText = "Nombre Completo";
             DGVCustomers.Columns["BusinessName"].HeaderText = "Empresa";
+            DGVCustomers.Columns["PersonalID"].HeaderText = "Cédula";
+            DGVCustomers.Columns["PhoneNumber"].HeaderText = "Número de teléfono";
+            DGVCustomers.Columns["BusinessPhoneNum"].HeaderText = "Teléfono de empresa";
             DGVCustomers.Columns["RegDate"].HeaderText = "Fecha de registro";
             DGVCustomers.Columns["Email"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DGVCustomers.Columns["Email"].HeaderText = "Correo electrónico";
@@ -71,7 +79,7 @@ namespace SistemaMLP.Forms.CustomerForms
             DialogResult dialogResult = frm.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                //Se muestra que se registro
+                FillDGV();
             }
         }
 
@@ -120,6 +128,11 @@ namespace SistemaMLP.Forms.CustomerForms
             {
                 FillDGV();
             }
+        }
+
+        private void DGVCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
