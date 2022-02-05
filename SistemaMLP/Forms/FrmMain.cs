@@ -27,6 +27,7 @@ namespace SistemaMLP.Forms
         {
             if (!Utilities.Utilities.frmBilling.Visible)
             {
+                Utilities.Utilities.frmBilling = new BillingForms.FrmBilling();
                 Utilities.Utilities.frmBilling.Show();
             }
         }
@@ -35,6 +36,7 @@ namespace SistemaMLP.Forms
         {
             if (!Utilities.Utilities.frmCustomers.Visible)
             {
+                Utilities.Utilities.frmCustomers = new CustomerForms.FrmCustomers();
                 Utilities.Utilities.frmCustomers.Show();
             }
         }

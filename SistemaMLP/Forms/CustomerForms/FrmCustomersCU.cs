@@ -27,25 +27,27 @@ namespace SistemaMLP.Forms.CustomerForms
             this.KeyPreview = true;
             if (isCreating)
             {
-                LblTitle.Text = "Crear usuario";
-                this.Text = "Crear usuario";
+                LblTitle.Text = "Registrar cliente";
+                this.Text = "Registrar cliente";
                 TxtPersonalID.Enabled = true;
-                BtnAccept.Text = "Crear usuario";
+                BtnAccept.Text = "Registrar";
+                BtnAccept.Enabled = false;
                 
             }
             else if (isEditing)
             {
-                LblTitle.Text = "Editar usuario";
+                LblTitle.Text = "Editar cliente";
                 TxtPersonalID.Enabled = false;
-                this.Text = "Editar usuario";
-                BtnAccept.Text = "Editar usuario";
+                this.Text = "Editar cliente";
+                BtnAccept.Text = "Editar";
                 FillForm();
             }
         }
 
         private void BtnAccept_Click(object sender, EventArgs e)
         {
-            if (isCreating)
+            //TODO: Crear las respectivas validaciones para que no se inserten datos en blanco, ademas de comprobar correos, etc
+            if (ValidateTextbox())
             {
                 Customer customer = new Customer
                 {
@@ -57,26 +59,56 @@ namespace SistemaMLP.Forms.CustomerForms
                     BusinessPhoneNum = TxtBusinessPhoneNum.Text
                 };
 
-                int result = customer.CreateCustomer();
-                if (result == 1)
+                if(!string.IsNullOrWhiteSpace(TxtEmail.Text))
                 {
-                    MessageBox.Show("Se ha registrado el cliente.", "Éxito", MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK;
+                    if (!IsValidEmail(TxtEmail.Text))
+                    {
+                        MessageBox.Show("El correo electrónico no es válido", "Error de correo electrónico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
-                else if (result == 2)
+
+                if (isCreating)
                 {
-                    MessageBox.Show("Cédula o correo electrónico duplicados en el sistema.", "Datos duplicados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    int result = customer.CreateCustomer();
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Se ha registrado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else if (result == 2)
+                    {
+                        MessageBox.Show("Cédula, correo electrónico o teléfono duplicados en el sistema.", "Datos duplicados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (result == 0)
+                    {
+                        MessageBox.Show("Error desconocido.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.DialogResult = DialogResult.Cancel;
+                    }
+
                 }
-                else if(result == 0)
+                else if (isEditing)
                 {
-                    MessageBox.Show("Error desconocido.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.DialogResult = DialogResult.Cancel;
+                    int result = customer.UpdateCustomer();
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Se ha modificado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else if (result == 2)
+                    {
+                        MessageBox.Show("Cédula o correo electrónico duplicados en el sistema.", "Datos duplicados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (result == 0)
+                    {
+                        MessageBox.Show("Error desconocido.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.DialogResult = DialogResult.Cancel;
+                    }
                 }
-                
             }
-            else if (isEditing)
+            else
             {
-                this.DialogResult = DialogResult.OK;
+                MessageBox.Show("Atención, existen campos en blanco o erróneos.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void FillForm()
@@ -85,10 +117,66 @@ namespace SistemaMLP.Forms.CustomerForms
             TxtFullname.Text = customer.Fullname;
             TxtBusinessName.Text = customer.BusinessName;
             TxtEmail.Text = customer.Email;
+            TxtPhoneNumber.Text = customer.PhoneNumber;
+            TxtBusinessPhoneNum.Text = customer.BusinessPhoneNum;
         }
+
+        private bool ValidateTextbox()
+        {
+            if (!string.IsNullOrWhiteSpace(TxtPersonalID.Text) && !string.IsNullOrWhiteSpace(TxtFullname.Text) && !string.IsNullOrWhiteSpace(TxtPhoneNumber.Text))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void ActivateBtn()
+        {
+            if (TxtPersonalID.Text.Length > 1 && TxtFullname.Text.Length > 1 && TxtPhoneNumber.Text.Length > 1)
+            {
+                BtnAccept.Enabled = true;
+            }
+            else
+            {
+                BtnAccept.Enabled = false;
+            }
+        }
+        private bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false;
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private bool IsKeyAChar(Keys key)
+        {
+            return key >= Keys.A && key <= Keys.Z;
+        }
+
+        private bool IsKeyADigit(Keys key)
+        {
+            return (key >= Keys.D0 && key <= Keys.D9) || (key >= Keys.NumPad0 && key <= Keys.NumPad9);
+        }
+
         private void TxtPersonalID_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyData == Keys.Enter)
+            ActivateBtn();
+            if (e.KeyData == Keys.Enter)
             {
                 TxtFullname.Focus();
             }
@@ -96,25 +184,31 @@ namespace SistemaMLP.Forms.CustomerForms
             {
                 TxtFullname.Focus();
             }
+            ActivateBtn();
         }
 
         private void TxtFullname_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
-                TxtBusinessName.Focus();
+                TxtPhoneNumber.Focus();
             }
             if (e.KeyData == Keys.Down)
             {
-                TxtBusinessName.Focus();
+                TxtPhoneNumber.Focus();
             }
             if (e.KeyData == Keys.Up)
             {
                 TxtPersonalID.Focus();
             }
+            if (IsKeyADigit(e.KeyData))
+            {
+                e.SuppressKeyPress = true;
+            }
+            ActivateBtn();
         }
 
-        private void TxtBusinessName_KeyDown(object sender, KeyEventArgs e)
+        private void TxtPhoneNumber_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
@@ -128,9 +222,46 @@ namespace SistemaMLP.Forms.CustomerForms
             {
                 TxtFullname.Focus();
             }
+            if (IsKeyAChar(e.KeyData))
+            {
+                e.SuppressKeyPress = true;
+            }
+            ActivateBtn();
         }
 
         private void TxtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                TxtBusinessName.Focus();
+            }
+            if (e.KeyData == Keys.Down)
+            {
+                TxtBusinessName.Focus();
+            }
+            if (e.KeyData == Keys.Up)
+            {
+                TxtPhoneNumber.Focus();
+            }
+        }
+
+        private void TxtBusinessName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                TxtBusinessPhoneNum.Focus();
+            }
+            if (e.KeyData == Keys.Down)
+            {
+                TxtBusinessPhoneNum.Focus();
+            }
+            if (e.KeyData == Keys.Up)
+            {
+                TxtEmail.Focus();
+            }
+        }
+
+        private void TxtBusinessPhoneNum_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
@@ -143,6 +274,10 @@ namespace SistemaMLP.Forms.CustomerForms
             if (e.KeyData == Keys.Up)
             {
                 TxtBusinessName.Focus();
+            }
+            if (IsKeyAChar(e.KeyData))
+            {
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -158,7 +293,7 @@ namespace SistemaMLP.Forms.CustomerForms
             }
             if (e.KeyData == Keys.Up)
             {
-                TxtEmail.Focus();
+                TxtBusinessPhoneNum.Focus();
             }
 
         }
@@ -185,5 +320,7 @@ namespace SistemaMLP.Forms.CustomerForms
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+
     }
 }

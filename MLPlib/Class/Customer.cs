@@ -45,8 +45,8 @@ namespace MLPlib.Class
         public int DeleteCustomer()
         {
             SistemaMLPDataSetTableAdapters.CustomerTableAdapter customersAdapter = new SistemaMLPDataSetTableAdapters.CustomerTableAdapter();
-            //TODO: Cambiar sp a delete
-            int result = (int)customersAdapter.SPUpdateCustomer(this.PersonalID, this.Fullname, this.PhoneNumber, this.BusinessName, this.BusinessPhoneNum, this.Email);
+
+            int result = (int)customersAdapter.SPDeleteCustomer(this.PersonalID);
 
             return result;
         }

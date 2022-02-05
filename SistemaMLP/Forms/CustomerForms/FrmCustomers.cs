@@ -96,8 +96,10 @@ namespace SistemaMLP.Forms.CustomerForms
                 IDCustomer = Convert.ToInt32(dataRow.Cells["IDCustomer"].Value),
                 PersonalID = Convert.ToString(dataRow.Cells["PersonalID"].Value),
                 Fullname = Convert.ToString(dataRow.Cells["Fullname"].Value),
+                PhoneNumber = Convert.ToString(dataRow.Cells["PhoneNumber"].Value),
                 BusinessName = Convert.ToString(dataRow.Cells["BusinessName"].Value),
                 Email = Convert.ToString(dataRow.Cells["Email"].Value),
+                BusinessPhoneNum = Convert.ToString(dataRow.Cells["BusinessPhoneNum"].Value),
                 RegDate = Convert.ToDateTime(dataRow.Cells["RegDate"].Value),
                 Active = Convert.ToBoolean(dataRow.Cells["Active"].Value)
             };
@@ -107,7 +109,7 @@ namespace SistemaMLP.Forms.CustomerForms
 
             if (dialogResult == DialogResult.OK)
             {
-                //Se muestra que se registro
+                FillDGV();
             }
         }
 
@@ -133,6 +135,37 @@ namespace SistemaMLP.Forms.CustomerForms
         private void DGVCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow dataRow = DGVCustomers.SelectedRows[0];
+            customer = new Customer
+            {
+                PersonalID = Convert.ToString(dataRow.Cells["PersonalID"].Value)
+            };
+
+            DialogResult dialogResult = MessageBox.Show("Está seguro que desea eliminar ese cliente?", "Eliminar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                int result = customer.DeleteCustomer();
+                if (result == 1)
+                {
+                    MessageBox.Show("Se ha eliminado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
+                }
+                else if (result == 2)
+                {
+                    MessageBox.Show("No se ha encontrado ese cliente en el sistema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (result == 0)
+                {
+                    MessageBox.Show("Error desconocido.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.DialogResult = DialogResult.Cancel;
+                }
+                FillDGV();
+            }
         }
     }
 }

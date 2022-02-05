@@ -69,7 +69,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 198);
+            this.label3.Location = new System.Drawing.Point(18, 306);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(152, 16);
             this.label3.TabIndex = 2;
@@ -105,7 +105,7 @@
             // 
             // TxtBusinessName
             // 
-            this.TxtBusinessName.Location = new System.Drawing.Point(21, 217);
+            this.TxtBusinessName.Location = new System.Drawing.Point(21, 325);
             this.TxtBusinessName.MaxLength = 255;
             this.TxtBusinessName.Name = "TxtBusinessName";
             this.TxtBusinessName.Size = new System.Drawing.Size(261, 20);
@@ -128,7 +128,7 @@
             this.BtnAccept.Name = "BtnAccept";
             this.BtnAccept.Size = new System.Drawing.Size(94, 36);
             this.BtnAccept.TabIndex = 8;
-            this.BtnAccept.Text = "Crear usuario";
+            this.BtnAccept.Text = "Registrar";
             this.BtnAccept.UseVisualStyleBackColor = true;
             this.BtnAccept.Click += new System.EventHandler(this.BtnAccept_Click);
             this.BtnAccept.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BtnAccept_KeyDown);
@@ -149,25 +149,26 @@
             // 
             this.LblTitle.AutoSize = true;
             this.LblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitle.Location = new System.Drawing.Point(73, 35);
+            this.LblTitle.Location = new System.Drawing.Point(58, 31);
             this.LblTitle.Name = "LblTitle";
-            this.LblTitle.Size = new System.Drawing.Size(155, 25);
+            this.LblTitle.Size = new System.Drawing.Size(185, 25);
             this.LblTitle.TabIndex = 10;
-            this.LblTitle.Text = "Crear usuario";
+            this.LblTitle.Text = "Registrar cliente";
             // 
             // TxtPhoneNumber
             // 
-            this.TxtPhoneNumber.Location = new System.Drawing.Point(21, 324);
+            this.TxtPhoneNumber.Location = new System.Drawing.Point(21, 215);
             this.TxtPhoneNumber.MaxLength = 255;
             this.TxtPhoneNumber.Name = "TxtPhoneNumber";
             this.TxtPhoneNumber.Size = new System.Drawing.Size(261, 20);
             this.TxtPhoneNumber.TabIndex = 12;
+            this.TxtPhoneNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPhoneNumber_KeyDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 305);
+            this.label5.Location = new System.Drawing.Point(18, 196);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(238, 16);
             this.label5.TabIndex = 11;
@@ -180,6 +181,7 @@
             this.TxtBusinessPhoneNum.Name = "TxtBusinessPhoneNum";
             this.TxtBusinessPhoneNum.Size = new System.Drawing.Size(261, 20);
             this.TxtBusinessPhoneNum.TabIndex = 14;
+            this.TxtBusinessPhoneNum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtBusinessPhoneNum_KeyDown);
             // 
             // label6
             // 
@@ -217,7 +219,7 @@
             this.Name = "FrmCustomersCU";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Crear usuario";
+            this.Text = "Registrar cliente";
             this.Load += new System.EventHandler(this.FrmCustomersCU_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

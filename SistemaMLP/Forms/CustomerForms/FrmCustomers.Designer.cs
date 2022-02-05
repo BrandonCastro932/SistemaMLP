@@ -56,7 +56,7 @@
             // 
             // TxtSearch
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(314, 22);
+            this.TxtSearch.Location = new System.Drawing.Point(348, 22);
             this.TxtSearch.Name = "TxtSearch";
             this.TxtSearch.Size = new System.Drawing.Size(420, 20);
             this.TxtSearch.TabIndex = 1;
@@ -65,7 +65,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(265, 25);
+            this.label1.Location = new System.Drawing.Point(299, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 2;
@@ -102,6 +102,7 @@
             this.BtnDelete.TabIndex = 5;
             this.BtnDelete.Text = "Eliminar cliente";
             this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // label2
             // 
