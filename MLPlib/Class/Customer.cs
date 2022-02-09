@@ -23,7 +23,6 @@ namespace MLPlib.Class
             Receipt = new List<Receipt>();
         }
 
-
         public int CreateCustomer()
         {
             SistemaMLPDataSetTableAdapters.CustomerTableAdapter customersAdapter = new SistemaMLPDataSetTableAdapters.CustomerTableAdapter();
@@ -51,6 +50,15 @@ namespace MLPlib.Class
             return result;
         }
 
+        public int RestoreCustomer()
+        {
+            SistemaMLPDataSetTableAdapters.CustomerTableAdapter customersAdapter = new SistemaMLPDataSetTableAdapters.CustomerTableAdapter();
+
+            int result = (int)customersAdapter.SPRestoreCustomer(this.PersonalID);
+
+            return result;
+        }
+
         public DataTable GetCustomers(string filter = "")
         {
             SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
@@ -65,7 +73,7 @@ namespace MLPlib.Class
             SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
             SistemaMLPDataSetTableAdapters.CustomerTableAdapter customersAdapter = new SistemaMLPDataSetTableAdapters.CustomerTableAdapter();
 
-            customersAdapter.FillBy(sistemaMLPDataSet.Customer, filter);
+            customersAdapter.FillByDeleted(sistemaMLPDataSet.Customer, filter);
             return sistemaMLPDataSet.Customer;
         }
 

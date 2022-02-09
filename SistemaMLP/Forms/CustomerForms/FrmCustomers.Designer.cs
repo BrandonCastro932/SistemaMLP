@@ -35,6 +35,7 @@
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.Cbx_Deleted = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCustomers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +75,7 @@
             // BtnCreate
             // 
             this.BtnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCreate.Location = new System.Drawing.Point(108, 399);
+            this.BtnCreate.Location = new System.Drawing.Point(108, 408);
             this.BtnCreate.Name = "BtnCreate";
             this.BtnCreate.Size = new System.Drawing.Size(126, 46);
             this.BtnCreate.TabIndex = 3;
@@ -85,7 +86,7 @@
             // BtnEdit
             // 
             this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEdit.Location = new System.Drawing.Point(478, 399);
+            this.BtnEdit.Location = new System.Drawing.Point(481, 408);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(126, 46);
             this.BtnEdit.TabIndex = 4;
@@ -96,7 +97,7 @@
             // BtnDelete
             // 
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.Location = new System.Drawing.Point(838, 399);
+            this.BtnDelete.Location = new System.Drawing.Point(832, 408);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(126, 46);
             this.BtnDelete.TabIndex = 5;
@@ -114,11 +115,23 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Registro de clientes";
             // 
+            // Cbx_Deleted
+            // 
+            this.Cbx_Deleted.AutoSize = true;
+            this.Cbx_Deleted.Location = new System.Drawing.Point(774, 22);
+            this.Cbx_Deleted.Name = "Cbx_Deleted";
+            this.Cbx_Deleted.Size = new System.Drawing.Size(133, 17);
+            this.Cbx_Deleted.TabIndex = 7;
+            this.Cbx_Deleted.Text = "Ver clientes eliminados";
+            this.Cbx_Deleted.UseVisualStyleBackColor = true;
+            this.Cbx_Deleted.CheckedChanged += new System.EventHandler(this.Cbx_Deleted_CheckedChanged);
+            // 
             // FrmCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 466);
+            this.Controls.Add(this.Cbx_Deleted);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnEdit);
@@ -151,5 +164,6 @@
         private System.Windows.Forms.Button BtnEdit;
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox Cbx_Deleted;
     }
 }

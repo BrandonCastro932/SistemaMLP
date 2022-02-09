@@ -14,6 +14,8 @@ namespace SistemaMLP.Forms.CustomerForms
     public partial class FrmCustomers : Form
     {
         private Customer customer = new Customer();
+        private bool DeletedMode = false;
+
         public FrmCustomers()
         {
             InitializeComponent();
@@ -33,19 +35,59 @@ namespace SistemaMLP.Forms.CustomerForms
         {
             BtnEdit.Enabled = false;
             BtnDelete.Enabled = false;
+            BtnCreate.Enabled = true;
             DGVCustomers.ClearSelection();
+            BtnDelete.Text = "Eliminar cliente";
+        }
+
+        private void DeletedModeLayout()
+        {
+            BtnCreate.Enabled = false;
+            BtnEdit.Enabled = false;
+            BtnDelete.Enabled= true;
+            BtnDelete.Text = "Restaurar cliente";
         }
 
         private void CustomerSelectedLayout()
         {
-            BtnEdit.Enabled = true;
-            BtnDelete.Enabled = true;
+            if (!DeletedMode)
+            {
+                BtnEdit.Enabled = true;
+                BtnDelete.Enabled = true;
+            }
+            else
+            {
+                BtnEdit.Enabled = false;
+                BtnDelete.Enabled = true;
+            }
         }
 
         private void FillDGV(string Filter = "")
         {
             //Llamada de datos
             DGVCustomers.DataSource = customer.GetCustomers(Filter);
+
+            //Visual
+            DGVCustomers.Columns["Active"].Visible = false;
+            DGVCustomers.Columns["IDCustomer"].Visible = false;
+            DGVCustomers.Columns["Fullname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DGVCustomers.Columns["PhoneNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DGVCustomers.Columns["BusinessPhoneNum"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DGVCustomers.Columns["Fullname"].HeaderText = "Nombre Completo";
+            DGVCustomers.Columns["BusinessName"].HeaderText = "Empresa";
+            DGVCustomers.Columns["PersonalID"].HeaderText = "Cédula";
+            DGVCustomers.Columns["PhoneNumber"].HeaderText = "Número de teléfono";
+            DGVCustomers.Columns["BusinessPhoneNum"].HeaderText = "Teléfono de empresa";
+            DGVCustomers.Columns["RegDate"].HeaderText = "Fecha de registro";
+            DGVCustomers.Columns["Email"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DGVCustomers.Columns["Email"].HeaderText = "Correo electrónico";
+            DGVCustomers.RowHeadersVisible = false;
+
+        }
+        private void FillDeletedDGV(string Filter = "")
+        {
+            //Llamada de datos
+            DGVCustomers.DataSource = customer.GetDeletedCustomers(Filter);
 
             //Visual
             DGVCustomers.Columns["Active"].Visible = false;
@@ -122,13 +164,27 @@ namespace SistemaMLP.Forms.CustomerForms
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >= 2)
+            if (!DeletedMode)
             {
-                FillDGV(TxtSearch.Text.Trim());
+                if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >= 2)
+                {
+                    FillDGV(TxtSearch.Text.Trim());
+                }
+                else
+                {
+                    FillDGV();
+                }
             }
             else
             {
-                FillDGV();
+                if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >= 2)
+                {
+                    FillDeletedDGV(TxtSearch.Text.Trim());
+                }
+                else
+                {
+                    FillDeletedDGV();
+                }
             }
         }
 
@@ -139,31 +195,84 @@ namespace SistemaMLP.Forms.CustomerForms
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            DataGridViewRow dataRow = DGVCustomers.SelectedRows[0];
-            customer = new Customer
+            if (!DeletedMode)
             {
-                PersonalID = Convert.ToString(dataRow.Cells["PersonalID"].Value)
-            };
+                DataGridViewRow dataRow = DGVCustomers.SelectedRows[0];
+                customer = new Customer
+                {
+                    PersonalID = Convert.ToString(dataRow.Cells["PersonalID"].Value)
+                };
 
-            DialogResult dialogResult = MessageBox.Show("Está seguro que desea eliminar ese cliente?", "Eliminar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Está seguro que desea eliminar ese cliente?", "Eliminar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (dialogResult == DialogResult.Yes)
+                if (dialogResult == DialogResult.Yes)
+                {
+                    int result = customer.DeleteCustomer();
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Se ha eliminado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else if (result == 2)
+                    {
+                        MessageBox.Show("No se ha encontrado ese cliente en el sistema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (result == 0)
+                    {
+                        MessageBox.Show("Error desconocido.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.DialogResult = DialogResult.Cancel;
+                    }
+                    FillDGV();
+                }
+            }
+            else
             {
-                int result = customer.DeleteCustomer();
-                if (result == 1)
+                DataGridViewRow dataRow = DGVCustomers.SelectedRows[0];
+                customer = new Customer
                 {
-                    MessageBox.Show("Se ha eliminado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK;
-                }
-                else if (result == 2)
+                    PersonalID = Convert.ToString(dataRow.Cells["PersonalID"].Value)
+                };
+
+                DialogResult dialogResult = MessageBox.Show("Está seguro que desea restaurar ese cliente?", "Restaurar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("No se ha encontrado ese cliente en el sistema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    int result = customer.RestoreCustomer();
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Se ha restaurado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else if (result == 2)
+                    {
+                        MessageBox.Show("No se ha encontrado ese cliente en el sistema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (result == 0)
+                    {
+                        MessageBox.Show("Error desconocido.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.DialogResult = DialogResult.Cancel;
+                    }
+                    Cbx_Deleted.Checked = false;
+                    FillDGV();
                 }
-                else if (result == 0)
-                {
-                    MessageBox.Show("Error desconocido.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.DialogResult = DialogResult.Cancel;
-                }
+            }
+        }
+
+        private void Cbx_Deleted_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Cbx_Deleted.Checked)
+            {
+                DeletedMode = true;
+                DeletedModeLayout();
+                DGVCustomers.DataSource = null;
+                DGVCustomers.Rows.Clear();
+                DGVCustomers.Refresh();
+                FillDeletedDGV();
+            }
+            else
+            {
+                DeletedMode = false;
+                IdleLayout();
                 FillDGV();
             }
         }
