@@ -39,6 +39,8 @@
             this.verFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.créditosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entradaDeProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -82,6 +84,9 @@
             // 
             // inventariosToolStripMenuItem
             // 
+            this.inventariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.entradaDeProductoToolStripMenuItem,
+            this.mantenimientoToolStripMenuItem});
             this.inventariosToolStripMenuItem.Name = "inventariosToolStripMenuItem";
             this.inventariosToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
             this.inventariosToolStripMenuItem.Text = "Inventarios";
@@ -127,6 +132,19 @@
             this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
             // 
+            // entradaDeProductoToolStripMenuItem
+            // 
+            this.entradaDeProductoToolStripMenuItem.Name = "entradaDeProductoToolStripMenuItem";
+            this.entradaDeProductoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.entradaDeProductoToolStripMenuItem.Text = "Entrada de producto";
+            // 
+            // mantenimientoToolStripMenuItem
+            // 
+            this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
+            this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
+            this.mantenimientoToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,5 +182,7 @@
         private System.Windows.Forms.ToolStripMenuItem notificacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verFacturasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entradaDeProductoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mantenimientoToolStripMenuItem;
     }
 }

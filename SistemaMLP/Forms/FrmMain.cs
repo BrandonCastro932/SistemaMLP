@@ -40,5 +40,14 @@ namespace SistemaMLP.Forms
                 Utilities.Utilities.frmCustomers.Show();
             }
         }
+
+        private void mantenimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Utilities.Utilities.frmProduct.Visible)
+            {
+                Utilities.Utilities.frmProduct = new CustomerForms.FrmProduct();
+                Utilities.Utilities.frmProduct.Show();
+            }
+        }
     }
 }

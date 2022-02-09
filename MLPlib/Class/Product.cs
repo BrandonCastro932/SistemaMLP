@@ -37,5 +37,14 @@ namespace MLPlib.Class
             productsAdapter.FillBy(sistemaMLPDataSet.Product, filter);
             return sistemaMLPDataSet.Product;
         }
+
+        public DataTable GetProductDetailedStock()
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter productsAdapter = new SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter();
+
+            productsAdapter.FillBy(sistemaMLPDataSet.DetailedStock,IDProduct);
+            return sistemaMLPDataSet.DetailedStock;
+        }
     }
 }

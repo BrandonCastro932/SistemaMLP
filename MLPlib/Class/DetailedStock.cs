@@ -6,9 +6,8 @@ namespace MLPlib.Class
     public class DetailedStock
     {
         public int IDDetailedStock { get; set; }
-        public decimal FiletStock { get; set; }
-        public decimal ChoppedStock { get; set; }
-        public decimal Waste { get; set; }
+        public int IDCutType { get; set; }
+        public decimal Stock { get; set; }
         public DateTime RegDate { get; set; }
 
 
@@ -27,9 +26,7 @@ namespace MLPlib.Class
             if (data.Rows.Count > 0)
             {
                 this.IDDetailedStock = Convert.ToInt32(data.Rows[0]["IDProduct"].ToString());
-                this.FiletStock = Convert.ToDecimal(data.Rows[0]["FiletStock"].ToString());
-                this.ChoppedStock = Convert.ToDecimal(data.Rows[0]["ChoppedStock"].ToString());
-                this.Waste = Convert.ToDecimal(data.Rows[0]["Waste"].ToString());
+               
                 this.RegDate = Convert.ToDateTime(data.Rows[0]["RegDate"].ToString());
             }
 

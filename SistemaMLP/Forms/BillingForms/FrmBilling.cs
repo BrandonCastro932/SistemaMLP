@@ -260,7 +260,7 @@ namespace SistemaMLP.Forms.BillingForms
         {
             DataGridViewRow row = DGVProducts.SelectedRows[0];
             DetailedStock detailedStock = new DetailedStock();
-            detailedStock.GetProductDetailedStock(Convert.ToInt32(row.Cells["IDProduct"].Value));
+            /*detailedStock.GetProductDetailedStock(Convert.ToInt32(row.Cells["IDProduct"].Value));
             if(detailedStock.IDDetailedStock > 0)
             {
                 GbStockType.Visible = true;
@@ -268,7 +268,7 @@ namespace SistemaMLP.Forms.BillingForms
             else
             {
                 GbStockType.Visible = false;
-            }
+            }*/
 
             if (e.RowIndex == -1 || e.ColumnIndex != 3)
             {

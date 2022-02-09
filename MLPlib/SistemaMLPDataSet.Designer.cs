@@ -2029,13 +2029,11 @@ namespace MLPlib {
             
             private global::System.Data.DataColumn columnIDProduct;
             
-            private global::System.Data.DataColumn columnFiletStock;
-            
-            private global::System.Data.DataColumn columnChoppedStock;
-            
-            private global::System.Data.DataColumn columnWaste;
-            
             private global::System.Data.DataColumn columnRegDate;
+            
+            private global::System.Data.DataColumn columnIDCutType;
+            
+            private global::System.Data.DataColumn columnStock;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -2088,33 +2086,25 @@ namespace MLPlib {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn FiletStockColumn {
-                get {
-                    return this.columnFiletStock;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ChoppedStockColumn {
-                get {
-                    return this.columnChoppedStock;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn WasteColumn {
-                get {
-                    return this.columnWaste;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn RegDateColumn {
                 get {
                     return this.columnRegDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDCutTypeColumn {
+                get {
+                    return this.columnIDCutType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn StockColumn {
+                get {
+                    return this.columnStock;
                 }
             }
             
@@ -2155,15 +2145,14 @@ namespace MLPlib {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DetailedStockRow AddDetailedStockRow(ProductRow parentProductRowByFKDetailed_S258736, decimal FiletStock, decimal ChoppedStock, decimal Waste, System.DateTime RegDate) {
+            public DetailedStockRow AddDetailedStockRow(ProductRow parentProductRowByFKDetailed_S258736, System.DateTime RegDate, int IDCutType, decimal Stock) {
                 DetailedStockRow rowDetailedStockRow = ((DetailedStockRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
-                        FiletStock,
-                        ChoppedStock,
-                        Waste,
-                        RegDate};
+                        RegDate,
+                        IDCutType,
+                        Stock};
                 if ((parentProductRowByFKDetailed_S258736 != null)) {
                     columnValuesArray[1] = parentProductRowByFKDetailed_S258736[0];
                 }
@@ -2198,10 +2187,9 @@ namespace MLPlib {
             internal void InitVars() {
                 this.columnIDDetailedStock = base.Columns["IDDetailedStock"];
                 this.columnIDProduct = base.Columns["IDProduct"];
-                this.columnFiletStock = base.Columns["FiletStock"];
-                this.columnChoppedStock = base.Columns["ChoppedStock"];
-                this.columnWaste = base.Columns["Waste"];
                 this.columnRegDate = base.Columns["RegDate"];
+                this.columnIDCutType = base.Columns["IDCutType"];
+                this.columnStock = base.Columns["Stock"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2211,14 +2199,12 @@ namespace MLPlib {
                 base.Columns.Add(this.columnIDDetailedStock);
                 this.columnIDProduct = new global::System.Data.DataColumn("IDProduct", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIDProduct);
-                this.columnFiletStock = new global::System.Data.DataColumn("FiletStock", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFiletStock);
-                this.columnChoppedStock = new global::System.Data.DataColumn("ChoppedStock", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChoppedStock);
-                this.columnWaste = new global::System.Data.DataColumn("Waste", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnWaste);
                 this.columnRegDate = new global::System.Data.DataColumn("RegDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRegDate);
+                this.columnIDCutType = new global::System.Data.DataColumn("IDCutType", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDCutType);
+                this.columnStock = new global::System.Data.DataColumn("Stock", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStock);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIDDetailedStock}, true));
                 this.columnIDDetailedStock.AutoIncrement = true;
@@ -2228,10 +2214,9 @@ namespace MLPlib {
                 this.columnIDDetailedStock.ReadOnly = true;
                 this.columnIDDetailedStock.Unique = true;
                 this.columnIDProduct.AllowDBNull = false;
-                this.columnFiletStock.AllowDBNull = false;
-                this.columnChoppedStock.AllowDBNull = false;
-                this.columnWaste.AllowDBNull = false;
                 this.columnRegDate.AllowDBNull = false;
+                this.columnIDCutType.AllowDBNull = false;
+                this.columnStock.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5035,45 +5020,34 @@ namespace MLPlib {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal FiletStock {
-                get {
-                    return ((decimal)(this[this.tableDetailedStock.FiletStockColumn]));
-                }
-                set {
-                    this[this.tableDetailedStock.FiletStockColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal ChoppedStock {
-                get {
-                    return ((decimal)(this[this.tableDetailedStock.ChoppedStockColumn]));
-                }
-                set {
-                    this[this.tableDetailedStock.ChoppedStockColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Waste {
-                get {
-                    return ((decimal)(this[this.tableDetailedStock.WasteColumn]));
-                }
-                set {
-                    this[this.tableDetailedStock.WasteColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.DateTime RegDate {
                 get {
                     return ((global::System.DateTime)(this[this.tableDetailedStock.RegDateColumn]));
                 }
                 set {
                     this[this.tableDetailedStock.RegDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int IDCutType {
+                get {
+                    return ((int)(this[this.tableDetailedStock.IDCutTypeColumn]));
+                }
+                set {
+                    this[this.tableDetailedStock.IDCutTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Stock {
+                get {
+                    return ((decimal)(this[this.tableDetailedStock.StockColumn]));
+                }
+                set {
+                    this[this.tableDetailedStock.StockColumn] = value;
                 }
             }
             
@@ -8012,46 +7986,45 @@ SELECT IDCustomer, PersonalID, Fullname, BusinessName, Email, RegDate FROM Custo
             tableMapping.DataSetTable = "DetailedStock";
             tableMapping.ColumnMappings.Add("IDDetailedStock", "IDDetailedStock");
             tableMapping.ColumnMappings.Add("IDProduct", "IDProduct");
-            tableMapping.ColumnMappings.Add("FiletStock", "FiletStock");
-            tableMapping.ColumnMappings.Add("ChoppedStock", "ChoppedStock");
-            tableMapping.ColumnMappings.Add("Waste", "Waste");
             tableMapping.ColumnMappings.Add("RegDate", "RegDate");
+            tableMapping.ColumnMappings.Add("IDCutType", "IDCutType");
+            tableMapping.ColumnMappings.Add("Stock", "Stock");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[DetailedStock] WHERE (([IDDetailedStock] = @Original_IDDetailedStock) AND ([IDProduct] = @Original_IDProduct) AND ([FiletStock] = @Original_FiletStock) AND ([ChoppedStock] = @Original_ChoppedStock) AND ([Waste] = @Original_Waste) AND ([RegDate] = @Original_RegDate))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DetailedStock] WHERE (([IDDetailedStock] = @Original_IDDetaile" +
+                "dStock) AND ([IDProduct] = @Original_IDProduct) AND ([IDCutType] = @Original_IDC" +
+                "utType) AND ([Stock] = @Original_Stock) AND ([RegDate] = @Original_RegDate))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IDDetailedStock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDDetailedStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IDProduct", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDProduct", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FiletStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "FiletStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ChoppedStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "ChoppedStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Waste", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "Waste", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IDCutType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDCutType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Stock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 1, "Stock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[DetailedStock] ([IDProduct], [FiletStock], [ChoppedStock], [Waste], [RegDate]) VALUES (@IDProduct, @FiletStock, @ChoppedStock, @Waste, @RegDate);
-SELECT IDDetailedStock, IDProduct, FiletStock, ChoppedStock, Waste, RegDate FROM DetailedStock WHERE (IDDetailedStock = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[DetailedStock] ([IDProduct], [IDCutType], [Stock], [RegDate]) " +
+                "VALUES (@IDProduct, @IDCutType, @Stock, @RegDate);\r\nSELECT IDDetailedStock, IDPr" +
+                "oduct, IDCutType, Stock, RegDate FROM DetailedStock WHERE (IDDetailedStock = SCO" +
+                "PE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IDProduct", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDProduct", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FiletStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "FiletStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ChoppedStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "ChoppedStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Waste", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "Waste", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IDCutType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDCutType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Stock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 1, "Stock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RegDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[DetailedStock] SET [IDProduct] = @IDProduct, [FiletStock] = @FiletStock, [ChoppedStock] = @ChoppedStock, [Waste] = @Waste, [RegDate] = @RegDate WHERE (([IDDetailedStock] = @Original_IDDetailedStock) AND ([IDProduct] = @Original_IDProduct) AND ([FiletStock] = @Original_FiletStock) AND ([ChoppedStock] = @Original_ChoppedStock) AND ([Waste] = @Original_Waste) AND ([RegDate] = @Original_RegDate));
-SELECT IDDetailedStock, IDProduct, FiletStock, ChoppedStock, Waste, RegDate FROM DetailedStock WHERE (IDDetailedStock = @IDDetailedStock)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[DetailedStock] SET [IDProduct] = @IDProduct, [IDCutType] = @IDCutType, [Stock] = @Stock, [RegDate] = @RegDate WHERE (([IDDetailedStock] = @Original_IDDetailedStock) AND ([IDProduct] = @Original_IDProduct) AND ([IDCutType] = @Original_IDCutType) AND ([Stock] = @Original_Stock) AND ([RegDate] = @Original_RegDate));
+SELECT IDDetailedStock, IDProduct, IDCutType, Stock, RegDate FROM DetailedStock WHERE (IDDetailedStock = @IDDetailedStock)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IDProduct", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDProduct", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FiletStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "FiletStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ChoppedStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "ChoppedStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Waste", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "Waste", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IDCutType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDCutType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Stock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 1, "Stock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RegDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IDDetailedStock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDDetailedStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IDProduct", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDProduct", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FiletStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "FiletStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ChoppedStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "ChoppedStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Waste", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "Waste", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IDCutType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDCutType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Stock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 1, "Stock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IDDetailedStock", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IDDetailedStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -8069,8 +8042,7 @@ SELECT IDDetailedStock, IDProduct, FiletStock, ChoppedStock, Waste, RegDate FROM
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT IDDetailedStock, IDProduct, FiletStock, ChoppedStock, Waste, RegDate FROM " +
-                "dbo.DetailedStock";
+            this._commandCollection[0].CommandText = "SELECT * FROM dbo.DetailedStock";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -8173,13 +8145,12 @@ SELECT IDDetailedStock, IDProduct, FiletStock, ChoppedStock, Waste, RegDate FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_IDDetailedStock, int Original_IDProduct, decimal Original_FiletStock, decimal Original_ChoppedStock, decimal Original_Waste, System.DateTime Original_RegDate) {
+        public virtual int Delete(int Original_IDDetailedStock, int Original_IDProduct, int Original_IDCutType, decimal Original_Stock, System.DateTime Original_RegDate) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_IDDetailedStock));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_IDProduct));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_FiletStock));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_ChoppedStock));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_Waste));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_RegDate));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_IDCutType));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_Stock));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_RegDate));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8200,12 +8171,11 @@ SELECT IDDetailedStock, IDProduct, FiletStock, ChoppedStock, Waste, RegDate FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int IDProduct, decimal FiletStock, decimal ChoppedStock, decimal Waste, System.DateTime RegDate) {
+        public virtual int Insert(int IDProduct, int IDCutType, decimal Stock, System.DateTime RegDate) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(IDProduct));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(FiletStock));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(ChoppedStock));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(Waste));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(RegDate));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(IDCutType));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(Stock));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(RegDate));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8226,19 +8196,17 @@ SELECT IDDetailedStock, IDProduct, FiletStock, ChoppedStock, Waste, RegDate FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int IDProduct, decimal FiletStock, decimal ChoppedStock, decimal Waste, System.DateTime RegDate, int Original_IDDetailedStock, int Original_IDProduct, decimal Original_FiletStock, decimal Original_ChoppedStock, decimal Original_Waste, System.DateTime Original_RegDate, int IDDetailedStock) {
+        public virtual int Update(int IDProduct, int IDCutType, decimal Stock, System.DateTime RegDate, int Original_IDDetailedStock, int Original_IDProduct, int Original_IDCutType, decimal Original_Stock, System.DateTime Original_RegDate, int IDDetailedStock) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(IDProduct));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(FiletStock));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(ChoppedStock));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(Waste));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(RegDate));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_IDDetailedStock));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_IDProduct));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(Original_FiletStock));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Original_ChoppedStock));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(Original_Waste));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_RegDate));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(IDDetailedStock));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(IDCutType));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(Stock));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(RegDate));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_IDDetailedStock));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_IDProduct));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_IDCutType));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(Original_Stock));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_RegDate));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(IDDetailedStock));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8259,8 +8227,8 @@ SELECT IDDetailedStock, IDProduct, FiletStock, ChoppedStock, Waste, RegDate FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int IDProduct, decimal FiletStock, decimal ChoppedStock, decimal Waste, System.DateTime RegDate, int Original_IDDetailedStock, int Original_IDProduct, decimal Original_FiletStock, decimal Original_ChoppedStock, decimal Original_Waste, System.DateTime Original_RegDate) {
-            return this.Update(IDProduct, FiletStock, ChoppedStock, Waste, RegDate, Original_IDDetailedStock, Original_IDProduct, Original_FiletStock, Original_ChoppedStock, Original_Waste, Original_RegDate, Original_IDDetailedStock);
+        public virtual int Update(int IDProduct, int IDCutType, decimal Stock, System.DateTime RegDate, int Original_IDDetailedStock, int Original_IDProduct, int Original_IDCutType, decimal Original_Stock, System.DateTime Original_RegDate) {
+            return this.Update(IDProduct, IDCutType, Stock, RegDate, Original_IDDetailedStock, Original_IDProduct, Original_IDCutType, Original_Stock, Original_RegDate, Original_IDDetailedStock);
         }
     }
     
