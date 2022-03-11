@@ -14,8 +14,36 @@ namespace MLPlib.Class
 
         public DetailedStock()
         {
-
+            RegDate = DateTime.Now;
         }
+
+        public int CreateDetailedStock()
+        {
+            SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter detailedStockAdapter = new SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter();
+
+            int result = (int)detailedStockAdapter.SPInsertDetailedStock(this.IDProduct, this.IDCutType, this.Stock, this.RegDate);
+
+            return result;
+        }
+
+        public int UpdateDetailedStock()
+        {
+            SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter detailedStockAdapter = new SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter();
+
+            int result = (int)detailedStockAdapter.SPUpdateDetailedStock(this.IDDetailedStock,this.IDProduct, this.IDCutType, this.Stock, this.RegDate);
+
+            return result;
+        }
+
+        public int DeleteDetailedStock()
+        {
+            SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter detailedStockAdapter = new SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter();
+
+            int result = (int)detailedStockAdapter.SPDeleteDetailedStock(this.IDDetailedStock);
+
+            return result;
+        }
+
         public void GetProductDetailedStock(int IDProduct)
         {
             DataTable data = new DataTable();

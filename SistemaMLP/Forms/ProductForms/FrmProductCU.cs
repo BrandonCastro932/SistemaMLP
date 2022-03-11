@@ -65,7 +65,10 @@ namespace SistemaMLP.Forms.ProductForms
                 {
                     if (string.IsNullOrWhiteSpace(c.Text))
                     {
-                        return false;
+                        if (c.Name != "TxtBarCode")
+                        {
+                            return false;
+                        }
                     }
                 }
             }
@@ -81,14 +84,47 @@ namespace SistemaMLP.Forms.ProductForms
                 if (ValidateAll())
                 {
                     //TODO: Se registra el producto, metodo de registro retorna el id generado y se le asigna a i
-
-                    if (detailedStocks != null && i != 1)
+                    Product product = new Product
                     {
-                        foreach (DetailedStock stock in detailedStocks)
+                        ProductName = TxtProductName.Text,
+                        BarCode = TxtBarCode.Text,
+                        UnitPrice = Convert.ToDecimal(TxtUnitPrice.Text),
+                        Tax = Convert.ToDecimal(TxtTax.Text),
+                        StockType = Convert.ToInt32(CbStockType.SelectedValue),
+                        GeneralStock = Convert.ToDecimal(TxtStock.Text),
+                        RegDate = DateTime.Now,
+                        LastUpdate = DateTime.Now,
+                        Active = true
+                    };
+                    i = product.CreateProduct();
+
+                    if (i != 0)
+                    {
+
+                        if (detailedStocks != null && i > 0)
                         {
-                            stock.IDProduct = i;
-                            //TODO: Registrar los detalles de stock
+                            foreach (DetailedStock stock in detailedStocks)
+                            {
+                                stock.IDProduct = i;
+                                if (stock.CreateDetailedStock() != 1)
+                                {
+                                    MessageBox.Show("Error, no se ha podido registrar uno de los inventarios detallados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                }
+                            }
+
                         }
+                        MessageBox.Show("Se ha registrado el producto", "Producto registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (i == -1)
+                    {
+                        //Duplicado
+                        MessageBox.Show("Error, producto detallado, verifique que el nombre y el código de barras", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if(i == 0)
+                    {
+                        //Desconocido
+                        MessageBox.Show("Error desconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -143,7 +179,7 @@ namespace SistemaMLP.Forms.ProductForms
             if (CbStockType.SelectedIndex == 1)
             {
                 BtnDetail.Enabled = false;
-                if(detailedStocks.Count > 0)
+                if (detailedStocks.Count > 0)
                 {
                     detailedStocks.Clear();
                     TxtStock.Text = "";

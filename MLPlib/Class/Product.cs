@@ -35,7 +35,7 @@ namespace MLPlib.Class
         {
             SistemaMLPDataSetTableAdapters.ProductTableAdapter productAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
 
-            int result = (int)productAdapter.SPInsertProduct(this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.GeneralStock,this.RegDate,this.LastUpdate,this.Active);
+            int result = (int)productAdapter.SPInsertProduct(this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.GeneralStock,this.RegDate,this.LastUpdate);
 
             return result;
         }
