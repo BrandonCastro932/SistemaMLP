@@ -51,6 +51,7 @@
             this.DGVCustomers.Size = new System.Drawing.Size(459, 394);
             this.DGVCustomers.TabIndex = 0;
             this.DGVCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCustomers_CellClick);
+            this.DGVCustomers.DoubleClick += new System.EventHandler(this.DGVCustomers_DoubleClick);
             // 
             // BtnSelect
             // 

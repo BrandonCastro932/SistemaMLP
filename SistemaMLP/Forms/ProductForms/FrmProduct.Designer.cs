@@ -58,7 +58,7 @@
             // BtnCreate
             // 
             this.BtnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCreate.Location = new System.Drawing.Point(323, 378);
+            this.BtnCreate.Location = new System.Drawing.Point(333, 378);
             this.BtnCreate.Name = "BtnCreate";
             this.BtnCreate.Size = new System.Drawing.Size(137, 46);
             this.BtnCreate.TabIndex = 4;
@@ -135,7 +135,12 @@
             this.Controls.Add(this.BtnEdit);
             this.Controls.Add(this.BtnCreate);
             this.Controls.Add(this.DGVProduct);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmProduct";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.FrmProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVProduct)).EndInit();

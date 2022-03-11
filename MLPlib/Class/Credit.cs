@@ -22,6 +22,7 @@ namespace MLPlib.Class
             Credit_Payments = new List<CreditPayments>();
         }
 
+        /*
         public bool CustomerHasCredit()
         {
             SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
@@ -37,6 +38,7 @@ namespace MLPlib.Class
                 return false;
             }
         }
+        
 
         public void GetCustomerCredit()
         {
@@ -49,5 +51,6 @@ namespace MLPlib.Class
             this.Canceled = Convert.ToBoolean(sistemaMLPDataSet.Credit[0].Canceled);
             this.RegDate = Convert.ToDateTime(sistemaMLPDataSet.Credit[0].RegDate);
         }
+        */
     }
 }

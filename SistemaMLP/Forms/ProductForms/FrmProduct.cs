@@ -1,4 +1,5 @@
 ﻿using MLPlib.Class;
+using SistemaMLP.Forms.ProductForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,8 @@ namespace SistemaMLP.Forms.CustomerForms
 
         private void BtnCreate_Click(object sender, EventArgs e)
         {
-
+            FrmProductCU frmProductCU = new FrmProductCU();
+            frmProductCU.ShowDialog();
         }
 
         private void FrmProduct_Load(object sender, EventArgs e)

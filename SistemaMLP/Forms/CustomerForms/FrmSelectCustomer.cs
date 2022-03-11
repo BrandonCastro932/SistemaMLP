@@ -83,5 +83,10 @@ namespace SistemaMLP.Forms.CustomerForms
             if (e.RowIndex == -1 || e.ColumnIndex != 3) 
                 return;
         }
+
+        private void DGVCustomers_DoubleClick(object sender, EventArgs e)
+        {
+            BtnSelect_Click(sender, e);
+        }
     }
 }

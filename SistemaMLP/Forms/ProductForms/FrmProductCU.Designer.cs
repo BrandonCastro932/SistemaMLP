@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TxtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.TxtUnitPrice = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.LblTitle = new System.Windows.Forms.Label();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnAccept = new System.Windows.Forms.Button();
-            this.TxtFullname = new System.Windows.Forms.TextBox();
-            this.TxtPersonalID = new System.Windows.Forms.TextBox();
+            this.TxtBarCode = new System.Windows.Forms.TextBox();
+            this.TxtProductName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtTax = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CbStockType = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TxtStock = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnDetail = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // TxtPhoneNumber
+            // TxtUnitPrice
             // 
-            this.TxtPhoneNumber.Location = new System.Drawing.Point(19, 185);
-            this.TxtPhoneNumber.MaxLength = 255;
-            this.TxtPhoneNumber.Name = "TxtPhoneNumber";
-            this.TxtPhoneNumber.Size = new System.Drawing.Size(111, 20);
-            this.TxtPhoneNumber.TabIndex = 27;
+            this.TxtUnitPrice.Location = new System.Drawing.Point(19, 185);
+            this.TxtUnitPrice.MaxLength = 255;
+            this.TxtUnitPrice.Name = "TxtUnitPrice";
+            this.TxtUnitPrice.Size = new System.Drawing.Size(111, 20);
+            this.TxtUnitPrice.TabIndex = 27;
             // 
             // label5
             // 
@@ -93,22 +93,23 @@
             this.BtnAccept.TabIndex = 23;
             this.BtnAccept.Text = "Registrar";
             this.BtnAccept.UseVisualStyleBackColor = true;
+            this.BtnAccept.Click += new System.EventHandler(this.BtnAccept_Click);
             // 
-            // TxtFullname
+            // TxtBarCode
             // 
-            this.TxtFullname.Location = new System.Drawing.Point(19, 131);
-            this.TxtFullname.MaxLength = 255;
-            this.TxtFullname.Name = "TxtFullname";
-            this.TxtFullname.Size = new System.Drawing.Size(261, 20);
-            this.TxtFullname.TabIndex = 20;
+            this.TxtBarCode.Location = new System.Drawing.Point(19, 131);
+            this.TxtBarCode.MaxLength = 255;
+            this.TxtBarCode.Name = "TxtBarCode";
+            this.TxtBarCode.Size = new System.Drawing.Size(261, 20);
+            this.TxtBarCode.TabIndex = 20;
             // 
-            // TxtPersonalID
+            // TxtProductName
             // 
-            this.TxtPersonalID.Location = new System.Drawing.Point(19, 79);
-            this.TxtPersonalID.MaxLength = 255;
-            this.TxtPersonalID.Name = "TxtPersonalID";
-            this.TxtPersonalID.Size = new System.Drawing.Size(261, 20);
-            this.TxtPersonalID.TabIndex = 19;
+            this.TxtProductName.Location = new System.Drawing.Point(19, 79);
+            this.TxtProductName.MaxLength = 255;
+            this.TxtProductName.Name = "TxtProductName";
+            this.TxtProductName.Size = new System.Drawing.Size(261, 20);
+            this.TxtProductName.TabIndex = 19;
             // 
             // label2
             // 
@@ -130,13 +131,13 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Nombre del producto:";
             // 
-            // textBox1
+            // TxtTax
             // 
-            this.textBox1.Location = new System.Drawing.Point(169, 185);
-            this.textBox1.MaxLength = 255;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(111, 20);
-            this.textBox1.TabIndex = 31;
+            this.TxtTax.Location = new System.Drawing.Point(169, 185);
+            this.TxtTax.MaxLength = 255;
+            this.TxtTax.Name = "TxtTax";
+            this.TxtTax.Size = new System.Drawing.Size(111, 20);
+            this.TxtTax.TabIndex = 31;
             // 
             // label7
             // 
@@ -148,13 +149,13 @@
             this.label7.TabIndex = 30;
             this.label7.Text = "Impuesto:";
             // 
-            // comboBox1
+            // CbStockType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(19, 240);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(111, 21);
-            this.comboBox1.TabIndex = 32;
+            this.CbStockType.FormattingEnabled = true;
+            this.CbStockType.Location = new System.Drawing.Point(19, 240);
+            this.CbStockType.Name = "CbStockType";
+            this.CbStockType.Size = new System.Drawing.Size(111, 21);
+            this.CbStockType.TabIndex = 32;
             // 
             // label8
             // 
@@ -166,13 +167,13 @@
             this.label8.TabIndex = 33;
             this.label8.Text = "Tipo de stock:";
             // 
-            // textBox2
+            // TxtStock
             // 
-            this.textBox2.Location = new System.Drawing.Point(169, 240);
-            this.textBox2.MaxLength = 255;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(111, 20);
-            this.textBox2.TabIndex = 35;
+            this.TxtStock.Location = new System.Drawing.Point(169, 240);
+            this.TxtStock.MaxLength = 255;
+            this.TxtStock.Name = "TxtStock";
+            this.TxtStock.Size = new System.Drawing.Size(111, 20);
+            this.TxtStock.TabIndex = 35;
             // 
             // label9
             // 
@@ -184,36 +185,40 @@
             this.label9.TabIndex = 34;
             this.label9.Text = "Existencias:";
             // 
-            // button1
+            // BtnDetail
             // 
-            this.button1.Location = new System.Drawing.Point(186, 266);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Detallar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnDetail.Location = new System.Drawing.Point(186, 266);
+            this.BtnDetail.Name = "BtnDetail";
+            this.BtnDetail.Size = new System.Drawing.Size(75, 23);
+            this.BtnDetail.TabIndex = 36;
+            this.BtnDetail.Text = "Detallar";
+            this.BtnDetail.UseVisualStyleBackColor = true;
+            this.BtnDetail.Click += new System.EventHandler(this.BtnDetail_Click);
             // 
             // FrmProductCU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(302, 379);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.ClientSize = new System.Drawing.Size(302, 370);
+            this.Controls.Add(this.BtnDetail);
+            this.Controls.Add(this.TxtStock);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.CbStockType);
+            this.Controls.Add(this.TxtTax);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.TxtPhoneNumber);
+            this.Controls.Add(this.TxtUnitPrice);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.LblTitle);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnAccept);
-            this.Controls.Add(this.TxtFullname);
-            this.Controls.Add(this.TxtPersonalID);
+            this.Controls.Add(this.TxtBarCode);
+            this.Controls.Add(this.TxtProductName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmProductCU";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de producto";
@@ -224,21 +229,21 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox TxtPhoneNumber;
+        private System.Windows.Forms.TextBox TxtUnitPrice;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label LblTitle;
         private System.Windows.Forms.Button BtnCancel;
         private System.Windows.Forms.Button BtnAccept;
-        private System.Windows.Forms.TextBox TxtFullname;
-        private System.Windows.Forms.TextBox TxtPersonalID;
+        private System.Windows.Forms.TextBox TxtBarCode;
+        private System.Windows.Forms.TextBox TxtProductName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtTax;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CbStockType;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TxtStock;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnDetail;
     }
 }

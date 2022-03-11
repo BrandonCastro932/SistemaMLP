@@ -14,5 +14,6 @@ namespace SistemaMLP.Utilities
         public static Forms.BillingForms.FrmBilling frmBilling = new Forms.BillingForms.FrmBilling();
         public static Forms.CustomerForms.FrmCustomers frmCustomers = new Forms.CustomerForms.FrmCustomers();
         public static Forms.CustomerForms.FrmProduct frmProduct = new Forms.CustomerForms.FrmProduct();
+        public static User User = new User();
     }
 }

@@ -69,20 +69,20 @@
             this.DGVProducts.AllowUserToResizeColumns = false;
             this.DGVProducts.AllowUserToResizeRows = false;
             this.DGVProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVProducts.Location = new System.Drawing.Point(24, 55);
+            this.DGVProducts.Location = new System.Drawing.Point(24, 49);
             this.DGVProducts.Name = "DGVProducts";
             this.DGVProducts.ReadOnly = true;
             this.DGVProducts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGVProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVProducts.Size = new System.Drawing.Size(733, 150);
+            this.DGVProducts.Size = new System.Drawing.Size(800, 156);
             this.DGVProducts.TabIndex = 0;
             this.DGVProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVProducts_CellClick);
             // 
             // TxtSearch
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(70, 29);
+            this.TxtSearch.Location = new System.Drawing.Point(79, 21);
             this.TxtSearch.Name = "TxtSearch";
-            this.TxtSearch.Size = new System.Drawing.Size(234, 20);
+            this.TxtSearch.Size = new System.Drawing.Size(234, 22);
             this.TxtSearch.TabIndex = 1;
             this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
@@ -95,9 +95,10 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.DGVProducts);
             this.groupBox1.Controls.Add(this.TxtSearch);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 67);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(911, 222);
+            this.groupBox1.Size = new System.Drawing.Size(988, 222);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Productos";
@@ -106,7 +107,7 @@
             // 
             this.GbStockType.Controls.Add(this.RBtnChopped);
             this.GbStockType.Controls.Add(this.RBtnFilet);
-            this.GbStockType.Location = new System.Drawing.Point(772, 55);
+            this.GbStockType.Location = new System.Drawing.Point(848, 42);
             this.GbStockType.Name = "GbStockType";
             this.GbStockType.Size = new System.Drawing.Size(133, 63);
             this.GbStockType.TabIndex = 7;
@@ -119,7 +120,7 @@
             this.RBtnChopped.AutoSize = true;
             this.RBtnChopped.Location = new System.Drawing.Point(9, 42);
             this.RBtnChopped.Name = "RBtnChopped";
-            this.RBtnChopped.Size = new System.Drawing.Size(58, 17);
+            this.RBtnChopped.Size = new System.Drawing.Size(68, 20);
             this.RBtnChopped.TabIndex = 7;
             this.RBtnChopped.TabStop = true;
             this.RBtnChopped.Text = "Picado";
@@ -130,7 +131,7 @@
             this.RBtnFilet.AutoSize = true;
             this.RBtnFilet.Location = new System.Drawing.Point(9, 19);
             this.RBtnFilet.Name = "RBtnFilet";
-            this.RBtnFilet.Size = new System.Drawing.Size(44, 17);
+            this.RBtnFilet.Size = new System.Drawing.Size(50, 20);
             this.RBtnFilet.TabIndex = 6;
             this.RBtnFilet.TabStop = true;
             this.RBtnFilet.Text = "Filet";
@@ -139,17 +140,17 @@
             // LblQuantity
             // 
             this.LblQuantity.AutoSize = true;
-            this.LblQuantity.Location = new System.Drawing.Point(772, 121);
+            this.LblQuantity.Location = new System.Drawing.Point(848, 121);
             this.LblQuantity.Name = "LblQuantity";
-            this.LblQuantity.Size = new System.Drawing.Size(52, 13);
+            this.LblQuantity.Size = new System.Drawing.Size(93, 16);
             this.LblQuantity.TabIndex = 5;
-            this.LblQuantity.Text = "Cantidad:";
+            this.LblQuantity.Text = "Cantidad (KG):";
             // 
             // UDQuantity
             // 
-            this.UDQuantity.Location = new System.Drawing.Point(775, 137);
+            this.UDQuantity.Location = new System.Drawing.Point(851, 140);
             this.UDQuantity.Name = "UDQuantity";
-            this.UDQuantity.Size = new System.Drawing.Size(124, 20);
+            this.UDQuantity.Size = new System.Drawing.Size(124, 22);
             this.UDQuantity.TabIndex = 4;
             this.UDQuantity.Value = new decimal(new int[] {
             1,
@@ -161,7 +162,7 @@
             // 
             this.BtnAddLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BtnAddLine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAddLine.Location = new System.Drawing.Point(775, 163);
+            this.BtnAddLine.Location = new System.Drawing.Point(851, 165);
             this.BtnAddLine.Name = "BtnAddLine";
             this.BtnAddLine.Size = new System.Drawing.Size(124, 42);
             this.BtnAddLine.TabIndex = 3;
@@ -172,15 +173,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 32);
+            this.label1.Location = new System.Drawing.Point(21, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(52, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Buscar:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.CBTax);
             this.groupBox2.Controls.Add(this.CkbConfirmed);
+            this.groupBox2.Controls.Add(this.TxtNotes);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.CbPaymentMethod);
             this.groupBox2.Controls.Add(this.BtnBilling);
@@ -189,9 +194,10 @@
             this.groupBox2.Controls.Add(this.LblTotal);
             this.groupBox2.Controls.Add(this.BtnDelLine);
             this.groupBox2.Controls.Add(this.DGVLines);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(13, 295);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(911, 247);
+            this.groupBox2.Size = new System.Drawing.Size(988, 310);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Factura actual";
@@ -199,9 +205,9 @@
             // CkbConfirmed
             // 
             this.CkbConfirmed.AutoSize = true;
-            this.CkbConfirmed.Location = new System.Drawing.Point(781, 77);
+            this.CkbConfirmed.Location = new System.Drawing.Point(848, 78);
             this.CkbConfirmed.Name = "CkbConfirmed";
-            this.CkbConfirmed.Size = new System.Drawing.Size(107, 17);
+            this.CkbConfirmed.Size = new System.Drawing.Size(131, 20);
             this.CkbConfirmed.TabIndex = 8;
             this.CkbConfirmed.Text = "Pago Confirmado";
             this.CkbConfirmed.UseVisualStyleBackColor = true;
@@ -209,9 +215,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(772, 20);
+            this.label3.Location = new System.Drawing.Point(848, 19);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 13);
+            this.label3.Size = new System.Drawing.Size(110, 16);
             this.label3.TabIndex = 7;
             this.label3.Text = "Método de pago:";
             // 
@@ -219,15 +225,15 @@
             // 
             this.CbPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbPaymentMethod.FormattingEnabled = true;
-            this.CbPaymentMethod.Location = new System.Drawing.Point(772, 39);
+            this.CbPaymentMethod.Location = new System.Drawing.Point(848, 38);
             this.CbPaymentMethod.Name = "CbPaymentMethod";
-            this.CbPaymentMethod.Size = new System.Drawing.Size(124, 21);
+            this.CbPaymentMethod.Size = new System.Drawing.Size(124, 24);
             this.CbPaymentMethod.TabIndex = 6;
             this.CbPaymentMethod.SelectedIndexChanged += new System.EventHandler(this.CbPaymentMethod_SelectedIndexChanged);
             // 
             // BtnBilling
             // 
-            this.BtnBilling.Location = new System.Drawing.Point(772, 192);
+            this.BtnBilling.Location = new System.Drawing.Point(848, 206);
             this.BtnBilling.Name = "BtnBilling";
             this.BtnBilling.Size = new System.Drawing.Size(124, 42);
             this.BtnBilling.TabIndex = 5;
@@ -239,7 +245,7 @@
             // 
             this.LblAmount.AutoSize = true;
             this.LblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblAmount.Location = new System.Drawing.Point(408, 195);
+            this.LblAmount.Location = new System.Drawing.Point(19, 265);
             this.LblAmount.Name = "LblAmount";
             this.LblAmount.Size = new System.Drawing.Size(155, 29);
             this.LblAmount.TabIndex = 4;
@@ -249,7 +255,7 @@
             // 
             this.LblTax.AutoSize = true;
             this.LblTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTax.Location = new System.Drawing.Point(180, 195);
+            this.LblTax.Location = new System.Drawing.Point(19, 219);
             this.LblTax.Name = "LblTax";
             this.LblTax.Size = new System.Drawing.Size(179, 29);
             this.LblTax.TabIndex = 3;
@@ -259,7 +265,7 @@
             // 
             this.LblTotal.AutoSize = true;
             this.LblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTotal.Location = new System.Drawing.Point(19, 195);
+            this.LblTotal.Location = new System.Drawing.Point(19, 178);
             this.LblTotal.Name = "LblTotal";
             this.LblTotal.Size = new System.Drawing.Size(119, 29);
             this.LblTotal.TabIndex = 2;
@@ -267,7 +273,7 @@
             // 
             // BtnDelLine
             // 
-            this.BtnDelLine.Location = new System.Drawing.Point(772, 115);
+            this.BtnDelLine.Location = new System.Drawing.Point(848, 114);
             this.BtnDelLine.Name = "BtnDelLine";
             this.BtnDelLine.Size = new System.Drawing.Size(124, 42);
             this.BtnDelLine.TabIndex = 1;
@@ -278,19 +284,21 @@
             // 
             this.DGVLines.AllowUserToAddRows = false;
             this.DGVLines.AllowUserToDeleteRows = false;
+            this.DGVLines.AllowUserToResizeColumns = false;
+            this.DGVLines.AllowUserToResizeRows = false;
             this.DGVLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVLines.Location = new System.Drawing.Point(24, 19);
             this.DGVLines.Name = "DGVLines";
             this.DGVLines.ReadOnly = true;
             this.DGVLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVLines.Size = new System.Drawing.Size(733, 150);
+            this.DGVLines.Size = new System.Drawing.Size(800, 150);
             this.DGVLines.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(18, 13);
+            this.label2.Location = new System.Drawing.Point(12, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 22);
             this.label2.TabIndex = 4;
@@ -300,7 +308,7 @@
             // 
             this.LblCustomerName.AutoSize = true;
             this.LblCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCustomerName.Location = new System.Drawing.Point(90, 15);
+            this.LblCustomerName.Location = new System.Drawing.Point(88, 23);
             this.LblCustomerName.Name = "LblCustomerName";
             this.LblCustomerName.Size = new System.Drawing.Size(145, 20);
             this.LblCustomerName.TabIndex = 5;
@@ -311,16 +319,16 @@
             this.CBTax.AutoSize = true;
             this.CBTax.Checked = true;
             this.CBTax.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CBTax.Location = new System.Drawing.Point(822, 25);
+            this.CBTax.Location = new System.Drawing.Point(538, 279);
             this.CBTax.Name = "CBTax";
-            this.CBTax.Size = new System.Drawing.Size(102, 17);
+            this.CBTax.Size = new System.Drawing.Size(125, 20);
             this.CBTax.TabIndex = 6;
             this.CBTax.Text = "Cobrar impuesto";
             this.CBTax.UseVisualStyleBackColor = true;
             // 
             // BtnSelectCustomer
             // 
-            this.BtnSelectCustomer.Location = new System.Drawing.Point(94, 38);
+            this.BtnSelectCustomer.Location = new System.Drawing.Point(92, 46);
             this.BtnSelectCustomer.Name = "BtnSelectCustomer";
             this.BtnSelectCustomer.Size = new System.Drawing.Size(130, 23);
             this.BtnSelectCustomer.TabIndex = 7;
@@ -330,18 +338,19 @@
             // 
             // TxtNotes
             // 
-            this.TxtNotes.Location = new System.Drawing.Point(633, 12);
+            this.TxtNotes.Location = new System.Drawing.Point(538, 178);
             this.TxtNotes.Multiline = true;
             this.TxtNotes.Name = "TxtNotes";
-            this.TxtNotes.Size = new System.Drawing.Size(170, 46);
+            this.TxtNotes.Size = new System.Drawing.Size(286, 95);
             this.TxtNotes.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(544, 15);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(431, 219);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.Size = new System.Drawing.Size(101, 16);
             this.label4.TabIndex = 9;
             this.label4.Text = "Notas de venta:";
             // 
@@ -349,11 +358,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 555);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.TxtNotes);
+            this.ClientSize = new System.Drawing.Size(1013, 617);
             this.Controls.Add(this.BtnSelectCustomer);
-            this.Controls.Add(this.CBTax);
             this.Controls.Add(this.LblCustomerName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);

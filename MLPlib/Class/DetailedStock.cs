@@ -6,6 +6,7 @@ namespace MLPlib.Class
     public class DetailedStock
     {
         public int IDDetailedStock { get; set; }
+        public int IDProduct { get; set; }
         public int IDCutType { get; set; }
         public decimal Stock { get; set; }
         public DateTime RegDate { get; set; }

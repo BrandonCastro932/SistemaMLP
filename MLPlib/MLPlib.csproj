@@ -64,6 +64,7 @@
     <Compile Include="Class\CreditDetails.cs" />
     <Compile Include="Class\CreditPayments.cs" />
     <Compile Include="Class\Customer.cs" />
+    <Compile Include="Class\CutTypes.cs" />
     <Compile Include="Class\DetailedStock.cs" />
     <Compile Include="Class\Log.cs" />
     <Compile Include="Class\Notification.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Class\Receipt.cs" />
     <Compile Include="Class\ReceiptDetails.cs" />
     <Compile Include="Class\StockType.cs" />
+    <Compile Include="Class\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

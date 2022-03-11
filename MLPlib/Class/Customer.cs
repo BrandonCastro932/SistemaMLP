@@ -23,6 +23,7 @@ namespace MLPlib.Class
             Receipt = new List<Receipt>();
         }
 
+        //TODO: En cada metodo implementar algo para que registre en el log. Ver si se puede implementar algo para el usuario en sesion
         public int CreateCustomer()
         {
             SistemaMLPDataSetTableAdapters.CustomerTableAdapter customersAdapter = new SistemaMLPDataSetTableAdapters.CustomerTableAdapter();

@@ -58,7 +58,7 @@ namespace SistemaMLP.Forms.BillingForms
 
         private void FillCB()
         {
-            CbPaymentMethod.DisplayMember = "Name";
+            CbPaymentMethod.DisplayMember = "PaymentMethod";
             CbPaymentMethod.ValueMember = "IDPaymentMethod";
             CbPaymentMethod.DataSource = paymentMethods.GetPaymentMethods();
         }
@@ -179,6 +179,8 @@ namespace SistemaMLP.Forms.BillingForms
                 case 2:
                     //Validar que no este el cliente por defecto
                     //Cuando se factura con metodo de pago en credito, si no hay ninguno, aparece una opcion para crear
+                    //Como se cambió el proceso con el crédito, ver si se permite emitir todas las facturas en crédito o aunque sea verificar cuanto debe.
+                    /*
                     if(customer.IDCustomer != 1)
                     {
                         Credit credit = new Credit();
@@ -212,12 +214,13 @@ namespace SistemaMLP.Forms.BillingForms
                                 //Facturar()
                             }
                         }
-
+                   
                     }
                     else
                     {
                         MessageBox.Show("Error, no se puede registrar un crédito para un cliente particular", "Error", MessageBoxButtons.OK);
                     }
+                     */
                     break;
                 default:
                     //Default aparece algo, igual el boton no va a estar activo pero por si acaso
@@ -258,6 +261,10 @@ namespace SistemaMLP.Forms.BillingForms
 
         private void DGVProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1 || e.ColumnIndex != 3)
+            {
+                return;
+            }
             DataGridViewRow row = DGVProducts.SelectedRows[0];
             DetailedStock detailedStock = new DetailedStock();
             /*detailedStock.GetProductDetailedStock(Convert.ToInt32(row.Cells["IDProduct"].Value));
@@ -269,12 +276,12 @@ namespace SistemaMLP.Forms.BillingForms
             {
                 GbStockType.Visible = false;
             }*/
-
-            if (e.RowIndex == -1 || e.ColumnIndex != 3)
-            {
-                return;
-            }
                 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
