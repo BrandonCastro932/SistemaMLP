@@ -53,6 +53,7 @@
             this.TxtUnitPrice.Name = "TxtUnitPrice";
             this.TxtUnitPrice.Size = new System.Drawing.Size(111, 20);
             this.TxtUnitPrice.TabIndex = 27;
+            this.TxtUnitPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtUnitPrice_KeyDown);
             // 
             // label5
             // 
@@ -110,6 +111,7 @@
             this.TxtProductName.Name = "TxtProductName";
             this.TxtProductName.Size = new System.Drawing.Size(261, 20);
             this.TxtProductName.TabIndex = 19;
+            this.TxtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtProductName_KeyDown);
             // 
             // label2
             // 
@@ -138,6 +140,7 @@
             this.TxtTax.Name = "TxtTax";
             this.TxtTax.Size = new System.Drawing.Size(111, 20);
             this.TxtTax.TabIndex = 31;
+            this.TxtTax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtTax_KeyDown);
             // 
             // label7
             // 
@@ -156,6 +159,7 @@
             this.CbStockType.Name = "CbStockType";
             this.CbStockType.Size = new System.Drawing.Size(111, 21);
             this.CbStockType.TabIndex = 32;
+            this.CbStockType.SelectedIndexChanged += new System.EventHandler(this.CbStockType_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -174,6 +178,7 @@
             this.TxtStock.Name = "TxtStock";
             this.TxtStock.Size = new System.Drawing.Size(111, 20);
             this.TxtStock.TabIndex = 35;
+            this.TxtStock.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtStock_KeyDown);
             // 
             // label9
             // 

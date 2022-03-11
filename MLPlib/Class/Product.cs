@@ -25,9 +25,39 @@ namespace MLPlib.Class
             ProductName = string.Empty;
             BarCode = string.Empty;
             Active = true;
+            RegDate = DateTime.Now;
+            LastUpdate = DateTime.Now;
             Detailed_Stock = new DetailedStock();
             Receipt_Details = new List<ReceiptDetails>();
         }
+
+        public int CreateProduct()
+        {
+            SistemaMLPDataSetTableAdapters.ProductTableAdapter productAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
+
+            int result = (int)productAdapter.SPInsertProduct(this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.GeneralStock,this.RegDate,this.LastUpdate,this.Active);
+
+            return result;
+        }
+
+        public int UpdateProduct()
+        {
+            SistemaMLPDataSetTableAdapters.ProductTableAdapter productAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
+
+            int result = (int)productAdapter.SPUpdateProduct(this.IDProduct,this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.GeneralStock, this.LastUpdate);
+
+            return result;
+        }
+
+        public int DeleteProduct()
+        {
+            SistemaMLPDataSetTableAdapters.ProductTableAdapter productAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
+
+            int result = (int)productAdapter.SPDeleteProduct(this.IDProduct);
+
+            return result;
+        }
+
 
         public DataTable GetProducts(string filter = "")
         {
