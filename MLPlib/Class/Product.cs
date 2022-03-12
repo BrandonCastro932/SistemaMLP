@@ -67,6 +67,15 @@ namespace MLPlib.Class
             return result;
         }
 
+        public int ProductStockEntry()
+        {
+            SistemaMLPDataSetTableAdapters.ProductTableAdapter productAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
+
+            int result = (int)productAdapter.SPProductSupply(this.IDProduct, this.GeneralStock, this.LastUpdate);
+
+            return result;
+        }
+
 
         public DataTable GetProducts(string filter = "")
         {

@@ -71,7 +71,7 @@ namespace SistemaMLP.Forms.BillingForms
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >= 2)
+            if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >= 1)
             {
                 FillDGV(TxtSearch.Text.Trim());
             }

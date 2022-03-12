@@ -36,7 +36,7 @@
             this.BtnDetail = new System.Windows.Forms.Button();
             this.RbSum = new System.Windows.Forms.RadioButton();
             this.GbActions = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.RbCh = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtStock = new System.Windows.Forms.TextBox();
@@ -86,6 +86,7 @@
             this.BtnAccept.TabIndex = 13;
             this.BtnAccept.Text = "Aceptar";
             this.BtnAccept.UseVisualStyleBackColor = true;
+            this.BtnAccept.Click += new System.EventHandler(this.BtnAccept_Click);
             // 
             // BtnCancel
             // 
@@ -123,7 +124,7 @@
             // 
             // GbActions
             // 
-            this.GbActions.Controls.Add(this.radioButton1);
+            this.GbActions.Controls.Add(this.RbCh);
             this.GbActions.Controls.Add(this.RbSum);
             this.GbActions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GbActions.Location = new System.Drawing.Point(185, 390);
@@ -133,15 +134,15 @@
             this.GbActions.TabStop = false;
             this.GbActions.Text = "Acciones";
             // 
-            // radioButton1
+            // RbCh
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 42);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(146, 20);
-            this.radioButton1.TabIndex = 39;
-            this.radioButton1.Text = "Sustituir el inventario";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.RbCh.AutoSize = true;
+            this.RbCh.Location = new System.Drawing.Point(6, 42);
+            this.RbCh.Name = "RbCh";
+            this.RbCh.Size = new System.Drawing.Size(146, 20);
+            this.RbCh.TabIndex = 39;
+            this.RbCh.Text = "Sustituir el inventario";
+            this.RbCh.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -210,7 +211,7 @@
         private System.Windows.Forms.Button BtnDetail;
         private System.Windows.Forms.RadioButton RbSum;
         private System.Windows.Forms.GroupBox GbActions;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton RbCh;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TxtStock;
