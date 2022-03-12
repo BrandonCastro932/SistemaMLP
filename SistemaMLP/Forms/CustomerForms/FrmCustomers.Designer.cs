@@ -139,7 +139,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtSearch);
             this.Controls.Add(this.DGVCustomers);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCustomers";

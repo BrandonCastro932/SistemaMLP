@@ -58,6 +58,7 @@
             this.TxtKg.Name = "TxtKg";
             this.TxtKg.Size = new System.Drawing.Size(100, 20);
             this.TxtKg.TabIndex = 1;
+            this.TxtKg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtKg_KeyPress);
             // 
             // DGVDetailedStock
             // 

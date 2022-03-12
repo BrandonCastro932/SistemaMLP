@@ -39,7 +39,10 @@
             this.BtnAddLine = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CBTax = new System.Windows.Forms.CheckBox();
             this.CkbConfirmed = new System.Windows.Forms.CheckBox();
+            this.TxtNotes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.CbPaymentMethod = new System.Windows.Forms.ComboBox();
             this.BtnBilling = new System.Windows.Forms.Button();
@@ -50,10 +53,7 @@
             this.DGVLines = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.LblCustomerName = new System.Windows.Forms.Label();
-            this.CBTax = new System.Windows.Forms.CheckBox();
             this.BtnSelectCustomer = new System.Windows.Forms.Button();
-            this.TxtNotes = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGVProducts)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.GbStockType.SuspendLayout();
@@ -202,6 +202,28 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Factura actual";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(431, 219);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(101, 16);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Notas de venta:";
+            // 
+            // CBTax
+            // 
+            this.CBTax.AutoSize = true;
+            this.CBTax.Checked = true;
+            this.CBTax.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CBTax.Location = new System.Drawing.Point(538, 279);
+            this.CBTax.Name = "CBTax";
+            this.CBTax.Size = new System.Drawing.Size(125, 20);
+            this.CBTax.TabIndex = 6;
+            this.CBTax.Text = "Cobrar impuesto";
+            this.CBTax.UseVisualStyleBackColor = true;
+            // 
             // CkbConfirmed
             // 
             this.CkbConfirmed.AutoSize = true;
@@ -211,6 +233,14 @@
             this.CkbConfirmed.TabIndex = 8;
             this.CkbConfirmed.Text = "Pago Confirmado";
             this.CkbConfirmed.UseVisualStyleBackColor = true;
+            // 
+            // TxtNotes
+            // 
+            this.TxtNotes.Location = new System.Drawing.Point(538, 178);
+            this.TxtNotes.Multiline = true;
+            this.TxtNotes.Name = "TxtNotes";
+            this.TxtNotes.Size = new System.Drawing.Size(286, 95);
+            this.TxtNotes.TabIndex = 8;
             // 
             // label3
             // 
@@ -298,7 +328,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(12, 21);
+            this.label2.Location = new System.Drawing.Point(12, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 22);
             this.label2.TabIndex = 4;
@@ -308,51 +338,21 @@
             // 
             this.LblCustomerName.AutoSize = true;
             this.LblCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCustomerName.Location = new System.Drawing.Point(88, 23);
+            this.LblCustomerName.Location = new System.Drawing.Point(88, 18);
             this.LblCustomerName.Name = "LblCustomerName";
             this.LblCustomerName.Size = new System.Drawing.Size(145, 20);
             this.LblCustomerName.TabIndex = 5;
             this.LblCustomerName.Text = "Cliente particular";
             // 
-            // CBTax
-            // 
-            this.CBTax.AutoSize = true;
-            this.CBTax.Checked = true;
-            this.CBTax.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CBTax.Location = new System.Drawing.Point(538, 279);
-            this.CBTax.Name = "CBTax";
-            this.CBTax.Size = new System.Drawing.Size(125, 20);
-            this.CBTax.TabIndex = 6;
-            this.CBTax.Text = "Cobrar impuesto";
-            this.CBTax.UseVisualStyleBackColor = true;
-            // 
             // BtnSelectCustomer
             // 
-            this.BtnSelectCustomer.Location = new System.Drawing.Point(92, 46);
+            this.BtnSelectCustomer.Location = new System.Drawing.Point(92, 41);
             this.BtnSelectCustomer.Name = "BtnSelectCustomer";
             this.BtnSelectCustomer.Size = new System.Drawing.Size(130, 23);
             this.BtnSelectCustomer.TabIndex = 7;
             this.BtnSelectCustomer.Text = "Seleccionar cliente";
             this.BtnSelectCustomer.UseVisualStyleBackColor = true;
             this.BtnSelectCustomer.Click += new System.EventHandler(this.BtnSelectCustomer_Click);
-            // 
-            // TxtNotes
-            // 
-            this.TxtNotes.Location = new System.Drawing.Point(538, 178);
-            this.TxtNotes.Multiline = true;
-            this.TxtNotes.Name = "TxtNotes";
-            this.TxtNotes.Size = new System.Drawing.Size(286, 95);
-            this.TxtNotes.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(431, 219);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 16);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Notas de venta:";
             // 
             // FrmBilling
             // 
@@ -364,7 +364,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "FrmBilling";
             this.ShowIcon = false;

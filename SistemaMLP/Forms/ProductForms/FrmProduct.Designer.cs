@@ -126,6 +126,7 @@
             this.TxtSearch.Name = "TxtSearch";
             this.TxtSearch.Size = new System.Drawing.Size(420, 20);
             this.TxtSearch.TabIndex = 8;
+            this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // FrmProduct
             // 

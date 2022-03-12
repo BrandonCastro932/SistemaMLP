@@ -203,27 +203,34 @@ namespace SistemaMLP.Forms.CustomerForms
                     PersonalID = Convert.ToString(dataRow.Cells["PersonalID"].Value)
                 };
 
-                DialogResult dialogResult = MessageBox.Show("Está seguro que desea eliminar ese cliente?", "Eliminar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (dialogResult == DialogResult.Yes)
+                if(customer.PersonalID != "1")
                 {
-                    int result = customer.DeleteCustomer();
-                    if (result == 1)
+                    DialogResult dialogResult = MessageBox.Show("Está seguro que desea eliminar ese cliente?", "Eliminar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        MessageBox.Show("Se ha eliminado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Utilities.Utilities.CreateLog("Ha desactivado un cliente: " + customer.Fullname);
-                        this.DialogResult = DialogResult.OK;
+                        int result = customer.DeleteCustomer();
+                        if (result == 1)
+                        {
+                            MessageBox.Show("Se ha eliminado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Utilities.Utilities.CreateLog("Ha desactivado un cliente: " + customer.Fullname);
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        else if (result == 2)
+                        {
+                            MessageBox.Show("No se ha encontrado ese cliente en el sistema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else if (result == 0)
+                        {
+                            MessageBox.Show("Error desconocido.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.DialogResult = DialogResult.Cancel;
+                        }
+                        FillDGV();
                     }
-                    else if (result == 2)
-                    {
-                        MessageBox.Show("No se ha encontrado ese cliente en el sistema", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (result == 0)
-                    {
-                        MessageBox.Show("Error desconocido.", "Error general", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        this.DialogResult = DialogResult.Cancel;
-                    }
-                    FillDGV();
+                }
+                else
+                {
+                    MessageBox.Show("No se puede eliminar el cliente general", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else

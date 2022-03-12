@@ -39,7 +39,7 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtStock = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVProduct)).BeginInit();
             this.GbActions.SuspendLayout();
             this.SuspendLayout();
@@ -56,10 +56,11 @@
             // 
             // TxtSearch
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(61, 51);
+            this.TxtSearch.Location = new System.Drawing.Point(67, 51);
             this.TxtSearch.Name = "TxtSearch";
-            this.TxtSearch.Size = new System.Drawing.Size(280, 20);
+            this.TxtSearch.Size = new System.Drawing.Size(274, 20);
             this.TxtSearch.TabIndex = 11;
+            this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // DGVProduct
             // 
@@ -74,6 +75,7 @@
             this.DGVProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVProduct.Size = new System.Drawing.Size(329, 300);
             this.DGVProduct.TabIndex = 10;
+            this.DGVProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVProduct_CellClick);
             // 
             // BtnAccept
             // 
@@ -161,19 +163,20 @@
             this.label3.TabIndex = 41;
             this.label3.Text = "Entrada de:";
             // 
-            // textBox1
+            // TxtStock
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 409);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 20);
-            this.textBox1.TabIndex = 42;
+            this.TxtStock.Location = new System.Drawing.Point(12, 409);
+            this.TxtStock.Name = "TxtStock";
+            this.TxtStock.Size = new System.Drawing.Size(135, 20);
+            this.TxtStock.TabIndex = 42;
+            this.TxtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtStock_KeyPress);
             // 
             // FrmSupply
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 518);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TxtStock);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.GbActions);
@@ -188,6 +191,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Entrada de producto";
+            this.Load += new System.EventHandler(this.FrmSupply_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVProduct)).EndInit();
             this.GbActions.ResumeLayout(false);
             this.GbActions.PerformLayout();
@@ -209,6 +213,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtStock;
     }
 }

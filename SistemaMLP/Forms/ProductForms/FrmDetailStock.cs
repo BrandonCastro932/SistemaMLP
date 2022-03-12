@@ -102,12 +102,6 @@ namespace SistemaMLP.Forms.ProductForms
                         stocks.Add(stock);
                         DGVDetailedStock.Rows.Add(CbType.Text, stock.Stock, stock.IDCutType, stock.RegDate);
                     }
-                    
-
-           
-
-
-
                 }
             }
             catch
@@ -148,6 +142,20 @@ namespace SistemaMLP.Forms.ProductForms
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void TxtKg_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

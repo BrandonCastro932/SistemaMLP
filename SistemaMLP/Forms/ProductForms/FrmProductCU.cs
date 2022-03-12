@@ -149,7 +149,7 @@ namespace SistemaMLP.Forms.ProductForms
                 {
                     UpdateProduct();
                 }
-                
+
             }
             catch
             {
@@ -180,7 +180,7 @@ namespace SistemaMLP.Forms.ProductForms
                     };
                     i = product.CreateProduct();
 
-                    if (i != 0)
+                    if (i != 0 && i != -1)
                     {
                         if (detailedStocks != null && i > 0)
                         {
@@ -198,12 +198,12 @@ namespace SistemaMLP.Forms.ProductForms
                         }
                         MessageBox.Show("Se ha registrado el producto", "Producto registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        Utilities.Utilities.CreateLog("Ha registrado un nuevo producto: "+ product.ProductName);
+                        Utilities.Utilities.CreateLog("Ha registrado un nuevo producto: " + product.ProductName);
                     }
                     else if (i == -1)
                     {
                         //Duplicado
-                        MessageBox.Show("Error, producto detallado, verifique que el nombre y el código de barras", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error, producto duplicado, verifique que el nombre y el código de barras", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else if (i == 0)
                     {
@@ -247,7 +247,7 @@ namespace SistemaMLP.Forms.ProductForms
 
                     i = product.UpdateProduct();
 
-                    if (i != 0)
+                    if (i != 0 && i != -1)
                     {
                         //Si se esta editando se borra el stock anterior y se crea uno nuevo 
 
@@ -310,29 +310,7 @@ namespace SistemaMLP.Forms.ProductForms
 
         }
 
-        private void TxtUnitPrice_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (IsKeyAChar(e.KeyData))
-            {
-                e.SuppressKeyPress = true;
-            }
-        }
 
-        private void TxtTax_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (IsKeyAChar(e.KeyData))
-            {
-                e.SuppressKeyPress = true;
-            }
-        }
-
-        private void TxtStock_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (IsKeyAChar(e.KeyData))
-            {
-                e.SuppressKeyPress = true;
-            }
-        }
 
         private void CbStockType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -348,6 +326,47 @@ namespace SistemaMLP.Forms.ProductForms
             else
             {
                 BtnDetail.Enabled = true;
+            }
+        }
+
+        //TODO: Investigar como hacer esto en una sola funcion reutilizable
+        private void TxtUnitPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            //Asi solo se permite una coma para los decimales
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtTax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtStock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
             }
         }
     }

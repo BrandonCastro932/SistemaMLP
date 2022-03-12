@@ -117,7 +117,7 @@ namespace SistemaMLP.Forms.CustomerForms
             BtnCreate.Enabled = false;
             BtnEdit.Enabled = false;
             BtnDelete.Enabled = true;
-            BtnDelete.Text = "Restaurar cliente";
+            BtnDelete.Text = "Restaurar producto";
         }
         private void ProductSelectedLayout()
         {
@@ -295,6 +295,32 @@ namespace SistemaMLP.Forms.CustomerForms
                 DeletedMode = false;
                 IdleLayout();
                 FillDGV();
+            }
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (!DeletedMode)
+            {
+                if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >= 1)
+                {
+                    FillDGV(TxtSearch.Text.Trim());
+                }
+                else
+                {
+                    FillDGV();
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >= 1)
+                {
+                    FillDeletedDGV(TxtSearch.Text.Trim());
+                }
+                else
+                {
+                    FillDeletedDGV();
+                }
             }
         }
     }
