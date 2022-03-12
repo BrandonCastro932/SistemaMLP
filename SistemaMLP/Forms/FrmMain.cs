@@ -49,5 +49,23 @@ namespace SistemaMLP.Forms
                 Utilities.Utilities.frmProduct.Show();
             }
         }
+
+        private void bitácoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Utilities.Utilities.frmLog.Visible)
+            {
+                Utilities.Utilities.frmLog = new LogForm.FrmLog();
+                Utilities.Utilities.frmLog.Show();
+            }
+        }
+
+        private void entradaDeProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Utilities.Utilities.frmSupply.Visible)
+            {
+                Utilities.Utilities.frmSupply = new ProductForms.FrmSupply();
+                Utilities.Utilities.frmSupply.Show();
+            }
+        }
     }
 }

@@ -224,6 +224,9 @@ namespace SistemaMLP.Forms.CustomerForms
                         if (result == 1)
                         {
                             MessageBox.Show("Se ha eliminado el producto.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            Utilities.Utilities.CreateLog("Ha eliminado un producto: " + product.ProductName);
+
                             this.DialogResult = DialogResult.OK;
                         }
                         else if (result == 2)

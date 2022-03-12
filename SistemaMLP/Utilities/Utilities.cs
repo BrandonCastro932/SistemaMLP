@@ -14,6 +14,21 @@ namespace SistemaMLP.Utilities
         public static Forms.BillingForms.FrmBilling frmBilling = new Forms.BillingForms.FrmBilling();
         public static Forms.CustomerForms.FrmCustomers frmCustomers = new Forms.CustomerForms.FrmCustomers();
         public static Forms.CustomerForms.FrmProduct frmProduct = new Forms.CustomerForms.FrmProduct();
-        public static User User = new User();
+        public static Forms.ProductForms.FrmSupply frmSupply = new Forms.ProductForms.FrmSupply();
+        public static Forms.LogForm.FrmLog frmLog = new Forms.LogForm.FrmLog();
+
+        public static User user = new User
+        {
+            IDUser = 2,
+            Username = "Brandon"
+        };
+
+        public static void CreateLog(string Msg)
+        {
+            MLPlib.SistemaMLPDataSetTableAdapters.LogTableAdapter logAdapter = new MLPlib.SistemaMLPDataSetTableAdapters.LogTableAdapter();
+
+            logAdapter.SPLog(user.IDUser, user.Username+" "+Msg, DateTime.Now);
+        }
+
     }
 }

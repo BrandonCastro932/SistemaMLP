@@ -56,6 +56,7 @@
             // 
             // BtnSelect
             // 
+            this.BtnSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSelect.Location = new System.Drawing.Point(360, 512);
             this.BtnSelect.Name = "BtnSelect";
             this.BtnSelect.Size = new System.Drawing.Size(111, 42);
@@ -66,6 +67,7 @@
             // 
             // BtnCancel
             // 
+            this.BtnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.Location = new System.Drawing.Point(12, 512);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(111, 42);
@@ -76,18 +78,19 @@
             // 
             // TxtSearch
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(92, 86);
+            this.TxtSearch.Location = new System.Drawing.Point(110, 86);
             this.TxtSearch.Name = "TxtSearch";
-            this.TxtSearch.Size = new System.Drawing.Size(379, 20);
+            this.TxtSearch.Size = new System.Drawing.Size(361, 20);
             this.TxtSearch.TabIndex = 3;
             this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // LblSearch
             // 
             this.LblSearch.AutoSize = true;
+            this.LblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSearch.Location = new System.Drawing.Point(12, 89);
             this.LblSearch.Name = "LblSearch";
-            this.LblSearch.Size = new System.Drawing.Size(77, 13);
+            this.LblSearch.Size = new System.Drawing.Size(94, 16);
             this.LblSearch.TabIndex = 4;
             this.LblSearch.Text = "Buscar cliente:";
             // 

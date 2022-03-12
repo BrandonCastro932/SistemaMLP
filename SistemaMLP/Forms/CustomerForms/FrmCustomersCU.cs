@@ -74,11 +74,15 @@ namespace SistemaMLP.Forms.CustomerForms
                     if (result == 1)
                     {
                         MessageBox.Show("Se ha registrado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        Utilities.Utilities.CreateLog("Ha registrado un cliente: " + customer.Fullname);
+
                         this.DialogResult = DialogResult.OK;
                     }
                     else if (result == 2)
                     {
                         MessageBox.Show("Cédula, correo electrónico o teléfono duplicados en el sistema.", "Datos duplicados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        
                     }
                     else if (result == 0)
                     {
@@ -93,6 +97,9 @@ namespace SistemaMLP.Forms.CustomerForms
                     if (result == 1)
                     {
                         MessageBox.Show("Se ha modificado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        Utilities.Utilities.CreateLog("Ha actualizado un cliente: " + customer.Fullname);
+
                         this.DialogResult = DialogResult.OK;
                     }
                     else if (result == 2)

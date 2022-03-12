@@ -211,6 +211,7 @@ namespace SistemaMLP.Forms.CustomerForms
                     if (result == 1)
                     {
                         MessageBox.Show("Se ha eliminado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Utilities.Utilities.CreateLog("Ha desactivado un cliente: " + customer.Fullname);
                         this.DialogResult = DialogResult.OK;
                     }
                     else if (result == 2)

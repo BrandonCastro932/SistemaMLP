@@ -197,6 +197,8 @@ namespace SistemaMLP.Forms.ProductForms
 
                         }
                         MessageBox.Show("Se ha registrado el producto", "Producto registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        Utilities.Utilities.CreateLog("Ha registrado un nuevo producto: "+ product.ProductName);
                     }
                     else if (i == -1)
                     {
@@ -268,6 +270,9 @@ namespace SistemaMLP.Forms.ProductForms
 
                         }
                         MessageBox.Show("Se ha actualizado el producto", "Producto actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //Analizar si se hace una bitacora mas especifica
+                        Utilities.Utilities.CreateLog("Ha actualizado un producto: " + product.ProductName);
                     }
                     else if (i == -1)
                     {
@@ -277,7 +282,8 @@ namespace SistemaMLP.Forms.ProductForms
                     else if (i == 0)
                     {
                         //Desconocido
-                       
+                        MessageBox.Show("Error desconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     }
                 }
                 this.DialogResult = DialogResult.OK;

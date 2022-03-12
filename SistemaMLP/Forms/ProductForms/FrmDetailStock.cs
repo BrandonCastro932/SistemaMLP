@@ -91,6 +91,10 @@ namespace SistemaMLP.Forms.ProductForms
                             stocks.Add(stock);
                             DGVDetailedStock.Rows.Add(CbType.Text, stock.Stock, stock.IDCutType, stock.RegDate);
                         }
+                        else
+                        {
+                            MessageBox.Show("No se permite ingresar datos duplicados","Advertencia",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                         
                     }
                     else

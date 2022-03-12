@@ -41,6 +41,7 @@
             this.verFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.créditosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bitácoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -75,7 +76,8 @@
             this.clientesToolStripMenuItem,
             this.facturacionToolStripMenuItem,
             this.créditosToolStripMenuItem,
-            this.notificacionesToolStripMenuItem});
+            this.notificacionesToolStripMenuItem,
+            this.bitácoraToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1350, 24);
@@ -97,10 +99,12 @@
             this.entradaDeProductoToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.entradaDeProductoToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.entradaDeProductoToolStripMenuItem.Text = "Entrada de producto";
+            this.entradaDeProductoToolStripMenuItem.Click += new System.EventHandler(this.entradaDeProductoToolStripMenuItem_Click);
             // 
             // mantenimientoToolStripMenuItem
             // 
             this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
+            this.mantenimientoToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
             this.mantenimientoToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoToolStripMenuItem_Click);
@@ -108,6 +112,7 @@
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
@@ -124,7 +129,7 @@
             // facturarToolStripMenuItem
             // 
             this.facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
-            this.facturarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.facturarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.facturarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.facturarToolStripMenuItem.Text = "Facturar";
             this.facturarToolStripMenuItem.Click += new System.EventHandler(this.facturarToolStripMenuItem_Click);
@@ -132,6 +137,7 @@
             // verFacturasToolStripMenuItem
             // 
             this.verFacturasToolStripMenuItem.Name = "verFacturasToolStripMenuItem";
+            this.verFacturasToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
             this.verFacturasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.verFacturasToolStripMenuItem.Text = "Ver facturas";
             // 
@@ -146,6 +152,13 @@
             this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
             this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
+            // 
+            // bitácoraToolStripMenuItem
+            // 
+            this.bitácoraToolStripMenuItem.Name = "bitácoraToolStripMenuItem";
+            this.bitácoraToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.bitácoraToolStripMenuItem.Text = "Bitácora";
+            this.bitácoraToolStripMenuItem.Click += new System.EventHandler(this.bitácoraToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -186,5 +199,6 @@
         private System.Windows.Forms.ToolStripMenuItem verFacturasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entradaDeProductoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bitácoraToolStripMenuItem;
     }
 }
