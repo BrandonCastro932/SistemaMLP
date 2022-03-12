@@ -39,7 +39,7 @@ namespace MLPlib.Class
         {
             SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter detailedStockAdapter = new SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter();
 
-            int result = (int)detailedStockAdapter.SPDeleteDetailedStock(this.IDDetailedStock);
+            int result = (int)detailedStockAdapter.SPDeleteDetailedStock(this.IDProduct);
 
             return result;
         }

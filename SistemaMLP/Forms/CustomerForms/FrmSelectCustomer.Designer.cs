@@ -47,6 +47,7 @@
             this.DGVCustomers.Location = new System.Drawing.Point(12, 112);
             this.DGVCustomers.Name = "DGVCustomers";
             this.DGVCustomers.ReadOnly = true;
+            this.DGVCustomers.RowHeadersVisible = false;
             this.DGVCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVCustomers.Size = new System.Drawing.Size(459, 394);
             this.DGVCustomers.TabIndex = 0;
@@ -99,6 +100,7 @@
             this.label1.Size = new System.Drawing.Size(291, 31);
             this.label1.TabIndex = 5;
             this.label1.Text = "Seleccione un cliente";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // FrmSelectCustomer
             // 

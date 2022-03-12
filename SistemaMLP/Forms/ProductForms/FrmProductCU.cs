@@ -17,16 +17,57 @@ namespace SistemaMLP.Forms.ProductForms
 
         public List<DetailedStock> detailedStocks { get; set; }
         public StockType stockType { get; set; }
+        public Product product1 = new Product();
+        public DetailedStock detailedStock = new DetailedStock();
+        public bool isCreating = true;
+        public bool isEditing = false;
 
         public FrmProductCU()
         {
             InitializeComponent();
             stockType = new StockType();
+            detailedStocks = new List<DetailedStock>();
         }
 
         private void FrmProductCU_Load(object sender, EventArgs e)
         {
             FillCB();
+            if (isCreating)
+            {
+                LblTitle.Text = "Registrar Producto";
+                BtnAccept.Text = "Registrar";
+            }
+            else if (isEditing)
+            {
+                LblTitle.Text = "Editar Producto";
+                BtnAccept.Text = "Editar";
+                FillTxt();
+                GetProductDetailedStock();
+            }
+            LockStockTxt();
+
+        }
+
+        private void FillTxt()
+        {
+            TxtProductName.Text = product1.ProductName;
+            TxtBarCode.Text = product1.BarCode;
+            TxtUnitPrice.Text = product1.UnitPrice.ToString();
+            TxtTax.Text = product1.Tax.ToString();
+            TxtStock.Text = product1.GeneralStock.ToString();
+            CbStockType.SelectedItem = product1.StockType;
+        }
+
+        private void LockStockTxt()
+        {
+            if (detailedStocks.Count > 0)
+            {
+                TxtStock.Enabled = false;
+            }
+            else
+            {
+                TxtStock.Enabled = true;
+            }
         }
 
         private void FillCB()
@@ -35,6 +76,23 @@ namespace SistemaMLP.Forms.ProductForms
             CbStockType.ValueMember = "IDStockType";
 
             CbStockType.DataSource = stockType.GetStockTypes();
+        }
+
+        private void GetProductDetailedStock()
+        {
+            //Convertir datatable en lista con linq
+            DataView dv = new DataView(product1.GetProductDetailedStock());
+            DataTable dt = dv.ToTable(true, "IDDetailedStock", "IDProduct", "IDCutType", "Stock", "RegDate");
+
+            detailedStocks = (from DataRow dr in dt.Rows
+                              select new DetailedStock()
+                              {
+                                  IDDetailedStock = Convert.ToInt32(dr["IDDetailedStock"]),
+                                  IDProduct = Convert.ToInt32(dr["IDProduct"]),
+                                  IDCutType = Convert.ToInt32(dr["IDCutType"]),
+                                  Stock = Convert.ToDecimal(dr["Stock"]),
+                                  RegDate = Convert.ToDateTime(dr["RegDate"].ToString())
+                              }).ToList();
         }
 
         private void BtnDetail_Click(object sender, EventArgs e)
@@ -49,12 +107,16 @@ namespace SistemaMLP.Forms.ProductForms
             {
                 decimal aux = 0;
                 detailedStocks = frmDetailStock.stocks;
+
                 foreach (DetailedStock stock in detailedStocks)
                 {
                     aux += stock.Stock;
                 }
                 TxtStock.Text = aux.ToString();
+
             }
+
+            LockStockTxt();
         }
 
         private bool ValidateAll()
@@ -79,6 +141,26 @@ namespace SistemaMLP.Forms.ProductForms
         {
             try
             {
+                if (isCreating)
+                {
+                    CreateProduct();
+                }
+                else if (isEditing)
+                {
+                    UpdateProduct();
+                }
+                
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void CreateProduct()
+        {
+            try
+            {
                 int i = 0;
 
                 if (ValidateAll())
@@ -100,12 +182,12 @@ namespace SistemaMLP.Forms.ProductForms
 
                     if (i != 0)
                     {
-
                         if (detailedStocks != null && i > 0)
                         {
                             foreach (DetailedStock stock in detailedStocks)
                             {
                                 stock.IDProduct = i;
+
                                 if (stock.CreateDetailedStock() != 1)
                                 {
                                     MessageBox.Show("Error, no se ha podido registrar uno de los inventarios detallados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -121,16 +203,88 @@ namespace SistemaMLP.Forms.ProductForms
                         //Duplicado
                         MessageBox.Show("Error, producto detallado, verifique que el nombre y el código de barras", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if(i == 0)
+                    else if (i == 0)
                     {
                         //Desconocido
                         MessageBox.Show("Error desconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                this.DialogResult = DialogResult.OK;
             }
             catch
             {
+                MessageBox.Show("Error desconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+        }
+
+
+        private void UpdateProduct()
+        {
+            try
+            {
+                int i = 0;
+                int j = 0;
+
+                if (ValidateAll())
+                {
+                    //TODO: Se registra el producto, metodo de registro retorna el id generado y se le asigna a i
+                    Product product = new Product
+                    {
+                        IDProduct = product1.IDProduct,
+                        ProductName = TxtProductName.Text,
+                        BarCode = TxtBarCode.Text,
+                        UnitPrice = Convert.ToDecimal(TxtUnitPrice.Text),
+                        Tax = Convert.ToDecimal(TxtTax.Text),
+                        StockType = Convert.ToInt32(CbStockType.SelectedValue),
+                        GeneralStock = Convert.ToDecimal(TxtStock.Text),
+                        RegDate = DateTime.Now,
+                        LastUpdate = DateTime.Now,
+                        Active = true
+                    };
+
+                    i = product.UpdateProduct();
+
+                    if (i != 0)
+                    {
+                        //Si se esta editando se borra el stock anterior y se crea uno nuevo 
+
+                        detailedStock.IDProduct = product1.IDProduct;
+                        j = detailedStock.DeleteDetailedStock();
+
+                        if (detailedStocks != null && i > 0)
+                        {
+                            foreach (DetailedStock stock in detailedStocks)
+                            {
+
+                                stock.IDProduct = product1.IDProduct;
+
+                                if (stock.CreateDetailedStock() != 1)
+                                {
+                                    MessageBox.Show("Error, no se ha podido registrar uno de los inventarios detallados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                }
+                            }
+
+                        }
+                        MessageBox.Show("Se ha actualizado el producto", "Producto actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (i == -1)
+                    {
+                        //Duplicado
+                        MessageBox.Show("Error, datos del producto duplicados, verifique que el nombre y el código de barras", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (i == 0)
+                    {
+                        //Desconocido
+                       
+                    }
+                }
+                this.DialogResult = DialogResult.OK;
+            }
+            catch
+            {
+                MessageBox.Show("Error desconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

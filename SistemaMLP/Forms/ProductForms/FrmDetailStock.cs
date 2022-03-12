@@ -56,7 +56,7 @@ namespace SistemaMLP.Forms.ProductForms
             DGVDetailedStock.Columns.Add("IDCutType", "IDCutType");
             DGVDetailedStock.Columns.Add("RegDate", "RegDate");
 
-            //DGVDetailedStock.Columns["IDCutType"].Visible = false;
+            DGVDetailedStock.Columns["IDCutType"].Visible = false;
             DGVDetailedStock.Columns["RegDate"].Visible = false;
 
             //Aca si ya el producto tiene registrado kg detallado se inserta en el dgv y se quita del cb
@@ -64,10 +64,7 @@ namespace SistemaMLP.Forms.ProductForms
             {
                 foreach (DetailedStock stock in stocks)
                 {
-                    DGVDetailedStock.Rows.Add(CbType.GetItemText(CbType.Items[stock.IDCutType - 1]), stock.Stock, stock.IDCutType, stock.RegDate);
-
-                    //Iterar en reversa porque no se puede cambiar la lista con un foreach adentro de otro foreach
-                    
+                    DGVDetailedStock.Rows.Add(CbType.GetItemText(CbType.Items[stock.IDCutType - 1]), stock.Stock, stock.IDCutType, stock.RegDate);                    
                 }
             }
         }

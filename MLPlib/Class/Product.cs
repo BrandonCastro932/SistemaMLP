@@ -58,6 +58,15 @@ namespace MLPlib.Class
             return result;
         }
 
+        public int RestoreProduct()
+        {
+            SistemaMLPDataSetTableAdapters.ProductTableAdapter productAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
+
+            int result = (int)productAdapter.SPRestoreProduct(this.IDProduct);
+
+            return result;
+        }
+
 
         public DataTable GetProducts(string filter = "")
         {
@@ -75,6 +84,15 @@ namespace MLPlib.Class
 
             productsAdapter.FillBy(sistemaMLPDataSet.DetailedStock,IDProduct);
             return sistemaMLPDataSet.DetailedStock;
+        }
+
+        public DataTable GetDeletedProducts(string filter = "")
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.ProductTableAdapter productsAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
+
+            productsAdapter.FillByDeleted(sistemaMLPDataSet.Product, filter);
+            return sistemaMLPDataSet.Product;
         }
     }
 }

@@ -57,10 +57,10 @@
             // 
             // BtnCreate
             // 
-            this.BtnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCreate.Location = new System.Drawing.Point(333, 378);
+            this.BtnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCreate.Location = new System.Drawing.Point(1066, 62);
             this.BtnCreate.Name = "BtnCreate";
-            this.BtnCreate.Size = new System.Drawing.Size(137, 46);
+            this.BtnCreate.Size = new System.Drawing.Size(149, 46);
             this.BtnCreate.TabIndex = 4;
             this.BtnCreate.Text = "Registrar producto";
             this.BtnCreate.UseVisualStyleBackColor = true;
@@ -69,38 +69,42 @@
             // BtnDelete
             // 
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.Location = new System.Drawing.Point(619, 378);
+            this.BtnDelete.Location = new System.Drawing.Point(1066, 316);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(137, 46);
+            this.BtnDelete.Size = new System.Drawing.Size(149, 46);
             this.BtnDelete.TabIndex = 7;
             this.BtnDelete.Text = "Eliminar producto";
             this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // BtnEdit
             // 
-            this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEdit.Location = new System.Drawing.Point(476, 378);
+            this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEdit.Location = new System.Drawing.Point(1066, 188);
             this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(137, 46);
+            this.BtnEdit.Size = new System.Drawing.Size(149, 46);
             this.BtnEdit.TabIndex = 6;
             this.BtnEdit.Text = "Modificar producto";
             this.BtnEdit.UseVisualStyleBackColor = true;
+            this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // Cbx_Deleted
             // 
             this.Cbx_Deleted.AutoSize = true;
-            this.Cbx_Deleted.Location = new System.Drawing.Point(788, 25);
+            this.Cbx_Deleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbx_Deleted.Location = new System.Drawing.Point(788, 22);
             this.Cbx_Deleted.Name = "Cbx_Deleted";
-            this.Cbx_Deleted.Size = new System.Drawing.Size(144, 17);
+            this.Cbx_Deleted.Size = new System.Drawing.Size(179, 20);
             this.Cbx_Deleted.TabIndex = 11;
             this.Cbx_Deleted.Text = "Ver productos eliminados";
             this.Cbx_Deleted.UseVisualStyleBackColor = true;
+            this.Cbx_Deleted.CheckedChanged += new System.EventHandler(this.Cbx_Deleted_CheckedChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(26, 17);
+            this.label2.Location = new System.Drawing.Point(12, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(244, 25);
             this.label2.TabIndex = 10;
@@ -109,9 +113,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(313, 25);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(304, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(52, 16);
             this.label1.TabIndex = 9;
             this.label1.Text = "Buscar:";
             // 
@@ -126,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 448);
+            this.ClientSize = new System.Drawing.Size(1242, 388);
             this.Controls.Add(this.Cbx_Deleted);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -135,7 +140,7 @@
             this.Controls.Add(this.BtnEdit);
             this.Controls.Add(this.BtnCreate);
             this.Controls.Add(this.DGVProduct);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmProduct";
@@ -143,6 +148,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.FrmProduct_Load);
+            this.Click += new System.EventHandler(this.FrmProduct_Click);
             ((System.ComponentModel.ISupportInitialize)(this.DGVProduct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -33,14 +33,14 @@
             this.LblCredito = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inventariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entradaDeProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.facturacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.facturarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.créditosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.entradaDeProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +91,20 @@
             this.inventariosToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
             this.inventariosToolStripMenuItem.Text = "Inventarios";
             // 
+            // entradaDeProductoToolStripMenuItem
+            // 
+            this.entradaDeProductoToolStripMenuItem.Name = "entradaDeProductoToolStripMenuItem";
+            this.entradaDeProductoToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.entradaDeProductoToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.entradaDeProductoToolStripMenuItem.Text = "Entrada de producto";
+            // 
+            // mantenimientoToolStripMenuItem
+            // 
+            this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
+            this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
+            this.mantenimientoToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoToolStripMenuItem_Click);
+            // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
@@ -110,14 +124,15 @@
             // facturarToolStripMenuItem
             // 
             this.facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
-            this.facturarToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.facturarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.facturarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.facturarToolStripMenuItem.Text = "Facturar";
             this.facturarToolStripMenuItem.Click += new System.EventHandler(this.facturarToolStripMenuItem_Click);
             // 
             // verFacturasToolStripMenuItem
             // 
             this.verFacturasToolStripMenuItem.Name = "verFacturasToolStripMenuItem";
-            this.verFacturasToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.verFacturasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.verFacturasToolStripMenuItem.Text = "Ver facturas";
             // 
             // créditosToolStripMenuItem
@@ -131,19 +146,6 @@
             this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
             this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
-            // 
-            // entradaDeProductoToolStripMenuItem
-            // 
-            this.entradaDeProductoToolStripMenuItem.Name = "entradaDeProductoToolStripMenuItem";
-            this.entradaDeProductoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.entradaDeProductoToolStripMenuItem.Text = "Entrada de producto";
-            // 
-            // mantenimientoToolStripMenuItem
-            // 
-            this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
-            this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
-            this.mantenimientoToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoToolStripMenuItem_Click);
             // 
             // FrmMain
             // 

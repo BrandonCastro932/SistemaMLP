@@ -89,5 +89,10 @@ namespace SistemaMLP.Forms.ProductForms
                 }
             }
         }
+
+        private void BtnBack_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

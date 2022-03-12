@@ -37,9 +37,12 @@ namespace SistemaMLP.Forms.CustomerForms
             DGVCustomers.Columns["RegDate"].Visible = false;
             DGVCustomers.Columns["Active"].Visible = false;
             DGVCustomers.Columns["PersonalID"].HeaderText = "Cédula";
+            //DGVCustomers.Columns["PersonalID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DGVCustomers.Columns["Fullname"].HeaderText = "Nombre completo";
-            DGVCustomers.Columns["Fullname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //DGVCustomers.Columns["Fullname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DGVCustomers.Columns["BusinessName"].HeaderText = "Empresa";
+            DGVCustomers.Columns["PhoneNumber"].HeaderText = "Teléfono";
+            DGVCustomers.Columns["BusinessPhoneNum"].HeaderText = "Teléfono de empresa";
             DGVCustomers.Columns["Email"].HeaderText = "Correo";
             
         }
@@ -87,6 +90,11 @@ namespace SistemaMLP.Forms.CustomerForms
         private void DGVCustomers_DoubleClick(object sender, EventArgs e)
         {
             BtnSelect_Click(sender, e);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -183,6 +183,7 @@
             this.BtnBack.TabIndex = 19;
             this.BtnBack.Text = "Atrás";
             this.BtnBack.UseVisualStyleBackColor = true;
+            this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // label9
             // 
@@ -270,7 +271,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.LblProductName);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmProductFullInfo";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Información de producto";
             this.Load += new System.EventHandler(this.FrmProductFullInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVDetailedStock)).EndInit();
