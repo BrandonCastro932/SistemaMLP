@@ -30,14 +30,16 @@
         {
             this.DGVProducts = new System.Windows.Forms.DataGridView();
             this.TxtSearch = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.GbStockType = new System.Windows.Forms.GroupBox();
-            this.RBtnChopped = new System.Windows.Forms.RadioButton();
-            this.RBtnFilet = new System.Windows.Forms.RadioButton();
+            this.Gb_Products = new System.Windows.Forms.GroupBox();
+            this.LblCuts = new System.Windows.Forms.Label();
+            this.CbCuts = new System.Windows.Forms.ComboBox();
             this.LblQuantity = new System.Windows.Forms.Label();
             this.UDQuantity = new System.Windows.Forms.NumericUpDown();
             this.BtnAddLine = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.GbStockType = new System.Windows.Forms.GroupBox();
+            this.RBtnChopped = new System.Windows.Forms.RadioButton();
+            this.RBtnFilet = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.CBTax = new System.Windows.Forms.CheckBox();
@@ -55,9 +57,9 @@
             this.LblCustomerName = new System.Windows.Forms.Label();
             this.BtnSelectCustomer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVProducts)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.GbStockType.SuspendLayout();
+            this.Gb_Products.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UDQuantity)).BeginInit();
+            this.GbStockType.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVLines)).BeginInit();
             this.SuspendLayout();
@@ -86,56 +88,42 @@
             this.TxtSearch.TabIndex = 1;
             this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
-            // groupBox1
+            // Gb_Products
             // 
-            this.groupBox1.Controls.Add(this.GbStockType);
-            this.groupBox1.Controls.Add(this.LblQuantity);
-            this.groupBox1.Controls.Add(this.UDQuantity);
-            this.groupBox1.Controls.Add(this.BtnAddLine);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.DGVProducts);
-            this.groupBox1.Controls.Add(this.TxtSearch);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 67);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(988, 222);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Productos";
+            this.Gb_Products.Controls.Add(this.LblCuts);
+            this.Gb_Products.Controls.Add(this.CbCuts);
+            this.Gb_Products.Controls.Add(this.LblQuantity);
+            this.Gb_Products.Controls.Add(this.UDQuantity);
+            this.Gb_Products.Controls.Add(this.BtnAddLine);
+            this.Gb_Products.Controls.Add(this.label1);
+            this.Gb_Products.Controls.Add(this.DGVProducts);
+            this.Gb_Products.Controls.Add(this.TxtSearch);
+            this.Gb_Products.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gb_Products.Location = new System.Drawing.Point(13, 67);
+            this.Gb_Products.Name = "Gb_Products";
+            this.Gb_Products.Size = new System.Drawing.Size(988, 222);
+            this.Gb_Products.TabIndex = 2;
+            this.Gb_Products.TabStop = false;
+            this.Gb_Products.Text = "Productos";
             // 
-            // GbStockType
+            // LblCuts
             // 
-            this.GbStockType.Controls.Add(this.RBtnChopped);
-            this.GbStockType.Controls.Add(this.RBtnFilet);
-            this.GbStockType.Location = new System.Drawing.Point(848, 42);
-            this.GbStockType.Name = "GbStockType";
-            this.GbStockType.Size = new System.Drawing.Size(133, 63);
-            this.GbStockType.TabIndex = 7;
-            this.GbStockType.TabStop = false;
-            this.GbStockType.Text = "Tipo de corte";
-            this.GbStockType.Visible = false;
+            this.LblCuts.AutoSize = true;
+            this.LblCuts.Location = new System.Drawing.Point(845, 49);
+            this.LblCuts.Name = "LblCuts";
+            this.LblCuts.Size = new System.Drawing.Size(122, 16);
+            this.LblCuts.TabIndex = 7;
+            this.LblCuts.Text = "Cortes disponibles:";
+            this.LblCuts.Visible = false;
             // 
-            // RBtnChopped
+            // CbCuts
             // 
-            this.RBtnChopped.AutoSize = true;
-            this.RBtnChopped.Location = new System.Drawing.Point(9, 42);
-            this.RBtnChopped.Name = "RBtnChopped";
-            this.RBtnChopped.Size = new System.Drawing.Size(68, 20);
-            this.RBtnChopped.TabIndex = 7;
-            this.RBtnChopped.TabStop = true;
-            this.RBtnChopped.Text = "Picado";
-            this.RBtnChopped.UseVisualStyleBackColor = true;
-            // 
-            // RBtnFilet
-            // 
-            this.RBtnFilet.AutoSize = true;
-            this.RBtnFilet.Location = new System.Drawing.Point(9, 19);
-            this.RBtnFilet.Name = "RBtnFilet";
-            this.RBtnFilet.Size = new System.Drawing.Size(50, 20);
-            this.RBtnFilet.TabIndex = 6;
-            this.RBtnFilet.TabStop = true;
-            this.RBtnFilet.Text = "Filet";
-            this.RBtnFilet.UseVisualStyleBackColor = true;
+            this.CbCuts.FormattingEnabled = true;
+            this.CbCuts.Location = new System.Drawing.Point(851, 68);
+            this.CbCuts.Name = "CbCuts";
+            this.CbCuts.Size = new System.Drawing.Size(124, 24);
+            this.CbCuts.TabIndex = 6;
+            this.CbCuts.Visible = false;
             // 
             // LblQuantity
             // 
@@ -179,6 +167,40 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Buscar:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // GbStockType
+            // 
+            this.GbStockType.Controls.Add(this.RBtnChopped);
+            this.GbStockType.Controls.Add(this.RBtnFilet);
+            this.GbStockType.Location = new System.Drawing.Point(579, 1);
+            this.GbStockType.Name = "GbStockType";
+            this.GbStockType.Size = new System.Drawing.Size(133, 63);
+            this.GbStockType.TabIndex = 7;
+            this.GbStockType.TabStop = false;
+            this.GbStockType.Text = "Tipo de corte";
+            this.GbStockType.Visible = false;
+            // 
+            // RBtnChopped
+            // 
+            this.RBtnChopped.AutoSize = true;
+            this.RBtnChopped.Location = new System.Drawing.Point(9, 42);
+            this.RBtnChopped.Name = "RBtnChopped";
+            this.RBtnChopped.Size = new System.Drawing.Size(58, 17);
+            this.RBtnChopped.TabIndex = 7;
+            this.RBtnChopped.TabStop = true;
+            this.RBtnChopped.Text = "Picado";
+            this.RBtnChopped.UseVisualStyleBackColor = true;
+            // 
+            // RBtnFilet
+            // 
+            this.RBtnFilet.AutoSize = true;
+            this.RBtnFilet.Location = new System.Drawing.Point(9, 19);
+            this.RBtnFilet.Name = "RBtnFilet";
+            this.RBtnFilet.Size = new System.Drawing.Size(44, 17);
+            this.RBtnFilet.TabIndex = 6;
+            this.RBtnFilet.TabStop = true;
+            this.RBtnFilet.Text = "Filet";
+            this.RBtnFilet.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -309,6 +331,7 @@
             this.BtnDelLine.TabIndex = 1;
             this.BtnDelLine.Text = "Eliminar línea";
             this.BtnDelLine.UseVisualStyleBackColor = true;
+            this.BtnDelLine.Click += new System.EventHandler(this.BtnDelLine_Click);
             // 
             // DGVLines
             // 
@@ -323,6 +346,7 @@
             this.DGVLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVLines.Size = new System.Drawing.Size(800, 150);
             this.DGVLines.TabIndex = 0;
+            this.DGVLines.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVLines_CellClick);
             // 
             // label2
             // 
@@ -359,11 +383,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 617);
+            this.Controls.Add(this.GbStockType);
             this.Controls.Add(this.BtnSelectCustomer);
             this.Controls.Add(this.LblCustomerName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.Gb_Products);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "FrmBilling";
@@ -373,12 +398,13 @@
             this.Text = "Facturación";
             this.Load += new System.EventHandler(this.FrmBilling_Load);
             this.Shown += new System.EventHandler(this.FrmBilling_Shown);
+            this.Click += new System.EventHandler(this.FrmBilling_Click);
             ((System.ComponentModel.ISupportInitialize)(this.DGVProducts)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Gb_Products.ResumeLayout(false);
+            this.Gb_Products.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UDQuantity)).EndInit();
             this.GbStockType.ResumeLayout(false);
             this.GbStockType.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UDQuantity)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVLines)).EndInit();
@@ -391,7 +417,7 @@
 
         private System.Windows.Forms.DataGridView DGVProducts;
         private System.Windows.Forms.TextBox TxtSearch;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox Gb_Products;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnAddLine;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -415,5 +441,7 @@
         private System.Windows.Forms.GroupBox GbStockType;
         private System.Windows.Forms.RadioButton RBtnChopped;
         private System.Windows.Forms.RadioButton RBtnFilet;
+        private System.Windows.Forms.ComboBox CbCuts;
+        private System.Windows.Forms.Label LblCuts;
     }
 }

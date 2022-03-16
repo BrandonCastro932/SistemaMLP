@@ -66,18 +66,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(299, 25);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(290, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(52, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Buscar:";
             // 
             // BtnCreate
             // 
-            this.BtnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCreate.Location = new System.Drawing.Point(108, 408);
+            this.BtnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCreate.Location = new System.Drawing.Point(1036, 52);
             this.BtnCreate.Name = "BtnCreate";
-            this.BtnCreate.Size = new System.Drawing.Size(126, 46);
+            this.BtnCreate.Size = new System.Drawing.Size(137, 46);
             this.BtnCreate.TabIndex = 3;
             this.BtnCreate.Text = "Crear cliente";
             this.BtnCreate.UseVisualStyleBackColor = true;
@@ -85,10 +86,10 @@
             // 
             // BtnEdit
             // 
-            this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEdit.Location = new System.Drawing.Point(481, 408);
+            this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEdit.Location = new System.Drawing.Point(1036, 205);
             this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(126, 46);
+            this.BtnEdit.Size = new System.Drawing.Size(137, 46);
             this.BtnEdit.TabIndex = 4;
             this.BtnEdit.Text = "Modificar cliente";
             this.BtnEdit.UseVisualStyleBackColor = true;
@@ -96,10 +97,10 @@
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.Location = new System.Drawing.Point(832, 408);
+            this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDelete.Location = new System.Drawing.Point(1036, 347);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(126, 46);
+            this.BtnDelete.Size = new System.Drawing.Size(137, 46);
             this.BtnDelete.TabIndex = 5;
             this.BtnDelete.Text = "Eliminar cliente";
             this.BtnDelete.UseVisualStyleBackColor = true;
@@ -118,9 +119,10 @@
             // Cbx_Deleted
             // 
             this.Cbx_Deleted.AutoSize = true;
+            this.Cbx_Deleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbx_Deleted.Location = new System.Drawing.Point(774, 22);
             this.Cbx_Deleted.Name = "Cbx_Deleted";
-            this.Cbx_Deleted.Size = new System.Drawing.Size(133, 17);
+            this.Cbx_Deleted.Size = new System.Drawing.Size(165, 20);
             this.Cbx_Deleted.TabIndex = 7;
             this.Cbx_Deleted.Text = "Ver clientes eliminados";
             this.Cbx_Deleted.UseVisualStyleBackColor = true;
@@ -130,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 466);
+            this.ClientSize = new System.Drawing.Size(1176, 409);
             this.Controls.Add(this.Cbx_Deleted);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.BtnDelete);

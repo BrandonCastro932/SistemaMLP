@@ -227,10 +227,13 @@ namespace SistemaMLP.Forms.ProductForms
                 if (dialogResult == DialogResult.Yes)
                 {
                     int i = 0;
-                    int j = 0;
                     if (!string.IsNullOrWhiteSpace(TxtStock.Text) && product != null)
                     {
-                        if (RbSum.Checked)
+                        if(detailedStocks.Count > 0 && RbSum.Checked)
+                        {
+                            product.GeneralStock = Convert.ToDecimal(TxtStock.Text);
+                        }
+                        else if (RbSum.Checked)
                         {
                             product.GeneralStock += Convert.ToDecimal(TxtStock.Text);
                         }
@@ -274,10 +277,6 @@ namespace SistemaMLP.Forms.ProductForms
             try
             {
                 int i = 0;
-                int j = 0;
-
-
-                //Si se esta editando se borra el stock anterior y se crea uno nuevo 
 
                 detailedStock.IDProduct = product.IDProduct;
                 i = detailedStock.DeleteDetailedStock();

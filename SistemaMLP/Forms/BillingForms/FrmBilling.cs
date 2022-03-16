@@ -16,6 +16,8 @@ namespace SistemaMLP.Forms.BillingForms
         //TODO:
         //Decidir que hacer con el detalle de la factura, necesita llevar si se compro general, en filet o picado
         public Product product = new Product();
+        public List<DetailedStock> detailedStocks = new List<DetailedStock>();
+        public List<CutTypes> cutTypes = new List<CutTypes>();
         public Customer customer = new Customer {
             IDCustomer = 1,
             Fullname = "Cliente particular"
@@ -38,7 +40,15 @@ namespace SistemaMLP.Forms.BillingForms
             InitDT();
             FillDGV();
             FillCB();
+            IdleLayout();
             MdiParent = Utilities.Utilities.main;
+        }
+
+        private void IdleLayout()
+        {
+            BtnDelLine.Enabled = false;
+            DGVLines.ClearSelection();
+            DGVProducts.ClearSelection();
         }
 
         private void FrmBilling_Shown(object sender, EventArgs e)
@@ -46,15 +56,34 @@ namespace SistemaMLP.Forms.BillingForms
             DGVProducts.ClearSelection();
         }
 
-
-        private void KeyNavigation(object sender, KeyEventArgs e)
+        private void GetProductDetailedStock()
         {
-            BtnSelectCustomer.Focus();
-            if(e.KeyCode == Keys.Enter)
+            //Convertir datatable en lista con linq
+            DataView dv = new DataView(product.GetProductDetailedStock());
+            DataTable dt = dv.ToTable(true, "IDDetailedStock", "IDProduct", "IDCutType", "Stock", "RegDate","CutName");
+
+            cutTypes = (from DataRow dr in dt.Rows
+                              select new CutTypes()
+                              {
+                                  IDCutType = Convert.ToInt32(dr["IDCutType"]),
+                                  CutName = Convert.ToString(dr["CutName"]),
+                                  
+                              }).ToList();
+            if(cutTypes.Count > 0)
             {
-                BtnSelectCustomer.Select();
+                CbCuts.Visible = true;
+                LblCuts.Visible=true;
+                CbCuts.DataSource = cutTypes;
+            }
+            else
+            {
+                CbCuts.Visible = false;
+                LblCuts.Visible = false;
+                CbCuts.DataSource= null;
+                CbCuts.Items.Clear();
             }
         }
+
 
         private void FillCB()
         {
@@ -117,7 +146,7 @@ namespace SistemaMLP.Forms.BillingForms
             DGVLines.Columns["BarCode"].HeaderText = "Código barras";
             DGVLines.Columns["UnitPrice"].HeaderText = "Precio por unidad";
             DGVLines.Columns["Tax"].HeaderText = "Impuesto";
-            DGVLines.Columns["Quantity"].HeaderText = "Cantidad Comprada";
+            DGVLines.Columns["Quantity"].HeaderText = "Cantidad Comprada (KG)";
         }
 
         private void InitDT()
@@ -250,9 +279,13 @@ namespace SistemaMLP.Forms.BillingForms
                 dr1["StockTypeName"] = Convert.ToString(row.Cells["StockTypeName"].Value);
                 dr1["Quantity"] = Convert.ToDecimal(UDQuantity.Value);
 
-                if (!GbStockType.Visible)
+                if (CbCuts.Visible)
                 {
-                    //Ver que hacer al registrar el tipo de corte en la linea, ver si se hace una tabla o que
+                    dr1["LineType"] = Convert.ToString(CbCuts.Text);
+                }
+                else
+                {
+                    dr1["LineType"] = "Filet";
                 }
 
                 lines.Rows.Add(dr1);
@@ -261,27 +294,76 @@ namespace SistemaMLP.Forms.BillingForms
 
         private void DGVProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            DataGridViewRow dataRow = DGVProducts.SelectedRows[0];
+            product = new Product
+            {
+                IDProduct = Convert.ToInt32(dataRow.Cells["IDProduct"].Value),
+                ProductName = Convert.ToString(dataRow.Cells["ProductName"].Value),
+                BarCode = Convert.ToString(dataRow.Cells["BarCode"].Value),
+                UnitPrice = Convert.ToDecimal(dataRow.Cells["UnitPrice"].Value),
+                Tax = Convert.ToDecimal(dataRow.Cells["Tax"].Value),
+                StockType = Convert.ToInt32(dataRow.Cells["StockType"].Value),
+                GeneralStock = Convert.ToDecimal(dataRow.Cells["GeneralStock"].Value),
+                RegDate = Convert.ToDateTime(dataRow.Cells["RegDate"].Value),
+                LastUpdate = Convert.ToDateTime(dataRow.Cells["LastUpdate"].Value),
+                Active = Convert.ToBoolean(dataRow.Cells["Active"].Value)
+            };
+            CbCuts.DisplayMember = "CutName";
+            CbCuts.ValueMember = "IDCutType";
+            
+            GetProductDetailedStock();
+
+            DGVLines.ClearSelection();
+
             if (e.RowIndex == -1 || e.ColumnIndex != 3)
             {
                 return;
             }
-            DataGridViewRow row = DGVProducts.SelectedRows[0];
-            DetailedStock detailedStock = new DetailedStock();
-            /*detailedStock.GetProductDetailedStock(Convert.ToInt32(row.Cells["IDProduct"].Value));
-            if(detailedStock.IDDetailedStock > 0)
-            {
-                GbStockType.Visible = true;
-            }
-            else
-            {
-                GbStockType.Visible = false;
-            }*/
-                
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void DGVLines_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+            DGVProducts.ClearSelection();
+
+            if(DGVLines.Rows.Count > 0)
+            {
+                BtnDelLine.Enabled = true;
+            }
+            else
+            {
+                BtnDelLine.Enabled = false;
+            }
+
+            if (e.RowIndex == -1 || e.ColumnIndex != 3)
+            {
+                return;
+            }
+
+        }
+
+        private void BtnDelLine_Click(object sender, EventArgs e)
+        {
+           if(DGVLines.SelectedRows.Count > 0)
+            {
+                DataGridViewRow dataRow = DGVLines.SelectedRows[0];
+                
+                DGVLines.Rows.Remove(dataRow);
+            }
+
+
+        }
+
+        private void FrmBilling_Click(object sender, EventArgs e)
+        {
+            IdleLayout();
+        }
+
     }
 }

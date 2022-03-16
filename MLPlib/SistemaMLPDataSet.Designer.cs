@@ -8622,32 +8622,31 @@ SELECT IDPaymentMethod, PaymentMethod FROM PaymentMethods WHERE (IDPaymentMethod
             tableMapping.ColumnMappings.Add("RegDate", "RegDate");
             tableMapping.ColumnMappings.Add("LastUpdate", "LastUpdate");
             tableMapping.ColumnMappings.Add("Active", "Active");
+            tableMapping.ColumnMappings.Add("UnitPrice", "UnitPrice");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Product] WHERE (([IDProduct] = @Original_IDProduct) AND ([ProductName] = @Original_ProductName) AND ((@IsNull_BarCode = 1 AND [BarCode] IS NULL) OR ([BarCode] = @Original_BarCode)) AND ([KiloPrice] = @Original_KiloPrice) AND ([Tax] = @Original_Tax) AND ((@IsNull_StockType = 1 AND [StockType] IS NULL) OR ([StockType] = @Original_StockType)) AND ((@IsNull_GeneralStock = 1 AND [GeneralStock] IS NULL) OR ([GeneralStock] = @Original_GeneralStock)) AND ([RegDate] = @Original_RegDate) AND ([LastUpdate] = @Original_LastUpdate) AND ([Active] = @Original_Active))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Product] WHERE (([IDProduct] = @Original_IDProduct) AND ([ProductName] = @Original_ProductName) AND ((@IsNull_BarCode = 1 AND [BarCode] IS NULL) OR ([BarCode] = @Original_BarCode)) AND ([UnitPrice] = @Original_UnitPrice) AND ([Tax] = @Original_Tax) AND ([StockType] = @Original_StockType) AND ([GeneralStock] = @Original_GeneralStock) AND ([RegDate] = @Original_RegDate) AND ([LastUpdate] = @Original_LastUpdate) AND ([Active] = @Original_Active))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IDProduct", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDProduct", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BarCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BarCode", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BarCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BarCode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_KiloPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "KiloPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UnitPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "UnitPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Tax", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "Tax", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StockType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StockType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StockType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StockType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_GeneralStock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GeneralStock", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GeneralStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "GeneralStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastUpdate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Active", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Active", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Product] ([ProductName], [BarCode], [KiloPrice], [Tax], [StockType], [GeneralStock], [RegDate], [LastUpdate], [Active]) VALUES (@ProductName, @BarCode, @KiloPrice, @Tax, @StockType, @GeneralStock, @RegDate, @LastUpdate, @Active);
-SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock, RegDate, LastUpdate, Active FROM Product WHERE (IDProduct = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Product] ([ProductName], [BarCode], [UnitPrice], [Tax], [StockType], [GeneralStock], [RegDate], [LastUpdate], [Active]) VALUES (@ProductName, @BarCode, @UnitPrice, @Tax, @StockType, @GeneralStock, @RegDate, @LastUpdate, @Active);
+SELECT IDProduct, ProductName, BarCode, UnitPrice, Tax, StockType, GeneralStock, RegDate, LastUpdate, Active FROM Product WHERE (IDProduct = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BarCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BarCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KiloPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "KiloPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnitPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "UnitPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tax", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "Tax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StockType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StockType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GeneralStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "GeneralStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8656,12 +8655,12 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Active", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Active", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Product] SET [ProductName] = @ProductName, [BarCode] = @BarCode, [KiloPrice] = @KiloPrice, [Tax] = @Tax, [StockType] = @StockType, [GeneralStock] = @GeneralStock, [RegDate] = @RegDate, [LastUpdate] = @LastUpdate, [Active] = @Active WHERE (([IDProduct] = @Original_IDProduct) AND ([ProductName] = @Original_ProductName) AND ((@IsNull_BarCode = 1 AND [BarCode] IS NULL) OR ([BarCode] = @Original_BarCode)) AND ([KiloPrice] = @Original_KiloPrice) AND ([Tax] = @Original_Tax) AND ((@IsNull_StockType = 1 AND [StockType] IS NULL) OR ([StockType] = @Original_StockType)) AND ((@IsNull_GeneralStock = 1 AND [GeneralStock] IS NULL) OR ([GeneralStock] = @Original_GeneralStock)) AND ([RegDate] = @Original_RegDate) AND ([LastUpdate] = @Original_LastUpdate) AND ([Active] = @Original_Active));
-SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock, RegDate, LastUpdate, Active FROM Product WHERE (IDProduct = @IDProduct)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Product] SET [ProductName] = @ProductName, [BarCode] = @BarCode, [UnitPrice] = @UnitPrice, [Tax] = @Tax, [StockType] = @StockType, [GeneralStock] = @GeneralStock, [RegDate] = @RegDate, [LastUpdate] = @LastUpdate, [Active] = @Active WHERE (([IDProduct] = @Original_IDProduct) AND ([ProductName] = @Original_ProductName) AND ((@IsNull_BarCode = 1 AND [BarCode] IS NULL) OR ([BarCode] = @Original_BarCode)) AND ([UnitPrice] = @Original_UnitPrice) AND ([Tax] = @Original_Tax) AND ([StockType] = @Original_StockType) AND ([GeneralStock] = @Original_GeneralStock) AND ([RegDate] = @Original_RegDate) AND ([LastUpdate] = @Original_LastUpdate) AND ([Active] = @Original_Active));
+SELECT IDProduct, ProductName, BarCode, UnitPrice, Tax, StockType, GeneralStock, RegDate, LastUpdate, Active FROM Product WHERE (IDProduct = @IDProduct)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BarCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BarCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KiloPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "KiloPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnitPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "UnitPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tax", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "Tax", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StockType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StockType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GeneralStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "GeneralStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8672,11 +8671,9 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BarCode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BarCode", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BarCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BarCode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_KiloPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "KiloPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UnitPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "UnitPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Tax", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "Tax", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StockType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StockType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StockType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StockType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_GeneralStock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GeneralStock", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GeneralStock", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 19, 1, "GeneralStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastUpdate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8697,8 +8694,7 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[8];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock, " +
-                "RegDate, LastUpdate, Active FROM dbo.Product";
+            this._commandCollection[0].CommandText = "SELECT        Product.*\r\nFROM            Product";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -8889,7 +8885,7 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_IDProduct, string Original_ProductName, string Original_BarCode, decimal Original_KiloPrice, decimal Original_Tax, int Original_StockType, decimal Original_GeneralStock, System.DateTime Original_RegDate, System.DateTime Original_LastUpdate, bool Original_Active) {
+        public virtual int Delete(int Original_IDProduct, string Original_ProductName, string Original_BarCode, decimal Original_UnitPrice, decimal Original_Tax, int Original_StockType, decimal Original_GeneralStock, System.DateTime Original_RegDate, System.DateTime Original_LastUpdate, bool Original_Active) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_IDProduct));
             if ((Original_ProductName == null)) {
                 throw new global::System.ArgumentNullException("Original_ProductName");
@@ -8905,15 +8901,13 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_BarCode));
             }
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_KiloPrice));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_UnitPrice));
             this.Adapter.DeleteCommand.Parameters[5].Value = ((decimal)(Original_Tax));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_StockType));
-            this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-            this.Adapter.DeleteCommand.Parameters[9].Value = ((decimal)(Original_GeneralStock));
-            this.Adapter.DeleteCommand.Parameters[10].Value = ((System.DateTime)(Original_RegDate));
-            this.Adapter.DeleteCommand.Parameters[11].Value = ((System.DateTime)(Original_LastUpdate));
-            this.Adapter.DeleteCommand.Parameters[12].Value = ((bool)(Original_Active));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_StockType));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((decimal)(Original_GeneralStock));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_RegDate));
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((System.DateTime)(Original_LastUpdate));
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((bool)(Original_Active));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8934,7 +8928,7 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ProductName, string BarCode, decimal KiloPrice, decimal Tax, int StockType, decimal GeneralStock, System.DateTime RegDate, System.DateTime LastUpdate, bool Active) {
+        public virtual int Insert(string ProductName, string BarCode, decimal UnitPrice, decimal Tax, int StockType, decimal GeneralStock, System.DateTime RegDate, System.DateTime LastUpdate, bool Active) {
             if ((ProductName == null)) {
                 throw new global::System.ArgumentNullException("ProductName");
             }
@@ -8947,7 +8941,7 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(BarCode));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(KiloPrice));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(UnitPrice));
             this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(Tax));
             this.Adapter.InsertCommand.Parameters[4].Value = ((int)(StockType));
             this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(GeneralStock));
@@ -8977,7 +8971,7 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
         public virtual int Update(
                     string ProductName, 
                     string BarCode, 
-                    decimal KiloPrice, 
+                    decimal UnitPrice, 
                     decimal Tax, 
                     int StockType, 
                     decimal GeneralStock, 
@@ -8987,7 +8981,7 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
                     int Original_IDProduct, 
                     string Original_ProductName, 
                     string Original_BarCode, 
-                    decimal Original_KiloPrice, 
+                    decimal Original_UnitPrice, 
                     decimal Original_Tax, 
                     int Original_StockType, 
                     decimal Original_GeneralStock, 
@@ -9007,7 +9001,7 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(BarCode));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(KiloPrice));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(UnitPrice));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(Tax));
             this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(StockType));
             this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(GeneralStock));
@@ -9029,16 +9023,14 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_BarCode));
             }
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(Original_KiloPrice));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(Original_UnitPrice));
             this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_Tax));
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_StockType));
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((decimal)(Original_GeneralStock));
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((System.DateTime)(Original_RegDate));
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((System.DateTime)(Original_LastUpdate));
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((bool)(Original_Active));
-            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(IDProduct));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_StockType));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((decimal)(Original_GeneralStock));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_RegDate));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(Original_LastUpdate));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((bool)(Original_Active));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(IDProduct));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9062,7 +9054,7 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
         public virtual int Update(
                     string ProductName, 
                     string BarCode, 
-                    decimal KiloPrice, 
+                    decimal UnitPrice, 
                     decimal Tax, 
                     int StockType, 
                     decimal GeneralStock, 
@@ -9072,14 +9064,14 @@ SELECT IDProduct, ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock,
                     int Original_IDProduct, 
                     string Original_ProductName, 
                     string Original_BarCode, 
-                    decimal Original_KiloPrice, 
+                    decimal Original_UnitPrice, 
                     decimal Original_Tax, 
                     int Original_StockType, 
                     decimal Original_GeneralStock, 
                     System.DateTime Original_RegDate, 
                     System.DateTime Original_LastUpdate, 
                     bool Original_Active) {
-            return this.Update(ProductName, BarCode, KiloPrice, Tax, StockType, GeneralStock, RegDate, LastUpdate, Active, Original_IDProduct, Original_ProductName, Original_BarCode, Original_KiloPrice, Original_Tax, Original_StockType, Original_GeneralStock, Original_RegDate, Original_LastUpdate, Original_Active, Original_IDProduct);
+            return this.Update(ProductName, BarCode, UnitPrice, Tax, StockType, GeneralStock, RegDate, LastUpdate, Active, Original_IDProduct, Original_ProductName, Original_BarCode, Original_UnitPrice, Original_Tax, Original_StockType, Original_GeneralStock, Original_RegDate, Original_LastUpdate, Original_Active, Original_IDProduct);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

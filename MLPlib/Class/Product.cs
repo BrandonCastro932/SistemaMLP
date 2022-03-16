@@ -86,6 +86,7 @@ namespace MLPlib.Class
             return sistemaMLPDataSet.Product;
         }
 
+
         public DataTable GetProductDetailedStock()
         {
             SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
