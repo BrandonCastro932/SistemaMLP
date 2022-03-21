@@ -199,6 +199,7 @@ namespace SistemaMLP.Forms.ProductForms
                         MessageBox.Show("Se ha registrado el producto", "Producto registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         Utilities.Utilities.CreateLog("Ha registrado un nuevo producto: " + product.ProductName);
+                        this.DialogResult = DialogResult.OK;
                     }
                     else if (i == -1)
                     {
@@ -211,7 +212,11 @@ namespace SistemaMLP.Forms.ProductForms
                         MessageBox.Show("Error desconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                this.DialogResult = DialogResult.OK;
+                else
+                {
+                    MessageBox.Show("Error, complete todos los campos", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             catch
             {

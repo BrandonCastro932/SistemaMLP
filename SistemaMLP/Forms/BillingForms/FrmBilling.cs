@@ -18,9 +18,11 @@ namespace SistemaMLP.Forms.BillingForms
         public Product product = new Product();
         public List<DetailedStock> detailedStocks = new List<DetailedStock>();
         public List<CutTypes> cutTypes = new List<CutTypes>();
-        public Customer customer = new Customer {
+        public Customer customer = new Customer
+        {
             IDCustomer = 1,
-            Fullname = "Cliente particular"
+            Fullname = "Cliente particular",
+            PersonalID = "1"
         };
         public PaymentMethods paymentMethods = new PaymentMethods();
         public List<Product> products = new List<Product>();
@@ -60,26 +62,38 @@ namespace SistemaMLP.Forms.BillingForms
         {
             //Convertir datatable en lista con linq
             DataView dv = new DataView(product.GetProductDetailedStock());
-            DataTable dt = dv.ToTable(true, "IDDetailedStock", "IDProduct", "IDCutType", "Stock", "RegDate","CutName");
+            DataTable dt = dv.ToTable(true, "IDDetailedStock", "IDProduct", "IDCutType", "Stock", "RegDate", "CutName");
 
             cutTypes = (from DataRow dr in dt.Rows
-                              select new CutTypes()
+                        select new CutTypes()
+                        {
+                            IDCutType = Convert.ToInt32(dr["IDCutType"]),
+                            CutName = Convert.ToString(dr["CutName"]),
+
+                        }).ToList();
+
+            detailedStocks = (from DataRow dr in dt.Rows
+                              select new DetailedStock()
                               {
+                                  IDDetailedStock = Convert.ToInt32(dr["IDDetailedStock"]),
+                                  IDProduct = Convert.ToInt32(dr["IDProduct"]),
                                   IDCutType = Convert.ToInt32(dr["IDCutType"]),
-                                  CutName = Convert.ToString(dr["CutName"]),
-                                  
+                                  Stock = Convert.ToDecimal(dr["Stock"]),
+                                  RegDate = Convert.ToDateTime(dr["RegDate"].ToString())
                               }).ToList();
-            if(cutTypes.Count > 0)
+
+
+            if (cutTypes.Count > 0)
             {
                 CbCuts.Visible = true;
-                LblCuts.Visible=true;
+                LblCuts.Visible = true;
                 CbCuts.DataSource = cutTypes;
             }
             else
             {
                 CbCuts.Visible = false;
                 LblCuts.Visible = false;
-                CbCuts.DataSource= null;
+                CbCuts.DataSource = null;
                 CbCuts.Items.Clear();
             }
         }
@@ -142,11 +156,12 @@ namespace SistemaMLP.Forms.BillingForms
             DGVLines.Columns["ProductName"].HeaderText = "Producto";
             DGVLines.Columns["LineType"].HeaderText = "Tipo de compra";
             DGVLines.Columns["StockTypeName"].Visible = false;
+            DGVLines.Columns["IDCutType"].Visible = false;
             DGVLines.Columns["GeneralStock"].HeaderText = "Stock en bodega";
             DGVLines.Columns["BarCode"].HeaderText = "Código barras";
             DGVLines.Columns["UnitPrice"].HeaderText = "Precio por unidad";
             DGVLines.Columns["Tax"].HeaderText = "Impuesto";
-            DGVLines.Columns["Quantity"].HeaderText = "Cantidad Comprada (KG)";
+            DGVLines.Columns["Quantity"].HeaderText = "Cantidad Comprada";
         }
 
         private void InitDT()
@@ -162,8 +177,10 @@ namespace SistemaMLP.Forms.BillingForms
             lines.Columns.Add("LastUpdate", typeof(DateTime));
             lines.Columns.Add("Active", typeof(bool));
             lines.Columns.Add("StockTypeName", typeof(string));
+            lines.Columns.Add("IDCutType", typeof(int));
             lines.Columns.Add("LineType", typeof(string));
-            lines.Columns.Add("Quantity",typeof(decimal));
+            lines.Columns.Add("Quantity", typeof(decimal));
+
             DGVLines.DataSource = lines;
         }
 
@@ -171,7 +188,7 @@ namespace SistemaMLP.Forms.BillingForms
         {
             CustomerForms.FrmSelectCustomer frmSelectCustomer = new CustomerForms.FrmSelectCustomer();
             DialogResult dialogResult = frmSelectCustomer.ShowDialog();
-            if(dialogResult == DialogResult.OK)
+            if (dialogResult == DialogResult.OK)
             {
                 customer = frmSelectCustomer.customer;
             }
@@ -180,7 +197,7 @@ namespace SistemaMLP.Forms.BillingForms
 
         private void CbPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(CbPaymentMethod.SelectedIndex == 1)
+            if (CbPaymentMethod.SelectedIndex == 1)
             {
                 CkbConfirmed.Visible = true;
             }
@@ -196,6 +213,25 @@ namespace SistemaMLP.Forms.BillingForms
             //TODO:
             //Cuando se vaya a validar la venta, validar que todos los campos necesarios esten, que los botones respectivos se activen y se desactiven
             //Validar que la cantidad selecionada no sea mayor al stock en bodega
+            DateTime dt = DateTime.Now;
+            int year = dt.Year;
+            int month = dt.Month;
+            int date = dt.Day;
+            int hour = dt.Hour;
+            int min = dt.Minute;
+            int sec = dt.Second;
+
+
+            Receipt receipt = new Receipt
+            {
+                IDReceipt = year.ToString() + month.ToString() + date.ToString() + hour.ToString() + min.ToString() + sec.ToString() + customer.PersonalID.ToString(),
+                IDCustomer = customer.PersonalID,
+                IDUser = Utilities.Utilities.user.IDUser,
+                IDPaymentMethod = CbPaymentMethod.SelectedIndex + 1,
+                Date = dt,
+                Notes = TxtNotes.Text
+            };
+
             switch (CbPaymentMethod.SelectedIndex)
             {
                 case 0:
@@ -263,8 +299,9 @@ namespace SistemaMLP.Forms.BillingForms
             //TODO:
             //Validar que no se agreguen lineas si no hay seleccionadas
             DataRow dr1 = lines.NewRow();
-            
-            if(DGVProducts.SelectedRows.Count > 0)
+            bool exists = false;
+
+            if (DGVProducts.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = DGVProducts.SelectedRows[0];
                 dr1["IDProduct"] = Convert.ToInt32(row.Cells["IDProduct"].Value);
@@ -282,18 +319,142 @@ namespace SistemaMLP.Forms.BillingForms
                 if (CbCuts.Visible)
                 {
                     dr1["LineType"] = Convert.ToString(CbCuts.Text);
+                    dr1["IDCutType"] = CbCuts.SelectedValue;
+                }
+                else if(CbCuts.Visible && dr1["StockTypeName"].ToString() == "Kilos")
+                {
+                    dr1["LineType"] = "Filet";
+                    dr1["IDCutType"] = 1;
                 }
                 else
                 {
-                    dr1["LineType"] = "Filet";
+                    dr1["LineType"] = dr1["StockTypeName"].ToString();
+                    dr1["IDCutType"] = 1;
                 }
 
-                lines.Rows.Add(dr1);
+                if (lines.Rows.Count == 0 && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
+                {
+                    lines.Rows.Add(dr1);
+                }
+                else if (lines.Rows.Count == 0 && !ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
+                {
+                    exists = true;
+                    MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    foreach (DataRow dr in lines.Rows)
+                    {
+                        if (dr["IDProduct"].ToString() == dr1["IDProduct"].ToString())
+                        {
+                            if (detailedStocks.Count == 0)
+                            {
+                                if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(dr1["GeneralStock"].ToString()) && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
+                                {
+                                    //Ahora validar que si la linea agregada tiene stock detallado, esta no pase de lo registrado
+
+                                    dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
+                                    lines.AcceptChanges();
+                                    exists = true;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    exists = true;
+                                }
+                            }
+                            else
+                            {
+                                DetailedStock detailed = new DetailedStock();
+                                detailed = detailedStocks.FirstOrDefault(x => x.IDCutType.Equals(Convert.ToInt32(CbCuts.SelectedValue)));
+                                //Esta validado, ahora que si se agrega un corte distinto se agrege como una nueva linea
+
+                                if (dr["LineType"].ToString() == CbCuts.Text.ToString() && UDQuantity.Value <= detailed.Stock && ValidateStock(detailed.Stock))
+                                {
+                                    if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(detailed.Stock))
+                                    {
+                                        dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
+                                        lines.AcceptChanges();
+                                        exists = true;
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        exists = true;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    if (!exists)
+                    {
+                        lines.Rows.Add(dr1);
+                    }
+
+                }
+
             }
+            lines.AcceptChanges();
+            DGVProducts.ClearSelection();
+            CbCuts.Visible = false;
+            LblCuts.Visible = false;
+            CbCuts.DataSource = null;
+            CbCuts.Items.Clear();
+            UDQuantity.Value = 1;
+            SetTxtTotal();
+        }
+
+        private bool ValidateStock(decimal Stock)
+        {
+            //TODO: Si un producto tiene stock detallado
+            if (UDQuantity.Value <= Stock)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void SetTxtTotal()
+        {
+            decimal total = 0;
+            decimal tax = 0;
+            decimal subtotal = 0;
+            if (DGVLines.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow dr1 in DGVLines.Rows)
+                {
+
+                    total += Convert.ToDecimal(dr1.Cells["UnitPrice"].Value) * Convert.ToDecimal(dr1.Cells["Quantity"].Value);
+                    if (CBTax.Checked)
+                    {
+                        tax += Convert.ToDecimal(dr1.Cells["UnitPrice"].Value) * (Convert.ToDecimal(dr1.Cells["Tax"].Value) / 100);
+                    }
+                    subtotal = total + tax;
+
+                }
+                LblTotal.Text = "Total: ₡" + total.ToString("#,##");
+                LblTax.Text = "Impuesto: ₡" + tax.ToString("#,##");
+                LblAmount.Text = "Subtotal: ₡" + subtotal.ToString("#,##");
+            }
+            else
+            {
+                LblTotal.Text = "Total: ₡0";
+                LblTax.Text = "Impuesto: ₡0";
+                LblAmount.Text = "Subtotal: ₡0";
+            }
+
         }
 
         private void DGVProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
             DataGridViewRow dataRow = DGVProducts.SelectedRows[0];
             product = new Product
             {
@@ -310,16 +471,13 @@ namespace SistemaMLP.Forms.BillingForms
             };
             CbCuts.DisplayMember = "CutName";
             CbCuts.ValueMember = "IDCutType";
-            
+
             GetProductDetailedStock();
 
             DGVLines.ClearSelection();
 
-            if (e.RowIndex == -1 || e.ColumnIndex != 3)
-            {
-                return;
-            }
-            
+
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -329,10 +487,10 @@ namespace SistemaMLP.Forms.BillingForms
 
         private void DGVLines_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
             DGVProducts.ClearSelection();
 
-            if(DGVLines.Rows.Count > 0)
+            if (DGVLines.Rows.Count > 0)
             {
                 BtnDelLine.Enabled = true;
             }
@@ -350,14 +508,25 @@ namespace SistemaMLP.Forms.BillingForms
 
         private void BtnDelLine_Click(object sender, EventArgs e)
         {
-           if(DGVLines.SelectedRows.Count > 0)
+            DataRow dr1 = lines.NewRow();
+            if (DGVLines.SelectedRows.Count > 0)
             {
-                DataGridViewRow dataRow = DGVLines.SelectedRows[0];
-                
-                DGVLines.Rows.Remove(dataRow);
+                DataGridViewRow row = DGVLines.SelectedRows[0];
+                dr1["IDProduct"] = Convert.ToInt32(row.Cells["IDProduct"].Value);
+
+
+
+                for (int i = lines.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow dr = lines.Rows[i];
+                    if (dr["IDProduct"].ToString() == dr1["IDProduct"].ToString())
+                        dr.Delete();
+                }
+                lines.AcceptChanges();
+                DGVLines.ClearSelection();
+                BtnDelLine.Enabled = false;
+                SetTxtTotal();
             }
-
-
         }
 
         private void FrmBilling_Click(object sender, EventArgs e)
@@ -365,5 +534,14 @@ namespace SistemaMLP.Forms.BillingForms
             IdleLayout();
         }
 
+        private void CBTax_CheckedChanged(object sender, EventArgs e)
+        {
+            SetTxtTotal();
+        }
+
+        private void CbCuts_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

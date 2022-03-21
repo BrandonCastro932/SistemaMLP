@@ -5,7 +5,7 @@ namespace MLPlib.Class
 {
     public class Receipt
     {
-        public int IDReceipt { get; set; }
+        public string IDReceipt { get; set; }
         public string IDCustomer { get; set; }
         public int IDUser { get; set; }
         public int IDPaymentMethod { get; set; }

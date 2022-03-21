@@ -124,6 +124,7 @@
             this.CbCuts.Size = new System.Drawing.Size(124, 24);
             this.CbCuts.TabIndex = 6;
             this.CbCuts.Visible = false;
+            this.CbCuts.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CbCuts_KeyPress);
             // 
             // LblQuantity
             // 
@@ -245,6 +246,7 @@
             this.CBTax.TabIndex = 6;
             this.CBTax.Text = "Cobrar impuesto";
             this.CBTax.UseVisualStyleBackColor = true;
+            this.CBTax.CheckedChanged += new System.EventHandler(this.CBTax_CheckedChanged);
             // 
             // CkbConfirmed
             // 

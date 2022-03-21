@@ -56,6 +56,7 @@
             // 
             this.TxtKg.Location = new System.Drawing.Point(102, 108);
             this.TxtKg.Name = "TxtKg";
+            this.TxtKg.ShortcutsEnabled = false;
             this.TxtKg.Size = new System.Drawing.Size(100, 20);
             this.TxtKg.TabIndex = 1;
             this.TxtKg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtKg_KeyPress);

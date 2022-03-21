@@ -169,6 +169,7 @@
             // 
             this.TxtStock.Location = new System.Drawing.Point(12, 409);
             this.TxtStock.Name = "TxtStock";
+            this.TxtStock.ShortcutsEnabled = false;
             this.TxtStock.Size = new System.Drawing.Size(135, 20);
             this.TxtStock.TabIndex = 42;
             this.TxtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtStock_KeyPress);

@@ -71,7 +71,7 @@ namespace MLPlib.Class
         {
             SistemaMLPDataSetTableAdapters.ProductTableAdapter productAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
 
-            int result = (int)productAdapter.SPProductSupply(this.IDProduct, this.GeneralStock, this.LastUpdate);
+            int result = (int)productAdapter.SPProductSupply(this.IDProduct, this.GeneralStock);
 
             return result;
         }
