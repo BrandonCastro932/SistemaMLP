@@ -74,6 +74,10 @@ namespace SistemaMLP.Forms.ProductForms
             LblGeneralStock.Text = product.GeneralStock.ToString() + " " + StockTypeName;
             LblRegDate.Text = product.RegDate.ToString();
             LblLastUpdate.Text = product.LastUpdate.ToString();
+            if(product.StockTypeDetail > 0 && product.StockTypeDetail != null)
+            {
+                LblGeneralStock.Text = product.GeneralStock.ToString() + " " + StockTypeName + " de: "+product.StockTypeDetail +"KG";
+            }
         }
 
         private void FillEmptySpaces()

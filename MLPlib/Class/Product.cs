@@ -12,6 +12,7 @@ namespace MLPlib.Class
         public decimal UnitPrice { get; set; }
         public decimal Tax { get; set; }
         public int StockType { get; set; }
+        public decimal? StockTypeDetail { get; set; }
         public decimal GeneralStock { get; set; }
         public DateTime RegDate { get; set; }
         public DateTime LastUpdate { get; set; }
@@ -35,7 +36,7 @@ namespace MLPlib.Class
         {
             SistemaMLPDataSetTableAdapters.ProductTableAdapter productAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
 
-            int result = (int)productAdapter.SPInsertProduct(this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.GeneralStock,this.RegDate,this.LastUpdate);
+            int result = (int)productAdapter.SPInsertProduct(this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.StockTypeDetail, this.GeneralStock,this.RegDate,this.LastUpdate);
 
             return result;
         }
@@ -44,7 +45,7 @@ namespace MLPlib.Class
         {
             SistemaMLPDataSetTableAdapters.ProductTableAdapter productAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
 
-            int result = (int)productAdapter.SPUpdateProduct(this.IDProduct,this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.GeneralStock, this.LastUpdate);
+            int result = (int)productAdapter.SPUpdateProduct(this.IDProduct,this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.StockTypeDetail, this.GeneralStock, this.LastUpdate);
 
             return result;
         }

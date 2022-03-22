@@ -37,9 +37,6 @@
             this.UDQuantity = new System.Windows.Forms.NumericUpDown();
             this.BtnAddLine = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.GbStockType = new System.Windows.Forms.GroupBox();
-            this.RBtnChopped = new System.Windows.Forms.RadioButton();
-            this.RBtnFilet = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.CBTax = new System.Windows.Forms.CheckBox();
@@ -59,7 +56,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGVProducts)).BeginInit();
             this.Gb_Products.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UDQuantity)).BeginInit();
-            this.GbStockType.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVLines)).BeginInit();
             this.SuspendLayout();
@@ -131,9 +127,9 @@
             this.LblQuantity.AutoSize = true;
             this.LblQuantity.Location = new System.Drawing.Point(848, 121);
             this.LblQuantity.Name = "LblQuantity";
-            this.LblQuantity.Size = new System.Drawing.Size(93, 16);
+            this.LblQuantity.Size = new System.Drawing.Size(129, 16);
             this.LblQuantity.TabIndex = 5;
-            this.LblQuantity.Text = "Cantidad (KG):";
+            this.LblQuantity.Text = "Cantidad comprada:";
             // 
             // UDQuantity
             // 
@@ -168,40 +164,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Buscar:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // GbStockType
-            // 
-            this.GbStockType.Controls.Add(this.RBtnChopped);
-            this.GbStockType.Controls.Add(this.RBtnFilet);
-            this.GbStockType.Location = new System.Drawing.Point(579, 1);
-            this.GbStockType.Name = "GbStockType";
-            this.GbStockType.Size = new System.Drawing.Size(133, 63);
-            this.GbStockType.TabIndex = 7;
-            this.GbStockType.TabStop = false;
-            this.GbStockType.Text = "Tipo de corte";
-            this.GbStockType.Visible = false;
-            // 
-            // RBtnChopped
-            // 
-            this.RBtnChopped.AutoSize = true;
-            this.RBtnChopped.Location = new System.Drawing.Point(9, 42);
-            this.RBtnChopped.Name = "RBtnChopped";
-            this.RBtnChopped.Size = new System.Drawing.Size(58, 17);
-            this.RBtnChopped.TabIndex = 7;
-            this.RBtnChopped.TabStop = true;
-            this.RBtnChopped.Text = "Picado";
-            this.RBtnChopped.UseVisualStyleBackColor = true;
-            // 
-            // RBtnFilet
-            // 
-            this.RBtnFilet.AutoSize = true;
-            this.RBtnFilet.Location = new System.Drawing.Point(9, 19);
-            this.RBtnFilet.Name = "RBtnFilet";
-            this.RBtnFilet.Size = new System.Drawing.Size(44, 17);
-            this.RBtnFilet.TabIndex = 6;
-            this.RBtnFilet.TabStop = true;
-            this.RBtnFilet.Text = "Filet";
-            this.RBtnFilet.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -385,7 +347,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 617);
-            this.Controls.Add(this.GbStockType);
             this.Controls.Add(this.BtnSelectCustomer);
             this.Controls.Add(this.LblCustomerName);
             this.Controls.Add(this.label2);
@@ -405,8 +366,6 @@
             this.Gb_Products.ResumeLayout(false);
             this.Gb_Products.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UDQuantity)).EndInit();
-            this.GbStockType.ResumeLayout(false);
-            this.GbStockType.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVLines)).EndInit();
@@ -440,9 +399,6 @@
         private System.Windows.Forms.CheckBox CkbConfirmed;
         private System.Windows.Forms.TextBox TxtNotes;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox GbStockType;
-        private System.Windows.Forms.RadioButton RBtnChopped;
-        private System.Windows.Forms.RadioButton RBtnFilet;
         private System.Windows.Forms.ComboBox CbCuts;
         private System.Windows.Forms.Label LblCuts;
     }

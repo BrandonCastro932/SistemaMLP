@@ -8724,6 +8724,7 @@ SELECT IDProduct, ProductName, BarCode, UnitPrice, Tax, StockType, GeneralStock,
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnitPrice", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 19, 1, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tax", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 19, 1, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StockType", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StockTypeDetail", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 19, 1, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GeneralStock", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 19, 1, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RegDate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastUpdate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8751,6 +8752,7 @@ SELECT IDProduct, ProductName, BarCode, UnitPrice, Tax, StockType, GeneralStock,
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnitPrice", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 19, 1, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tax", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 19, 1, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StockType", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StockTypeDetail", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 19, 1, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GeneralStock", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 19, 1, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastUpdate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -9110,7 +9112,7 @@ SELECT IDProduct, ProductName, BarCode, UnitPrice, Tax, StockType, GeneralStock,
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object SPInsertProduct(string ProductName, string BarCode, global::System.Nullable<decimal> UnitPrice, global::System.Nullable<decimal> Tax, global::System.Nullable<int> StockType, global::System.Nullable<decimal> GeneralStock, global::System.Nullable<global::System.DateTime> RegDate, global::System.Nullable<global::System.DateTime> LastUpdate) {
+        public virtual object SPInsertProduct(string ProductName, string BarCode, global::System.Nullable<decimal> UnitPrice, global::System.Nullable<decimal> Tax, global::System.Nullable<int> StockType, global::System.Nullable<decimal> StockTypeDetail, global::System.Nullable<decimal> GeneralStock, global::System.Nullable<global::System.DateTime> RegDate, global::System.Nullable<global::System.DateTime> LastUpdate) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((ProductName == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
@@ -9142,23 +9144,29 @@ SELECT IDProduct, ProductName, BarCode, UnitPrice, Tax, StockType, GeneralStock,
             else {
                 command.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((GeneralStock.HasValue == true)) {
-                command.Parameters[6].Value = ((decimal)(GeneralStock.Value));
+            if ((StockTypeDetail.HasValue == true)) {
+                command.Parameters[6].Value = ((decimal)(StockTypeDetail.Value));
             }
             else {
                 command.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((RegDate.HasValue == true)) {
-                command.Parameters[7].Value = ((System.DateTime)(RegDate.Value));
+            if ((GeneralStock.HasValue == true)) {
+                command.Parameters[7].Value = ((decimal)(GeneralStock.Value));
             }
             else {
                 command.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((LastUpdate.HasValue == true)) {
-                command.Parameters[8].Value = ((System.DateTime)(LastUpdate.Value));
+            if ((RegDate.HasValue == true)) {
+                command.Parameters[8].Value = ((System.DateTime)(RegDate.Value));
             }
             else {
                 command.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((LastUpdate.HasValue == true)) {
+                command.Parameters[9].Value = ((System.DateTime)(LastUpdate.Value));
+            }
+            else {
+                command.Parameters[9].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9260,7 +9268,7 @@ SELECT IDProduct, ProductName, BarCode, UnitPrice, Tax, StockType, GeneralStock,
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object SPUpdateProduct(global::System.Nullable<int> IDProduct, string ProductName, string BarCode, global::System.Nullable<decimal> UnitPrice, global::System.Nullable<decimal> Tax, global::System.Nullable<int> StockType, global::System.Nullable<decimal> GeneralStock, global::System.Nullable<global::System.DateTime> LastUpdate) {
+        public virtual object SPUpdateProduct(global::System.Nullable<int> IDProduct, string ProductName, string BarCode, global::System.Nullable<decimal> UnitPrice, global::System.Nullable<decimal> Tax, global::System.Nullable<int> StockType, global::System.Nullable<decimal> StockTypeDetail, global::System.Nullable<decimal> GeneralStock, global::System.Nullable<global::System.DateTime> LastUpdate) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
             if ((IDProduct.HasValue == true)) {
                 command.Parameters[1].Value = ((int)(IDProduct.Value));
@@ -9298,17 +9306,23 @@ SELECT IDProduct, ProductName, BarCode, UnitPrice, Tax, StockType, GeneralStock,
             else {
                 command.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((GeneralStock.HasValue == true)) {
-                command.Parameters[7].Value = ((decimal)(GeneralStock.Value));
+            if ((StockTypeDetail.HasValue == true)) {
+                command.Parameters[7].Value = ((decimal)(StockTypeDetail.Value));
             }
             else {
                 command.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((LastUpdate.HasValue == true)) {
-                command.Parameters[8].Value = ((System.DateTime)(LastUpdate.Value));
+            if ((GeneralStock.HasValue == true)) {
+                command.Parameters[8].Value = ((decimal)(GeneralStock.Value));
             }
             else {
                 command.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((LastUpdate.HasValue == true)) {
+                command.Parameters[9].Value = ((System.DateTime)(LastUpdate.Value));
+            }
+            else {
+                command.Parameters[9].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

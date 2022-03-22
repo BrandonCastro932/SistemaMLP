@@ -132,6 +132,7 @@ namespace SistemaMLP.Forms.BillingForms
             DGVProducts.Columns["LastUpdate"].Visible = false;
             DGVProducts.Columns["StockType"].Visible = false;
             DGVProducts.Columns["Active"].Visible = false;
+            DGVProducts.Columns["StockTypeDetail"].Visible = false;
             DGVProducts.Columns["StockTypeName"].DisplayIndex = 5;
             DGVProducts.Columns["BarCode"].DisplayIndex = 1;
             DGVProducts.Columns["StockTypeName"].HeaderText = "Tipo de stock";
@@ -224,7 +225,7 @@ namespace SistemaMLP.Forms.BillingForms
 
             Receipt receipt = new Receipt
             {
-                IDReceipt = year.ToString() + month.ToString() + date.ToString() + hour.ToString() + min.ToString() + sec.ToString() + customer.PersonalID.ToString(),
+                ReceiptCode = year.ToString() + month.ToString() + date.ToString() + hour.ToString() + min.ToString() + sec.ToString() + customer.PersonalID.ToString(),
                 IDCustomer = customer.PersonalID,
                 IDUser = Utilities.Utilities.user.IDUser,
                 IDPaymentMethod = CbPaymentMethod.SelectedIndex + 1,
@@ -297,7 +298,8 @@ namespace SistemaMLP.Forms.BillingForms
         private void BtnAddLine_Click(object sender, EventArgs e)
         {
             //TODO:
-            //Validar que no se agreguen lineas si no hay seleccionadas
+            //VALIDAR QUE SI SON CAJAS O PAQUETES NO SE PUEDA AGREGAR CON DECIMALES
+
             DataRow dr1 = lines.NewRow();
             bool exists = false;
 

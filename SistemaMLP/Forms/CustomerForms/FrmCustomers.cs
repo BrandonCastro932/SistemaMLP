@@ -145,21 +145,38 @@ namespace SistemaMLP.Forms.CustomerForms
                 RegDate = Convert.ToDateTime(dataRow.Cells["RegDate"].Value),
                 Active = Convert.ToBoolean(dataRow.Cells["Active"].Value)
             };
-            frm.customer = customer;
-            DialogResult dialogResult = frm.ShowDialog();
-            
-
-            if (dialogResult == DialogResult.OK)
+            if(customer.IDCustomer != 1)
             {
-                FillDGV();
+                frm.customer = customer;
+                DialogResult dialogResult = frm.ShowDialog();
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    FillDGV();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se puede modificar el cliente general", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void DGVCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            CustomerSelectedLayout();
-            if (e.RowIndex == -1 || e.ColumnIndex != 3)
+            DataGridViewRow dataRow = DGVCustomers.SelectedRows[0];
+            if (e.RowIndex == -1)
                 return;
+            
+            if(Convert.ToInt32(dataRow.Cells["IDCustomer"].Value) == 1)
+            {
+                DGVCustomers.ClearSelection();
+                IdleLayout();
+            }
+            else
+            {
+                CustomerSelectedLayout();
+            }
+            
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)

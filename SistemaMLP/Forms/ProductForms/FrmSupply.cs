@@ -133,11 +133,12 @@ namespace SistemaMLP.Forms.ProductForms
 
             //Visual
             DGVProduct.Columns["IDProduct"].Visible = false;
+            DGVProduct.Columns["StockTypeDetail"].Visible = false;
 
             DGVProduct.Columns["ProductName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DGVProduct.Columns["ProductName"].HeaderText = "Nombre del producto";
 
-            DGVProduct.Columns["BarCode"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DGVProduct.Columns["BarCode"].Visible = false;
             DGVProduct.Columns["BarCode"].HeaderText = "Código de barras";
 
             DGVProduct.Columns["UnitPrice"].HeaderText = "Precio unitario";
@@ -149,6 +150,7 @@ namespace SistemaMLP.Forms.ProductForms
             DGVProduct.Columns["StockType"].Visible = false;
 
             DGVProduct.Columns["GeneralStock"].HeaderText = "Existencias";
+            DGVProduct.Columns["GeneralStock"].Width = 70;
 
             DGVProduct.Columns["RegDate"].Visible = false;
             DGVProduct.Columns["RegDate"].Visible = false;

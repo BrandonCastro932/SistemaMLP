@@ -54,8 +54,14 @@ namespace SistemaMLP.Forms.ProductForms
             TxtBarCode.Text = product1.BarCode;
             TxtUnitPrice.Text = product1.UnitPrice.ToString();
             TxtTax.Text = product1.Tax.ToString();
+            CbStockType.SelectedValue = product1.StockType;
             TxtStock.Text = product1.GeneralStock.ToString();
             CbStockType.SelectedItem = product1.StockType;
+
+            if(product1.StockTypeDetail != null)
+            {
+                TxtStockTypeDetail.Text = product1.StockTypeDetail.ToString();
+            }
         }
 
         private void LockStockTxt()
@@ -127,7 +133,7 @@ namespace SistemaMLP.Forms.ProductForms
                 {
                     if (string.IsNullOrWhiteSpace(c.Text))
                     {
-                        if (c.Name != "TxtBarCode")
+                        if (c.Name != "TxtBarCode" && c.Name != "TxtStockTypeDetail")
                         {
                             return false;
                         }
@@ -178,6 +184,16 @@ namespace SistemaMLP.Forms.ProductForms
                         LastUpdate = DateTime.Now,
                         Active = true
                     };
+
+                    if (!string.IsNullOrEmpty(TxtStockTypeDetail.Text))
+                    {
+                        product.StockTypeDetail = Convert.ToDecimal(TxtStockTypeDetail.Text);
+                    }
+                    else
+                    {
+                        product.StockTypeDetail = null;
+                    }
+
                     i = product.CreateProduct();
 
                     if (i != 0 && i != -1)
@@ -250,6 +266,15 @@ namespace SistemaMLP.Forms.ProductForms
                         Active = true
                     };
 
+                    if (!string.IsNullOrEmpty(TxtStockTypeDetail.Text))
+                    {
+                        product.StockTypeDetail = Convert.ToDecimal(TxtStockTypeDetail.Text);
+                    }
+                    else
+                    {
+                        product.StockTypeDetail = null;
+                    }
+
                     i = product.UpdateProduct();
 
                     if (i != 0 && i != -1)
@@ -278,6 +303,7 @@ namespace SistemaMLP.Forms.ProductForms
 
                         //Analizar si se hace una bitacora mas especifica
                         Utilities.Utilities.CreateLog("Ha actualizado un producto: " + product.ProductName);
+                        this.DialogResult = DialogResult.OK;
                     }
                     else if (i == -1)
                     {
@@ -291,7 +317,11 @@ namespace SistemaMLP.Forms.ProductForms
 
                     }
                 }
-                this.DialogResult = DialogResult.OK;
+                else
+                {
+                    MessageBox.Show("Error, datos del producto incompletos, verifique los campos", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             catch
             {
@@ -319,7 +349,7 @@ namespace SistemaMLP.Forms.ProductForms
 
         private void CbStockType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CbStockType.SelectedIndex == 1)
+            if (CbStockType.SelectedIndex >= 1)
             {
                 BtnDetail.Enabled = false;
                 if (detailedStocks.Count > 0)
@@ -331,6 +361,19 @@ namespace SistemaMLP.Forms.ProductForms
             else
             {
                 BtnDetail.Enabled = true;
+            }
+            if(CbStockType.SelectedIndex > 0)
+            {
+                LblStockTypeDetail.Text = "Peso de " + CbStockType.Text + ":";
+                LblStockTypeDetail.Visible = true;
+                TxtStockTypeDetail.Visible = true;
+            }
+            else
+            {
+                LblStockTypeDetail.Text = "Peso de:";
+                LblStockTypeDetail.Visible = false;
+                TxtStockTypeDetail.Visible = false;
+                TxtStockTypeDetail.Text = "";
             }
         }
 
@@ -373,6 +416,24 @@ namespace SistemaMLP.Forms.ProductForms
             {
                 e.Handled = true;
             }
+        }
+
+        private void TxtStockTypeDetail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtStockTypeDetail_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

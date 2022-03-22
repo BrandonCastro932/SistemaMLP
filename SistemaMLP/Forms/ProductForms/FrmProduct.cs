@@ -53,6 +53,7 @@ namespace SistemaMLP.Forms.CustomerForms
             DGVProduct.Columns["Tax"].HeaderText = "Impuesto(%)";
 
             DGVProduct.Columns["StockType"].Visible = false;
+            DGVProduct.Columns["StockTypeDetail"].Visible = false;
 
             DGVProduct.Columns["GeneralStock"].HeaderText = "Existencias";
 
@@ -146,11 +147,22 @@ namespace SistemaMLP.Forms.CustomerForms
                     UnitPrice = Convert.ToDecimal(dataRow.Cells["UnitPrice"].Value),
                     Tax = Convert.ToDecimal(dataRow.Cells["Tax"].Value),
                     StockType = Convert.ToInt32(dataRow.Cells["StockType"].Value),
+                    
                     GeneralStock = Convert.ToDecimal(dataRow.Cells["GeneralStock"].Value),
                     RegDate = Convert.ToDateTime(dataRow.Cells["RegDate"].Value),
                     LastUpdate = Convert.ToDateTime(dataRow.Cells["LastUpdate"].Value),
                     Active = Convert.ToBoolean(dataRow.Cells["Active"].Value)
                 };
+
+                if (dataRow.Cells["StockTypeDetail"].Value != DBNull.Value)
+                {
+                    product.StockTypeDetail = Convert.ToDecimal(dataRow.Cells["StockTypeDetail"].Value);
+                }
+                else
+                {
+                    product.StockTypeDetail = null;
+                }
+
                 ProductForms.FrmProductFullInfo frmInfo = new ProductForms.FrmProductFullInfo();
                 frmInfo.product = product;
                 frmInfo.StockTypeName = Convert.ToString(dataRow.Cells["StockTypeName"].Value);
@@ -192,6 +204,15 @@ namespace SistemaMLP.Forms.CustomerForms
                     LastUpdate = Convert.ToDateTime(dataRow.Cells["LastUpdate"].Value),
                     Active = Convert.ToBoolean(dataRow.Cells["Active"].Value)
                 };
+
+                if (dataRow.Cells["StockTypeDetail"].Value != DBNull.Value)
+                {
+                    product.StockTypeDetail = Convert.ToDecimal(dataRow.Cells["StockTypeDetail"].Value);
+                }
+                else
+                {
+                    product.StockTypeDetail = null;
+                }
                 FrmProductCU frmProductCU = new FrmProductCU();
                 frmProductCU.product1 = product;
                 frmProductCU.isCreating = false;

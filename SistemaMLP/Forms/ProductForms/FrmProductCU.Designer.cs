@@ -44,6 +44,8 @@
             this.TxtStock = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.BtnDetail = new System.Windows.Forms.Button();
+            this.TxtStockTypeDetail = new System.Windows.Forms.TextBox();
+            this.LblStockTypeDetail = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TxtUnitPrice
@@ -203,11 +205,34 @@
             this.BtnDetail.UseVisualStyleBackColor = true;
             this.BtnDetail.Click += new System.EventHandler(this.BtnDetail_Click);
             // 
+            // TxtStockTypeDetail
+            // 
+            this.TxtStockTypeDetail.Location = new System.Drawing.Point(19, 283);
+            this.TxtStockTypeDetail.Name = "TxtStockTypeDetail";
+            this.TxtStockTypeDetail.Size = new System.Drawing.Size(111, 20);
+            this.TxtStockTypeDetail.TabIndex = 38;
+            this.TxtStockTypeDetail.Visible = false;
+            this.TxtStockTypeDetail.TextChanged += new System.EventHandler(this.TxtStockTypeDetail_TextChanged);
+            this.TxtStockTypeDetail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtStockTypeDetail_KeyPress);
+            // 
+            // LblStockTypeDetail
+            // 
+            this.LblStockTypeDetail.AutoSize = true;
+            this.LblStockTypeDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblStockTypeDetail.Location = new System.Drawing.Point(16, 264);
+            this.LblStockTypeDetail.Name = "LblStockTypeDetail";
+            this.LblStockTypeDetail.Size = new System.Drawing.Size(69, 16);
+            this.LblStockTypeDetail.TabIndex = 39;
+            this.LblStockTypeDetail.Text = "Peso de:";
+            this.LblStockTypeDetail.Visible = false;
+            // 
             // FrmProductCU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 370);
+            this.Controls.Add(this.LblStockTypeDetail);
+            this.Controls.Add(this.TxtStockTypeDetail);
             this.Controls.Add(this.BtnDetail);
             this.Controls.Add(this.TxtStock);
             this.Controls.Add(this.label9);
@@ -253,5 +278,7 @@
         private System.Windows.Forms.TextBox TxtStock;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button BtnDetail;
+        private System.Windows.Forms.TextBox TxtStockTypeDetail;
+        private System.Windows.Forms.Label LblStockTypeDetail;
     }
 }
