@@ -18,6 +18,11 @@ namespace SistemaMLP.Forms.BillingForms
         public Product product = new Product();
         public List<DetailedStock> detailedStocks = new List<DetailedStock>();
         public List<CutTypes> cutTypes = new List<CutTypes>();
+
+        decimal total = 0;
+        decimal tax = 0;
+        decimal subtotal = 0;
+
         public Customer customer = new Customer
         {
             IDCustomer = 1,
@@ -51,6 +56,21 @@ namespace SistemaMLP.Forms.BillingForms
             BtnDelLine.Enabled = false;
             DGVLines.ClearSelection();
             DGVProducts.ClearSelection();
+        }
+
+        private void CleanForm()
+        {
+            IdleLayout();
+            customer = new Customer
+            {
+                IDCustomer = 1,
+                Fullname = "Cliente particular",
+                PersonalID = "1"
+            };
+            CbPaymentMethod.SelectedValue = 1;
+            LblCustomerName.Text = customer.Fullname;
+            lines.Clear();
+            SetTxtTotal();
         }
 
         private void FrmBilling_Shown(object sender, EventArgs e)
@@ -226,73 +246,71 @@ namespace SistemaMLP.Forms.BillingForms
             Receipt receipt = new Receipt
             {
                 ReceiptCode = year.ToString() + month.ToString() + date.ToString() + hour.ToString() + min.ToString() + sec.ToString() + customer.PersonalID.ToString(),
-                IDCustomer = customer.PersonalID,
+                IDCustomer = customer.IDCustomer,
                 IDUser = Utilities.Utilities.user.IDUser,
-                IDPaymentMethod = CbPaymentMethod.SelectedIndex + 1,
+                IDPaymentMethod = Convert.ToInt32(CbPaymentMethod.SelectedValue),
                 Date = dt,
-                Notes = TxtNotes.Text
+                Notes = TxtNotes.Text,
+                Total = total,
+                TotalTax = tax
             };
 
             switch (CbPaymentMethod.SelectedIndex)
             {
                 case 0:
                     //Cuando se factura en efectivo se establece el pago confirmado automaticamente
+                    receipt.PaymentConfirmed = true;
+
                     break;
                 case 1:
                     //Cuando se factura en sinpe aparece el check para confirmar el pago, en caso de que no, igual se registra, luego se unas horas se notifica
                     //En caso de que sea por sinpe y con cliente particular, recomendar escribir una nota con el nombre del cliente
+                    receipt.PaymentConfirmed = CkbConfirmed.Checked;
                     break;
                 case 2:
-                    //Validar que no este el cliente por defecto
-                    //Cuando se factura con metodo de pago en credito, si no hay ninguno, aparece una opcion para crear
-                    //Como se cambió el proceso con el crédito, ver si se permite emitir todas las facturas en crédito o aunque sea verificar cuanto debe.
-                    /*
-                    if(customer.IDCustomer != 1)
-                    {
-                        Credit credit = new Credit();
-                        credit.Customer.IDCustomer = customer.IDCustomer;
-
-                        if (credit.CustomerHasCredit())
-                        {                            
-                            credit.GetCustomerCredit();
-                            if (credit.Total > 0)
-                            {
-                                CreditForms.FrmCreditConfirmation frmCreditConfirmation = new CreditForms.FrmCreditConfirmation();
-
-                                frmCreditConfirmation.credit = credit;
-                                frmCreditConfirmation.customer = customer;
-
-                                DialogResult dialogResult = frmCreditConfirmation.ShowDialog();
-
-                                if (dialogResult == DialogResult.OK)
-                                {
-                                    //Facturar()
-                                }
-                            }
-                        }
-                        else
-                        {
-                            //Se abre el dialog que dice que el cliente no tiene creditos, si desea crear uno
-                            DialogResult dialogResult = MessageBox.Show("El cliente no tiene ningún crédito, ¿Crear uno nuevo?", "Cliente sin crédito", MessageBoxButtons.YesNo);
-
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                //Facturar()
-                            }
-                        }
-                   
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error, no se puede registrar un crédito para un cliente particular", "Error", MessageBoxButtons.OK);
-                    }
-                     */
+                    
                     break;
                 default:
                     //Default aparece algo, igual el boton no va a estar activo pero por si acaso
                     MessageBox.Show("Error del sistema", "Error", MessageBoxButtons.OK);
                     break;
             }
+
+            //TODO: Validar lo necesario
+            int i = receipt.CreateReceipt();
+            if (i != 0)
+            {
+                foreach (DataRow dr in lines.Rows)
+                {
+                    ReceiptDetails receiptDetails = new ReceiptDetails
+                    {
+                        IDReceipt = i,
+                        IDProduct = Convert.ToInt32(dr["IDProduct"].ToString()),
+                        IDCutType = Convert.ToInt32(dr["IDCutType"].ToString()),
+                        Quantity = Convert.ToDecimal(dr["Quantity"].ToString()),
+                        DetailPrice = Convert.ToDecimal(dr["Quantity"].ToString()) * Convert.ToDecimal(dr["UnitPrice"].ToString())
+
+                    };
+                    int j = receiptDetails.CreateReceiptDetail();
+                    if (j != 1)
+                    {
+                        MessageBox.Show("Error, no se ha podido registrar una de las líneas.", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                MessageBox.Show("Se ha registrado la factura de manera exitosa", "Factura registrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Utilities.Utilities.CreateLog("ha registrado la factura número: "+receipt.ReceiptCode);
+                CleanForm();
+            }
+            else if (i == 2)
+            {
+                MessageBox.Show("Error, no se ha podido registrar la factura, código duplicado", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (i == 0)
+            {
+                MessageBox.Show("Error desconocido", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void BtnAddLine_Click(object sender, EventArgs e)
@@ -323,7 +341,7 @@ namespace SistemaMLP.Forms.BillingForms
                     dr1["LineType"] = Convert.ToString(CbCuts.Text);
                     dr1["IDCutType"] = CbCuts.SelectedValue;
                 }
-                else if(CbCuts.Visible && dr1["StockTypeName"].ToString() == "Kilos")
+                else if (CbCuts.Visible && dr1["StockTypeName"].ToString() == "Kilos")
                 {
                     dr1["LineType"] = "Filet";
                     dr1["IDCutType"] = 1;
@@ -337,6 +355,7 @@ namespace SistemaMLP.Forms.BillingForms
                 if (lines.Rows.Count == 0 && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                 {
                     lines.Rows.Add(dr1);
+                    BillingLayout();
                 }
                 else if (lines.Rows.Count == 0 && !ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                 {
@@ -392,11 +411,15 @@ namespace SistemaMLP.Forms.BillingForms
                     if (!exists)
                     {
                         lines.Rows.Add(dr1);
+                        BillingLayout();
                     }
+
+         
 
                 }
 
             }
+
             lines.AcceptChanges();
             DGVProducts.ClearSelection();
             CbCuts.Visible = false;
@@ -405,6 +428,18 @@ namespace SistemaMLP.Forms.BillingForms
             CbCuts.Items.Clear();
             UDQuantity.Value = 1;
             SetTxtTotal();
+        }
+
+        private void BillingLayout()
+        {
+            if (lines.Rows.Count > 0)
+            {
+                BtnBilling.Enabled = true;
+            }
+            else
+            {
+                BtnBilling.Enabled = false;
+            }
         }
 
         private bool ValidateStock(decimal Stock)
@@ -422,9 +457,9 @@ namespace SistemaMLP.Forms.BillingForms
 
         private void SetTxtTotal()
         {
-            decimal total = 0;
-            decimal tax = 0;
-            decimal subtotal = 0;
+            total = 0;
+            tax = 0;
+            subtotal = 0;
             if (DGVLines.Rows.Count > 0)
             {
                 foreach (DataGridViewRow dr1 in DGVLines.Rows)
@@ -439,13 +474,13 @@ namespace SistemaMLP.Forms.BillingForms
 
                 }
                 LblTotal.Text = "Total: ₡" + total.ToString("#,##");
-                LblTax.Text = "Impuesto: ₡" + tax.ToString("#,##");
+                LblTax.Text = "Impuestos: ₡" + tax.ToString("#,##");
                 LblAmount.Text = "Subtotal: ₡" + subtotal.ToString("#,##");
             }
             else
             {
                 LblTotal.Text = "Total: ₡0";
-                LblTax.Text = "Impuesto: ₡0";
+                LblTax.Text = "Impuestos: ₡0";
                 LblAmount.Text = "Subtotal: ₡0";
             }
 
@@ -524,11 +559,13 @@ namespace SistemaMLP.Forms.BillingForms
                     if (dr["IDProduct"].ToString() == dr1["IDProduct"].ToString())
                         dr.Delete();
                 }
+
                 lines.AcceptChanges();
                 DGVLines.ClearSelection();
                 BtnDelLine.Enabled = false;
                 SetTxtTotal();
             }
+            BillingLayout();
         }
 
         private void FrmBilling_Click(object sender, EventArgs e)

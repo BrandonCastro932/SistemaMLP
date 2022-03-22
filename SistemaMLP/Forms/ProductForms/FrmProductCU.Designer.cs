@@ -209,6 +209,7 @@
             // 
             this.TxtStockTypeDetail.Location = new System.Drawing.Point(19, 283);
             this.TxtStockTypeDetail.Name = "TxtStockTypeDetail";
+            this.TxtStockTypeDetail.ShortcutsEnabled = false;
             this.TxtStockTypeDetail.Size = new System.Drawing.Size(111, 20);
             this.TxtStockTypeDetail.TabIndex = 38;
             this.TxtStockTypeDetail.Visible = false;

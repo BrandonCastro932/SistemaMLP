@@ -249,6 +249,7 @@
             // 
             // BtnBilling
             // 
+            this.BtnBilling.Enabled = false;
             this.BtnBilling.Location = new System.Drawing.Point(848, 206);
             this.BtnBilling.Name = "BtnBilling";
             this.BtnBilling.Size = new System.Drawing.Size(124, 42);
