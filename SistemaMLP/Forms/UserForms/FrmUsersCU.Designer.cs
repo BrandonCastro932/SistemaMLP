@@ -30,8 +30,8 @@
         {
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnRegister = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LblTitle = new System.Windows.Forms.Label();
+            this.LblUsername = new System.Windows.Forms.Label();
             this.TxtUsername = new System.Windows.Forms.TextBox();
             this.TxtPin = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,25 +61,25 @@
             this.BtnRegister.UseVisualStyleBackColor = true;
             this.BtnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
             // 
-            // label1
+            // LblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(52, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 24);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Registro de usuario";
+            this.LblTitle.AutoSize = true;
+            this.LblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTitle.Location = new System.Drawing.Point(52, 9);
+            this.LblTitle.Name = "LblTitle";
+            this.LblTitle.Size = new System.Drawing.Size(173, 24);
+            this.LblTitle.TabIndex = 2;
+            this.LblTitle.Text = "Registro de usuario";
             // 
-            // label2
+            // LblUsername
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(2, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Nombre usuario:";
+            this.LblUsername.AutoSize = true;
+            this.LblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblUsername.Location = new System.Drawing.Point(2, 51);
+            this.LblUsername.Name = "LblUsername";
+            this.LblUsername.Size = new System.Drawing.Size(106, 16);
+            this.LblUsername.TabIndex = 3;
+            this.LblUsername.Text = "Nombre usuario:";
             // 
             // TxtUsername
             // 
@@ -134,8 +134,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TxtPin);
             this.Controls.Add(this.TxtUsername);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblUsername);
+            this.Controls.Add(this.LblTitle);
             this.Controls.Add(this.BtnRegister);
             this.Controls.Add(this.BtnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -153,8 +153,8 @@
 
         private System.Windows.Forms.Button BtnCancel;
         private System.Windows.Forms.Button BtnRegister;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LblTitle;
+        private System.Windows.Forms.Label LblUsername;
         private System.Windows.Forms.TextBox TxtUsername;
         private System.Windows.Forms.TextBox TxtPin;
         private System.Windows.Forms.Label label3;

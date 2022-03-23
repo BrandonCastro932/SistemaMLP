@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MLPlib.Class;
+using TableDependency.SqlClient;
+using TableDependency.SqlClient.Base.EventArgs;
 
 namespace SistemaMLP.Utilities
 {
@@ -17,6 +19,9 @@ namespace SistemaMLP.Utilities
         public static Forms.ProductForms.FrmSupply frmSupply = new Forms.ProductForms.FrmSupply();
         public static Forms.LogForm.FrmLog frmLog = new Forms.LogForm.FrmLog();
         public static Forms.CreditForms.FrmCreditReceipts frmCredit = new Forms.CreditForms.FrmCreditReceipts();
+        public static Forms.UserForms.FrmUsers frmUsers = new Forms.UserForms.FrmUsers();
+
+        
 
         public static User user = new User
         {
@@ -31,6 +36,7 @@ namespace SistemaMLP.Utilities
 
             logAdapter.SPLog(user.IDUser, user.Username+" "+Msg, DateTime.Now);
         }
+
 
     }
 }

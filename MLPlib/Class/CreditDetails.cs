@@ -26,6 +26,16 @@ namespace MLPlib.Class
             return result;
         }
 
+        public decimal GetCreditsTotal()
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.CreditDetailsTableAdapter creditDetailAdapter = new SistemaMLPDataSetTableAdapters.CreditDetailsTableAdapter();
+
+            decimal i = Convert.ToDecimal(creditDetailAdapter.SPGetCreditsTotal());
+
+            return i;
+        }
+
         public DataTable GetCredits(string filter = "")
         {
             SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();

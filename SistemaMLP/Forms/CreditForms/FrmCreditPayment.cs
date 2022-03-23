@@ -80,7 +80,7 @@ namespace SistemaMLP.Forms.CreditForms
                         if (payments.CreateCreditPayment() == 1)
                         {
                             MessageBox.Show("Se ha registrado el abono", "Abono registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Utilities.Utilities.CreateLog("ha registrado un abono de: ₡" + creditPayments.PaymentAmount + " a la factura a crédito:" + receipt.ReceiptCode.ToString() + " del cliente: " + customer.Fullname);
+                            Utilities.Utilities.CreateLog("ha registrado un abono de: ₡" + TxtPayment.Text + " a la factura a crédito:" + receipt.ReceiptCode.ToString() + " del cliente: " + customer.Fullname);
                             this.DialogResult = DialogResult.OK;
                         }
                     }
