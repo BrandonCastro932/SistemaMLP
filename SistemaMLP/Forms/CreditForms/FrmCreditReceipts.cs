@@ -29,9 +29,9 @@ namespace SistemaMLP.Forms.CreditForms
             FillDGV();
         }
 
-        private void FillDGV()
+        private void FillDGV(string filter = "")
         {
-            DGVCredits.DataSource = creditDetails.GetCredits();
+            DGVCredits.DataSource = creditDetails.GetCredits(filter);
             
             DGVCredits.Columns["IDCreditDetails"].Visible = false;
             DGVCredits.Columns["IDReceipt"].Visible = false;
@@ -155,9 +155,20 @@ namespace SistemaMLP.Forms.CreditForms
 
                 DialogResult dialogResult = frmInfo.ShowDialog();
                 FillDGV();
+                BtnCreditPayment.Enabled = false;
             }
         }
 
-       
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >= 2)
+            {
+                FillDGV(TxtSearch.Text.Trim());
+            }
+            else
+            {
+                FillDGV();
+            }
+        }
     }
 }

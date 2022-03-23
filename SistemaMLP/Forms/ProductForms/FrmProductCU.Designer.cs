@@ -51,7 +51,7 @@
             // TxtUnitPrice
             // 
             this.TxtUnitPrice.Location = new System.Drawing.Point(19, 185);
-            this.TxtUnitPrice.MaxLength = 255;
+            this.TxtUnitPrice.MaxLength = 18;
             this.TxtUnitPrice.Name = "TxtUnitPrice";
             this.TxtUnitPrice.ShortcutsEnabled = false;
             this.TxtUnitPrice.Size = new System.Drawing.Size(111, 20);
@@ -139,7 +139,7 @@
             // TxtTax
             // 
             this.TxtTax.Location = new System.Drawing.Point(169, 185);
-            this.TxtTax.MaxLength = 255;
+            this.TxtTax.MaxLength = 18;
             this.TxtTax.Name = "TxtTax";
             this.TxtTax.ShortcutsEnabled = false;
             this.TxtTax.Size = new System.Drawing.Size(111, 20);
@@ -178,7 +178,7 @@
             // TxtStock
             // 
             this.TxtStock.Location = new System.Drawing.Point(169, 240);
-            this.TxtStock.MaxLength = 255;
+            this.TxtStock.MaxLength = 18;
             this.TxtStock.Name = "TxtStock";
             this.TxtStock.ShortcutsEnabled = false;
             this.TxtStock.Size = new System.Drawing.Size(111, 20);
@@ -208,6 +208,7 @@
             // TxtStockTypeDetail
             // 
             this.TxtStockTypeDetail.Location = new System.Drawing.Point(19, 283);
+            this.TxtStockTypeDetail.MaxLength = 18;
             this.TxtStockTypeDetail.Name = "TxtStockTypeDetail";
             this.TxtStockTypeDetail.ShortcutsEnabled = false;
             this.TxtStockTypeDetail.Size = new System.Drawing.Size(111, 20);

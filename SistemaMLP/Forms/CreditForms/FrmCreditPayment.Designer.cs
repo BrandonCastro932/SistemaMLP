@@ -175,7 +175,7 @@
             // LblPreviousAmount
             // 
             this.LblPreviousAmount.AutoSize = true;
-            this.LblPreviousAmount.Location = new System.Drawing.Point(120, 171);
+            this.LblPreviousAmount.Location = new System.Drawing.Point(225, 171);
             this.LblPreviousAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblPreviousAmount.Name = "LblPreviousAmount";
             this.LblPreviousAmount.Size = new System.Drawing.Size(85, 16);
@@ -186,12 +186,12 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(17, 170);
+            this.label11.Location = new System.Drawing.Point(17, 171);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(101, 16);
+            this.label11.Size = new System.Drawing.Size(211, 16);
             this.label11.TabIndex = 12;
-            this.label11.Text = "Monto previo:";
+            this.label11.Text = "Monto previo al último abono:";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // LblActualAmount
@@ -218,6 +218,7 @@
             // TxtPayment
             // 
             this.TxtPayment.Location = new System.Drawing.Point(62, 374);
+            this.TxtPayment.MaxLength = 18;
             this.TxtPayment.Name = "TxtPayment";
             this.TxtPayment.Size = new System.Drawing.Size(135, 22);
             this.TxtPayment.TabIndex = 15;

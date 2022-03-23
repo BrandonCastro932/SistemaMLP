@@ -158,7 +158,7 @@
             // TxtPhoneNumber
             // 
             this.TxtPhoneNumber.Location = new System.Drawing.Point(21, 215);
-            this.TxtPhoneNumber.MaxLength = 255;
+            this.TxtPhoneNumber.MaxLength = 50;
             this.TxtPhoneNumber.Name = "TxtPhoneNumber";
             this.TxtPhoneNumber.Size = new System.Drawing.Size(261, 20);
             this.TxtPhoneNumber.TabIndex = 12;
@@ -177,7 +177,7 @@
             // TxtBusinessPhoneNum
             // 
             this.TxtBusinessPhoneNum.Location = new System.Drawing.Point(21, 377);
-            this.TxtBusinessPhoneNum.MaxLength = 255;
+            this.TxtBusinessPhoneNum.MaxLength = 50;
             this.TxtBusinessPhoneNum.Name = "TxtBusinessPhoneNum";
             this.TxtBusinessPhoneNum.Size = new System.Drawing.Size(261, 20);
             this.TxtBusinessPhoneNum.TabIndex = 14;

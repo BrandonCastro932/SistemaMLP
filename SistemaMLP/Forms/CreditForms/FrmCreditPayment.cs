@@ -39,10 +39,10 @@ namespace SistemaMLP.Forms.CreditForms
             LblReceiptCode.Text = receipt.ReceiptCode.ToString();
             LblFullname.Text = customer.Fullname.ToString();
             LblRegDate.Text = creditDetails.RegDate.ToString();
-            LblNextAmount.Text = creditDetails.NextAmount.ToString();
-            LblPreviousAmount.Text = creditDetails.PreviousAmount.ToString();
-            LblActualAmount.Text = creditDetails.ActualAmount.ToString();
-            LblReceiptTotal.Text = Convert.ToString(receipt.Total + receipt.TotalTax);
+            LblNextAmount.Text = "₡" + creditDetails.NextAmount.ToString();
+            LblPreviousAmount.Text = "₡" + creditDetails.PreviousAmount.ToString();
+            LblActualAmount.Text = "₡" + creditDetails.ActualAmount.ToString();
+            LblReceiptTotal.Text = "₡" + Convert.ToString(receipt.Total + receipt.TotalTax);
         }
 
         private void FillDGV()
@@ -66,16 +66,29 @@ namespace SistemaMLP.Forms.CreditForms
         {
             try
             {
-                CreditPayments payments = new CreditPayments
+                DialogResult dialog = MessageBox.Show("Esta seguro que desea registrar el abono?","Registrar abono",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                if(dialog == DialogResult.Yes)
                 {
-                    IDCreditDetail = creditDetails.IDCreditDetails,
-                    PaymentAmount = Convert.ToDecimal(TxtPayment.Text),
-                    RegDate = DateTime.Now
-                };
-                if(payments.CreateCreditPayment() == 1)
-                {
-                    MessageBox.Show("OK");
-                    this.DialogResult = DialogResult.OK;
+                    if(Convert.ToDecimal(TxtPayment.Text) <= creditDetails.ActualAmount)
+                    {
+                        CreditPayments payments = new CreditPayments
+                        {
+                            IDCreditDetail = creditDetails.IDCreditDetails,
+                            PaymentAmount = Convert.ToDecimal(TxtPayment.Text),
+                            RegDate = DateTime.Now
+                        };
+                        if (payments.CreateCreditPayment() == 1)
+                        {
+                            MessageBox.Show("Se ha registrado el abono", "Abono registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Utilities.Utilities.CreateLog("ha registrado un abono de: ₡" + creditPayments.PaymentAmount + " a la factura a crédito:" + receipt.ReceiptCode.ToString() + " del cliente: " + customer.Fullname);
+                            this.DialogResult = DialogResult.OK;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se puede registrar un abono que exceda la cantidad a pagar actual", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        TxtPayment.Text = creditDetails.ActualAmount.ToString();
+                    }
                 }
             }
             catch

@@ -58,6 +58,7 @@
             // TxtSearch
             // 
             this.TxtSearch.Location = new System.Drawing.Point(348, 22);
+            this.TxtSearch.MaxLength = 50;
             this.TxtSearch.Name = "TxtSearch";
             this.TxtSearch.Size = new System.Drawing.Size(420, 20);
             this.TxtSearch.TabIndex = 1;
