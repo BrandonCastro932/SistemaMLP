@@ -99,7 +99,7 @@ namespace SistemaMLP.Forms.ProductForms
                 BtnDetail.Enabled = false;
                 TxtStock.Enabled = true;
             }
-            if (DGVProduct.SelectedRows.Count > 0)
+            if (DGVProduct.SelectedRows.Count > 0 && !string.IsNullOrWhiteSpace(TxtStock.Text))
             {
                 BtnAccept.Enabled = true;
             }
@@ -168,7 +168,13 @@ namespace SistemaMLP.Forms.ProductForms
 
         }
 
-
+        private void IdleLayout()
+        {
+            BtnAccept.Enabled = false;
+            TxtStock.Text = "";
+            DGVProduct.ClearSelection();
+            RbSum.Checked = true;
+        }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -254,6 +260,14 @@ namespace SistemaMLP.Forms.ProductForms
                         if (i != 0 && i != -1)
                         {
                             MessageBox.Show("Se ha registrado la entrada de inventario", "Registro de entrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (RbSum.Checked)
+                            {
+                                Utilities.Utilities.CreateLog("ha registrado una entrada de inventario de: "+ product.GeneralStock + " al producto: "+ product.ProductName);
+                            }
+                            else
+                            {
+                                Utilities.Utilities.CreateLog("ha sustituido el inventario a: " + product.GeneralStock + " al producto: "+ product.ProductName);
+                            }
                             TxtStock.Text = "";
                         }
                         else if (i == 0)
@@ -267,6 +281,7 @@ namespace SistemaMLP.Forms.ProductForms
                     }
                 }
                 FillDGV();
+                IdleLayout();
             }
             catch
             {
@@ -305,6 +320,11 @@ namespace SistemaMLP.Forms.ProductForms
             {
                 MessageBox.Show("Error desconocido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void TxtStock_TextChanged(object sender, EventArgs e)
+        {
+            BtnLayout();
         }
     }
 }

@@ -70,6 +70,7 @@ namespace SistemaMLP.Forms.BillingForms
             CbPaymentMethod.SelectedValue = 1;
             LblCustomerName.Text = customer.Fullname;
             lines.Clear();
+            FillDGV();
             SetTxtTotal();
         }
 
@@ -231,86 +232,126 @@ namespace SistemaMLP.Forms.BillingForms
 
         private void BtnBilling_Click(object sender, EventArgs e)
         {
-            //TODO:
-            //Cuando se vaya a validar la venta, validar que todos los campos necesarios esten, que los botones respectivos se activen y se desactiven
-            //Validar que la cantidad selecionada no sea mayor al stock en bodega
-            DateTime dt = DateTime.Now;
-            int year = dt.Year;
-            int month = dt.Month;
-            int date = dt.Day;
-            int hour = dt.Hour;
-            int min = dt.Minute;
-            int sec = dt.Second;
-
-
-            Receipt receipt = new Receipt
+            try
             {
-                ReceiptCode = year.ToString() + month.ToString() + date.ToString() + hour.ToString() + min.ToString() + sec.ToString() + customer.PersonalID.ToString(),
-                IDCustomer = customer.IDCustomer,
-                IDUser = Utilities.Utilities.user.IDUser,
-                IDPaymentMethod = Convert.ToInt32(CbPaymentMethod.SelectedValue),
-                Date = dt,
-                Notes = TxtNotes.Text,
-                Total = total,
-                TotalTax = tax
-            };
-
-            switch (CbPaymentMethod.SelectedIndex)
-            {
-                case 0:
-                    //Cuando se factura en efectivo se establece el pago confirmado automaticamente
-                    receipt.PaymentConfirmed = true;
-
-                    break;
-                case 1:
-                    //Cuando se factura en sinpe aparece el check para confirmar el pago, en caso de que no, igual se registra, luego se unas horas se notifica
-                    //En caso de que sea por sinpe y con cliente particular, recomendar escribir una nota con el nombre del cliente
-                    receipt.PaymentConfirmed = CkbConfirmed.Checked;
-                    break;
-                case 2:
-                    
-                    break;
-                default:
-                    //Default aparece algo, igual el boton no va a estar activo pero por si acaso
-                    MessageBox.Show("Error del sistema", "Error", MessageBoxButtons.OK);
-                    break;
-            }
-
-            //TODO: Validar lo necesario
-            int i = receipt.CreateReceipt();
-            if (i != 0)
-            {
-                foreach (DataRow dr in lines.Rows)
+                DialogResult dialogResult = MessageBox.Show("Está seguro que desea registrar la factura?", "Registrar factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    ReceiptDetails receiptDetails = new ReceiptDetails
-                    {
-                        IDReceipt = i,
-                        IDProduct = Convert.ToInt32(dr["IDProduct"].ToString()),
-                        IDCutType = Convert.ToInt32(dr["IDCutType"].ToString()),
-                        Quantity = Convert.ToDecimal(dr["Quantity"].ToString()),
-                        DetailPrice = Convert.ToDecimal(dr["Quantity"].ToString()) * Convert.ToDecimal(dr["UnitPrice"].ToString())
+                    //TODO:
+                    //Cuando se vaya a validar la venta, validar que todos los campos necesarios esten, que los botones respectivos se activen y se desactiven
+                    //Validar que la cantidad selecionada no sea mayor al stock en bodega
+                    DateTime dt = DateTime.Now;
+                    int year = dt.Year;
+                    int month = dt.Month;
+                    int date = dt.Day;
+                    int hour = dt.Hour;
+                    int min = dt.Minute;
+                    int sec = dt.Second;
 
-                    };
-                    int j = receiptDetails.CreateReceiptDetail();
-                    if (j != 1)
+
+                    Receipt receipt = new Receipt
                     {
-                        MessageBox.Show("Error, no se ha podido registrar una de las líneas.", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        ReceiptCode = year.ToString() + month.ToString() + date.ToString() + hour.ToString() + min.ToString() + sec.ToString() + customer.PersonalID.ToString(),
+                        IDCustomer = customer.IDCustomer,
+                        IDUser = Utilities.Utilities.user.IDUser,
+                        IDPaymentMethod = Convert.ToInt32(CbPaymentMethod.SelectedValue),
+                        Date = dt,
+                        Notes = TxtNotes.Text,
+                        Total = total,
+                        TotalTax = tax
+                    };
+
+                    switch (CbPaymentMethod.SelectedIndex)
+                    {
+                        case 0:
+                            //Cuando se factura en efectivo se establece el pago confirmado automaticamente
+                            receipt.PaymentConfirmed = true;
+
+                            break;
+                        case 1:
+                            //Cuando se factura en sinpe aparece el check para confirmar el pago, en caso de que no, igual se registra, luego se unas horas se notifica
+                            //En caso de que sea por sinpe y con cliente particular, recomendar escribir una nota con el nombre del cliente
+                            receipt.PaymentConfirmed = CkbConfirmed.Checked;
+                            break;
+                        case 2:
+                            if (customer.IDCustomer == 1)
+                            {
+                                MessageBox.Show("Error, no se puede registrar una factura a crédito sin seleccionar un cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            break;
+                        default:
+                            //Default aparece algo, igual el boton no va a estar activo pero por si acaso
+                            MessageBox.Show("Error del sistema", "Error", MessageBoxButtons.OK);
+                            break;
+                    }
+
+                    //TODO: Validar lo necesario
+                    int i = receipt.CreateReceipt();
+                    if (i != 0)
+                    {
+                        foreach (DataRow dr in lines.Rows)
+                        {
+                            ReceiptDetails receiptDetails = new ReceiptDetails
+                            {
+                                IDReceipt = i,
+                                IDProduct = Convert.ToInt32(dr["IDProduct"].ToString()),
+
+                                Quantity = Convert.ToDecimal(dr["Quantity"].ToString()),
+                                DetailPrice = Convert.ToDecimal(dr["Quantity"].ToString()) * Convert.ToDecimal(dr["UnitPrice"].ToString())
+
+                            };
+
+                            if (dr["IDCutType"].ToString() != String.Empty)
+                            {
+                                receiptDetails.IDCutType = Convert.ToInt32(dr["IDCutType"].ToString());
+                            }
+
+                            int j = receiptDetails.CreateReceiptDetail();
+                            if (j != 1)
+                            {
+                                MessageBox.Show("Error, no se ha podido registrar una de las líneas.", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                        if (Convert.ToInt32(CbPaymentMethod.SelectedValue) == 3)
+                        {
+                            CreditDetails creditDetails = new CreditDetails
+                            {
+                                IDReceipt = i,
+                                PreviousAmount = subtotal,
+                                ActualAmount = subtotal,
+                                NextAmount = subtotal
+                            };
+                            int k = creditDetails.CreateCreditDetail();
+                            if (k != 1)
+                            {
+                                MessageBox.Show("Error, no se ha podido registrar la factura a crédito", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                        MessageBox.Show("Se ha registrado la factura de manera exitosa", "Factura registrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+                        Utilities.Utilities.CreateLog("ha registrado la factura número: " + receipt.ReceiptCode);
+                        CleanForm();
+                    }
+                    else if (i == 2)
+                    {
+                        MessageBox.Show("Error, no se ha podido registrar la factura, código duplicado", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (i == 0)
+                    {
+                        MessageBox.Show("Error desconocido", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                MessageBox.Show("Se ha registrado la factura de manera exitosa", "Factura registrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Utilities.Utilities.CreateLog("ha registrado la factura número: "+receipt.ReceiptCode);
-                CleanForm();
             }
-            else if (i == 2)
+            catch
             {
-                MessageBox.Show("Error, no se ha podido registrar la factura, código duplicado", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
-            else if (i == 0)
-            {
-                MessageBox.Show("Error desconocido", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
+
         }
 
         private void BtnAddLine_Click(object sender, EventArgs e)
@@ -349,11 +390,17 @@ namespace SistemaMLP.Forms.BillingForms
                 else
                 {
                     dr1["LineType"] = dr1["StockTypeName"].ToString();
-                    dr1["IDCutType"] = 1;
                 }
 
                 if (lines.Rows.Count == 0 && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                 {
+                    if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k))
+                    {
+                        MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        UDQuantity.Value = 1;
+                        exists = false;
+                        return;
+                    }
                     lines.Rows.Add(dr1);
                     BillingLayout();
                 }
@@ -364,36 +411,18 @@ namespace SistemaMLP.Forms.BillingForms
                 }
                 else
                 {
-                    foreach (DataRow dr in lines.Rows)
+                    if (dr1["StockTypeName"].ToString() != "Cajas" && dr1["StockTypeName"].ToString() != "Paquetes")
                     {
-                        if (dr["IDProduct"].ToString() == dr1["IDProduct"].ToString())
+                        foreach (DataRow dr in lines.Rows)
                         {
-                            if (detailedStocks.Count == 0)
+                            if (dr["IDProduct"].ToString() == dr1["IDProduct"].ToString())
                             {
-                                if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(dr1["GeneralStock"].ToString()) && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
+                                if (detailedStocks.Count == 0)
                                 {
-                                    //Ahora validar que si la linea agregada tiene stock detallado, esta no pase de lo registrado
-
-                                    dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
-                                    lines.AcceptChanges();
-                                    exists = true;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    exists = true;
-                                }
-                            }
-                            else
-                            {
-                                DetailedStock detailed = new DetailedStock();
-                                detailed = detailedStocks.FirstOrDefault(x => x.IDCutType.Equals(Convert.ToInt32(CbCuts.SelectedValue)));
-                                //Esta validado, ahora que si se agrega un corte distinto se agrege como una nueva linea
-
-                                if (dr["LineType"].ToString() == CbCuts.Text.ToString() && UDQuantity.Value <= detailed.Stock && ValidateStock(detailed.Stock))
-                                {
-                                    if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(detailed.Stock))
+                                    if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(dr1["GeneralStock"].ToString()) && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                                     {
+                                        //Ahora validar que si la linea agregada tiene stock detallado, esta no pase de lo registrado
+
                                         dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
                                         lines.AcceptChanges();
                                         exists = true;
@@ -404,17 +433,48 @@ namespace SistemaMLP.Forms.BillingForms
                                         exists = true;
                                     }
                                 }
+                                else
+                                {
+                                    DetailedStock detailed = new DetailedStock();
+                                    detailed = detailedStocks.FirstOrDefault(x => x.IDCutType.Equals(Convert.ToInt32(CbCuts.SelectedValue)));
+                                    //Que si se agrega un corte distinto se agrege como una nueva linea
 
+                                    if (dr["LineType"].ToString() == CbCuts.Text.ToString() && UDQuantity.Value <= detailed.Stock && ValidateStock(detailed.Stock))
+                                    {
+                                        if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(detailed.Stock))
+                                        {
+                                            dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
+                                            lines.AcceptChanges();
+                                            exists = true;
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            exists = true;
+                                        }
+                                    }
+
+                                }
                             }
+                        }
+                    }
+                    else
+                    {
+                        if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k))
+                        {
+                            MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            exists = true;
+                            UDQuantity.Value = 1;
                         }
                     }
                     if (!exists)
                     {
                         lines.Rows.Add(dr1);
                         BillingLayout();
+                        UDQuantity.Value = 1;
                     }
 
-         
+
 
                 }
 

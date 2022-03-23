@@ -1,11 +1,12 @@
 using System;
+using System.Data;
 
 namespace MLPlib.Class
 {
     public class CreditDetails
     {
         public int IDCreditDetails { get; set; }
-        public Receipt Receipt { get; set; }
+        public int IDReceipt { get; set; }
         public Decimal PreviousAmount { get; set; }
         public Decimal ActualAmount { get; set; }
         public Decimal NextAmount { get; set; }
@@ -13,7 +14,25 @@ namespace MLPlib.Class
 
         public CreditDetails()
         {
-            Receipt = new Receipt();
+            RegDate = DateTime.Now;
+        }
+
+        public int CreateCreditDetail()
+        {
+            SistemaMLPDataSetTableAdapters.CreditDetailsTableAdapter creditDetailAdapter = new SistemaMLPDataSetTableAdapters.CreditDetailsTableAdapter();
+
+            int result = (int)creditDetailAdapter.SPInsertCreditDetail(this.IDReceipt, this.PreviousAmount, this.ActualAmount, this.NextAmount, this.RegDate);
+
+            return result;
+        }
+
+        public DataTable GetCredits(string filter = "")
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.CreditDetailsTableAdapter creditDetailAdapter = new SistemaMLPDataSetTableAdapters.CreditDetailsTableAdapter();
+
+            creditDetailAdapter.FillByCredit(sistemaMLPDataSet.CreditDetails, filter);
+            return sistemaMLPDataSet.CreditDetails;
         }
     }
 }

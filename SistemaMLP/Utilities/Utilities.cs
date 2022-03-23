@@ -16,11 +16,13 @@ namespace SistemaMLP.Utilities
         public static Forms.CustomerForms.FrmProduct frmProduct = new Forms.CustomerForms.FrmProduct();
         public static Forms.ProductForms.FrmSupply frmSupply = new Forms.ProductForms.FrmSupply();
         public static Forms.LogForm.FrmLog frmLog = new Forms.LogForm.FrmLog();
+        public static Forms.CreditForms.FrmCreditReceipts frmCredit = new Forms.CreditForms.FrmCreditReceipts();
 
         public static User user = new User
         {
             IDUser = 2,
-            Username = "Brandon"
+            Username = "Brandon",
+            Active = true,
         };
 
         public static void CreateLog(string Msg)

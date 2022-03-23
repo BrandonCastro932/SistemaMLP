@@ -172,6 +172,7 @@
             this.TxtStock.ShortcutsEnabled = false;
             this.TxtStock.Size = new System.Drawing.Size(135, 20);
             this.TxtStock.TabIndex = 42;
+            this.TxtStock.TextChanged += new System.EventHandler(this.TxtStock_TextChanged);
             this.TxtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtStock_KeyPress);
             // 
             // FrmSupply

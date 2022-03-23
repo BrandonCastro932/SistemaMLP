@@ -82,6 +82,18 @@
     <Compile Include="Forms\CreditForms\FrmCreditConfirmation.Designer.cs">
       <DependentUpon>FrmCreditConfirmation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CreditForms\FrmCreditPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreditForms\FrmCreditPayment.Designer.cs">
+      <DependentUpon>FrmCreditPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreditForms\FrmCreditReceipts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreditForms\FrmCreditReceipts.Designer.cs">
+      <DependentUpon>FrmCreditReceipts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomerForms\FrmCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +154,18 @@
     <Compile Include="Forms\ProductForms\FrmSupply.Designer.cs">
       <DependentUpon>FrmSupply.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserForms\FrmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserForms\FrmUsers.Designer.cs">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserForms\FrmUsersCU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserForms\FrmUsersCU.Designer.cs">
+      <DependentUpon>FrmUsersCU.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SistemaMLPDataSet.Designer.cs">
@@ -160,6 +184,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreditForms\FrmCreditConfirmation.resx">
       <DependentUpon>FrmCreditConfirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreditForms\FrmCreditPayment.resx">
+      <DependentUpon>FrmCreditPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreditForms\FrmCreditReceipts.resx">
+      <DependentUpon>FrmCreditReceipts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerForms\FrmCustomers.resx">
       <DependentUpon>FrmCustomers.cs</DependentUpon>
@@ -190,6 +220,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProductForms\FrmSupply.resx">
       <DependentUpon>FrmSupply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserForms\FrmUsers.resx">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserForms\FrmUsersCU.resx">
+      <DependentUpon>FrmUsersCU.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -227,9 +263,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resourses\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MLPlib\MLPlib.csproj">
       <Project>{7e133c89-534d-4e22-a890-9f5337512041}</Project>

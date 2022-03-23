@@ -12,6 +12,8 @@ namespace MLPlib.Class
         public string Username { get; set; }
         public int Pin { get; set; }
         public DateTime RegDate { get; set; }
+        public bool Active { get; set; }
+
 
         public User()
         {

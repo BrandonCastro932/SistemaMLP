@@ -67,5 +67,19 @@ namespace SistemaMLP.Forms
                 Utilities.Utilities.frmSupply.Show();
             }
         }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void créditosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Utilities.Utilities.frmCredit.Visible)
+            {
+                Utilities.Utilities.frmCredit = new CreditForms.FrmCreditReceipts();
+                Utilities.Utilities.frmCredit.Show();
+            }
+        }
     }
 }

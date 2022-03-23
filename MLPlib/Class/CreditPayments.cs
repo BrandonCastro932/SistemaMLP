@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 
 namespace MLPlib.Class
 {
@@ -14,5 +15,22 @@ namespace MLPlib.Class
 
         }
 
+        public int CreateCreditPayment()
+        {
+            SistemaMLPDataSetTableAdapters.CreditPaymentsTableAdapter creditPaymentAdapter = new SistemaMLPDataSetTableAdapters.CreditPaymentsTableAdapter();
+
+            int result = (int)creditPaymentAdapter.SPInsertCreditPayment(this.IDCreditDetail, this.PaymentAmount, this.RegDate);
+
+            return result;
+        }
+
+        public DataTable GetCreditPayments()
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.CreditPaymentsTableAdapter creditPaymentAdapter = new SistemaMLPDataSetTableAdapters.CreditPaymentsTableAdapter();
+
+            creditPaymentAdapter.SPGetCreditPayments(sistemaMLPDataSet.CreditPayments, this.IDCreditDetail);
+            return sistemaMLPDataSet.CreditPayments;
+        }
     }
 }

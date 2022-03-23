@@ -163,11 +163,11 @@ namespace SistemaMLP.Forms.CustomerForms
 
         private void DGVCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow dataRow = DGVCustomers.SelectedRows[0];
             if (e.RowIndex == -1)
                 return;
-            
-            if(Convert.ToInt32(dataRow.Cells["IDCustomer"].Value) == 1)
+
+            DataGridViewRow dataRow = DGVCustomers.SelectedRows[0];
+            if (Convert.ToInt32(dataRow.Cells["IDCustomer"].Value) == 1)
             {
                 DGVCustomers.ClearSelection();
                 IdleLayout();
