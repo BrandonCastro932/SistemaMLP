@@ -35,6 +35,15 @@ namespace MLPlib.Class
             return result;
         }
 
+        public int ConfirmPayReceipt()
+        {
+            SistemaMLPDataSetTableAdapters.ReceiptTableAdapter receiptAdapter = new SistemaMLPDataSetTableAdapters.ReceiptTableAdapter();
+
+            int result = (int)receiptAdapter.SPConfirmReceipt(this.IDReceipt);
+
+            return result;
+        }
+
         public DataTable GetReceipts(string filter = "")
         {
             SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();

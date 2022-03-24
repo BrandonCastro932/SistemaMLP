@@ -1,3 +1,5 @@
+using System.Data;
+
 namespace MLPlib.Class
 {
     public class ReceiptDetails
@@ -21,6 +23,15 @@ namespace MLPlib.Class
             int result = (int)receiptDetailsAdapter.SPInsertReceiptDetail(this.IDReceipt, this.IDProduct, this.IDCutType, this.Quantity, this.DetailPrice);
 
             return result;
+        }
+
+        public DataTable GetReceiptDetails()
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.ReceiptDetailsTableAdapter receiptDetailsAdapter = new SistemaMLPDataSetTableAdapters.ReceiptDetailsTableAdapter();
+
+            receiptDetailsAdapter.FillBy(sistemaMLPDataSet.ReceiptDetails,this.IDReceipt);
+            return sistemaMLPDataSet.ReceiptDetails;
         }
     }
 }

@@ -294,13 +294,17 @@ namespace SistemaMLP.Forms.BillingForms
                                 IDProduct = Convert.ToInt32(dr["IDProduct"].ToString()),
 
                                 Quantity = Convert.ToDecimal(dr["Quantity"].ToString()),
-                                DetailPrice = Convert.ToDecimal(dr["Quantity"].ToString()) * Convert.ToDecimal(dr["UnitPrice"].ToString())
+                                DetailPrice = (Convert.ToDecimal(dr["Quantity"].ToString()) * Convert.ToDecimal(dr["UnitPrice"].ToString()) * (Convert.ToDecimal(dr["Tax"].ToString()) / 100))
 
                             };
 
                             if (dr["IDCutType"].ToString() != String.Empty)
                             {
                                 receiptDetails.IDCutType = Convert.ToInt32(dr["IDCutType"].ToString());
+                            }
+                            else if(dr["IDCutType"].ToString() == String.Empty && product.StockType == 1)
+                            {
+                                receiptDetails.IDCutType = 1;
                             }
 
                             int j = receiptDetails.CreateReceiptDetail();
@@ -378,9 +382,10 @@ namespace SistemaMLP.Forms.BillingForms
                     dr1["LineType"] = Convert.ToString(CbCuts.Text);
                     dr1["IDCutType"] = CbCuts.SelectedValue;
                 }
-                else if (CbCuts.Visible && dr1["StockTypeName"].ToString() == "Kilos")
+                //Ojo el visible de este if
+                else if (!CbCuts.Visible && dr1["StockTypeName"].ToString() == "Kilos")
                 {
-                    dr1["LineType"] = "Filet";
+                    dr1["LineType"] = "Kilos";
                     dr1["IDCutType"] = 1;
                 }
                 else

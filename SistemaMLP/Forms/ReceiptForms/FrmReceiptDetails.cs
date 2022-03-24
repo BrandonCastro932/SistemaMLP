@@ -21,6 +21,7 @@ namespace SistemaMLP.Forms.ReceiptForms
         private void FrmReceiptDetails_Load(object sender, EventArgs e)
         {
             FillInfo();
+            FillDGV();
         }
 
         private void FillInfo()
@@ -48,6 +49,17 @@ namespace SistemaMLP.Forms.ReceiptForms
                 BtnPaymentConfirm.Visible = false;
             }
 
+            if(customer.PersonalID == "1")
+            {
+                LblTitlePersonalID.Visible = false;
+                LblPersonalID.Visible = false;
+            }
+            else
+            {
+                LblTitlePersonalID.Visible = true;
+                LblPersonalID.Visible = true;
+            }
+
             if (receipt.PaymentConfirmed)
             {
                 LblCancel.Visible = true;
@@ -59,6 +71,38 @@ namespace SistemaMLP.Forms.ReceiptForms
 
             LblUsername.Text = user.Username.ToString();
 
+        }
+
+        private void FillDGV()
+        {
+            receiptDetails.IDReceipt = receipt.IDReceipt;
+            DGVReceiptDetails.DataSource = receiptDetails.GetReceiptDetails();
+
+            DGVReceiptDetails.Columns["IDDetail"].Visible = false;
+            DGVReceiptDetails.Columns["IDReceipt"].Visible = false;
+            DGVReceiptDetails.Columns["IDProduct"].Visible = false;
+            DGVReceiptDetails.Columns["IDCutType"].Visible = false;
+            DGVReceiptDetails.Columns["Active"].Visible = false;
+            DGVReceiptDetails.Columns["LastUpdate"].Visible = false;
+            DGVReceiptDetails.Columns["RegDate"].Visible = false;
+            DGVReceiptDetails.Columns["GeneralStock"].Visible = false;
+            DGVReceiptDetails.Columns["IDCutType"].Visible = false;
+            DGVReceiptDetails.Columns["Barcode"].Visible = false;
+            DGVReceiptDetails.Columns["UnitPrice"].Visible = false;
+            DGVReceiptDetails.Columns["Tax"].Visible = false;
+
+            DGVReceiptDetails.Columns["Quantity"].HeaderText = "Cantidad comprada";
+            DGVReceiptDetails.Columns["DetailPrice"].HeaderText = "Precio detalle";
+            DGVReceiptDetails.Columns["ProductName"].HeaderText = "Producto";
+            DGVReceiptDetails.Columns["StockTypeName"].HeaderText = "Tipo de inventario";
+            DGVReceiptDetails.Columns["CutName"].HeaderText = "Corte comprado";
+
+            DGVReceiptDetails.Columns["ProductName"].DisplayIndex = 0;
+            DGVReceiptDetails.Columns["Quantity"].DisplayIndex = 1;
+            DGVReceiptDetails.Columns["StockTypeName"].DisplayIndex = 2;
+            DGVReceiptDetails.Columns["CutName"].DisplayIndex = 3;
+
+            DGVReceiptDetails.Columns["ProductName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -78,7 +122,24 @@ namespace SistemaMLP.Forms.ReceiptForms
 
         private void BtnPaymentConfirm_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult dialog = MessageBox.Show("Está seguro que desea confirmar el pago de la factura?","Confirmar pago",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialog == DialogResult.Yes)
+                {
+                    if (receipt.ConfirmPayReceipt() == 1)
+                    {
+                        MessageBox.Show("Se ha confirmado el pago", "Pago confirmado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Utilities.Utilities.CreateLog("ha confirmado el pago de la factura: " + receipt.ReceiptCode);
+                        this.DialogResult = DialogResult.OK;
+                        return;
+                    }
+                }
+            }
+            catch
+            {
 
+            }
         }
     }
 }

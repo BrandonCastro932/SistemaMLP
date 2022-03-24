@@ -270,9 +270,15 @@
             // 
             // DGVReceiptDetails
             // 
+            this.DGVReceiptDetails.AllowUserToAddRows = false;
+            this.DGVReceiptDetails.AllowUserToDeleteRows = false;
+            this.DGVReceiptDetails.AllowUserToResizeColumns = false;
+            this.DGVReceiptDetails.AllowUserToResizeRows = false;
             this.DGVReceiptDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVReceiptDetails.Location = new System.Drawing.Point(12, 202);
             this.DGVReceiptDetails.Name = "DGVReceiptDetails";
+            this.DGVReceiptDetails.ReadOnly = true;
+            this.DGVReceiptDetails.RowHeadersVisible = false;
             this.DGVReceiptDetails.Size = new System.Drawing.Size(601, 182);
             this.DGVReceiptDetails.TabIndex = 23;
             // 
@@ -281,6 +287,7 @@
             this.TxtNotes.Location = new System.Drawing.Point(338, 422);
             this.TxtNotes.Multiline = true;
             this.TxtNotes.Name = "TxtNotes";
+            this.TxtNotes.ReadOnly = true;
             this.TxtNotes.Size = new System.Drawing.Size(275, 79);
             this.TxtNotes.TabIndex = 24;
             this.TxtNotes.TextChanged += new System.EventHandler(this.TxtNotes_TextChanged);
@@ -342,7 +349,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmReceiptDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmReceiptDetails";
+            this.Text = "Detalles de factura";
             this.Load += new System.EventHandler(this.FrmReceiptDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVReceiptDetails)).EndInit();
             this.ResumeLayout(false);
