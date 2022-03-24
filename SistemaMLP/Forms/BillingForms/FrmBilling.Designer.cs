@@ -53,11 +53,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.LblCustomerName = new System.Windows.Forms.Label();
             this.BtnSelectCustomer = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVProducts)).BeginInit();
             this.Gb_Products.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UDQuantity)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVLines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // DGVProducts
@@ -68,6 +70,7 @@
             this.DGVProducts.AllowUserToResizeRows = false;
             this.DGVProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVProducts.Location = new System.Drawing.Point(24, 49);
+            this.DGVProducts.MultiSelect = false;
             this.DGVProducts.Name = "DGVProducts";
             this.DGVProducts.ReadOnly = true;
             this.DGVProducts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -306,6 +309,7 @@
             this.DGVLines.AllowUserToResizeRows = false;
             this.DGVLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVLines.Location = new System.Drawing.Point(24, 19);
+            this.DGVLines.MultiSelect = false;
             this.DGVLines.Name = "DGVLines";
             this.DGVLines.ReadOnly = true;
             this.DGVLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -343,11 +347,22 @@
             this.BtnSelectCustomer.UseVisualStyleBackColor = true;
             this.BtnSelectCustomer.Click += new System.EventHandler(this.BtnSelectCustomer_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(891, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(110, 52);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmBilling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 617);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BtnSelectCustomer);
             this.Controls.Add(this.LblCustomerName);
             this.Controls.Add(this.label2);
@@ -370,6 +385,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVLines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,5 +418,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox CbCuts;
         private System.Windows.Forms.Label LblCuts;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

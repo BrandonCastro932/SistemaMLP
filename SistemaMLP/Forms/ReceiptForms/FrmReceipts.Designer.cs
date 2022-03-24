@@ -36,7 +36,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.TtSearch = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVReceipts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // DGVReceipts
@@ -109,11 +111,22 @@
             this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             this.TxtSearch.MouseHover += new System.EventHandler(this.TxtSearch_MouseHover);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(765, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(94, 44);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmReceipts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 460);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.TxtSearch);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -128,6 +141,7 @@
             this.Text = "Facturas";
             this.Load += new System.EventHandler(this.FrmReceipts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVReceipts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,5 +156,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtSearch;
         private System.Windows.Forms.ToolTip TtSearch;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

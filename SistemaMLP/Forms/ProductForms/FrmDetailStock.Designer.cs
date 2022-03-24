@@ -70,6 +70,7 @@
             this.DGVDetailedStock.AllowUserToResizeRows = false;
             this.DGVDetailedStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVDetailedStock.Location = new System.Drawing.Point(30, 188);
+            this.DGVDetailedStock.MultiSelect = false;
             this.DGVDetailedStock.Name = "DGVDetailedStock";
             this.DGVDetailedStock.ReadOnly = true;
             this.DGVDetailedStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

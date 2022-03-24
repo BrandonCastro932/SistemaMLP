@@ -38,7 +38,9 @@
             this.BtnDelete = new System.Windows.Forms.Button();
             this.TtSearch = new System.Windows.Forms.ToolTip(this.components);
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // LblTitle
@@ -59,6 +61,7 @@
             this.DGVUsers.AllowUserToResizeRows = false;
             this.DGVUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVUsers.Location = new System.Drawing.Point(12, 78);
+            this.DGVUsers.MultiSelect = false;
             this.DGVUsers.Name = "DGVUsers";
             this.DGVUsers.ReadOnly = true;
             this.DGVUsers.RowHeadersVisible = false;
@@ -130,11 +133,22 @@
             this.checkBox1.Text = "Ver usuarios eliminados";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(94, 44);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 318);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnEdit);
@@ -153,6 +167,7 @@
             this.Load += new System.EventHandler(this.FrmUsers_Load);
             this.Click += new System.EventHandler(this.FrmUsers_Click);
             ((System.ComponentModel.ISupportInitialize)(this.DGVUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +184,6 @@
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.ToolTip TtSearch;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

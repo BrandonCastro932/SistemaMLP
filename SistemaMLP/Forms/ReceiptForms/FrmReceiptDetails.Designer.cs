@@ -54,7 +54,9 @@
             this.TxtNotes = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.LblCancel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVReceiptDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -70,7 +72,7 @@
             // 
             // BtnPaymentConfirm
             // 
-            this.BtnPaymentConfirm.Location = new System.Drawing.Point(317, 149);
+            this.BtnPaymentConfirm.Location = new System.Drawing.Point(317, 165);
             this.BtnPaymentConfirm.Name = "BtnPaymentConfirm";
             this.BtnPaymentConfirm.Size = new System.Drawing.Size(114, 27);
             this.BtnPaymentConfirm.TabIndex = 1;
@@ -92,7 +94,7 @@
             // 
             this.LblTitleReceipt.AutoSize = true;
             this.LblTitleReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitleReceipt.Location = new System.Drawing.Point(37, 53);
+            this.LblTitleReceipt.Location = new System.Drawing.Point(37, 69);
             this.LblTitleReceipt.Name = "LblTitleReceipt";
             this.LblTitleReceipt.Size = new System.Drawing.Size(84, 18);
             this.LblTitleReceipt.TabIndex = 3;
@@ -102,7 +104,7 @@
             // 
             this.LblTitlePersonalID.AutoSize = true;
             this.LblTitlePersonalID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitlePersonalID.Location = new System.Drawing.Point(38, 128);
+            this.LblTitlePersonalID.Location = new System.Drawing.Point(38, 144);
             this.LblTitlePersonalID.Name = "LblTitlePersonalID";
             this.LblTitlePersonalID.Size = new System.Drawing.Size(146, 18);
             this.LblTitlePersonalID.TabIndex = 4;
@@ -112,7 +114,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(314, 128);
+            this.label4.Location = new System.Drawing.Point(314, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(135, 18);
             this.label4.TabIndex = 5;
@@ -121,7 +123,7 @@
             // LblPaymentMethod
             // 
             this.LblPaymentMethod.AutoSize = true;
-            this.LblPaymentMethod.Location = new System.Drawing.Point(444, 130);
+            this.LblPaymentMethod.Location = new System.Drawing.Point(444, 146);
             this.LblPaymentMethod.Name = "LblPaymentMethod";
             this.LblPaymentMethod.Size = new System.Drawing.Size(105, 16);
             this.LblPaymentMethod.TabIndex = 6;
@@ -131,7 +133,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(314, 93);
+            this.label6.Location = new System.Drawing.Point(314, 109);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(162, 18);
             this.label6.TabIndex = 7;
@@ -140,7 +142,7 @@
             // LblDate
             // 
             this.LblDate.AutoSize = true;
-            this.LblDate.Location = new System.Drawing.Point(472, 95);
+            this.LblDate.Location = new System.Drawing.Point(472, 111);
             this.LblDate.Name = "LblDate";
             this.LblDate.Size = new System.Drawing.Size(36, 16);
             this.LblDate.TabIndex = 8;
@@ -150,7 +152,7 @@
             // 
             this.LblTitleFullname.AutoSize = true;
             this.LblTitleFullname.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitleFullname.Location = new System.Drawing.Point(38, 91);
+            this.LblTitleFullname.Location = new System.Drawing.Point(38, 107);
             this.LblTitleFullname.Name = "LblTitleFullname";
             this.LblTitleFullname.Size = new System.Drawing.Size(65, 18);
             this.LblTitleFullname.TabIndex = 9;
@@ -159,7 +161,7 @@
             // LblFullname
             // 
             this.LblFullname.AutoSize = true;
-            this.LblFullname.Location = new System.Drawing.Point(100, 93);
+            this.LblFullname.Location = new System.Drawing.Point(100, 109);
             this.LblFullname.Name = "LblFullname";
             this.LblFullname.Size = new System.Drawing.Size(48, 16);
             this.LblFullname.TabIndex = 10;
@@ -169,7 +171,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(314, 53);
+            this.label10.Location = new System.Drawing.Point(314, 69);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 18);
             this.label10.TabIndex = 11;
@@ -188,7 +190,7 @@
             // LblPersonalID
             // 
             this.LblPersonalID.AutoSize = true;
-            this.LblPersonalID.Location = new System.Drawing.Point(178, 130);
+            this.LblPersonalID.Location = new System.Drawing.Point(178, 146);
             this.LblPersonalID.Name = "LblPersonalID";
             this.LblPersonalID.Size = new System.Drawing.Size(74, 16);
             this.LblPersonalID.TabIndex = 13;
@@ -197,7 +199,7 @@
             // LblUsername
             // 
             this.LblUsername.AutoSize = true;
-            this.LblUsername.Location = new System.Drawing.Point(380, 55);
+            this.LblUsername.Location = new System.Drawing.Point(380, 71);
             this.LblUsername.Name = "LblUsername";
             this.LblUsername.Size = new System.Drawing.Size(70, 16);
             this.LblUsername.TabIndex = 15;
@@ -206,7 +208,7 @@
             // LblReceiptCode
             // 
             this.LblReceiptCode.AutoSize = true;
-            this.LblReceiptCode.Location = new System.Drawing.Point(117, 56);
+            this.LblReceiptCode.Location = new System.Drawing.Point(117, 72);
             this.LblReceiptCode.Name = "LblReceiptCode";
             this.LblReceiptCode.Size = new System.Drawing.Size(112, 16);
             this.LblReceiptCode.TabIndex = 16;
@@ -276,6 +278,7 @@
             this.DGVReceiptDetails.AllowUserToResizeRows = false;
             this.DGVReceiptDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVReceiptDetails.Location = new System.Drawing.Point(12, 202);
+            this.DGVReceiptDetails.MultiSelect = false;
             this.DGVReceiptDetails.Name = "DGVReceiptDetails";
             this.DGVReceiptDetails.ReadOnly = true;
             this.DGVReceiptDetails.RowHeadersVisible = false;
@@ -313,11 +316,22 @@
             this.LblCancel.TabIndex = 26;
             this.LblCancel.Text = "Cancelada";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(94, 44);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmReceiptDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 583);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.LblCancel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TxtNotes);
@@ -352,6 +366,7 @@
             this.Text = "Detalles de factura";
             this.Load += new System.EventHandler(this.FrmReceiptDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVReceiptDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,5 +400,6 @@
         private System.Windows.Forms.TextBox TxtNotes;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LblCancel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

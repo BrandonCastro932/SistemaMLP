@@ -36,7 +36,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtSearch = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // DGVProduct
@@ -47,6 +49,7 @@
             this.DGVProduct.AllowUserToResizeRows = false;
             this.DGVProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVProduct.Location = new System.Drawing.Point(12, 62);
+            this.DGVProduct.MultiSelect = false;
             this.DGVProduct.Name = "DGVProduct";
             this.DGVProduct.ReadOnly = true;
             this.DGVProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -69,7 +72,7 @@
             // BtnDelete
             // 
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.Location = new System.Drawing.Point(1066, 316);
+            this.BtnDelete.Location = new System.Drawing.Point(1066, 219);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(149, 46);
             this.BtnDelete.TabIndex = 7;
@@ -80,7 +83,7 @@
             // BtnEdit
             // 
             this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEdit.Location = new System.Drawing.Point(1066, 188);
+            this.BtnEdit.Location = new System.Drawing.Point(1066, 140);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(149, 46);
             this.BtnEdit.TabIndex = 6;
@@ -129,11 +132,22 @@
             this.TxtSearch.TabIndex = 8;
             this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(1083, 310);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(110, 52);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1242, 388);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Cbx_Deleted);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -152,6 +166,7 @@
             this.Load += new System.EventHandler(this.FrmProduct_Load);
             this.Click += new System.EventHandler(this.FrmProduct_Click);
             ((System.ComponentModel.ISupportInitialize)(this.DGVProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +182,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtSearch;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

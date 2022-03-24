@@ -36,7 +36,9 @@
             this.BtnDelete = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.Cbx_Deleted = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // DGVCustomers
@@ -47,6 +49,7 @@
             this.DGVCustomers.AllowUserToResizeRows = false;
             this.DGVCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVCustomers.Location = new System.Drawing.Point(12, 52);
+            this.DGVCustomers.MultiSelect = false;
             this.DGVCustomers.Name = "DGVCustomers";
             this.DGVCustomers.ReadOnly = true;
             this.DGVCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -88,7 +91,7 @@
             // BtnEdit
             // 
             this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEdit.Location = new System.Drawing.Point(1036, 205);
+            this.BtnEdit.Location = new System.Drawing.Point(1036, 120);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(137, 46);
             this.BtnEdit.TabIndex = 4;
@@ -99,7 +102,7 @@
             // BtnDelete
             // 
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.Location = new System.Drawing.Point(1036, 347);
+            this.BtnDelete.Location = new System.Drawing.Point(1036, 189);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(137, 46);
             this.BtnDelete.TabIndex = 5;
@@ -129,11 +132,22 @@
             this.Cbx_Deleted.UseVisualStyleBackColor = true;
             this.Cbx_Deleted.CheckedChanged += new System.EventHandler(this.Cbx_Deleted_CheckedChanged);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(1054, 341);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(110, 52);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 409);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Cbx_Deleted);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.BtnDelete);
@@ -153,6 +167,7 @@
             this.Shown += new System.EventHandler(this.FrmCustomers_Shown);
             this.Click += new System.EventHandler(this.FrmCustomers_Click);
             ((System.ComponentModel.ISupportInitialize)(this.DGVCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +183,6 @@
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox Cbx_Deleted;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

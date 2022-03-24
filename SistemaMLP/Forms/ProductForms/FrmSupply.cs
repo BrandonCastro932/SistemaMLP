@@ -186,26 +186,30 @@ namespace SistemaMLP.Forms.ProductForms
 
         private void DGVProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            DataGridViewRow dataRow = DGVProduct.SelectedRows[0];
-            product = new Product
-            {
-                IDProduct = Convert.ToInt32(dataRow.Cells["IDProduct"].Value),
-                ProductName = Convert.ToString(dataRow.Cells["ProductName"].Value),
-                BarCode = Convert.ToString(dataRow.Cells["BarCode"].Value),
-                UnitPrice = Convert.ToDecimal(dataRow.Cells["UnitPrice"].Value),
-                Tax = Convert.ToDecimal(dataRow.Cells["Tax"].Value),
-                StockType = Convert.ToInt32(dataRow.Cells["StockType"].Value),
-                GeneralStock = Convert.ToDecimal(dataRow.Cells["GeneralStock"].Value),
-                RegDate = Convert.ToDateTime(dataRow.Cells["RegDate"].Value),
-                LastUpdate = Convert.ToDateTime(dataRow.Cells["LastUpdate"].Value),
-                Active = Convert.ToBoolean(dataRow.Cells["Active"].Value)
-            };
-            GetProductDetailedStock();
-            BtnLayout();
-
-            if (e.RowIndex == -1 || e.ColumnIndex != 3)
+            if (e.RowIndex == -1)
                 return;
+
+            if (DGVProduct.SelectedRows.Count > 0)
+            {
+                DataGridViewRow dataRow = DGVProduct.SelectedRows[0];
+                product = new Product
+                {
+                    IDProduct = Convert.ToInt32(dataRow.Cells["IDProduct"].Value),
+                    ProductName = Convert.ToString(dataRow.Cells["ProductName"].Value),
+                    BarCode = Convert.ToString(dataRow.Cells["BarCode"].Value),
+                    UnitPrice = Convert.ToDecimal(dataRow.Cells["UnitPrice"].Value),
+                    Tax = Convert.ToDecimal(dataRow.Cells["Tax"].Value),
+                    StockType = Convert.ToInt32(dataRow.Cells["StockType"].Value),
+                    GeneralStock = Convert.ToDecimal(dataRow.Cells["GeneralStock"].Value),
+                    RegDate = Convert.ToDateTime(dataRow.Cells["RegDate"].Value),
+                    LastUpdate = Convert.ToDateTime(dataRow.Cells["LastUpdate"].Value),
+                    Active = Convert.ToBoolean(dataRow.Cells["Active"].Value)
+                };
+                GetProductDetailedStock();
+                BtnLayout();
+            }
+
+
         }
 
         private void TxtStock_KeyPress(object sender, KeyPressEventArgs e)

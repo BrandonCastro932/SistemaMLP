@@ -40,8 +40,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtStock = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVProduct)).BeginInit();
             this.GbActions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -70,6 +72,7 @@
             this.DGVProduct.AllowUserToResizeRows = false;
             this.DGVProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVProduct.Location = new System.Drawing.Point(12, 77);
+            this.DGVProduct.MultiSelect = false;
             this.DGVProduct.Name = "DGVProduct";
             this.DGVProduct.ReadOnly = true;
             this.DGVProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -175,11 +178,22 @@
             this.TxtStock.TextChanged += new System.EventHandler(this.TxtStock_TextChanged);
             this.TxtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtStock_KeyPress);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(126, 462);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(99, 49);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 43;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmSupply
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 518);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.TxtStock);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -199,6 +213,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGVProduct)).EndInit();
             this.GbActions.ResumeLayout(false);
             this.GbActions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +233,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TxtStock;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

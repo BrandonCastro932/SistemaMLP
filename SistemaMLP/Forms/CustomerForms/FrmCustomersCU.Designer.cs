@@ -43,6 +43,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.TxtBusinessPhoneNum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -149,7 +151,7 @@
             // 
             this.LblTitle.AutoSize = true;
             this.LblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitle.Location = new System.Drawing.Point(58, 31);
+            this.LblTitle.Location = new System.Drawing.Point(12, 35);
             this.LblTitle.Name = "LblTitle";
             this.LblTitle.Size = new System.Drawing.Size(185, 25);
             this.LblTitle.TabIndex = 10;
@@ -193,11 +195,22 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Teléfono de empresa:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(203, 25);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(94, 44);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmCustomersCU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(304, 489);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.TxtBusinessPhoneNum);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.TxtPhoneNumber);
@@ -221,6 +234,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar cliente";
             this.Load += new System.EventHandler(this.FrmCustomersCU_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,5 +257,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxtBusinessPhoneNum;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

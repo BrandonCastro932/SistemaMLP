@@ -50,7 +50,9 @@
             this.LblPayments = new System.Windows.Forms.Label();
             this.LblReceiptTotal = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPayments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnCancel
@@ -252,6 +254,7 @@
             this.DGVPayments.AllowUserToResizeRows = false;
             this.DGVPayments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVPayments.Location = new System.Drawing.Point(12, 254);
+            this.DGVPayments.MultiSelect = false;
             this.DGVPayments.Name = "DGVPayments";
             this.DGVPayments.RowHeadersVisible = false;
             this.DGVPayments.Size = new System.Drawing.Size(377, 102);
@@ -287,12 +290,23 @@
             this.label10.TabIndex = 7;
             this.label10.Text = "Precio de la compra:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(289, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(110, 52);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmCreditPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancel;
             this.ClientSize = new System.Drawing.Size(401, 476);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.LblPayments);
             this.Controls.Add(this.DGVPayments);
             this.Controls.Add(this.BtnPayAll);
@@ -324,6 +338,7 @@
             this.Text = "Abonar";
             this.Load += new System.EventHandler(this.FrmCreditPayment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVPayments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,5 +368,6 @@
         private System.Windows.Forms.Label LblPayments;
         private System.Windows.Forms.Label LblReceiptTotal;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

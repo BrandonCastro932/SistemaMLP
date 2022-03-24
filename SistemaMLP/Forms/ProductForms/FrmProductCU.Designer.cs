@@ -46,6 +46,8 @@
             this.BtnDetail = new System.Windows.Forms.Button();
             this.TxtStockTypeDetail = new System.Windows.Forms.TextBox();
             this.LblStockTypeDetail = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtUnitPrice
@@ -72,7 +74,7 @@
             // 
             this.LblTitle.AutoSize = true;
             this.LblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitle.Location = new System.Drawing.Point(49, 20);
+            this.LblTitle.Location = new System.Drawing.Point(2, 9);
             this.LblTitle.Name = "LblTitle";
             this.LblTitle.Size = new System.Drawing.Size(207, 25);
             this.LblTitle.TabIndex = 25;
@@ -228,11 +230,22 @@
             this.LblStockTypeDetail.Text = "Peso de:";
             this.LblStockTypeDetail.Visible = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(196, 29);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(94, 44);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 40;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmProductCU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 370);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.LblStockTypeDetail);
             this.Controls.Add(this.TxtStockTypeDetail);
             this.Controls.Add(this.BtnDetail);
@@ -258,6 +271,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de producto";
             this.Load += new System.EventHandler(this.FrmProductCU_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +296,6 @@
         private System.Windows.Forms.Button BtnDetail;
         private System.Windows.Forms.TextBox TxtStockTypeDetail;
         private System.Windows.Forms.Label LblStockTypeDetail;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
