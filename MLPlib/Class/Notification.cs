@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 
 namespace MLPlib.Class
 {
@@ -13,6 +14,17 @@ namespace MLPlib.Class
         public Notification()
         {
             Seen = false;
+        }
+
+        public DataTable GetNotifications()
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.NotificationTableAdapter notificationTableAdapter = new SistemaMLPDataSetTableAdapters.NotificationTableAdapter();
+
+
+            notificationTableAdapter.Fill(sistemaMLPDataSet.Notification);
+            return sistemaMLPDataSet.Notification;
+
         }
 
     }

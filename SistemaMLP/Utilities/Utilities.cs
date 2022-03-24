@@ -20,7 +20,7 @@ namespace SistemaMLP.Utilities
         public static Forms.LogForm.FrmLog frmLog = new Forms.LogForm.FrmLog();
         public static Forms.CreditForms.FrmCreditReceipts frmCredit = new Forms.CreditForms.FrmCreditReceipts();
         public static Forms.UserForms.FrmUsers frmUsers = new Forms.UserForms.FrmUsers();
-
+        public static Forms.NotificationForms.FrmNotification frmNotification = new Forms.NotificationForms.FrmNotification();
         
 
         public static User user = new User

@@ -57,7 +57,7 @@
             // 
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancel.Location = new System.Drawing.Point(13, 421);
-            this.BtnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(110, 37);
             this.BtnCancel.TabIndex = 0;
@@ -66,8 +66,9 @@
             // 
             // BtnAccept
             // 
+            this.BtnAccept.Enabled = false;
             this.BtnAccept.Location = new System.Drawing.Point(278, 421);
-            this.BtnAccept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAccept.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAccept.Name = "BtnAccept";
             this.BtnAccept.Size = new System.Drawing.Size(110, 37);
             this.BtnAccept.TabIndex = 1;
@@ -222,6 +223,7 @@
             this.TxtPayment.Name = "TxtPayment";
             this.TxtPayment.Size = new System.Drawing.Size(135, 22);
             this.TxtPayment.TabIndex = 15;
+            this.TxtPayment.TextChanged += new System.EventHandler(this.TxtPayment_TextChanged);
             this.TxtPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPayment_KeyPress);
             // 
             // label3
@@ -315,7 +317,7 @@
             this.Controls.Add(this.BtnCancel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCreditPayment";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -80,7 +80,15 @@ namespace SistemaMLP.Forms.CreditForms
                         if (payments.CreateCreditPayment() == 1)
                         {
                             MessageBox.Show("Se ha registrado el abono", "Abono registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Utilities.Utilities.CreateLog("ha registrado un abono de: ₡" + TxtPayment.Text + " a la factura a crédito:" + receipt.ReceiptCode.ToString() + " del cliente: " + customer.Fullname);
+
+                            if(Convert.ToDecimal(TxtPayment.Text) < creditDetails.ActualAmount)
+                            {
+                                Utilities.Utilities.CreateLog("ha registrado un abono de: ₡" + TxtPayment.Text + " a la factura a crédito:" + receipt.ReceiptCode.ToString() + " del cliente: " + customer.Fullname);
+                            }
+                            else
+                            {
+                                Utilities.Utilities.CreateLog("ha cancelado la factura a crédito:" + receipt.ReceiptCode.ToString() + " del cliente: " + customer.Fullname);
+                            }
                             this.DialogResult = DialogResult.OK;
                         }
                     }
@@ -108,6 +116,18 @@ namespace SistemaMLP.Forms.CreditForms
             if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void TxtPayment_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(TxtPayment.Text))
+            {
+                BtnAccept.Enabled = true;
+            }
+            else
+            {
+                BtnAccept.Enabled = false;
             }
         }
     }

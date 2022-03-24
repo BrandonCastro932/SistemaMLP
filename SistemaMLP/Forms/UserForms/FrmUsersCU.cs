@@ -112,7 +112,7 @@ namespace SistemaMLP.Forms.UserForms
                         if (user1.UpdateUser(TxtPin2.Text) == 1)
                         {
                             MessageBox.Show("El pin del usuario ha sido cambiado correctamente", "Usuario editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Utilities.Utilities.CreateLog("ha registrado un nuevo usuario: " + user1.Username);
+                            Utilities.Utilities.CreateLog("ha cambiado el pin del usuario: " + user1.Username);
                             this.DialogResult = DialogResult.OK;
                             return;
                         }

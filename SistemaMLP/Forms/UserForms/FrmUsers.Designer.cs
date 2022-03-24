@@ -37,6 +37,7 @@
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.TtSearch = new System.Windows.Forms.ToolTip(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVUsers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             this.DGVUsers.ReadOnly = true;
             this.DGVUsers.RowHeadersVisible = false;
             this.DGVUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVUsers.Size = new System.Drawing.Size(362, 222);
+            this.DGVUsers.Size = new System.Drawing.Size(390, 222);
             this.DGVUsers.TabIndex = 1;
             this.DGVUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVUsers_CellClick);
             this.DGVUsers.DoubleClick += new System.EventHandler(this.DGVUsers_DoubleClick);
@@ -89,7 +90,7 @@
             // BtnAdd
             // 
             this.BtnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAdd.Location = new System.Drawing.Point(380, 78);
+            this.BtnAdd.Location = new System.Drawing.Point(408, 78);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(128, 46);
             this.BtnAdd.TabIndex = 4;
@@ -100,7 +101,7 @@
             // BtnEdit
             // 
             this.BtnEdit.Enabled = false;
-            this.BtnEdit.Location = new System.Drawing.Point(380, 166);
+            this.BtnEdit.Location = new System.Drawing.Point(408, 166);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(128, 45);
             this.BtnEdit.TabIndex = 5;
@@ -111,7 +112,7 @@
             // BtnDelete
             // 
             this.BtnDelete.Enabled = false;
-            this.BtnDelete.Location = new System.Drawing.Point(380, 255);
+            this.BtnDelete.Location = new System.Drawing.Point(408, 255);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(128, 45);
             this.BtnDelete.TabIndex = 6;
@@ -119,11 +120,22 @@
             this.BtnDelete.UseVisualStyleBackColor = true;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(380, 49);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(170, 20);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "Ver usuarios eliminados";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // FrmUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 318);
+            this.ClientSize = new System.Drawing.Size(548, 318);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnEdit);
             this.Controls.Add(this.BtnAdd);
@@ -156,5 +168,6 @@
         private System.Windows.Forms.Button BtnEdit;
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.ToolTip TtSearch;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

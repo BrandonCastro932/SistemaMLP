@@ -1,4 +1,5 @@
-﻿using MLPlib.Class;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using MLPlib.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace SistemaMLP.Forms
     public partial class FrmMain : Form
     {
         private SqlTableDependency<CreditDetails> creditPaymentsDependency = new SqlTableDependency<CreditDetails>("Data Source=.;Initial Catalog=SistemaMLP;Integrated Security=True");
+
         private CreditDetails creditDetails = new CreditDetails();
 
         public FrmMain()
@@ -32,7 +34,10 @@ namespace SistemaMLP.Forms
 
             creditPaymentsDependency.OnChanged += CreditDetailsTableDependency_Changed;
 
+
+
             creditPaymentsDependency.Start();
+
         }
 
         public void CreditDetailsTableDependency_Changed(object sender, RecordChangedEventArgs<CreditDetails> e)
@@ -45,6 +50,11 @@ namespace SistemaMLP.Forms
 
             }
         }
+
+
+        
+
+
 
         private void facturarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -122,6 +132,16 @@ namespace SistemaMLP.Forms
                 Utilities.Utilities.frmUsers = new UserForms.FrmUsers();
                 Utilities.Utilities.frmUsers.Show();
             }
+        }
+
+        private void notificacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Utilities.Utilities.frmNotification.Visible)
+            {
+                Utilities.Utilities.frmNotification = new NotificationForms.FrmNotification();
+                Utilities.Utilities.frmNotification.Show();
+            }
+            //new ToastContentBuilder().AddText("Notificaciones disponibles").AddHeader("1", "Sistema Mariscos La Puebla", "").Show();
         }
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.LblNotification = new System.Windows.Forms.ToolStripStatusLabel();
             this.LblCredito = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inventariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +51,6 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LblNotification,
             this.LblCredito});
             this.statusStrip1.Location = new System.Drawing.Point(0, 551);
             this.statusStrip1.Name = "statusStrip1";
@@ -60,17 +58,11 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // LblNotification
-            // 
-            this.LblNotification.Name = "LblNotification";
-            this.LblNotification.Size = new System.Drawing.Size(150, 17);
-            this.LblNotification.Text = "Notifiaciones pendientes: 0";
-            // 
             // LblCredito
             // 
             this.LblCredito.Name = "LblCredito";
-            this.LblCredito.Size = new System.Drawing.Size(133, 17);
-            this.LblCredito.Text = "Total en crédito: 129,200";
+            this.LblCredito.Size = new System.Drawing.Size(100, 17);
+            this.LblCredito.Text = "Total en crédito: 0";
             // 
             // menuStrip1
             // 
@@ -158,6 +150,7 @@
             this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
             this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
+            this.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
             // 
             // bitácoraToolStripMenuItem
             // 
@@ -178,7 +171,7 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click_1);
             // 
@@ -214,7 +207,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ToolStripStatusLabel LblNotification;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem inventariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
