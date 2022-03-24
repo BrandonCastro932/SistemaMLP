@@ -16,6 +16,15 @@ namespace MLPlib.Class
             Seen = false;
         }
 
+        public int NotificationsSeen()
+        {
+            SistemaMLPDataSetTableAdapters.NotificationTableAdapter notificationAdapter = new SistemaMLPDataSetTableAdapters.NotificationTableAdapter();
+
+            int result = (int)notificationAdapter.SPNotificationsSeen();
+
+            return result;
+        }
+
         public DataTable GetNotifications()
         {
             SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();

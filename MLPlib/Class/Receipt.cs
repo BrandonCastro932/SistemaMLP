@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace MLPlib.Class
 {
@@ -34,6 +35,14 @@ namespace MLPlib.Class
             return result;
         }
 
+        public DataTable GetReceipts(string filter = "")
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.ReceiptTableAdapter receiptsAdapter = new SistemaMLPDataSetTableAdapters.ReceiptTableAdapter();
+
+            receiptsAdapter.SPGetReceipts(sistemaMLPDataSet.Receipt, filter);
+            return sistemaMLPDataSet.Receipt;
+        }
 
     }
 }

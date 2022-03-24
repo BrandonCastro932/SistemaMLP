@@ -30,7 +30,7 @@ namespace MLPlib.Class
         {
             SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter detailedStockAdapter = new SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter();
 
-            int result = (int)detailedStockAdapter.SPUpdateDetailedStock(this.IDDetailedStock,this.IDProduct, this.IDCutType, this.Stock, this.RegDate);
+            int result = (int)detailedStockAdapter.SPUpdateDetailedStock(this.IDDetailedStock, this.IDProduct, this.IDCutType, this.Stock, this.RegDate);
 
             return result;
         }
@@ -55,7 +55,7 @@ namespace MLPlib.Class
             if (data.Rows.Count > 0)
             {
                 this.IDDetailedStock = Convert.ToInt32(data.Rows[0]["IDProduct"].ToString());
-               
+
                 this.RegDate = Convert.ToDateTime(data.Rows[0]["RegDate"].ToString());
             }
 

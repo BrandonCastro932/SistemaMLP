@@ -127,7 +127,7 @@
             // 
             this.facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
             this.facturarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.facturarToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.facturarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.facturarToolStripMenuItem.Text = "Facturar";
             this.facturarToolStripMenuItem.Click += new System.EventHandler(this.facturarToolStripMenuItem_Click);
             // 
@@ -135,12 +135,14 @@
             // 
             this.verFacturasToolStripMenuItem.Name = "verFacturasToolStripMenuItem";
             this.verFacturasToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.verFacturasToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.verFacturasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.verFacturasToolStripMenuItem.Text = "Ver facturas";
+            this.verFacturasToolStripMenuItem.Click += new System.EventHandler(this.verFacturasToolStripMenuItem_Click);
             // 
             // créditosToolStripMenuItem
             // 
             this.créditosToolStripMenuItem.Name = "créditosToolStripMenuItem";
+            this.créditosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
             this.créditosToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.créditosToolStripMenuItem.Text = "Créditos";
             this.créditosToolStripMenuItem.Click += new System.EventHandler(this.créditosToolStripMenuItem_Click);
@@ -148,6 +150,7 @@
             // notificacionesToolStripMenuItem
             // 
             this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
+            this.notificacionesToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
             this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
             this.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
@@ -155,6 +158,7 @@
             // bitácoraToolStripMenuItem
             // 
             this.bitácoraToolStripMenuItem.Name = "bitácoraToolStripMenuItem";
+            this.bitácoraToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
             this.bitácoraToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.bitácoraToolStripMenuItem.Text = "Bitácora";
             this.bitácoraToolStripMenuItem.Click += new System.EventHandler(this.bitácoraToolStripMenuItem_Click);
@@ -171,14 +175,16 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.usuariosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click_1);
             // 
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.cerrarSesiónToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             // 
             // FrmMain

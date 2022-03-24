@@ -1,12 +1,8 @@
 ﻿using MLPlib.Class;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.ProductForms
@@ -40,11 +36,11 @@ namespace SistemaMLP.Forms.ProductForms
                 decimal aux = 0;
                 detailed = frmDetailStock.stocks;
 
-                foreach(DetailedStock detailedStock in detailedStocks)
+                foreach (DetailedStock detailedStock in detailedStocks)
                 {
-                    foreach(DetailedStock detailedStock2 in detailed)
+                    foreach (DetailedStock detailedStock2 in detailed)
                     {
-                        if(detailedStock.IDCutType == detailedStock2.IDCutType)
+                        if (detailedStock.IDCutType == detailedStock2.IDCutType)
                         {
                             if (RbSum.Checked)
                             {
@@ -69,12 +65,12 @@ namespace SistemaMLP.Forms.ProductForms
                     }
                 }
 
-                foreach(DetailedStock ds in auxLst)
+                foreach (DetailedStock ds in auxLst)
                 {
                     detailedStocks.Add(ds);
                 }
 
-                foreach(DetailedStock detailedStock in detailedStocks)
+                foreach (DetailedStock detailedStock in detailedStocks)
                 {
                     aux += detailedStock.Stock;
                 }
@@ -237,7 +233,7 @@ namespace SistemaMLP.Forms.ProductForms
                     int i = 0;
                     if (!string.IsNullOrWhiteSpace(TxtStock.Text) && product != null)
                     {
-                        if(detailedStocks.Count > 0 && RbSum.Checked)
+                        if (detailedStocks.Count > 0 && RbSum.Checked)
                         {
                             product.GeneralStock = Convert.ToDecimal(TxtStock.Text);
                         }
@@ -252,7 +248,7 @@ namespace SistemaMLP.Forms.ProductForms
 
                         i = product.ProductStockEntry();
 
-                        if(detailedStocks.Count > 0)
+                        if (detailedStocks.Count > 0)
                         {
                             UpdateDetailedStock();
                         }
@@ -262,11 +258,11 @@ namespace SistemaMLP.Forms.ProductForms
                             MessageBox.Show("Se ha registrado la entrada de inventario", "Registro de entrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (RbSum.Checked)
                             {
-                                Utilities.Utilities.CreateLog("ha registrado una entrada de inventario de: "+ product.GeneralStock + " al producto: "+ product.ProductName);
+                                Utilities.Utilities.CreateLog("ha registrado una entrada de inventario de: " + product.GeneralStock + " al producto: " + product.ProductName);
                             }
                             else
                             {
-                                Utilities.Utilities.CreateLog("ha sustituido el inventario a: " + product.GeneralStock + " al producto: "+ product.ProductName);
+                                Utilities.Utilities.CreateLog("ha sustituido el inventario a: " + product.GeneralStock + " al producto: " + product.ProductName);
                             }
                             TxtStock.Text = "";
                         }

@@ -1,12 +1,6 @@
 ﻿using MLPlib.Class;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.NotificationForms
@@ -31,11 +25,32 @@ namespace SistemaMLP.Forms.NotificationForms
             DGVNotifications.Columns["IDNotification"].Visible = false;
             DGVNotifications.Columns["Seen"].Visible = false;
             DGVNotifications.Columns["SeenDate"].Visible = false;
+            DGVNotifications.Sort(DGVNotifications.Columns["RegDate"], ListSortDirection.Descending);
         }
 
         private void BtnSeen_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Marcar notificaciones como vistas?", "Marcar visto", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (notification.NotificationsSeen() == 1)
+                    {
+                        MessageBox.Show("Se han marcado las notificaciones como vistas", "Notificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FillDGV();
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error al marcar las notificaciones como vistas", "Notificaciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch
+            {
 
+            }
         }
 
         private void FrmNotification_Load(object sender, EventArgs e)

@@ -1,12 +1,8 @@
 ﻿using MLPlib.Class;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.ProductForms
@@ -58,7 +54,7 @@ namespace SistemaMLP.Forms.ProductForms
             TxtStock.Text = product1.GeneralStock.ToString();
             CbStockType.SelectedItem = product1.StockType;
 
-            if(product1.StockTypeDetail != null)
+            if (product1.StockTypeDetail != null)
             {
                 TxtStockTypeDetail.Text = product1.StockTypeDetail.ToString();
             }
@@ -232,7 +228,7 @@ namespace SistemaMLP.Forms.ProductForms
                 {
                     MessageBox.Show("Error, complete todos los campos", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
             }
             catch
             {
@@ -321,7 +317,7 @@ namespace SistemaMLP.Forms.ProductForms
                 {
                     MessageBox.Show("Error, datos del producto incompletos, verifique los campos", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
             }
             catch
             {
@@ -362,7 +358,7 @@ namespace SistemaMLP.Forms.ProductForms
             {
                 BtnDetail.Enabled = true;
             }
-            if(CbStockType.SelectedIndex > 0)
+            if (CbStockType.SelectedIndex > 0)
             {
                 LblStockTypeDetail.Text = "Peso de " + CbStockType.Text + ":";
                 LblStockTypeDetail.Visible = true;

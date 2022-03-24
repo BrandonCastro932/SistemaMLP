@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MLPlib.Class;
+using System;
 using System.Windows.Forms;
-using MLPlib.Class;
-using TableDependency.SqlClient;
-using TableDependency.SqlClient.Base.EventArgs;
 
 namespace SistemaMLP.Utilities
 {
     public static class Utilities
     {
         public static Form main = new Forms.FrmMain();
+
         public static Forms.BillingForms.FrmBilling frmBilling = new Forms.BillingForms.FrmBilling();
         public static Forms.CustomerForms.FrmCustomers frmCustomers = new Forms.CustomerForms.FrmCustomers();
         public static Forms.CustomerForms.FrmProduct frmProduct = new Forms.CustomerForms.FrmProduct();
@@ -21,7 +16,8 @@ namespace SistemaMLP.Utilities
         public static Forms.CreditForms.FrmCreditReceipts frmCredit = new Forms.CreditForms.FrmCreditReceipts();
         public static Forms.UserForms.FrmUsers frmUsers = new Forms.UserForms.FrmUsers();
         public static Forms.NotificationForms.FrmNotification frmNotification = new Forms.NotificationForms.FrmNotification();
-        
+        public static Forms.ReceiptForms.FrmReceipts frmReceipts = new Forms.ReceiptForms.FrmReceipts();
+
 
         public static User user = new User
         {
@@ -34,7 +30,7 @@ namespace SistemaMLP.Utilities
         {
             MLPlib.SistemaMLPDataSetTableAdapters.LogTableAdapter logAdapter = new MLPlib.SistemaMLPDataSetTableAdapters.LogTableAdapter();
 
-            logAdapter.SPLog(user.IDUser, user.Username+" "+Msg, DateTime.Now);
+            logAdapter.SPLog(user.IDUser, user.Username + " " + Msg, DateTime.Now);
         }
 
 

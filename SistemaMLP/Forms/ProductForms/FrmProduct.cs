@@ -1,13 +1,7 @@
 ﻿using MLPlib.Class;
 using SistemaMLP.Forms.ProductForms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.CustomerForms
@@ -136,7 +130,7 @@ namespace SistemaMLP.Forms.CustomerForms
 
         private void DGVProduct_DoubleClick(object sender, EventArgs e)
         {
-            if(DGVProduct.SelectedRows.Count > 0)
+            if (DGVProduct.SelectedRows.Count > 0)
             {
                 DataGridViewRow dataRow = DGVProduct.SelectedRows[0];
                 product = new Product
@@ -147,7 +141,7 @@ namespace SistemaMLP.Forms.CustomerForms
                     UnitPrice = Convert.ToDecimal(dataRow.Cells["UnitPrice"].Value),
                     Tax = Convert.ToDecimal(dataRow.Cells["Tax"].Value),
                     StockType = Convert.ToInt32(dataRow.Cells["StockType"].Value),
-                    
+
                     GeneralStock = Convert.ToDecimal(dataRow.Cells["GeneralStock"].Value),
                     RegDate = Convert.ToDateTime(dataRow.Cells["RegDate"].Value),
                     LastUpdate = Convert.ToDateTime(dataRow.Cells["LastUpdate"].Value),
@@ -171,7 +165,7 @@ namespace SistemaMLP.Forms.CustomerForms
 
             }
 
-            
+
         }
 
         private void DGVProduct_CellClick(object sender, DataGridViewCellEventArgs e)

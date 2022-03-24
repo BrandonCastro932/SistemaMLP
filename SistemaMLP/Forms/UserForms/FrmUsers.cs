@@ -1,12 +1,5 @@
 ﻿using MLPlib.Class;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.UserForms
@@ -83,7 +76,7 @@ namespace SistemaMLP.Forms.UserForms
 
         private void EditUser()
         {
-            if(DGVUsers.SelectedRows.Count > 0)
+            if (DGVUsers.SelectedRows.Count > 0)
             {
                 DataGridViewRow dataRow = DGVUsers.SelectedRows[0];
 
@@ -91,7 +84,7 @@ namespace SistemaMLP.Forms.UserForms
                 {
                     IDUser = Convert.ToInt32(dataRow.Cells["IDUser"].Value),
                     Username = dataRow.Cells["Username"].Value.ToString()
-                 };
+                };
 
                 FrmUsersCU frm = new FrmUsersCU();
                 frm.isCreating = false;
@@ -107,7 +100,7 @@ namespace SistemaMLP.Forms.UserForms
 
         private void DGVUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(DGVUsers.SelectedRows.Count > 0)
+            if (DGVUsers.SelectedRows.Count > 0)
             {
                 BtnEdit.Enabled = true;
                 BtnDelete.Enabled = true;
@@ -133,7 +126,7 @@ namespace SistemaMLP.Forms.UserForms
                         IDUser = Convert.ToInt32(dataRow.Cells["IDUser"].Value),
 
                     };
-                    if(user.DeleteUser() == 1)
+                    if (user.DeleteUser() == 1)
                     {
                         MessageBox.Show("Se ha eliminado el usuario", "Usuario eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CleanForm();
@@ -143,7 +136,7 @@ namespace SistemaMLP.Forms.UserForms
                         MessageBox.Show("Ha ocurrido un error al intentar eliminar el usuario", "Error de eliminado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                
+
             }
         }
     }

@@ -142,7 +142,7 @@
             this.Controls.Add(this.BtnEdit);
             this.Controls.Add(this.BtnCreate);
             this.Controls.Add(this.DGVProduct);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmProduct";

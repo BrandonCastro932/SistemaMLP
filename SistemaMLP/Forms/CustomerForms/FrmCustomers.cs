@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using MLPlib.Class;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MLPlib.Class;
 
 namespace SistemaMLP.Forms.CustomerForms
 {
@@ -44,7 +38,7 @@ namespace SistemaMLP.Forms.CustomerForms
         {
             BtnCreate.Enabled = false;
             BtnEdit.Enabled = false;
-            BtnDelete.Enabled= true;
+            BtnDelete.Enabled = true;
             BtnDelete.Text = "Restaurar cliente";
         }
 
@@ -145,7 +139,7 @@ namespace SistemaMLP.Forms.CustomerForms
                 RegDate = Convert.ToDateTime(dataRow.Cells["RegDate"].Value),
                 Active = Convert.ToBoolean(dataRow.Cells["Active"].Value)
             };
-            if(customer.IDCustomer != 1)
+            if (customer.IDCustomer != 1)
             {
                 frm.customer = customer;
                 DialogResult dialogResult = frm.ShowDialog();
@@ -176,7 +170,7 @@ namespace SistemaMLP.Forms.CustomerForms
             {
                 CustomerSelectedLayout();
             }
-            
+
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -220,7 +214,7 @@ namespace SistemaMLP.Forms.CustomerForms
                     PersonalID = Convert.ToString(dataRow.Cells["PersonalID"].Value)
                 };
 
-                if(customer.PersonalID != "1")
+                if (customer.PersonalID != "1")
                 {
                     DialogResult dialogResult = MessageBox.Show("Está seguro que desea eliminar ese cliente?", "Eliminar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 

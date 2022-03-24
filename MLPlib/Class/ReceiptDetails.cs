@@ -1,5 +1,3 @@
-using System;
-
 namespace MLPlib.Class
 {
     public class ReceiptDetails

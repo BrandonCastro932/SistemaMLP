@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MLPlib.Class;
+using System;
 using System.Windows.Forms;
-using MLPlib.Class;
 
 namespace SistemaMLP.Forms.CustomerForms
 {
@@ -32,7 +25,7 @@ namespace SistemaMLP.Forms.CustomerForms
                 TxtPersonalID.Enabled = true;
                 BtnAccept.Text = "Registrar";
                 BtnAccept.Enabled = false;
-                
+
             }
             else if (isEditing)
             {
@@ -59,7 +52,7 @@ namespace SistemaMLP.Forms.CustomerForms
                     BusinessPhoneNum = TxtBusinessPhoneNum.Text
                 };
 
-                if(!string.IsNullOrWhiteSpace(TxtEmail.Text))
+                if (!string.IsNullOrWhiteSpace(TxtEmail.Text))
                 {
                     if (!IsValidEmail(TxtEmail.Text))
                     {
@@ -82,7 +75,7 @@ namespace SistemaMLP.Forms.CustomerForms
                     else if (result == 2)
                     {
                         MessageBox.Show("Cédula, correo electrónico o teléfono duplicados en el sistema.", "Datos duplicados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        
+
                     }
                     else if (result == 0)
                     {
@@ -187,7 +180,7 @@ namespace SistemaMLP.Forms.CustomerForms
             {
                 TxtFullname.Focus();
             }
-            if(e.KeyData == Keys.Down)
+            if (e.KeyData == Keys.Down)
             {
                 TxtFullname.Focus();
             }

@@ -1,12 +1,5 @@
 ﻿using MLPlib.Class;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.CreditForms
@@ -35,7 +28,7 @@ namespace SistemaMLP.Forms.CreditForms
 
         private void FrmCreditConfirmation_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter)
             {
                 this.DialogResult = DialogResult.OK;
             }
@@ -43,11 +36,11 @@ namespace SistemaMLP.Forms.CreditForms
             {
                 this.DialogResult = DialogResult.Cancel;
             }
-            if(e.KeyData == Keys.Y)
+            if (e.KeyData == Keys.Y)
             {
                 this.DialogResult = DialogResult.OK;
             }
-            if(e.KeyData == Keys.N)
+            if (e.KeyData == Keys.N)
             {
                 this.DialogResult = DialogResult.Cancel;
             }

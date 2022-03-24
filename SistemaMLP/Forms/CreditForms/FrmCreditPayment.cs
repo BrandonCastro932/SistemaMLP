@@ -1,12 +1,6 @@
 ﻿using MLPlib.Class;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.CreditForms
@@ -66,10 +60,10 @@ namespace SistemaMLP.Forms.CreditForms
         {
             try
             {
-                DialogResult dialog = MessageBox.Show("Esta seguro que desea registrar el abono?","Registrar abono",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-                if(dialog == DialogResult.Yes)
+                DialogResult dialog = MessageBox.Show("Esta seguro que desea registrar el abono?", "Registrar abono", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialog == DialogResult.Yes)
                 {
-                    if(Convert.ToDecimal(TxtPayment.Text) <= creditDetails.ActualAmount)
+                    if (Convert.ToDecimal(TxtPayment.Text) <= creditDetails.ActualAmount)
                     {
                         CreditPayments payments = new CreditPayments
                         {
@@ -81,7 +75,7 @@ namespace SistemaMLP.Forms.CreditForms
                         {
                             MessageBox.Show("Se ha registrado el abono", "Abono registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            if(Convert.ToDecimal(TxtPayment.Text) < creditDetails.ActualAmount)
+                            if (Convert.ToDecimal(TxtPayment.Text) < creditDetails.ActualAmount)
                             {
                                 Utilities.Utilities.CreateLog("ha registrado un abono de: ₡" + TxtPayment.Text + " a la factura a crédito:" + receipt.ReceiptCode.ToString() + " del cliente: " + customer.Fullname);
                             }

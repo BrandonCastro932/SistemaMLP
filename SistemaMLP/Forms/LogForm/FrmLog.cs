@@ -1,12 +1,6 @@
 ﻿using MLPlib.Class;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.LogForm
@@ -31,7 +25,7 @@ namespace SistemaMLP.Forms.LogForm
             DGVLog.Columns["RegDate"].Width = 120;
             DGVLog.Columns["RegDate"].HeaderText = "Fecha y hora";
 
-            DGVLog.Sort(DGVLog.Columns["RegDate"],ListSortDirection.Descending);
+            DGVLog.Sort(DGVLog.Columns["RegDate"], ListSortDirection.Descending);
         }
 
         private void FillDGV()

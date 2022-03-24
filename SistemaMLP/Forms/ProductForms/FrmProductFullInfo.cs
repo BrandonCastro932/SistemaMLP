@@ -1,12 +1,5 @@
 ﻿using MLPlib.Class;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.ProductForms
@@ -51,7 +44,7 @@ namespace SistemaMLP.Forms.ProductForms
 
             DGVDetailedStock.RowHeadersVisible = false;
 
-            if(DGVDetailedStock.Rows.Count > 0)
+            if (DGVDetailedStock.Rows.Count > 0)
             {
                 DGVDetailedStock.Visible = true;
                 LblDetailedTlt.Visible = true;
@@ -74,9 +67,9 @@ namespace SistemaMLP.Forms.ProductForms
             LblGeneralStock.Text = product.GeneralStock.ToString() + " " + StockTypeName;
             LblRegDate.Text = product.RegDate.ToString();
             LblLastUpdate.Text = product.LastUpdate.ToString();
-            if(product.StockTypeDetail > 0 && product.StockTypeDetail != null)
+            if (product.StockTypeDetail > 0 && product.StockTypeDetail != null)
             {
-                LblGeneralStock.Text = product.GeneralStock.ToString() + " " + StockTypeName + " de: "+product.StockTypeDetail +"KG";
+                LblGeneralStock.Text = product.GeneralStock.ToString() + " " + StockTypeName + " de: " + product.StockTypeDetail + "KG";
             }
         }
 
@@ -86,7 +79,7 @@ namespace SistemaMLP.Forms.ProductForms
             {
                 if (control is Label)
                 {
-                    if(control.Text == "")
+                    if (control.Text == "")
                     {
                         control.Text = "Sin especificar";
                     }

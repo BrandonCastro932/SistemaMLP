@@ -1,13 +1,5 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
-using MLPlib.Class;
+﻿using MLPlib.Class;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TableDependency.SqlClient;
 using TableDependency.SqlClient.Base.EventArgs;
@@ -52,7 +44,7 @@ namespace SistemaMLP.Forms
         }
 
 
-        
+
 
 
 
@@ -142,6 +134,15 @@ namespace SistemaMLP.Forms
                 Utilities.Utilities.frmNotification.Show();
             }
             //new ToastContentBuilder().AddText("Notificaciones disponibles").AddHeader("1", "Sistema Mariscos La Puebla", "").Show();
+        }
+
+        private void verFacturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Utilities.Utilities.frmReceipts.Visible)
+            {
+                Utilities.Utilities.frmReceipts = new ReceiptForms.FrmReceipts();
+                Utilities.Utilities.frmReceipts.Show();
+            }
         }
     }
 }

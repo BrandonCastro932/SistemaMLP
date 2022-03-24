@@ -1,12 +1,5 @@
 ﻿using MLPlib.Class;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.UserForms
@@ -99,7 +92,7 @@ namespace SistemaMLP.Forms.UserForms
 
                 }
 
-                if(isEditing)
+                if (isEditing)
                 {
                     if (!string.IsNullOrWhiteSpace(TxtPin.Text) && !string.IsNullOrWhiteSpace(TxtPin2.Text))
                     {

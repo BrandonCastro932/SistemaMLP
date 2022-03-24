@@ -174,6 +174,18 @@
     <Compile Include="Forms\ProductForms\FrmSupply.Designer.cs">
       <DependentUpon>FrmSupply.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ReceiptForms\FrmReceiptDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceiptForms\FrmReceiptDetails.Designer.cs">
+      <DependentUpon>FrmReceiptDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReceiptForms\FrmReceipts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReceiptForms\FrmReceipts.Designer.cs">
+      <DependentUpon>FrmReceipts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserForms\FrmUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +254,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProductForms\FrmSupply.resx">
       <DependentUpon>FrmSupply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceiptForms\FrmReceiptDetails.resx">
+      <DependentUpon>FrmReceiptDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReceiptForms\FrmReceipts.resx">
+      <DependentUpon>FrmReceipts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserForms\FrmUsers.resx">
       <DependentUpon>FrmUsers.cs</DependentUpon>

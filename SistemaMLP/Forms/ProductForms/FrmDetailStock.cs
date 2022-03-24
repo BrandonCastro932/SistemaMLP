@@ -1,13 +1,8 @@
-﻿using System;
+﻿using MLPlib.Class;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MLPlib.Class;
 
 namespace SistemaMLP.Forms.ProductForms
 {
@@ -31,7 +26,7 @@ namespace SistemaMLP.Forms.ProductForms
         {
             CbType.DisplayMember = "CutName";
             CbType.ValueMember = "IDCutType";
-            
+
             cutTypes = cutType.GetCutTypes();
             CbType.DataSource = cutTypes;
         }
@@ -64,7 +59,7 @@ namespace SistemaMLP.Forms.ProductForms
             {
                 foreach (DetailedStock stock in stocks)
                 {
-                    DGVDetailedStock.Rows.Add(CbType.GetItemText(CbType.Items[stock.IDCutType - 1]), stock.Stock, stock.IDCutType, stock.RegDate);                    
+                    DGVDetailedStock.Rows.Add(CbType.GetItemText(CbType.Items[stock.IDCutType - 1]), stock.Stock, stock.IDCutType, stock.RegDate);
                 }
             }
         }
@@ -82,7 +77,7 @@ namespace SistemaMLP.Forms.ProductForms
                         RegDate = DateTime.Now
                     };
 
-                    if(stocks.Count > 0)
+                    if (stocks.Count > 0)
                     {
                         DetailedStock stock2 = new DetailedStock();
                         stock2 = stocks.Find(x => x.IDCutType.Equals(stock.IDCutType));
@@ -93,9 +88,9 @@ namespace SistemaMLP.Forms.ProductForms
                         }
                         else
                         {
-                            MessageBox.Show("No se permite ingresar datos duplicados","Advertencia",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("No se permite ingresar datos duplicados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        
+
                     }
                     else
                     {

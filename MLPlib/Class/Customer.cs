@@ -28,8 +28,8 @@ namespace MLPlib.Class
         {
             SistemaMLPDataSetTableAdapters.CustomerTableAdapter customersAdapter = new SistemaMLPDataSetTableAdapters.CustomerTableAdapter();
 
-            int result = (int)customersAdapter.SPInsertCustomer(this.PersonalID, this.Fullname,this.PhoneNumber, this.BusinessName,this.BusinessPhoneNum, this.Email);
-             
+            int result = (int)customersAdapter.SPInsertCustomer(this.PersonalID, this.Fullname, this.PhoneNumber, this.BusinessName, this.BusinessPhoneNum, this.Email);
+
             return result;
         }
 

@@ -61,6 +61,7 @@
             this.ClientSize = new System.Drawing.Size(621, 431);
             this.Controls.Add(this.DGVLog);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmLog";

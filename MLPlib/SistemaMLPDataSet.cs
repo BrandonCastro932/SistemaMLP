@@ -24,6 +24,7 @@ namespace MLPlib.SistemaMLPDataSetTableAdapters
     {
     }
 
-    public partial class ProductTableAdapter {
+    public partial class ProductTableAdapter
+    {
     }
 }

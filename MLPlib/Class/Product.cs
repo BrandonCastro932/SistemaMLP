@@ -36,7 +36,7 @@ namespace MLPlib.Class
         {
             SistemaMLPDataSetTableAdapters.ProductTableAdapter productAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
 
-            int result = (int)productAdapter.SPInsertProduct(this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.StockTypeDetail, this.GeneralStock,this.RegDate,this.LastUpdate);
+            int result = (int)productAdapter.SPInsertProduct(this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.StockTypeDetail, this.GeneralStock, this.RegDate, this.LastUpdate);
 
             return result;
         }
@@ -45,7 +45,7 @@ namespace MLPlib.Class
         {
             SistemaMLPDataSetTableAdapters.ProductTableAdapter productAdapter = new SistemaMLPDataSetTableAdapters.ProductTableAdapter();
 
-            int result = (int)productAdapter.SPUpdateProduct(this.IDProduct,this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.StockTypeDetail, this.GeneralStock, this.LastUpdate);
+            int result = (int)productAdapter.SPUpdateProduct(this.IDProduct, this.ProductName, this.BarCode, this.UnitPrice, this.Tax, this.StockType, this.StockTypeDetail, this.GeneralStock, this.LastUpdate);
 
             return result;
         }
@@ -93,7 +93,7 @@ namespace MLPlib.Class
             SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
             SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter productsAdapter = new SistemaMLPDataSetTableAdapters.DetailedStockTableAdapter();
 
-            productsAdapter.FillBy(sistemaMLPDataSet.DetailedStock,IDProduct);
+            productsAdapter.FillBy(sistemaMLPDataSet.DetailedStock, IDProduct);
             return sistemaMLPDataSet.DetailedStock;
         }
 

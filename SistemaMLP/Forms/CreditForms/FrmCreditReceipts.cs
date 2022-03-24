@@ -1,12 +1,6 @@
 ﻿using MLPlib.Class;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.CreditForms
@@ -19,8 +13,8 @@ namespace SistemaMLP.Forms.CreditForms
         public FrmCreditReceipts()
         {
             InitializeComponent();
-            
-            
+
+
         }
 
         private void FrmCreditReceipts_Load(object sender, EventArgs e)
@@ -32,7 +26,7 @@ namespace SistemaMLP.Forms.CreditForms
         private void FillDGV(string filter = "")
         {
             DGVCredits.DataSource = creditDetails.GetCredits(filter);
-            
+
             DGVCredits.Columns["IDCreditDetails"].Visible = false;
             DGVCredits.Columns["IDReceipt"].Visible = false;
             DGVCredits.Columns["IDCustomer"].Visible = false;
@@ -90,7 +84,7 @@ namespace SistemaMLP.Forms.CreditForms
         {
             if (e.RowIndex == -1)
                 return;
-            if(DGVCredits.SelectedRows.Count > 0)
+            if (DGVCredits.SelectedRows.Count > 0)
             {
                 BtnCreditPayment.Enabled = true;
             }
