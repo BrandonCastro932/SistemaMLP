@@ -68,7 +68,7 @@ namespace SistemaMLP.Forms.CustomerForms
                     {
                         MessageBox.Show("Se ha registrado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        Utilities.Utilities.CreateLog("Ha registrado un cliente: " + customer.Fullname);
+                        Utilities.Utilities.CreateLog("ha registrado un cliente: " + customer.Fullname);
 
                         this.DialogResult = DialogResult.OK;
                     }
@@ -91,7 +91,7 @@ namespace SistemaMLP.Forms.CustomerForms
                     {
                         MessageBox.Show("Se ha modificado el cliente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        Utilities.Utilities.CreateLog("Ha actualizado un cliente: " + customer.Fullname);
+                        Utilities.Utilities.CreateLog("ha actualizado un cliente: " + customer.Fullname);
 
                         this.DialogResult = DialogResult.OK;
                     }
