@@ -35,7 +35,6 @@
             this.CbCuts = new System.Windows.Forms.ComboBox();
             this.LblQuantity = new System.Windows.Forms.Label();
             this.UDQuantity = new System.Windows.Forms.NumericUpDown();
-            this.BtnAddLine = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,16 +43,17 @@
             this.TxtNotes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.CbPaymentMethod = new System.Windows.Forms.ComboBox();
-            this.BtnBilling = new System.Windows.Forms.Button();
             this.LblAmount = new System.Windows.Forms.Label();
             this.LblTax = new System.Windows.Forms.Label();
             this.LblTotal = new System.Windows.Forms.Label();
-            this.BtnDelLine = new System.Windows.Forms.Button();
             this.DGVLines = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.LblCustomerName = new System.Windows.Forms.Label();
             this.BtnSelectCustomer = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BtnBilling = new System.Windows.Forms.Button();
+            this.BtnDelLine = new System.Windows.Forms.Button();
+            this.BtnAddLine = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVProducts)).BeginInit();
             this.Gb_Products.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UDQuantity)).BeginInit();
@@ -108,7 +108,7 @@
             // LblCuts
             // 
             this.LblCuts.AutoSize = true;
-            this.LblCuts.Location = new System.Drawing.Point(845, 49);
+            this.LblCuts.Location = new System.Drawing.Point(830, 49);
             this.LblCuts.Name = "LblCuts";
             this.LblCuts.Size = new System.Drawing.Size(122, 16);
             this.LblCuts.TabIndex = 7;
@@ -118,9 +118,9 @@
             // CbCuts
             // 
             this.CbCuts.FormattingEnabled = true;
-            this.CbCuts.Location = new System.Drawing.Point(851, 68);
+            this.CbCuts.Location = new System.Drawing.Point(830, 68);
             this.CbCuts.Name = "CbCuts";
-            this.CbCuts.Size = new System.Drawing.Size(124, 24);
+            this.CbCuts.Size = new System.Drawing.Size(145, 24);
             this.CbCuts.TabIndex = 6;
             this.CbCuts.Visible = false;
             this.CbCuts.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CbCuts_KeyPress);
@@ -128,35 +128,25 @@
             // LblQuantity
             // 
             this.LblQuantity.AutoSize = true;
-            this.LblQuantity.Location = new System.Drawing.Point(848, 121);
+            this.LblQuantity.Location = new System.Drawing.Point(830, 108);
             this.LblQuantity.Name = "LblQuantity";
             this.LblQuantity.Size = new System.Drawing.Size(129, 16);
             this.LblQuantity.TabIndex = 5;
             this.LblQuantity.Text = "Cantidad comprada:";
+            this.LblQuantity.Click += new System.EventHandler(this.LblQuantity_Click);
             // 
             // UDQuantity
             // 
-            this.UDQuantity.Location = new System.Drawing.Point(851, 140);
+            this.UDQuantity.Location = new System.Drawing.Point(830, 127);
             this.UDQuantity.Name = "UDQuantity";
-            this.UDQuantity.Size = new System.Drawing.Size(124, 22);
+            this.UDQuantity.Size = new System.Drawing.Size(145, 22);
             this.UDQuantity.TabIndex = 4;
             this.UDQuantity.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            // 
-            // BtnAddLine
-            // 
-            this.BtnAddLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BtnAddLine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAddLine.Location = new System.Drawing.Point(851, 165);
-            this.BtnAddLine.Name = "BtnAddLine";
-            this.BtnAddLine.Size = new System.Drawing.Size(124, 42);
-            this.BtnAddLine.TabIndex = 3;
-            this.BtnAddLine.Text = "Agregar a factura";
-            this.BtnAddLine.UseVisualStyleBackColor = true;
-            this.BtnAddLine.Click += new System.EventHandler(this.BtnAddLine_Click);
+            this.UDQuantity.ValueChanged += new System.EventHandler(this.UDQuantity_ValueChanged);
             // 
             // label1
             // 
@@ -250,17 +240,6 @@
             this.CbPaymentMethod.TabIndex = 6;
             this.CbPaymentMethod.SelectedIndexChanged += new System.EventHandler(this.CbPaymentMethod_SelectedIndexChanged);
             // 
-            // BtnBilling
-            // 
-            this.BtnBilling.Enabled = false;
-            this.BtnBilling.Location = new System.Drawing.Point(848, 206);
-            this.BtnBilling.Name = "BtnBilling";
-            this.BtnBilling.Size = new System.Drawing.Size(124, 42);
-            this.BtnBilling.TabIndex = 5;
-            this.BtnBilling.Text = "Facturar";
-            this.BtnBilling.UseVisualStyleBackColor = true;
-            this.BtnBilling.Click += new System.EventHandler(this.BtnBilling_Click);
-            // 
             // LblAmount
             // 
             this.LblAmount.AutoSize = true;
@@ -290,16 +269,6 @@
             this.LblTotal.Size = new System.Drawing.Size(119, 29);
             this.LblTotal.TabIndex = 2;
             this.LblTotal.Text = "Total: ₡0";
-            // 
-            // BtnDelLine
-            // 
-            this.BtnDelLine.Location = new System.Drawing.Point(848, 114);
-            this.BtnDelLine.Name = "BtnDelLine";
-            this.BtnDelLine.Size = new System.Drawing.Size(124, 42);
-            this.BtnDelLine.TabIndex = 1;
-            this.BtnDelLine.Text = "Eliminar línea";
-            this.BtnDelLine.UseVisualStyleBackColor = true;
-            this.BtnDelLine.Click += new System.EventHandler(this.BtnDelLine_Click);
             // 
             // DGVLines
             // 
@@ -356,6 +325,46 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            // 
+            // BtnBilling
+            // 
+            this.BtnBilling.Enabled = false;
+            this.BtnBilling.Image = global::SistemaMLP.Properties.Resources.Ecommerce_Cash_Register_icon;
+            this.BtnBilling.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnBilling.Location = new System.Drawing.Point(848, 206);
+            this.BtnBilling.Name = "BtnBilling";
+            this.BtnBilling.Size = new System.Drawing.Size(124, 42);
+            this.BtnBilling.TabIndex = 5;
+            this.BtnBilling.Text = "Facturar";
+            this.BtnBilling.UseVisualStyleBackColor = true;
+            this.BtnBilling.Click += new System.EventHandler(this.BtnBilling_Click);
+            // 
+            // BtnDelLine
+            // 
+            this.BtnDelLine.Image = global::SistemaMLP.Properties.Resources.trash_icon;
+            this.BtnDelLine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnDelLine.Location = new System.Drawing.Point(848, 114);
+            this.BtnDelLine.Name = "BtnDelLine";
+            this.BtnDelLine.Size = new System.Drawing.Size(124, 42);
+            this.BtnDelLine.TabIndex = 1;
+            this.BtnDelLine.Text = "Eliminar línea";
+            this.BtnDelLine.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnDelLine.UseVisualStyleBackColor = true;
+            this.BtnDelLine.Click += new System.EventHandler(this.BtnDelLine_Click);
+            // 
+            // BtnAddLine
+            // 
+            this.BtnAddLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BtnAddLine.Image = global::SistemaMLP.Properties.Resources.Add_Cart_icon;
+            this.BtnAddLine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAddLine.Location = new System.Drawing.Point(830, 165);
+            this.BtnAddLine.Name = "BtnAddLine";
+            this.BtnAddLine.Size = new System.Drawing.Size(145, 42);
+            this.BtnAddLine.TabIndex = 3;
+            this.BtnAddLine.Text = "Agregar a factura";
+            this.BtnAddLine.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAddLine.UseVisualStyleBackColor = true;
+            this.BtnAddLine.Click += new System.EventHandler(this.BtnAddLine_Click);
             // 
             // FrmBilling
             // 

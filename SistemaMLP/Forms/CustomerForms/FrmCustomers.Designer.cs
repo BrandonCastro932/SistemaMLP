@@ -31,12 +31,12 @@
             this.DGVCustomers = new System.Windows.Forms.DataGridView();
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.BtnCreate = new System.Windows.Forms.Button();
-            this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.Cbx_Deleted = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BtnEdit = new System.Windows.Forms.Button();
+            this.BtnCreate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -77,36 +77,18 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Buscar:";
             // 
-            // BtnCreate
-            // 
-            this.BtnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCreate.Location = new System.Drawing.Point(1036, 52);
-            this.BtnCreate.Name = "BtnCreate";
-            this.BtnCreate.Size = new System.Drawing.Size(137, 46);
-            this.BtnCreate.TabIndex = 3;
-            this.BtnCreate.Text = "Crear cliente";
-            this.BtnCreate.UseVisualStyleBackColor = true;
-            this.BtnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
-            // 
-            // BtnEdit
-            // 
-            this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEdit.Location = new System.Drawing.Point(1036, 120);
-            this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(137, 46);
-            this.BtnEdit.TabIndex = 4;
-            this.BtnEdit.Text = "Modificar cliente";
-            this.BtnEdit.UseVisualStyleBackColor = true;
-            this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
-            // 
             // BtnDelete
             // 
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDelete.Image = global::SistemaMLP.Properties.Resources.trash_icon;
+            this.BtnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnDelete.Location = new System.Drawing.Point(1036, 189);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(137, 46);
+            this.BtnDelete.Size = new System.Drawing.Size(128, 46);
             this.BtnDelete.TabIndex = 5;
             this.BtnDelete.Text = "Eliminar cliente";
+            this.BtnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnDelete.UseVisualStyleBackColor = true;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
@@ -141,6 +123,33 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
+            // 
+            // BtnEdit
+            // 
+            this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEdit.Image = global::SistemaMLP.Properties.Resources.edit_icon;
+            this.BtnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnEdit.Location = new System.Drawing.Point(1036, 120);
+            this.BtnEdit.Name = "BtnEdit";
+            this.BtnEdit.Size = new System.Drawing.Size(128, 46);
+            this.BtnEdit.TabIndex = 4;
+            this.BtnEdit.Text = "Modificar cliente";
+            this.BtnEdit.UseVisualStyleBackColor = true;
+            this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
+            // 
+            // BtnCreate
+            // 
+            this.BtnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCreate.Image = global::SistemaMLP.Properties.Resources.add_icon;
+            this.BtnCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCreate.Location = new System.Drawing.Point(1036, 52);
+            this.BtnCreate.Name = "BtnCreate";
+            this.BtnCreate.Size = new System.Drawing.Size(128, 46);
+            this.BtnCreate.TabIndex = 3;
+            this.BtnCreate.Text = "Crear cliente";
+            this.BtnCreate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCreate.UseVisualStyleBackColor = true;
+            this.BtnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
             // 
             // FrmCustomers
             // 

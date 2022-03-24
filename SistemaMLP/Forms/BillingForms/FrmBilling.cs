@@ -364,86 +364,68 @@ namespace SistemaMLP.Forms.BillingForms
 
             if (DGVProducts.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = DGVProducts.SelectedRows[0];
-                dr1["IDProduct"] = Convert.ToInt32(row.Cells["IDProduct"].Value);
-                dr1["ProductName"] = Convert.ToString(row.Cells["ProductName"].Value);
-                dr1["BarCode"] = Convert.ToString(row.Cells["BarCode"].Value);
-                dr1["UnitPrice"] = Convert.ToDecimal(row.Cells["UnitPrice"].Value);
-                dr1["Tax"] = Convert.ToDecimal(row.Cells["Tax"].Value);
-                dr1["GeneralStock"] = Convert.ToInt32(row.Cells["GeneralStock"].Value);
-                dr1["RegDate"] = Convert.ToDateTime(row.Cells["RegDate"].Value);
-                dr1["LastUpdate"] = Convert.ToDateTime(row.Cells["LastUpdate"].Value);
-                dr1["Active"] = Convert.ToBoolean(row.Cells["Active"].Value);
-                dr1["StockTypeName"] = Convert.ToString(row.Cells["StockTypeName"].Value);
-                dr1["Quantity"] = Convert.ToDecimal(UDQuantity.Value);
+                if(UDQuantity.Value > 0)
+                {
+                    DataGridViewRow row = DGVProducts.SelectedRows[0];
+                    dr1["IDProduct"] = Convert.ToInt32(row.Cells["IDProduct"].Value);
+                    dr1["ProductName"] = Convert.ToString(row.Cells["ProductName"].Value);
+                    dr1["BarCode"] = Convert.ToString(row.Cells["BarCode"].Value);
+                    dr1["UnitPrice"] = Convert.ToDecimal(row.Cells["UnitPrice"].Value);
+                    dr1["Tax"] = Convert.ToDecimal(row.Cells["Tax"].Value);
+                    dr1["GeneralStock"] = Convert.ToInt32(row.Cells["GeneralStock"].Value);
+                    dr1["RegDate"] = Convert.ToDateTime(row.Cells["RegDate"].Value);
+                    dr1["LastUpdate"] = Convert.ToDateTime(row.Cells["LastUpdate"].Value);
+                    dr1["Active"] = Convert.ToBoolean(row.Cells["Active"].Value);
+                    dr1["StockTypeName"] = Convert.ToString(row.Cells["StockTypeName"].Value);
+                    dr1["Quantity"] = Convert.ToDecimal(UDQuantity.Value);
 
-                if (CbCuts.Visible)
-                {
-                    dr1["LineType"] = Convert.ToString(CbCuts.Text);
-                    dr1["IDCutType"] = CbCuts.SelectedValue;
-                }
-                //Ojo el visible de este if
-                else if (!CbCuts.Visible && dr1["StockTypeName"].ToString() == "Kilos")
-                {
-                    dr1["LineType"] = "Kilos";
-                    dr1["IDCutType"] = 1;
-                }
-                else
-                {
-                    dr1["LineType"] = dr1["StockTypeName"].ToString();
-                }
-
-                if (lines.Rows.Count == 0 && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
-                {
-                    if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k))
+                    if (CbCuts.Visible)
                     {
-                        MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        UDQuantity.Value = 1;
-                        exists = false;
-                        return;
+                        dr1["LineType"] = Convert.ToString(CbCuts.Text);
+                        dr1["IDCutType"] = CbCuts.SelectedValue;
                     }
-                    lines.Rows.Add(dr1);
-                    BillingLayout();
-                }
-                else if (lines.Rows.Count == 0 && !ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
-                {
-                    exists = true;
-                    MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    if (dr1["StockTypeName"].ToString() != "Cajas" && dr1["StockTypeName"].ToString() != "Paquetes")
+                    //Ojo el visible de este if
+                    else if (!CbCuts.Visible && dr1["StockTypeName"].ToString() == "Kilos")
                     {
-                        foreach (DataRow dr in lines.Rows)
+                        dr1["LineType"] = "Kilos";
+                        dr1["IDCutType"] = 1;
+                    }
+                    else
+                    {
+                        dr1["LineType"] = dr1["StockTypeName"].ToString();
+                    }
+
+                    if (lines.Rows.Count == 0 && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
+                    {
+                        if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k))
                         {
-                            if (dr["IDProduct"].ToString() == dr1["IDProduct"].ToString())
+                            MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            UDQuantity.Value = 1;
+                            exists = false;
+                            return;
+                        }
+                        lines.Rows.Add(dr1);
+                        BillingLayout();
+                    }
+                    else if (lines.Rows.Count == 0 && !ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
+                    {
+                        exists = true;
+                        MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        if (dr1["StockTypeName"].ToString() != "Cajas" && dr1["StockTypeName"].ToString() != "Paquetes")
+                        {
+                            foreach (DataRow dr in lines.Rows)
                             {
-                                if (detailedStocks.Count == 0)
+                                if (dr["IDProduct"].ToString() == dr1["IDProduct"].ToString())
                                 {
-                                    if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(dr1["GeneralStock"].ToString()) && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
+                                    if (detailedStocks.Count == 0)
                                     {
-                                        //Ahora validar que si la linea agregada tiene stock detallado, esta no pase de lo registrado
-
-                                        dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
-                                        lines.AcceptChanges();
-                                        exists = true;
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        exists = true;
-                                    }
-                                }
-                                else
-                                {
-                                    DetailedStock detailed = new DetailedStock();
-                                    detailed = detailedStocks.FirstOrDefault(x => x.IDCutType.Equals(Convert.ToInt32(CbCuts.SelectedValue)));
-                                    //Que si se agrega un corte distinto se agrege como una nueva linea
-
-                                    if (dr["LineType"].ToString() == CbCuts.Text.ToString() && UDQuantity.Value <= detailed.Stock && ValidateStock(detailed.Stock))
-                                    {
-                                        if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(detailed.Stock))
+                                        if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(dr1["GeneralStock"].ToString()) && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                                         {
+                                            //Ahora validar que si la linea agregada tiene stock detallado, esta no pase de lo registrado
+
                                             dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
                                             lines.AcceptChanges();
                                             exists = true;
@@ -454,29 +436,54 @@ namespace SistemaMLP.Forms.BillingForms
                                             exists = true;
                                         }
                                     }
+                                    else
+                                    {
+                                        DetailedStock detailed = new DetailedStock();
+                                        detailed = detailedStocks.FirstOrDefault(x => x.IDCutType.Equals(Convert.ToInt32(CbCuts.SelectedValue)));
+                                        //Que si se agrega un corte distinto se agrege como una nueva linea
 
+                                        if (dr["LineType"].ToString() == CbCuts.Text.ToString() && UDQuantity.Value <= detailed.Stock && ValidateStock(detailed.Stock))
+                                        {
+                                            if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(detailed.Stock))
+                                            {
+                                                dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
+                                                lines.AcceptChanges();
+                                                exists = true;
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                exists = true;
+                                            }
+                                        }
+
+                                    }
                                 }
                             }
                         }
-                    }
-                    else
-                    {
-                        if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k))
+                        else
                         {
-                            MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            exists = true;
+                            if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k))
+                            {
+                                MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                exists = true;
+                                UDQuantity.Value = 1;
+                            }
+                        }
+                        if (!exists)
+                        {
+                            lines.Rows.Add(dr1);
+                            BillingLayout();
                             UDQuantity.Value = 1;
                         }
+
+
+
                     }
-                    if (!exists)
-                    {
-                        lines.Rows.Add(dr1);
-                        BillingLayout();
-                        UDQuantity.Value = 1;
-                    }
-
-
-
+                }
+                else
+                {
+                    MessageBox.Show("Solo se permite agregar 1 o más", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }
@@ -642,6 +649,16 @@ namespace SistemaMLP.Forms.BillingForms
         private void CbCuts_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void LblQuantity_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UDQuantity_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

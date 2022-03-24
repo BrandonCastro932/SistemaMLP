@@ -37,7 +37,7 @@
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.TtSearch = new System.Windows.Forms.ToolTip(this.components);
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.CbDeleted = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -92,46 +92,54 @@
             // 
             // BtnAdd
             // 
+            this.BtnAdd.Image = global::SistemaMLP.Properties.Resources.add_icon;
             this.BtnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnAdd.Location = new System.Drawing.Point(408, 78);
             this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(128, 46);
+            this.BtnAdd.Size = new System.Drawing.Size(101, 46);
             this.BtnAdd.TabIndex = 4;
             this.BtnAdd.Text = "Registrar usuario";
+            this.BtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnAdd.UseVisualStyleBackColor = true;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // BtnEdit
             // 
             this.BtnEdit.Enabled = false;
+            this.BtnEdit.Image = global::SistemaMLP.Properties.Resources.edit_icon;
+            this.BtnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnEdit.Location = new System.Drawing.Point(408, 166);
             this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(128, 45);
+            this.BtnEdit.Size = new System.Drawing.Size(101, 45);
             this.BtnEdit.TabIndex = 5;
             this.BtnEdit.Text = "Editar usuario";
+            this.BtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnEdit.UseVisualStyleBackColor = true;
             this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // BtnDelete
             // 
             this.BtnDelete.Enabled = false;
+            this.BtnDelete.Image = global::SistemaMLP.Properties.Resources.trash_icon;
+            this.BtnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnDelete.Location = new System.Drawing.Point(408, 255);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(128, 45);
+            this.BtnDelete.Size = new System.Drawing.Size(101, 45);
             this.BtnDelete.TabIndex = 6;
             this.BtnDelete.Text = "Eliminar usuario";
+            this.BtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnDelete.UseVisualStyleBackColor = true;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
-            // checkBox1
+            // CbDeleted
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(380, 49);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(170, 20);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Ver usuarios eliminados";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.CbDeleted.AutoSize = true;
+            this.CbDeleted.Location = new System.Drawing.Point(380, 49);
+            this.CbDeleted.Name = "CbDeleted";
+            this.CbDeleted.Size = new System.Drawing.Size(116, 20);
+            this.CbDeleted.TabIndex = 7;
+            this.CbDeleted.Text = "Ver eliminados";
+            this.CbDeleted.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -147,9 +155,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 318);
+            this.ClientSize = new System.Drawing.Size(523, 318);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.CbDeleted);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnEdit);
             this.Controls.Add(this.BtnAdd);
@@ -183,7 +191,7 @@
         private System.Windows.Forms.Button BtnEdit;
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.ToolTip TtSearch;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox CbDeleted;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

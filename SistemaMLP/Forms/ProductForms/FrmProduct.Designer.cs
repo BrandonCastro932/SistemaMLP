@@ -61,33 +61,42 @@
             // BtnCreate
             // 
             this.BtnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCreate.Image = global::SistemaMLP.Properties.Resources.add_icon;
+            this.BtnCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCreate.Location = new System.Drawing.Point(1066, 62);
             this.BtnCreate.Name = "BtnCreate";
-            this.BtnCreate.Size = new System.Drawing.Size(149, 46);
+            this.BtnCreate.Size = new System.Drawing.Size(112, 46);
             this.BtnCreate.TabIndex = 4;
             this.BtnCreate.Text = "Registrar producto";
+            this.BtnCreate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCreate.UseVisualStyleBackColor = true;
             this.BtnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
             // 
             // BtnDelete
             // 
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDelete.Image = global::SistemaMLP.Properties.Resources.trash_icon;
+            this.BtnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnDelete.Location = new System.Drawing.Point(1066, 219);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(149, 46);
+            this.BtnDelete.Size = new System.Drawing.Size(112, 46);
             this.BtnDelete.TabIndex = 7;
             this.BtnDelete.Text = "Eliminar producto";
+            this.BtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnDelete.UseVisualStyleBackColor = true;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // BtnEdit
             // 
             this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEdit.Image = global::SistemaMLP.Properties.Resources.edit_icon;
+            this.BtnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnEdit.Location = new System.Drawing.Point(1066, 140);
             this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(149, 46);
+            this.BtnEdit.Size = new System.Drawing.Size(112, 46);
             this.BtnEdit.TabIndex = 6;
             this.BtnEdit.Text = "Modificar producto";
+            this.BtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnEdit.UseVisualStyleBackColor = true;
             this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
@@ -135,7 +144,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(1083, 310);
+            this.pictureBox1.Location = new System.Drawing.Point(1068, 310);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(110, 52);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -146,7 +155,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1242, 388);
+            this.ClientSize = new System.Drawing.Size(1198, 388);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Cbx_Deleted);
             this.Controls.Add(this.label2);
