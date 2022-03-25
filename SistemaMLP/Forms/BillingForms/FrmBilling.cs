@@ -256,6 +256,7 @@ namespace SistemaMLP.Forms.BillingForms
                         Total = total,
                         TotalTax = tax
                     };
+                    
 
                     switch (CbPaymentMethod.SelectedIndex)
                     {
@@ -286,6 +287,7 @@ namespace SistemaMLP.Forms.BillingForms
                     int i = receipt.CreateReceipt();
                     if (i != 0)
                     {
+                        receipt.IDReceipt = i;
                         foreach (DataRow dr in lines.Rows)
                         {
                             ReceiptDetails receiptDetails = new ReceiptDetails
@@ -331,8 +333,8 @@ namespace SistemaMLP.Forms.BillingForms
                             }
                         }
                         MessageBox.Show("Se ha registrado la factura de manera exitosa", "Factura registrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
+                        
+                        
 
                         Utilities.Utilities.CreateLog("ha registrado la factura número: " + receipt.ReceiptCode);
                         CleanForm();
