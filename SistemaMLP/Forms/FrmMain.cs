@@ -23,7 +23,7 @@ namespace SistemaMLP.Forms
         {
             Utilities.Utilities.main = this;
             LblCredito.Text = "Total en crédito: ₡" + creditDetails.GetCreditsTotal();
-
+            LblUsername.Text = "Usuario: " + Utilities.Utilities.user.Username;
             creditPaymentsDependency.OnChanged += CreditDetailsTableDependency_Changed;
 
 

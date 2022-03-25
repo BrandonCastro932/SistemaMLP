@@ -124,5 +124,18 @@ namespace SistemaMLP.Forms.CreditForms
                 BtnAccept.Enabled = false;
             }
         }
+
+        private void BtnPayAll_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TxtPayment.Text = creditDetails.ActualAmount.ToString();
+                BtnAccept_Click(sender, e);
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

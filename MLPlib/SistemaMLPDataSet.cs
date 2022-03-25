@@ -16,6 +16,10 @@
 
 namespace MLPlib.SistemaMLPDataSetTableAdapters
 {
+    partial class UserTableAdapter
+    {
+    }
+
     partial class CreditTableAdapter
     {
     }

@@ -245,6 +245,7 @@
             this.BtnPayAll.TabIndex = 17;
             this.BtnPayAll.Text = "Pagar todo";
             this.BtnPayAll.UseVisualStyleBackColor = true;
+            this.BtnPayAll.Click += new System.EventHandler(this.BtnPayAll_Click);
             // 
             // DGVPayments
             // 

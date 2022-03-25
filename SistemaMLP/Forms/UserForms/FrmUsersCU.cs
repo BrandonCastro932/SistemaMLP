@@ -21,13 +21,18 @@ namespace SistemaMLP.Forms.UserForms
             {
                 LblTitle.Text = "Registro de usuario";
                 BtnRegister.Text = "Registrar";
+                LblPin.Text = "Pin:";
+                LblPin2.Text = "Confirmar pin:";
                 TxtUsername.Enabled = true;
             }
             else if (isEditing)
             {
                 LblTitle.Text = "Cambio de pin";
+                LblPin.Text = "Actual:";
+                LblPin2.Text = "Nuevo pin:";
                 TxtUsername.Enabled = false;
                 BtnRegister.Text = "Editar";
+                
                 FillInfo();
             }
         }
@@ -102,16 +107,44 @@ namespace SistemaMLP.Forms.UserForms
                             Username = TxtUsername.Text,
                             Pin = TxtPin.Text
                         };
-                        if (user1.UpdateUser(TxtPin2.Text) == 1)
+
+                        if(user.IDUser != Utilities.Utilities.user.IDUser)
                         {
-                            MessageBox.Show("El pin del usuario ha sido cambiado correctamente", "Usuario editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Utilities.Utilities.CreateLog("ha cambiado el pin del usuario: " + user1.Username);
-                            this.DialogResult = DialogResult.OK;
-                            return;
+                            DialogResult dialog = MessageBox.Show("Cambiar pin de este usuario?", "Cambiar pin", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                            if(dialog == DialogResult.Yes)
+                            {
+                                if (user1.UpdateUser(TxtPin2.Text) == 1)
+                                {
+                                    MessageBox.Show("El pin del usuario ha sido cambiado correctamente", "Usuario editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Utilities.Utilities.CreateLog("ha cambiado el pin del usuario: " + user1.Username);
+                                    this.DialogResult = DialogResult.OK;
+                                    return;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se ha podido modificar el pin del usuario, verifique que el pin actual sea el correcto", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("No se ha podido modificar el pin del usuario, verifique que el pin actual sea el correcto", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            DialogResult dialog = MessageBox.Show("Si cambia el pin del usuario en sesión tendrá que volver a iniciar sesión en el sistema, desea cambiarlo?", "Cambiar pin", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            if (dialog == DialogResult.Yes)
+                            {
+                                if (user1.UpdateUser(TxtPin2.Text) == 1)
+                                {
+                                    MessageBox.Show("El pin del usuario ha sido cambiado correctamente", "Usuario editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Utilities.Utilities.CreateLog("ha cambiado el pin del usuario: " + user1.Username);
+                                    this.DialogResult = DialogResult.OK;
+                                    Application.Restart();
+                                    return;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se ha podido modificar el pin del usuario, verifique que el pin actual sea el correcto", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
                         }
 
                     }

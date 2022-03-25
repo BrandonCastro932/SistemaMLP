@@ -72,6 +72,7 @@
             // 
             // BtnAccept
             // 
+            this.BtnAccept.Enabled = false;
             this.BtnAccept.Location = new System.Drawing.Point(130, 403);
             this.BtnAccept.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAccept.Name = "BtnAccept";
@@ -79,6 +80,7 @@
             this.BtnAccept.TabIndex = 2;
             this.BtnAccept.Text = "Ver factura";
             this.BtnAccept.UseVisualStyleBackColor = true;
+            this.BtnAccept.Click += new System.EventHandler(this.BtnAccept_Click);
             // 
             // label1
             // 
@@ -136,6 +138,8 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmReceipts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facturas";

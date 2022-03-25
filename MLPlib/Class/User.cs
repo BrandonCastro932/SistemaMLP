@@ -46,13 +46,33 @@ namespace MLPlib.Class
             return result;
         }
 
-        public DataTable GetUsers()
+        public int RestoreUser()
+        {
+            SistemaMLPDataSetTableAdapters.UserTableAdapter userTableAdapter = new SistemaMLPDataSetTableAdapters.UserTableAdapter();
+
+            int result = (int)userTableAdapter.SPRestoreUser(this.IDUser);
+
+            return result;
+        }
+
+
+        public DataTable GetUsers(string filter = "")
         {
             SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
             SistemaMLPDataSetTableAdapters.UserTableAdapter userTableAdapter = new SistemaMLPDataSetTableAdapters.UserTableAdapter();
 
 
-            userTableAdapter.Fill(sistemaMLPDataSet.User);
+            userTableAdapter.FillByUsers(sistemaMLPDataSet.User,filter);
+            return sistemaMLPDataSet.User;
+
+        }
+        public DataTable GetDeletedUsers(string filter = "")
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.UserTableAdapter userTableAdapter = new SistemaMLPDataSetTableAdapters.UserTableAdapter();
+
+
+            userTableAdapter.FillByDeleted(sistemaMLPDataSet.User, filter);
             return sistemaMLPDataSet.User;
 
         }

@@ -34,8 +34,8 @@
             this.LblUsername = new System.Windows.Forms.Label();
             this.TxtUsername = new System.Windows.Forms.TextBox();
             this.TxtPin = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LblPin = new System.Windows.Forms.Label();
+            this.LblPin2 = new System.Windows.Forms.Label();
             this.TxtPin2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -95,26 +95,26 @@
             this.TxtPin.Size = new System.Drawing.Size(139, 20);
             this.TxtPin.TabIndex = 5;
             // 
-            // label3
+            // LblPin
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(79, 90);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Pin:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.LblPin.AutoSize = true;
+            this.LblPin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPin.Location = new System.Drawing.Point(42, 91);
+            this.LblPin.Name = "LblPin";
+            this.LblPin.Size = new System.Drawing.Size(29, 16);
+            this.LblPin.TabIndex = 6;
+            this.LblPin.Text = "Pin:";
+            this.LblPin.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label4
+            // LblPin2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(20, 126);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Confirmar pin:";
+            this.LblPin2.AutoSize = true;
+            this.LblPin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPin2.Location = new System.Drawing.Point(20, 126);
+            this.LblPin2.Name = "LblPin2";
+            this.LblPin2.Size = new System.Drawing.Size(88, 16);
+            this.LblPin2.TabIndex = 8;
+            this.LblPin2.Text = "Confirmar pin:";
             // 
             // TxtPin2
             // 
@@ -129,9 +129,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancel;
             this.ClientSize = new System.Drawing.Size(285, 210);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.LblPin2);
             this.Controls.Add(this.TxtPin2);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LblPin);
             this.Controls.Add(this.TxtPin);
             this.Controls.Add(this.TxtUsername);
             this.Controls.Add(this.LblUsername);
@@ -157,8 +157,8 @@
         private System.Windows.Forms.Label LblUsername;
         private System.Windows.Forms.TextBox TxtUsername;
         private System.Windows.Forms.TextBox TxtPin;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LblPin;
+        private System.Windows.Forms.Label LblPin2;
         private System.Windows.Forms.TextBox TxtPin2;
     }
 }

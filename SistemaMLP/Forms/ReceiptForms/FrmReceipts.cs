@@ -80,6 +80,14 @@ namespace SistemaMLP.Forms.ReceiptForms
         {
             if (e.RowIndex == -1)
                 return;
+            if (DGVReceipts.SelectedRows.Count > 0)
+            {
+                BtnAccept.Enabled = true;
+            }
+            else 
+            {
+                BtnAccept.Enabled = false;
+            }
 
         }
 
@@ -137,6 +145,18 @@ namespace SistemaMLP.Forms.ReceiptForms
         }
 
         private void DGVReceipts_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                ReceiptDetails();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void BtnAccept_Click(object sender, EventArgs e)
         {
             try
             {

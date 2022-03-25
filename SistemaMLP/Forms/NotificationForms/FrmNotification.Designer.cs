@@ -55,7 +55,7 @@
             this.DGVNotifications.AllowUserToResizeRows = false;
             this.DGVNotifications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVNotifications.Location = new System.Drawing.Point(13, 38);
-            this.DGVNotifications.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DGVNotifications.Margin = new System.Windows.Forms.Padding(4);
             this.DGVNotifications.MultiSelect = false;
             this.DGVNotifications.Name = "DGVNotifications";
             this.DGVNotifications.ReadOnly = true;
@@ -69,7 +69,7 @@
             // 
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancel.Location = new System.Drawing.Point(13, 231);
-            this.BtnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(100, 28);
             this.BtnCancel.TabIndex = 3;
@@ -79,7 +79,7 @@
             // BtnSeen
             // 
             this.BtnSeen.Location = new System.Drawing.Point(467, 231);
-            this.BtnSeen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnSeen.Margin = new System.Windows.Forms.Padding(4);
             this.BtnSeen.Name = "BtnSeen";
             this.BtnSeen.Size = new System.Drawing.Size(100, 28);
             this.BtnSeen.TabIndex = 4;
@@ -99,7 +99,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmNotification";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notificaciones";
