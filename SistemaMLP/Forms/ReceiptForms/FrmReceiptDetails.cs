@@ -90,6 +90,13 @@ namespace SistemaMLP.Forms.ReceiptForms
             DGVReceiptDetails.Columns["Barcode"].Visible = false;
             DGVReceiptDetails.Columns["UnitPrice"].Visible = false;
             DGVReceiptDetails.Columns["Tax"].Visible = false;
+            DGVReceiptDetails.Columns["Username"].Visible = false;
+            DGVReceiptDetails.Columns["ReceiptCode"].Visible = false;
+            DGVReceiptDetails.Columns["PaymentMethod"].Visible = false;
+            DGVReceiptDetails.Columns["Date"].Visible = false;
+            DGVReceiptDetails.Columns["Total"].Visible = false;
+            DGVReceiptDetails.Columns["TotalTax"].Visible = false;
+            DGVReceiptDetails.Columns["Fullname"].Visible = false;
 
             DGVReceiptDetails.Columns["Quantity"].HeaderText = "Cantidad comprada";
             DGVReceiptDetails.Columns["DetailPrice"].HeaderText = "Precio detalle";

@@ -1,3 +1,4 @@
+using CrystalDecisions.CrystalReports.Engine;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -51,6 +52,26 @@ namespace MLPlib.Class
 
             receiptsAdapter.SPGetReceipts(sistemaMLPDataSet.Receipt, filter);
             return sistemaMLPDataSet.Receipt;
+        }
+
+        public ReportDocument Print(ReportDocument repo)
+        {
+            ReportDocument r = repo;
+            Crystal crystal = new Crystal(r);
+            DataTable data = new DataTable();
+            ReceiptDetails receiptDetails = new ReceiptDetails();
+            receiptDetails.IDReceipt = this.IDReceipt;
+
+            data = receiptDetails.GetReceiptDetails();
+
+
+            if (data != null && data.Rows.Count > 0)
+            {
+                crystal.Data = data;
+                r = crystal.GenerateReport();
+            }
+
+            return r;
         }
 
     }

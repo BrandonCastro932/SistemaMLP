@@ -1,4 +1,5 @@
-﻿using MLPlib.Class;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using MLPlib.Class;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -296,7 +297,7 @@ namespace SistemaMLP.Forms.BillingForms
                                 IDProduct = Convert.ToInt32(dr["IDProduct"].ToString()),
 
                                 Quantity = Convert.ToDecimal(dr["Quantity"].ToString()),
-                                DetailPrice = (Convert.ToDecimal(dr["Quantity"].ToString()) * Convert.ToDecimal(dr["UnitPrice"].ToString()) * (Convert.ToDecimal(dr["Tax"].ToString()) / 100))
+                                DetailPrice = Convert.ToDecimal(dr["UnitPrice"].ToString()) + (Convert.ToDecimal(dr["Quantity"].ToString()) * Convert.ToDecimal(dr["UnitPrice"].ToString()) * (Convert.ToDecimal(dr["Tax"].ToString()) / 100))
 
                             };
 
@@ -332,8 +333,18 @@ namespace SistemaMLP.Forms.BillingForms
                                 return;
                             }
                         }
-                        MessageBox.Show("Se ha registrado la factura de manera exitosa", "Factura registrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         
+
+                        DialogResult dialogResult1 = MessageBox.Show("Desea imprimir la factura?", "Imprimir factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            ReportDocument report = new ReportDocument();
+                            report = new Report.Receipt();
+                            report = receipt.Print(report);
+                            Report.FrmReceiptVisualizer frm = new Report.FrmReceiptVisualizer();
+                            frm.ReportViewer.ReportSource = report;
+                            frm.ShowDialog();
+                        }
                         
 
                         Utilities.Utilities.CreateLog("ha registrado la factura número: " + receipt.ReceiptCode);
