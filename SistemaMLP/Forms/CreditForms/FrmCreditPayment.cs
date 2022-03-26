@@ -1,4 +1,5 @@
-﻿using MLPlib.Class;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using MLPlib.Class;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -83,6 +84,18 @@ namespace SistemaMLP.Forms.CreditForms
                             {
                                 Utilities.Utilities.CreateLog("ha cancelado la factura a crédito:" + receipt.ReceiptCode.ToString() + " del cliente: " + customer.Fullname);
                             }
+
+                            DialogResult dialogResult1 = MessageBox.Show("¿Desea imprimir el recibo del abono?", "Imprimir abono", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (dialogResult1 == DialogResult.Yes)
+                            {
+                                
+                                ReportDocument report1 = new ReportDocument();
+                                report1 = new Report.CreditPayment();
+                                report1 = creditDetails.PrintCredit(report1);
+                                Report.FrmReceiptVisualizer frm = new Report.FrmReceiptVisualizer();
+                                frm.ReportViewer.ReportSource = report1;
+                                frm.ShowDialog();
+                            }
                             this.DialogResult = DialogResult.OK;
                         }
                     }
@@ -95,7 +108,7 @@ namespace SistemaMLP.Forms.CreditForms
             }
             catch
             {
-
+                throw;
             }
         }
 

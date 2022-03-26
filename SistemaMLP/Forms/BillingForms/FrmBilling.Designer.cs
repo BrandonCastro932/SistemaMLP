@@ -274,9 +274,9 @@
             this.LblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblAmount.Location = new System.Drawing.Point(19, 265);
             this.LblAmount.Name = "LblAmount";
-            this.LblAmount.Size = new System.Drawing.Size(155, 29);
+            this.LblAmount.Size = new System.Drawing.Size(119, 29);
             this.LblAmount.TabIndex = 4;
-            this.LblAmount.Text = "Subtotal: ₡0";
+            this.LblAmount.Text = "Total: ₡0";
             // 
             // LblTax
             // 
@@ -294,9 +294,9 @@
             this.LblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTotal.Location = new System.Drawing.Point(19, 178);
             this.LblTotal.Name = "LblTotal";
-            this.LblTotal.Size = new System.Drawing.Size(119, 29);
+            this.LblTotal.Size = new System.Drawing.Size(155, 29);
             this.LblTotal.TabIndex = 2;
-            this.LblTotal.Text = "Total: ₡0";
+            this.LblTotal.Text = "Subtotal: ₡0";
             // 
             // BtnDelLine
             // 

@@ -32,5 +32,14 @@ namespace MLPlib.Class
             creditPaymentAdapter.SPGetCreditPayments(sistemaMLPDataSet.CreditPayments, this.IDCreditDetail);
             return sistemaMLPDataSet.CreditPayments;
         }
+
+        public DataTable PrintCredit()
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.CreditPaymentsTableAdapter creditDetailAdapter = new SistemaMLPDataSetTableAdapters.CreditPaymentsTableAdapter();
+
+            creditDetailAdapter.SPCreditPaymentsPrint(sistemaMLPDataSet.CreditPayments, IDCreditDetail);
+            return sistemaMLPDataSet.CreditPayments;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using CrystalDecisions.CrystalReports.Engine;
 using System;
 using System.Data;
 
@@ -43,6 +44,26 @@ namespace MLPlib.Class
 
             creditDetailAdapter.FillByCredit(sistemaMLPDataSet.CreditDetails, filter);
             return sistemaMLPDataSet.CreditDetails;
+        }
+
+        public ReportDocument PrintCredit(ReportDocument repo)
+        {
+            ReportDocument r = repo;
+            Crystal crystal = new Crystal(r);
+            DataTable data = new DataTable();
+            CreditPayments creditPayments = new CreditPayments();
+            creditPayments.IDCreditDetail = this.IDCreditDetails;
+
+            data = creditPayments.PrintCredit();
+
+
+            if (data != null && data.Rows.Count > 0)
+            {
+                crystal.Data = data;
+                r = crystal.GenerateReport();
+            }
+
+            return r;
         }
     }
 }

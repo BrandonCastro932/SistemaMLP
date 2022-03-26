@@ -300,11 +300,7 @@ namespace SistemaMLP.Forms.BillingForms
                                 IDProduct = Convert.ToInt32(dr["IDProduct"].ToString()),
                                 Quantity = Convert.ToDecimal(dr["Quantity"].ToString()),
 
-                                DetailPrice = (Convert.ToDecimal(dr["UnitPrice"].ToString()) * 
-                                Convert.ToDecimal(dr["Quantity"].ToString()) + (
-                                Convert.ToDecimal(dr["UnitPrice"]) * 
-                                Convert.ToDecimal(dr["Quantity"]) * 
-                                (Convert.ToDecimal(dr["Tax"]) / 100)))
+                                DetailPrice = Convert.ToDecimal(dr["DetailPrice"].ToString())
 
                             };
 
@@ -318,6 +314,7 @@ namespace SistemaMLP.Forms.BillingForms
                             }
 
                             int j = receiptDetails.CreateReceiptDetail();
+
                             if (j != 1)
                             {
                                 MessageBox.Show("Error, no se ha podido registrar una de las líneas.", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -398,11 +395,24 @@ namespace SistemaMLP.Forms.BillingForms
                     dr1["Active"] = Convert.ToBoolean(row.Cells["Active"].Value);
                     dr1["StockTypeName"] = Convert.ToString(row.Cells["StockTypeName"].Value);
                     dr1["Quantity"] = Convert.ToDecimal(UDQuantity.Value);
-                    dr1["DetailPrice"] = (Convert.ToDecimal(row.Cells["UnitPrice"].Value) *
+                    /*dr1["DetailPrice"] = (Convert.ToDecimal(row.Cells["UnitPrice"].Value) *
                                 Convert.ToDecimal(UDQuantity.Value) + (
                                 Convert.ToDecimal(row.Cells["UnitPrice"].Value) *
                                 Convert.ToDecimal(UDQuantity.Value) *
-                                (Convert.ToDecimal(row.Cells["Tax"].Value) / 100))).ToString("#,#");
+                                (Convert.ToDecimal(row.Cells["Tax"].Value) / 100))).ToString("#,#");*/
+
+                    if (CBTax.Checked == false)
+                    {
+                        dr1["DetailPrice"] = Convert.ToDecimal(dr1["UnitPrice"]) * Convert.ToDecimal(dr1["Quantity"]);
+                    }
+                    else
+                    {
+                        dr1["DetailPrice"] = (Convert.ToDecimal(dr1["UnitPrice"].ToString()) *
+                        Convert.ToDecimal(dr1["Quantity"].ToString()) + (
+                        Convert.ToDecimal(dr1["UnitPrice"]) *
+                        Convert.ToDecimal(dr1["Quantity"]) *
+                        (Convert.ToDecimal(dr1["Tax"]) / 100))).ToString("#,#");
+                    }
 
                     if (CbCuts.Visible)
                     {
@@ -564,18 +574,27 @@ namespace SistemaMLP.Forms.BillingForms
                     {
                         tax += Convert.ToDecimal(dr1.Cells["UnitPrice"].Value) * Convert.ToDecimal(dr1.Cells["Quantity"].Value) * (Convert.ToDecimal(dr1.Cells["Tax"].Value) / 100);
                     }
+
+
                     subtotal = total + tax;
 
                 }
                 LblTotal.Text = "Total: ₡" + total.ToString("#,##");
-                LblTax.Text = "Impuestos: ₡" + tax.ToString("#,##");
+                if (CBTax.Checked)
+                {
+                    LblTax.Text = "Impuestos: ₡" + tax.ToString("#,##");
+                }
+                else
+                {
+                    LblTax.Text = "Impuestos: ₡0";
+                }
                 LblAmount.Text = "Subtotal: ₡" + subtotal.ToString("#,##");
             }
             else
             {
-                LblTotal.Text = "Total: ₡0";
+                LblTotal.Text = "Subtotal: ₡0";
                 LblTax.Text = "Impuestos: ₡0";
-                LblAmount.Text = "Subtotal: ₡0";
+                LblAmount.Text = "Total: ₡0";
             }
 
         }
@@ -670,6 +689,31 @@ namespace SistemaMLP.Forms.BillingForms
         private void CBTax_CheckedChanged(object sender, EventArgs e)
         {
             SetTxtTotal();
+            DetailsTaxRemover();
+        }
+
+        private void DetailsTaxRemover()
+        {
+            if(lines.Rows.Count > 0)
+            {
+                foreach (DataRow dr in lines.Rows)
+                {
+
+                    if (CBTax.Checked == false)
+                    {
+                        dr["DetailPrice"] = Convert.ToDecimal(dr["UnitPrice"]) * Convert.ToDecimal(dr["Quantity"]);
+                    }
+                    else
+                    {
+                        dr["DetailPrice"] = (Convert.ToDecimal(dr["UnitPrice"].ToString()) *
+                        Convert.ToDecimal(dr["Quantity"].ToString()) + (
+                        Convert.ToDecimal(dr["UnitPrice"]) *
+                        Convert.ToDecimal(dr["Quantity"]) *
+                        (Convert.ToDecimal(dr["Tax"]) / 100))).ToString("#,#");
+                    }
+
+                }
+            }
         }
 
         private void CbCuts_KeyPress(object sender, KeyPressEventArgs e)

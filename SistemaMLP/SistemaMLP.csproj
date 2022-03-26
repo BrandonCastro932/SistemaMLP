@@ -204,6 +204,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\CreditPayment.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreditPayment.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\FrmReceiptVisualizer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +294,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\CreditPayment.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CreditPayment.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\FrmReceiptVisualizer.resx">
       <DependentUpon>FrmReceiptVisualizer.cs</DependentUpon>
     </EmbeddedResource>
