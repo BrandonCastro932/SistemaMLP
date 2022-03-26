@@ -96,7 +96,7 @@
             this.label2.Location = new System.Drawing.Point(16, 50);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 16);
+            this.label2.Size = new System.Drawing.Size(76, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "# Factura:";
             // 
@@ -106,7 +106,7 @@
             this.LblReceiptCode.Location = new System.Drawing.Point(91, 50);
             this.LblReceiptCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblReceiptCode.Name = "LblReceiptCode";
-            this.LblReceiptCode.Size = new System.Drawing.Size(133, 16);
+            this.LblReceiptCode.Size = new System.Drawing.Size(134, 16);
             this.LblReceiptCode.TabIndex = 4;
             this.LblReceiptCode.Text = "##################";
             // 
@@ -116,7 +116,7 @@
             this.LblFullname.Location = new System.Drawing.Point(75, 80);
             this.LblFullname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblFullname.Name = "LblFullname";
-            this.LblFullname.Size = new System.Drawing.Size(157, 16);
+            this.LblFullname.Size = new System.Drawing.Size(158, 16);
             this.LblFullname.TabIndex = 5;
             this.LblFullname.Text = "Nombre completo cliente";
             // 
@@ -126,7 +126,7 @@
             this.LblRegDate.Location = new System.Drawing.Point(148, 112);
             this.LblRegDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblRegDate.Name = "LblRegDate";
-            this.LblRegDate.Size = new System.Drawing.Size(94, 16);
+            this.LblRegDate.Size = new System.Drawing.Size(95, 16);
             this.LblRegDate.TabIndex = 6;
             this.LblRegDate.Text = "Fecha compra";
             // 
@@ -137,7 +137,7 @@
             this.label6.Location = new System.Drawing.Point(17, 112);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(132, 16);
+            this.label6.Size = new System.Drawing.Size(133, 16);
             this.label6.TabIndex = 7;
             this.label6.Text = "Fecha de compra:";
             // 
@@ -148,7 +148,7 @@
             this.label7.Location = new System.Drawing.Point(17, 80);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 16);
+            this.label7.Size = new System.Drawing.Size(60, 16);
             this.label7.TabIndex = 8;
             this.label7.Text = "Cliente:";
             // 
@@ -159,7 +159,7 @@
             this.label8.Location = new System.Drawing.Point(17, 217);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(188, 16);
+            this.label8.Size = new System.Drawing.Size(189, 16);
             this.label8.TabIndex = 9;
             this.label8.Text = "Monto siguiente estimado:";
             this.label8.Visible = false;
@@ -170,7 +170,7 @@
             this.LblNextAmount.Location = new System.Drawing.Point(205, 217);
             this.LblNextAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblNextAmount.Name = "LblNextAmount";
-            this.LblNextAmount.Size = new System.Drawing.Size(101, 16);
+            this.LblNextAmount.Size = new System.Drawing.Size(102, 16);
             this.LblNextAmount.TabIndex = 10;
             this.LblNextAmount.Text = "Monto siguiente";
             this.LblNextAmount.Visible = false;
@@ -181,7 +181,7 @@
             this.LblPreviousAmount.Location = new System.Drawing.Point(225, 171);
             this.LblPreviousAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblPreviousAmount.Name = "LblPreviousAmount";
-            this.LblPreviousAmount.Size = new System.Drawing.Size(85, 16);
+            this.LblPreviousAmount.Size = new System.Drawing.Size(86, 16);
             this.LblPreviousAmount.TabIndex = 11;
             this.LblPreviousAmount.Text = "Monto previo";
             // 
@@ -192,7 +192,7 @@
             this.label11.Location = new System.Drawing.Point(17, 171);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(211, 16);
+            this.label11.Size = new System.Drawing.Size(212, 16);
             this.label11.TabIndex = 12;
             this.label11.Text = "Monto previo al último abono:";
             this.label11.Click += new System.EventHandler(this.label11_Click);
@@ -203,7 +203,7 @@
             this.LblActualAmount.Location = new System.Drawing.Point(175, 200);
             this.LblActualAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblActualAmount.Name = "LblActualAmount";
-            this.LblActualAmount.Size = new System.Drawing.Size(83, 16);
+            this.LblActualAmount.Size = new System.Drawing.Size(84, 16);
             this.LblActualAmount.TabIndex = 13;
             this.LblActualAmount.Text = "Monto actual";
             // 
@@ -214,7 +214,7 @@
             this.label13.Location = new System.Drawing.Point(17, 200);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(157, 16);
+            this.label13.Size = new System.Drawing.Size(158, 16);
             this.label13.TabIndex = 14;
             this.label13.Text = "Monto actual a pagar:";
             // 
@@ -233,7 +233,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 377);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 16);
+            this.label3.Size = new System.Drawing.Size(51, 16);
             this.label3.TabIndex = 16;
             this.label3.Text = "Abono:";
             // 
@@ -266,7 +266,7 @@
             this.LblPayments.AutoSize = true;
             this.LblPayments.Location = new System.Drawing.Point(9, 235);
             this.LblPayments.Name = "LblPayments";
-            this.LblPayments.Size = new System.Drawing.Size(116, 16);
+            this.LblPayments.Size = new System.Drawing.Size(117, 16);
             this.LblPayments.TabIndex = 19;
             this.LblPayments.Text = "Pagos realizados:";
             // 
@@ -276,7 +276,7 @@
             this.LblReceiptTotal.Location = new System.Drawing.Point(166, 142);
             this.LblReceiptTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblReceiptTotal.Name = "LblReceiptTotal";
-            this.LblReceiptTotal.Size = new System.Drawing.Size(95, 16);
+            this.LblReceiptTotal.Size = new System.Drawing.Size(96, 16);
             this.LblReceiptTotal.TabIndex = 6;
             this.LblReceiptTotal.Text = "Precio compra";
             // 
@@ -287,7 +287,7 @@
             this.label10.Location = new System.Drawing.Point(17, 142);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(151, 16);
+            this.label10.Size = new System.Drawing.Size(152, 16);
             this.label10.TabIndex = 7;
             this.label10.Text = "Precio de la compra:";
             // 
@@ -335,6 +335,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCreditPayment";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Abonar";
             this.Load += new System.EventHandler(this.FrmCreditPayment_Load);

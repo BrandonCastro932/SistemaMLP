@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.LblUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.LblCredito = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inventariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +46,6 @@
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LblUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +60,12 @@
             this.statusStrip1.Size = new System.Drawing.Size(1350, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // LblUsername
+            // 
+            this.LblUsername.Name = "LblUsername";
+            this.LblUsername.Size = new System.Drawing.Size(106, 17);
+            this.LblUsername.Text = "Usuario: Username";
             // 
             // LblCredito
             // 
@@ -129,7 +136,7 @@
             // 
             this.facturarToolStripMenuItem.Name = "facturarToolStripMenuItem";
             this.facturarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.facturarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.facturarToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.facturarToolStripMenuItem.Text = "Facturar";
             this.facturarToolStripMenuItem.Click += new System.EventHandler(this.facturarToolStripMenuItem_Click);
             // 
@@ -137,7 +144,7 @@
             // 
             this.verFacturasToolStripMenuItem.Name = "verFacturasToolStripMenuItem";
             this.verFacturasToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.verFacturasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verFacturasToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.verFacturasToolStripMenuItem.Text = "Ver facturas";
             this.verFacturasToolStripMenuItem.Click += new System.EventHandler(this.verFacturasToolStripMenuItem_Click);
             // 
@@ -178,7 +185,7 @@
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click_1);
             // 
@@ -186,14 +193,8 @@
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
             this.cerrarSesiónToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
-            // 
-            // LblUsername
-            // 
-            this.LblUsername.Name = "LblUsername";
-            this.LblUsername.Size = new System.Drawing.Size(106, 17);
-            this.LblUsername.Text = "Usuario: Username";
             // 
             // FrmMain
             // 
@@ -202,10 +203,10 @@
             this.ClientSize = new System.Drawing.Size(1350, 573);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mariscos La Puebla";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

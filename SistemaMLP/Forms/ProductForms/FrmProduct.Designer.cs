@@ -106,7 +106,7 @@
             this.Cbx_Deleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbx_Deleted.Location = new System.Drawing.Point(788, 22);
             this.Cbx_Deleted.Name = "Cbx_Deleted";
-            this.Cbx_Deleted.Size = new System.Drawing.Size(179, 20);
+            this.Cbx_Deleted.Size = new System.Drawing.Size(180, 20);
             this.Cbx_Deleted.TabIndex = 11;
             this.Cbx_Deleted.Text = "Ver productos eliminados";
             this.Cbx_Deleted.UseVisualStyleBackColor = true;
@@ -128,7 +128,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(304, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 16);
+            this.label1.Size = new System.Drawing.Size(53, 16);
             this.label1.TabIndex = 9;
             this.label1.Text = "Buscar:";
             // 
@@ -170,6 +170,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmProduct";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.FrmProduct_Load);

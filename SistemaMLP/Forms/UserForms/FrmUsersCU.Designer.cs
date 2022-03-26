@@ -77,7 +77,7 @@
             this.LblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblUsername.Location = new System.Drawing.Point(2, 51);
             this.LblUsername.Name = "LblUsername";
-            this.LblUsername.Size = new System.Drawing.Size(106, 16);
+            this.LblUsername.Size = new System.Drawing.Size(107, 16);
             this.LblUsername.TabIndex = 3;
             this.LblUsername.Text = "Nombre usuario:";
             // 
@@ -94,6 +94,7 @@
             this.TxtPin.Name = "TxtPin";
             this.TxtPin.Size = new System.Drawing.Size(139, 20);
             this.TxtPin.TabIndex = 5;
+            this.TxtPin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPin_KeyPress);
             // 
             // LblPin
             // 
@@ -101,7 +102,7 @@
             this.LblPin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPin.Location = new System.Drawing.Point(42, 91);
             this.LblPin.Name = "LblPin";
-            this.LblPin.Size = new System.Drawing.Size(29, 16);
+            this.LblPin.Size = new System.Drawing.Size(30, 16);
             this.LblPin.TabIndex = 6;
             this.LblPin.Text = "Pin:";
             this.LblPin.Click += new System.EventHandler(this.label3_Click);
@@ -112,7 +113,7 @@
             this.LblPin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPin2.Location = new System.Drawing.Point(20, 126);
             this.LblPin2.Name = "LblPin2";
-            this.LblPin2.Size = new System.Drawing.Size(88, 16);
+            this.LblPin2.Size = new System.Drawing.Size(89, 16);
             this.LblPin2.TabIndex = 8;
             this.LblPin2.Text = "Confirmar pin:";
             // 
@@ -122,6 +123,7 @@
             this.TxtPin2.Name = "TxtPin2";
             this.TxtPin2.Size = new System.Drawing.Size(139, 20);
             this.TxtPin2.TabIndex = 7;
+            this.TxtPin2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPin2_KeyPress);
             // 
             // FrmUsersCU
             // 
@@ -141,6 +143,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmUsersCU";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de usuario";
             this.Load += new System.EventHandler(this.FrmUsersCU_Load);

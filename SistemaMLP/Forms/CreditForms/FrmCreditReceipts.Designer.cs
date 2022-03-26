@@ -56,7 +56,7 @@
             this.label2.Location = new System.Drawing.Point(13, 57);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 16);
+            this.label2.Size = new System.Drawing.Size(53, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Buscar:";
             // 
@@ -134,6 +134,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCreditReceipts";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Créditos";
             this.Load += new System.EventHandler(this.FrmCreditReceipts_Load);

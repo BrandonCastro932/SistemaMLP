@@ -171,7 +171,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(33, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(244, 16);
+            this.label2.Size = new System.Drawing.Size(245, 16);
             this.label2.TabIndex = 18;
             this.label2.Text = "Información de producto detallada";
             // 
@@ -274,6 +274,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmProductFullInfo";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Información de producto";
             this.Load += new System.EventHandler(this.FrmProductFullInfo_Load);

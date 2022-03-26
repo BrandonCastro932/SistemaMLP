@@ -93,7 +93,7 @@
             this.LblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSearch.Location = new System.Drawing.Point(12, 89);
             this.LblSearch.Name = "LblSearch";
-            this.LblSearch.Size = new System.Drawing.Size(94, 16);
+            this.LblSearch.Size = new System.Drawing.Size(95, 16);
             this.LblSearch.TabIndex = 4;
             this.LblSearch.Text = "Buscar cliente:";
             // 
@@ -135,6 +135,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmSelectCustomer";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Selecionar Cliente";
             this.Load += new System.EventHandler(this.FrmSelectCustomer_Load);

@@ -73,7 +73,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(290, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 16);
+            this.label1.Size = new System.Drawing.Size(53, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Buscar:";
             // 
@@ -108,7 +108,7 @@
             this.Cbx_Deleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbx_Deleted.Location = new System.Drawing.Point(774, 22);
             this.Cbx_Deleted.Name = "Cbx_Deleted";
-            this.Cbx_Deleted.Size = new System.Drawing.Size(165, 20);
+            this.Cbx_Deleted.Size = new System.Drawing.Size(166, 20);
             this.Cbx_Deleted.TabIndex = 7;
             this.Cbx_Deleted.Text = "Ver clientes eliminados";
             this.Cbx_Deleted.UseVisualStyleBackColor = true;
@@ -170,6 +170,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmCustomers";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.FrmCustomers_Load);

@@ -86,7 +86,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 16);
+            this.label1.Size = new System.Drawing.Size(53, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Buscar:";
             // 
@@ -136,7 +136,7 @@
             this.CbDeleted.AutoSize = true;
             this.CbDeleted.Location = new System.Drawing.Point(380, 49);
             this.CbDeleted.Name = "CbDeleted";
-            this.CbDeleted.Size = new System.Drawing.Size(116, 20);
+            this.CbDeleted.Size = new System.Drawing.Size(117, 20);
             this.CbDeleted.TabIndex = 7;
             this.CbDeleted.Text = "Ver eliminados";
             this.CbDeleted.UseVisualStyleBackColor = true;
@@ -173,6 +173,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmUsers";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuarios";
             this.Load += new System.EventHandler(this.FrmUsers_Load);

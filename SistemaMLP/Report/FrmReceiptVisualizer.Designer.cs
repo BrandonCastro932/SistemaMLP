@@ -52,6 +52,7 @@ namespace SistemaMLP.Report
             this.Controls.Add(this.ReportViewer);
             this.Name = "FrmReceiptVisualizer";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Factura";
             this.ResumeLayout(false);

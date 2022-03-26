@@ -53,7 +53,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(18, 82);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 16);
+            this.label1.Size = new System.Drawing.Size(152, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cédula (Obligatorio):";
             // 
@@ -63,7 +63,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(18, 142);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(225, 16);
+            this.label2.Size = new System.Drawing.Size(226, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nombre completo (Obligatorio):";
             // 
@@ -73,7 +73,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(18, 306);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 16);
+            this.label3.Size = new System.Drawing.Size(153, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Nombre del negocio:";
             // 
@@ -83,7 +83,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(18, 251);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 16);
+            this.label4.Size = new System.Drawing.Size(140, 16);
             this.label4.TabIndex = 3;
             this.label4.Text = "Correo electrónico:";
             // 
@@ -172,7 +172,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(18, 196);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(238, 16);
+            this.label5.Size = new System.Drawing.Size(239, 16);
             this.label5.TabIndex = 11;
             this.label5.Text = "Número de teléfono (Obligatorio):";
             // 
@@ -191,7 +191,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(18, 358);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(160, 16);
+            this.label6.Size = new System.Drawing.Size(161, 16);
             this.label6.TabIndex = 13;
             this.label6.Text = "Teléfono de empresa:";
             // 
@@ -231,6 +231,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmCustomersCU";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar cliente";
             this.Load += new System.EventHandler(this.FrmCustomersCU_Load);

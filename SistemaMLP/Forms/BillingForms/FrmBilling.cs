@@ -66,6 +66,7 @@ namespace SistemaMLP.Forms.BillingForms
             };
             CbPaymentMethod.SelectedValue = 1;
             LblCustomerName.Text = customer.Fullname;
+            BtnBilling.Enabled = false;
             lines.Clear();
             FillDGV();
             SetTxtTotal();
@@ -181,6 +182,7 @@ namespace SistemaMLP.Forms.BillingForms
             DGVLines.Columns["UnitPrice"].HeaderText = "Precio por unidad";
             DGVLines.Columns["Tax"].HeaderText = "Impuesto";
             DGVLines.Columns["Quantity"].HeaderText = "Cantidad Comprada";
+            DGVLines.Columns["DetailPrice"].HeaderText = "Precio detalle";
         }
 
         private void InitDT()
@@ -199,6 +201,7 @@ namespace SistemaMLP.Forms.BillingForms
             lines.Columns.Add("IDCutType", typeof(int));
             lines.Columns.Add("LineType", typeof(string));
             lines.Columns.Add("Quantity", typeof(decimal));
+            lines.Columns.Add("DetailPrice", typeof(decimal));
 
             DGVLines.DataSource = lines;
         }
@@ -231,7 +234,7 @@ namespace SistemaMLP.Forms.BillingForms
         {
             try
             {
-                DialogResult dialogResult = MessageBox.Show("Está seguro que desea registrar la factura?", "Registrar factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("¿Está seguro que desea registrar la factura?", "Registrar factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     //TODO:
@@ -295,9 +298,13 @@ namespace SistemaMLP.Forms.BillingForms
                             {
                                 IDReceipt = i,
                                 IDProduct = Convert.ToInt32(dr["IDProduct"].ToString()),
-
                                 Quantity = Convert.ToDecimal(dr["Quantity"].ToString()),
-                                DetailPrice = Convert.ToDecimal(dr["UnitPrice"].ToString()) + (Convert.ToDecimal(dr["Quantity"].ToString()) * Convert.ToDecimal(dr["UnitPrice"].ToString()) * (Convert.ToDecimal(dr["Tax"].ToString()) / 100))
+
+                                DetailPrice = (Convert.ToDecimal(dr["UnitPrice"].ToString()) * 
+                                Convert.ToDecimal(dr["Quantity"].ToString()) + (
+                                Convert.ToDecimal(dr["UnitPrice"]) * 
+                                Convert.ToDecimal(dr["Quantity"]) * 
+                                (Convert.ToDecimal(dr["Tax"]) / 100)))
 
                             };
 
@@ -333,10 +340,10 @@ namespace SistemaMLP.Forms.BillingForms
                                 return;
                             }
                         }
-                        
 
-                        DialogResult dialogResult1 = MessageBox.Show("Desea imprimir la factura?", "Imprimir factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (dialogResult == DialogResult.Yes)
+
+                        DialogResult dialogResult1 = MessageBox.Show("¿Desea imprimir la factura?", "Imprimir factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (dialogResult1 == DialogResult.Yes)
                         {
                             ReportDocument report = new ReportDocument();
                             report = new Report.Receipt();
@@ -345,10 +352,10 @@ namespace SistemaMLP.Forms.BillingForms
                             frm.ReportViewer.ReportSource = report;
                             frm.ShowDialog();
                         }
-                        
 
                         Utilities.Utilities.CreateLog("ha registrado la factura número: " + receipt.ReceiptCode);
                         CleanForm();
+
                     }
                     else if (i == 2)
                     {
@@ -391,6 +398,11 @@ namespace SistemaMLP.Forms.BillingForms
                     dr1["Active"] = Convert.ToBoolean(row.Cells["Active"].Value);
                     dr1["StockTypeName"] = Convert.ToString(row.Cells["StockTypeName"].Value);
                     dr1["Quantity"] = Convert.ToDecimal(UDQuantity.Value);
+                    dr1["DetailPrice"] = (Convert.ToDecimal(row.Cells["UnitPrice"].Value) *
+                                Convert.ToDecimal(UDQuantity.Value) + (
+                                Convert.ToDecimal(row.Cells["UnitPrice"].Value) *
+                                Convert.ToDecimal(UDQuantity.Value) *
+                                (Convert.ToDecimal(row.Cells["Tax"].Value) / 100))).ToString("#,#");
 
                     if (CbCuts.Visible)
                     {
@@ -410,9 +422,9 @@ namespace SistemaMLP.Forms.BillingForms
 
                     if (lines.Rows.Count == 0 && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                     {
-                        if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k))
+                        if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k) || dr1["StockTypeName"].ToString() == "Unidad" && !int.TryParse(dr1["Quantity"].ToString(), out int x))
                         {
-                            MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             UDQuantity.Value = 1;
                             exists = false;
                             return;
@@ -423,7 +435,7 @@ namespace SistemaMLP.Forms.BillingForms
                     else if (lines.Rows.Count == 0 && !ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                     {
                         exists = true;
-                        MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
@@ -440,12 +452,13 @@ namespace SistemaMLP.Forms.BillingForms
                                             //Ahora validar que si la linea agregada tiene stock detallado, esta no pase de lo registrado
 
                                             dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
+                                            dr["DetailPrice"] = Convert.ToDecimal(dr["DetailPrice"]) + Convert.ToDecimal(dr1["DetailPrice"]);
                                             lines.AcceptChanges();
                                             exists = true;
                                         }
                                         else
                                         {
-                                            MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                             exists = true;
                                         }
                                     }
@@ -465,7 +478,7 @@ namespace SistemaMLP.Forms.BillingForms
                                             }
                                             else
                                             {
-                                                MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                 exists = true;
                                             }
                                         }
@@ -476,9 +489,9 @@ namespace SistemaMLP.Forms.BillingForms
                         }
                         else
                         {
-                            if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k))
+                            if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k) || dr1["StockTypeName"].ToString() == "Unidades" && !int.TryParse(dr1["Quantity"].ToString(), out int x))
                             {
-                                MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 exists = true;
                                 UDQuantity.Value = 1;
                             }
@@ -549,7 +562,7 @@ namespace SistemaMLP.Forms.BillingForms
                     total += Convert.ToDecimal(dr1.Cells["UnitPrice"].Value) * Convert.ToDecimal(dr1.Cells["Quantity"].Value);
                     if (CBTax.Checked)
                     {
-                        tax += Convert.ToDecimal(dr1.Cells["UnitPrice"].Value) * (Convert.ToDecimal(dr1.Cells["Tax"].Value) / 100);
+                        tax += Convert.ToDecimal(dr1.Cells["UnitPrice"].Value) * Convert.ToDecimal(dr1.Cells["Quantity"].Value) * (Convert.ToDecimal(dr1.Cells["Tax"].Value) / 100);
                     }
                     subtotal = total + tax;
 

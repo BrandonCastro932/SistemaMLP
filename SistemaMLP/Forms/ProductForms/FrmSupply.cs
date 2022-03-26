@@ -23,6 +23,7 @@ namespace SistemaMLP.Forms.ProductForms
         {
             MdiParent = Utilities.Utilities.main;
             FillDGV();
+            DGVProduct.ClearSelection();
             BtnAccept.Enabled = false;
             DGVProduct.ClearSelection();
         }
@@ -234,6 +235,21 @@ namespace SistemaMLP.Forms.ProductForms
 
                 if (dialogResult == DialogResult.Yes)
                 {
+                    DataGridViewRow dataRow = DGVProduct.SelectedRows[0];
+                    product = new Product
+                    {
+                        IDProduct = Convert.ToInt32(dataRow.Cells["IDProduct"].Value),
+                        ProductName = Convert.ToString(dataRow.Cells["ProductName"].Value),
+                        BarCode = Convert.ToString(dataRow.Cells["BarCode"].Value),
+                        UnitPrice = Convert.ToDecimal(dataRow.Cells["UnitPrice"].Value),
+                        Tax = Convert.ToDecimal(dataRow.Cells["Tax"].Value),
+                        StockType = Convert.ToInt32(dataRow.Cells["StockType"].Value),
+                        GeneralStock = Convert.ToDecimal(dataRow.Cells["GeneralStock"].Value),
+                        RegDate = Convert.ToDateTime(dataRow.Cells["RegDate"].Value),
+                        LastUpdate = Convert.ToDateTime(dataRow.Cells["LastUpdate"].Value),
+                        Active = Convert.ToBoolean(dataRow.Cells["Active"].Value)
+                    };
+
                     int i = 0;
                     if (!string.IsNullOrWhiteSpace(TxtStock.Text) && product != null)
                     {

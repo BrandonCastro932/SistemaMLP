@@ -1,4 +1,5 @@
-﻿using MLPlib.Class;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using MLPlib.Class;
 using System;
 using System.Windows.Forms;
 
@@ -146,6 +147,20 @@ namespace SistemaMLP.Forms.ReceiptForms
             catch
             {
 
+            }
+        }
+
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult1 = MessageBox.Show("Desea reimprimir la factura?", "Reimprimir factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult1 == DialogResult.Yes)
+            {
+                ReportDocument report = new ReportDocument();
+                report = new Report.Receipt();
+                report = receipt.Print(report);
+                Report.FrmReceiptVisualizer frm = new Report.FrmReceiptVisualizer();
+                frm.ReportViewer.ReportSource = report;
+                frm.ShowDialog();
             }
         }
     }

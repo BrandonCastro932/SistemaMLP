@@ -52,7 +52,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(9, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 16);
+            this.label1.Size = new System.Drawing.Size(53, 16);
             this.label1.TabIndex = 12;
             this.label1.Text = "Buscar:";
             // 
@@ -120,7 +120,7 @@
             this.RbSum.Checked = true;
             this.RbSum.Location = new System.Drawing.Point(6, 19);
             this.RbSum.Name = "RbSum";
-            this.RbSum.Size = new System.Drawing.Size(139, 20);
+            this.RbSum.Size = new System.Drawing.Size(140, 20);
             this.RbSum.TabIndex = 38;
             this.RbSum.TabStop = true;
             this.RbSum.Text = "Sumar al inventario";
@@ -143,7 +143,7 @@
             this.RbCh.AutoSize = true;
             this.RbCh.Location = new System.Drawing.Point(6, 42);
             this.RbCh.Name = "RbCh";
-            this.RbCh.Size = new System.Drawing.Size(146, 20);
+            this.RbCh.Size = new System.Drawing.Size(147, 20);
             this.RbCh.TabIndex = 39;
             this.RbCh.Text = "Sustituir el inventario";
             this.RbCh.UseVisualStyleBackColor = true;
@@ -164,7 +164,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 390);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 16);
+            this.label3.Size = new System.Drawing.Size(77, 16);
             this.label3.TabIndex = 41;
             this.label3.Text = "Entrada de:";
             // 
@@ -207,6 +207,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmSupply";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Entrada de producto";
             this.Load += new System.EventHandler(this.FrmSupply_Load);

@@ -66,7 +66,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(16, 166);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 16);
+            this.label5.Size = new System.Drawing.Size(115, 16);
             this.label5.TabIndex = 26;
             this.label5.Text = "Precio Unitario:";
             // 
@@ -124,7 +124,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(16, 112);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(208, 16);
+            this.label2.Size = new System.Drawing.Size(209, 16);
             this.label2.TabIndex = 16;
             this.label2.Text = "Codigo de barras (Opcional):";
             // 
@@ -134,7 +134,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 16);
+            this.label1.Size = new System.Drawing.Size(158, 16);
             this.label1.TabIndex = 15;
             this.label1.Text = "Nombre del producto:";
             // 
@@ -154,7 +154,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(166, 166);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 16);
+            this.label7.Size = new System.Drawing.Size(75, 16);
             this.label7.TabIndex = 30;
             this.label7.Text = "Impuesto:";
             // 
@@ -173,7 +173,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(16, 221);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 16);
+            this.label8.Size = new System.Drawing.Size(107, 16);
             this.label8.TabIndex = 33;
             this.label8.Text = "Tipo de stock:";
             // 
@@ -193,7 +193,7 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(166, 221);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(90, 16);
+            this.label9.Size = new System.Drawing.Size(91, 16);
             this.label9.TabIndex = 34;
             this.label9.Text = "Existencias:";
             // 
@@ -225,7 +225,7 @@
             this.LblStockTypeDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblStockTypeDetail.Location = new System.Drawing.Point(16, 264);
             this.LblStockTypeDetail.Name = "LblStockTypeDetail";
-            this.LblStockTypeDetail.Size = new System.Drawing.Size(69, 16);
+            this.LblStockTypeDetail.Size = new System.Drawing.Size(70, 16);
             this.LblStockTypeDetail.TabIndex = 39;
             this.LblStockTypeDetail.Text = "Peso de:";
             this.LblStockTypeDetail.Visible = false;
@@ -268,6 +268,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmProductCU";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de producto";
             this.Load += new System.EventHandler(this.FrmProductCU_Load);

@@ -55,6 +55,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.LblCancel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BtnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVReceiptDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -125,7 +126,7 @@
             this.LblPaymentMethod.AutoSize = true;
             this.LblPaymentMethod.Location = new System.Drawing.Point(444, 146);
             this.LblPaymentMethod.Name = "LblPaymentMethod";
-            this.LblPaymentMethod.Size = new System.Drawing.Size(105, 16);
+            this.LblPaymentMethod.Size = new System.Drawing.Size(106, 16);
             this.LblPaymentMethod.TabIndex = 6;
             this.LblPaymentMethod.Text = "PaymentMethod";
             // 
@@ -144,7 +145,7 @@
             this.LblDate.AutoSize = true;
             this.LblDate.Location = new System.Drawing.Point(472, 111);
             this.LblDate.Name = "LblDate";
-            this.LblDate.Size = new System.Drawing.Size(36, 16);
+            this.LblDate.Size = new System.Drawing.Size(37, 16);
             this.LblDate.TabIndex = 8;
             this.LblDate.Text = "Date";
             // 
@@ -163,7 +164,7 @@
             this.LblFullname.AutoSize = true;
             this.LblFullname.Location = new System.Drawing.Point(100, 109);
             this.LblFullname.Name = "LblFullname";
-            this.LblFullname.Size = new System.Drawing.Size(48, 16);
+            this.LblFullname.Size = new System.Drawing.Size(49, 16);
             this.LblFullname.TabIndex = 10;
             this.LblFullname.Text = "Cliente";
             // 
@@ -192,7 +193,7 @@
             this.LblPersonalID.AutoSize = true;
             this.LblPersonalID.Location = new System.Drawing.Point(178, 146);
             this.LblPersonalID.Name = "LblPersonalID";
-            this.LblPersonalID.Size = new System.Drawing.Size(74, 16);
+            this.LblPersonalID.Size = new System.Drawing.Size(75, 16);
             this.LblPersonalID.TabIndex = 13;
             this.LblPersonalID.Text = "PersonalID";
             // 
@@ -201,7 +202,7 @@
             this.LblUsername.AutoSize = true;
             this.LblUsername.Location = new System.Drawing.Point(380, 71);
             this.LblUsername.Name = "LblUsername";
-            this.LblUsername.Size = new System.Drawing.Size(70, 16);
+            this.LblUsername.Size = new System.Drawing.Size(71, 16);
             this.LblUsername.TabIndex = 15;
             this.LblUsername.Text = "Username";
             // 
@@ -210,7 +211,7 @@
             this.LblReceiptCode.AutoSize = true;
             this.LblReceiptCode.Location = new System.Drawing.Point(117, 72);
             this.LblReceiptCode.Name = "LblReceiptCode";
-            this.LblReceiptCode.Size = new System.Drawing.Size(112, 16);
+            this.LblReceiptCode.Size = new System.Drawing.Size(113, 16);
             this.LblReceiptCode.TabIndex = 16;
             this.LblReceiptCode.Text = "###############";
             // 
@@ -219,7 +220,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(12, 183);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(136, 16);
+            this.label16.Size = new System.Drawing.Size(137, 16);
             this.label16.TabIndex = 17;
             this.label16.Text = "Detalles de la factura:";
             // 
@@ -228,7 +229,7 @@
             this.LblTotalAmount.AutoSize = true;
             this.LblTotalAmount.Location = new System.Drawing.Point(87, 485);
             this.LblTotalAmount.Name = "LblTotalAmount";
-            this.LblTotalAmount.Size = new System.Drawing.Size(83, 16);
+            this.LblTotalAmount.Size = new System.Drawing.Size(84, 16);
             this.LblTotalAmount.TabIndex = 18;
             this.LblTotalAmount.Text = "TotalAmount";
             // 
@@ -247,7 +248,7 @@
             this.LblTotalTax.AutoSize = true;
             this.LblTotalTax.Location = new System.Drawing.Point(102, 445);
             this.LblTotalTax.Name = "LblTotalTax";
-            this.LblTotalTax.Size = new System.Drawing.Size(61, 16);
+            this.LblTotalTax.Size = new System.Drawing.Size(62, 16);
             this.LblTotalTax.TabIndex = 20;
             this.LblTotalTax.Text = "TotalTax";
             // 
@@ -256,7 +257,7 @@
             this.LblTotal.AutoSize = true;
             this.LblTotal.Location = new System.Drawing.Point(172, 405);
             this.LblTotal.Name = "LblTotal";
-            this.LblTotal.Size = new System.Drawing.Size(38, 16);
+            this.LblTotal.Size = new System.Drawing.Size(39, 16);
             this.LblTotal.TabIndex = 21;
             this.LblTotal.Text = "Total";
             // 
@@ -300,7 +301,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(335, 403);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 16);
+            this.label2.Size = new System.Drawing.Size(47, 16);
             this.label2.TabIndex = 25;
             this.label2.Text = "Notas:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -326,11 +327,22 @@
             this.pictureBox1.TabIndex = 41;
             this.pictureBox1.TabStop = false;
             // 
+            // BtnPrint
+            // 
+            this.BtnPrint.Location = new System.Drawing.Point(26, 544);
+            this.BtnPrint.Name = "BtnPrint";
+            this.BtnPrint.Size = new System.Drawing.Size(88, 27);
+            this.BtnPrint.TabIndex = 42;
+            this.BtnPrint.Text = "Reimprimir";
+            this.BtnPrint.UseVisualStyleBackColor = true;
+            this.BtnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
+            // 
             // FrmReceiptDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 583);
+            this.Controls.Add(this.BtnPrint);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.LblCancel);
             this.Controls.Add(this.label2);
@@ -364,6 +376,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmReceiptDetails";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalles de factura";
             this.Load += new System.EventHandler(this.FrmReceiptDetails_Load);
@@ -403,5 +416,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LblCancel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button BtnPrint;
     }
 }
