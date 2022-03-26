@@ -32,7 +32,9 @@
             this.DGVNotifications = new System.Windows.Forms.DataGridView();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnSeen = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVNotifications)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +56,7 @@
             this.DGVNotifications.AllowUserToResizeColumns = false;
             this.DGVNotifications.AllowUserToResizeRows = false;
             this.DGVNotifications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVNotifications.Location = new System.Drawing.Point(13, 38);
+            this.DGVNotifications.Location = new System.Drawing.Point(13, 53);
             this.DGVNotifications.Margin = new System.Windows.Forms.Padding(4);
             this.DGVNotifications.MultiSelect = false;
             this.DGVNotifications.Name = "DGVNotifications";
@@ -68,7 +70,7 @@
             // BtnCancel
             // 
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancel.Location = new System.Drawing.Point(13, 231);
+            this.BtnCancel.Location = new System.Drawing.Point(13, 246);
             this.BtnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(100, 28);
@@ -78,7 +80,7 @@
             // 
             // BtnSeen
             // 
-            this.BtnSeen.Location = new System.Drawing.Point(467, 231);
+            this.BtnSeen.Location = new System.Drawing.Point(467, 246);
             this.BtnSeen.Margin = new System.Windows.Forms.Padding(4);
             this.BtnSeen.Name = "BtnSeen";
             this.BtnSeen.Size = new System.Drawing.Size(100, 28);
@@ -87,12 +89,23 @@
             this.BtnSeen.UseVisualStyleBackColor = true;
             this.BtnSeen.Click += new System.EventHandler(this.BtnSeen_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SistemaMLP.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, -3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(99, 49);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 44;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmNotification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancel;
-            this.ClientSize = new System.Drawing.Size(580, 270);
+            this.ClientSize = new System.Drawing.Size(580, 287);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BtnSeen);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.DGVNotifications);
@@ -106,6 +119,7 @@
             this.Text = "Notificaciones";
             this.Load += new System.EventHandler(this.FrmNotification_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVNotifications)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,5 +131,6 @@
         private System.Windows.Forms.DataGridView DGVNotifications;
         private System.Windows.Forms.Button BtnCancel;
         private System.Windows.Forms.Button BtnSeen;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
