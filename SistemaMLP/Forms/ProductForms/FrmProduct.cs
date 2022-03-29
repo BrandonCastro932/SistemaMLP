@@ -1,13 +1,17 @@
 ﻿using MLPlib.Class;
 using SistemaMLP.Forms.ProductForms;
 using System;
+using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
+using TableDependency.SqlClient;
+using TableDependency.SqlClient.Base.EventArgs;
 
 namespace SistemaMLP.Forms.CustomerForms
 {
     public partial class FrmProduct : Form
     {
+        private SqlTableDependency<Product> productDependency = new SqlTableDependency<Product>(ConfigurationManager.ConnectionStrings["SistemaMLP.Properties.Settings.SistemaMLPConnectionString"].ToString());
         private Product product = new Product();
         private bool DeletedMode = false;
         public FrmProduct()
@@ -22,12 +26,34 @@ namespace SistemaMLP.Forms.CustomerForms
             FrmProductCU frmProductCU = new FrmProductCU();
             frmProductCU.ShowDialog();
             FillDGV();
+
         }
 
         private void FrmProduct_Load(object sender, EventArgs e)
         {
             MdiParent = Utilities.Utilities.main;
+            productDependency.OnChanged += ProductTableDependency_Changed;
+            productDependency.Start();
+
+            //Checkear esto con el profesor
+            CheckForIllegalCrossThreadCalls = false;
         }
+
+        public void ProductTableDependency_Changed(object sender, RecordChangedEventArgs<Product> e)
+        {
+            if (e.ChangeType != TableDependency.SqlClient.Base.Enums.ChangeType.None)
+            {
+
+                if (!DeletedMode)
+                {
+                    FillDGV();
+                }
+
+
+            }
+        }
+
+
         private void FillDGV(string Filter = "")
         {
             //Llamada de datos
@@ -83,6 +109,7 @@ namespace SistemaMLP.Forms.CustomerForms
             DGVProduct.Columns["Tax"].HeaderText = "Impuesto(%)";
 
             DGVProduct.Columns["StockType"].Visible = false;
+            DGVProduct.Columns["StockTypeDetail"].Visible = false;
 
             DGVProduct.Columns["GeneralStock"].HeaderText = "Existencias";
 
@@ -231,7 +258,7 @@ namespace SistemaMLP.Forms.CustomerForms
 
                     };
 
-                    DialogResult dialogResult = MessageBox.Show("Está seguro que desea eliminar ese cliente?", "Eliminar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBox.Show("Está seguro que desea eliminar ese producto?", "Eliminar producto", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (dialogResult == DialogResult.Yes)
                     {
@@ -337,6 +364,16 @@ namespace SistemaMLP.Forms.CustomerForms
                     FillDeletedDGV();
                 }
             }
+        }
+
+        private void FrmProduct_Shown(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void FrmProduct_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            productDependency.Stop();
         }
     }
 }

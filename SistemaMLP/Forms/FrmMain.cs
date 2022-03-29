@@ -1,5 +1,6 @@
 ﻿using MLPlib.Class;
 using System;
+using System.Configuration;
 using System.Windows.Forms;
 using TableDependency.SqlClient;
 using TableDependency.SqlClient.Base.EventArgs;
@@ -8,7 +9,7 @@ namespace SistemaMLP.Forms
 {
     public partial class FrmMain : Form
     {
-        private SqlTableDependency<CreditDetails> creditPaymentsDependency = new SqlTableDependency<CreditDetails>("Data Source=.;Initial Catalog=SistemaMLP;Integrated Security=True");
+        private SqlTableDependency<CreditDetails> creditPaymentsDependency = new SqlTableDependency<CreditDetails>(ConfigurationManager.ConnectionStrings["SistemaMLP.Properties.Settings.SistemaMLPConnectionString"].ToString());
 
         private CreditDetails creditDetails = new CreditDetails();
 
@@ -143,6 +144,12 @@ namespace SistemaMLP.Forms
                 Utilities.Utilities.frmReceipts = new ReceiptForms.FrmReceipts();
                 Utilities.Utilities.frmReceipts.Show();
             }
+        }
+
+        private void FrmMain_Shown(object sender, EventArgs e)
+        {
+            FrmLogin login = new FrmLogin();
+            DialogResult dialogResult = login.ShowDialog();
         }
     }
 }

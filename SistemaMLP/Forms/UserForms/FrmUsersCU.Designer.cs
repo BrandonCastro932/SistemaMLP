@@ -84,6 +84,7 @@
             // TxtUsername
             // 
             this.TxtUsername.Location = new System.Drawing.Point(114, 50);
+            this.TxtUsername.MaxLength = 254;
             this.TxtUsername.Name = "TxtUsername";
             this.TxtUsername.Size = new System.Drawing.Size(139, 20);
             this.TxtUsername.TabIndex = 4;
@@ -91,6 +92,7 @@
             // TxtPin
             // 
             this.TxtPin.Location = new System.Drawing.Point(114, 89);
+            this.TxtPin.MaxLength = 4;
             this.TxtPin.Name = "TxtPin";
             this.TxtPin.Size = new System.Drawing.Size(139, 20);
             this.TxtPin.TabIndex = 5;
@@ -120,6 +122,7 @@
             // TxtPin2
             // 
             this.TxtPin2.Location = new System.Drawing.Point(114, 125);
+            this.TxtPin2.MaxLength = 4;
             this.TxtPin2.Name = "TxtPin2";
             this.TxtPin2.Size = new System.Drawing.Size(139, 20);
             this.TxtPin2.TabIndex = 7;

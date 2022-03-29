@@ -82,6 +82,7 @@
             // 
             // BtnCancel
             // 
+            this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.Location = new System.Drawing.Point(19, 318);
             this.BtnCancel.Name = "BtnCancel";
@@ -112,7 +113,7 @@
             // TxtProductName
             // 
             this.TxtProductName.Location = new System.Drawing.Point(19, 79);
-            this.TxtProductName.MaxLength = 255;
+            this.TxtProductName.MaxLength = 500;
             this.TxtProductName.Name = "TxtProductName";
             this.TxtProductName.Size = new System.Drawing.Size(261, 20);
             this.TxtProductName.TabIndex = 19;
@@ -244,6 +245,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.BtnCancel;
             this.ClientSize = new System.Drawing.Size(302, 370);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.LblStockTypeDetail);

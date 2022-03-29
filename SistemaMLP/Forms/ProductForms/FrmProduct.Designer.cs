@@ -173,7 +173,9 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProduct_FormClosed);
             this.Load += new System.EventHandler(this.FrmProduct_Load);
+            this.Shown += new System.EventHandler(this.FrmProduct_Shown);
             this.Click += new System.EventHandler(this.FrmProduct_Click);
             ((System.ComponentModel.ISupportInitialize)(this.DGVProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

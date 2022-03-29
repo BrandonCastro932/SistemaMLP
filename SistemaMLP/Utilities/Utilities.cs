@@ -22,7 +22,7 @@ namespace SistemaMLP.Utilities
         public static User user = new User
         {
             IDUser = 2,
-            Username = "Debug",
+            Username = "Brandon",
             Active = true,
         };
 
