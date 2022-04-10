@@ -55,6 +55,15 @@ namespace MLPlib.Class
             return result;
         }
 
+        public DataTable LoginUser()
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.UserTableAdapter userTableAdapter = new SistemaMLPDataSetTableAdapters.UserTableAdapter();
+
+            DataTable data = new DataTable();
+            userTableAdapter.LoginBy(sistemaMLPDataSet.User, EncriptarEnUnSentido(this.Pin));
+            return sistemaMLPDataSet.User;
+        }
 
         public DataTable GetUsers(string filter = "")
         {

@@ -19,12 +19,8 @@ namespace SistemaMLP.Utilities
         public static Forms.ReceiptForms.FrmReceipts frmReceipts = new Forms.ReceiptForms.FrmReceipts();
 
 
-        public static User user = new User
-        {
-            IDUser = 2,
-            Username = "Brandon",
-            Active = true,
-        };
+        public static User user = new User();
+       
 
         public static void CreateLog(string Msg)
         {

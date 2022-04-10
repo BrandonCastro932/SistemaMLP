@@ -3,6 +3,7 @@ using MLPlib.Class;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -349,8 +350,17 @@ namespace SistemaMLP.Forms.BillingForms
                             report = new Report.Receipt();
                             report = receipt.Print(report);
                             Report.FrmReceiptVisualizer frm = new Report.FrmReceiptVisualizer();
-                            report.PrintOptions.PrinterName = "POS-58";
-                            report.PrintToPrinter(1, false, 0, 0);
+                            PrinterSettings settings = new PrinterSettings();
+
+                            try
+                            {
+                                report.PrintOptions.PrinterName = settings.PrinterName;
+                                report.PrintToPrinter(1, false, 0, 0);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Error, no se ha podido imprimir la factura", "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
 
                         Utilities.Utilities.CreateLog("ha registrado la factura número: " + receipt.ReceiptCode);

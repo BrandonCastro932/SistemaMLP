@@ -1,6 +1,7 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using MLPlib.Class;
 using System;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.ReceiptForms
@@ -160,8 +161,17 @@ namespace SistemaMLP.Forms.ReceiptForms
                 report = receipt.Print(report);
                 Report.FrmReceiptVisualizer frm = new Report.FrmReceiptVisualizer();
                 frm.ReportViewer.ReportSource = report;
-                report.PrintOptions.PrinterName = "POS-58";
-                report.PrintToPrinter(1, false, 0, 0);
+                PrinterSettings settings = new PrinterSettings();
+
+                try
+                {
+                    report.PrintOptions.PrinterName = settings.PrinterName;
+                    report.PrintToPrinter(1, false, 0, 0);
+                }
+                catch
+                {
+                    MessageBox.Show("Error, no se ha podido imprimir la factura", "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

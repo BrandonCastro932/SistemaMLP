@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MLPlib.Class;
+using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace SistemaMLP
@@ -14,6 +16,32 @@ namespace SistemaMLP
         {
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            User user = new User();
+            user.Pin = TxtPin.Text.Trim();
+
+            DataTable dataTable = user.LoginUser();
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow dt = dataTable.Rows[0];
+
+                Utilities.Utilities.user.IDUser = Convert.ToInt32(dt["IDUser"].ToString());
+                Utilities.Utilities.user.Username = dt["Username"].ToString();
+                Utilities.Utilities.user.RegDate = Convert.ToDateTime(dt["RegDate"].ToString());
+                Utilities.Utilities.user.Active = Convert.ToBoolean(dt["Active"].ToString());
+
+                Utilities.Utilities.main = new Forms.FrmMain();
+                Utilities.Utilities.main.Show();
+                this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show("Pin incorrecto","Error de pin",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
         }
     }
 }

@@ -42,11 +42,17 @@ namespace SistemaMLP.Forms.ReceiptForms
 
             DGVReceipts.Columns["ReceiptCode"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DGVReceipts.Columns["Fullname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
             DGVReceipts.Columns["ReceiptCode"].DisplayIndex = 0;
             DGVReceipts.Columns["Fullname"].DisplayIndex = 1;
-            DGVReceipts.Columns["Total"].DisplayIndex = 2;
-            DGVReceipts.Columns["TotalTax"].DisplayIndex = 3;
-            DGVReceipts.Columns["Date"].DisplayIndex = 4;
+            DGVReceipts.Columns["Subtotal"].DisplayIndex = 2;
+            DGVReceipts.Columns["Total"].DisplayIndex = 3;
+            DGVReceipts.Columns["TotalTax"].DisplayIndex = 4;
+
+            DGVReceipts.Columns["PaymentMethodName"].DisplayIndex = 6;
+            DGVReceipts.Columns["Date"].DisplayIndex = 5;
+
+         
 
             DGVReceipts.Columns["ReceiptCode"].HeaderText = "# Factura";
             DGVReceipts.Columns["Fullname"].HeaderText = "Cliente";
@@ -54,6 +60,7 @@ namespace SistemaMLP.Forms.ReceiptForms
             DGVReceipts.Columns["TotalTax"].HeaderText = "Impuestos";
             DGVReceipts.Columns["Date"].HeaderText = "Fecha de venta";
             DGVReceipts.Columns["PaymentMethodName"].HeaderText = "Método de pago";
+            DGVReceipts.Columns["Subtotal"].HeaderText = "Total";
 
             DGVReceipts.Sort(DGVReceipts.Columns["Date"], ListSortDirection.Descending);
 

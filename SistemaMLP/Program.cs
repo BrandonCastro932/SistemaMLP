@@ -13,7 +13,7 @@ namespace SistemaMLP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.FrmMain());
+            Application.Run(new FrmLogin());
         }
     }
 }

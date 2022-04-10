@@ -30,7 +30,7 @@
         {
             this.LblTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtPin = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -53,17 +53,18 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 16);
+            this.label1.Size = new System.Drawing.Size(30, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Pin:";
             // 
-            // textBox1
+            // TxtPin
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(40, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(243, 22);
-            this.textBox1.TabIndex = 2;
+            this.TxtPin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtPin.Location = new System.Drawing.Point(40, 53);
+            this.TxtPin.Name = "TxtPin";
+            this.TxtPin.PasswordChar = '*';
+            this.TxtPin.Size = new System.Drawing.Size(243, 22);
+            this.TxtPin.TabIndex = 2;
             // 
             // button1
             // 
@@ -74,6 +75,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Continuar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -102,12 +104,13 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TxtPin);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MinimizeBox = false;
             this.Name = "FrmLogin";
-            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -119,7 +122,7 @@
 
         private System.Windows.Forms.Label LblTitle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtPin;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;

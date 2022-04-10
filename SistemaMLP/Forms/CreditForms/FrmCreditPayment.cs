@@ -2,6 +2,7 @@
 using MLPlib.Class;
 using System;
 using System.ComponentModel;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.CreditForms
@@ -74,7 +75,6 @@ namespace SistemaMLP.Forms.CreditForms
                         };
                         if (payments.CreateCreditPayment() == 1)
                         {
-                            MessageBox.Show("Se ha registrado el abono", "Abono registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             if (Convert.ToDecimal(TxtPayment.Text) < creditDetails.ActualAmount)
                             {
@@ -93,8 +93,17 @@ namespace SistemaMLP.Forms.CreditForms
                                 report1 = new Report.CreditPayment();
                                 report1 = creditDetails.PrintCredit(report1);
                                 Report.FrmReceiptVisualizer frm = new Report.FrmReceiptVisualizer();
-                                report1.PrintOptions.PrinterName = "POS-58";
-                                report1.PrintToPrinter(1, false, 0, 0);
+                                PrinterSettings settings = new PrinterSettings();
+
+                                try
+                                {
+                                    report1.PrintOptions.PrinterName = settings.PrinterName;
+                                    report1.PrintToPrinter(1, false, 0, 0);
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Error, no se ha podido imprimir la factura", "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                             this.DialogResult = DialogResult.OK;
                         }

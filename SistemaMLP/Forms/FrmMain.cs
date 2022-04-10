@@ -111,6 +111,7 @@ namespace SistemaMLP.Forms
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             creditPaymentsDependency.Stop();
+            Application.Exit();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -148,8 +149,21 @@ namespace SistemaMLP.Forms
 
         private void FrmMain_Shown(object sender, EventArgs e)
         {
-            FrmLogin login = new FrmLogin();
-            DialogResult dialogResult = login.ShowDialog();
+            
+        }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Está seguro que desea cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(dialogResult == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
         }
     }
 }
