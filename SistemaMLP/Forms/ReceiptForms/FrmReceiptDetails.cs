@@ -160,7 +160,8 @@ namespace SistemaMLP.Forms.ReceiptForms
                 report = receipt.Print(report);
                 Report.FrmReceiptVisualizer frm = new Report.FrmReceiptVisualizer();
                 frm.ReportViewer.ReportSource = report;
-                frm.ShowDialog();
+                report.PrintOptions.PrinterName = "POS-58";
+                report.PrintToPrinter(1, false, 0, 0);
             }
         }
     }

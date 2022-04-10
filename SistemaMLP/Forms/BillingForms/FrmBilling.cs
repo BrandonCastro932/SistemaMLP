@@ -53,6 +53,7 @@ namespace SistemaMLP.Forms.BillingForms
             BtnDelLine.Enabled = false;
             DGVLines.ClearSelection();
             DGVProducts.ClearSelection();
+            TxtNotes.Text = "";
         }
 
         private void CleanForm()
@@ -64,6 +65,7 @@ namespace SistemaMLP.Forms.BillingForms
                 Fullname = "Cliente particular",
                 PersonalID = "1"
             };
+            TxtNotes.Text = "";
             CbPaymentMethod.SelectedValue = 1;
             LblCustomerName.Text = customer.Fullname;
             BtnBilling.Enabled = false;
@@ -128,7 +130,6 @@ namespace SistemaMLP.Forms.BillingForms
         {
             DGVProducts.DataSource = product.GetProducts(filter);
             SetDGV();
-
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -141,7 +142,6 @@ namespace SistemaMLP.Forms.BillingForms
             {
                 FillDGV();
             }
-
         }
 
         private void SetDGV()
@@ -155,13 +155,14 @@ namespace SistemaMLP.Forms.BillingForms
             DGVProducts.Columns["StockTypeName"].DisplayIndex = 5;
             DGVProducts.Columns["BarCode"].DisplayIndex = 1;
             DGVProducts.Columns["StockTypeName"].HeaderText = "Tipo de stock";
-            DGVProducts.Columns["StockTypeName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DGVProducts.Columns["GeneralStock"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DGVProducts.Columns["StockTypeName"].Width = 100;
+            DGVProducts.Columns["GeneralStock"].Width = 150;
             DGVProducts.Columns["ProductName"].HeaderText = "Producto";
             DGVProducts.Columns["GeneralStock"].HeaderText = "Stock en bodega";
             DGVProducts.Columns["BarCode"].HeaderText = "Código barras";
             DGVProducts.Columns["UnitPrice"].HeaderText = "Precio por unidad";
             DGVProducts.Columns["Tax"].HeaderText = "Impuesto";
+            DGVProducts.Columns["ProductName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             DGVLines.Columns["IDProduct"].Visible = false;
             DGVLines.Columns["RegDate"].Visible = false;
@@ -203,6 +204,7 @@ namespace SistemaMLP.Forms.BillingForms
             lines.Columns.Add("Quantity", typeof(decimal));
             lines.Columns.Add("DetailPrice", typeof(decimal));
 
+            
             DGVLines.DataSource = lines;
         }
 
@@ -308,8 +310,9 @@ namespace SistemaMLP.Forms.BillingForms
                             {
                                 receiptDetails.IDCutType = Convert.ToInt32(dr["IDCutType"].ToString());
                             }
-                            else if(dr["IDCutType"].ToString() == String.Empty && product.StockType == 1)
+                            else if (dr["IDCutType"].ToString() == String.Empty && Convert.ToInt32(dr["StockType"]) == 1)
                             {
+                                //Acá se produce el error en que marca el tipo de corte de las cajas y unidades como "Filet" cuando debería ser nulo
                                 receiptDetails.IDCutType = 1;
                             }
 
@@ -346,8 +349,8 @@ namespace SistemaMLP.Forms.BillingForms
                             report = new Report.Receipt();
                             report = receipt.Print(report);
                             Report.FrmReceiptVisualizer frm = new Report.FrmReceiptVisualizer();
-                            frm.ReportViewer.ReportSource = report;
-                            frm.ShowDialog();
+                            report.PrintOptions.PrinterName = "POS-58";
+                            report.PrintToPrinter(1, false, 0, 0);
                         }
 
                         Utilities.Utilities.CreateLog("ha registrado la factura número: " + receipt.ReceiptCode);
@@ -366,7 +369,7 @@ namespace SistemaMLP.Forms.BillingForms
             }
             catch
             {
-
+                throw;
             }
 
         }
@@ -383,6 +386,7 @@ namespace SistemaMLP.Forms.BillingForms
             {
                 if(UDQuantity.Value > 0)
                 {
+                    
                     DataGridViewRow row = DGVProducts.SelectedRows[0];
                     dr1["IDProduct"] = Convert.ToInt32(row.Cells["IDProduct"].Value);
                     dr1["ProductName"] = Convert.ToString(row.Cells["ProductName"].Value);
@@ -394,6 +398,7 @@ namespace SistemaMLP.Forms.BillingForms
                     dr1["LastUpdate"] = Convert.ToDateTime(row.Cells["LastUpdate"].Value);
                     dr1["Active"] = Convert.ToBoolean(row.Cells["Active"].Value);
                     dr1["StockTypeName"] = Convert.ToString(row.Cells["StockTypeName"].Value);
+                    dr1["StockType"] = Convert.ToInt32(row.Cells["StockType"].Value);
                     dr1["Quantity"] = Convert.ToDecimal(UDQuantity.Value);
                     /*dr1["DetailPrice"] = (Convert.ToDecimal(row.Cells["UnitPrice"].Value) *
                                 Convert.ToDecimal(UDQuantity.Value) + (
@@ -418,6 +423,10 @@ namespace SistemaMLP.Forms.BillingForms
                     {
                         dr1["LineType"] = Convert.ToString(CbCuts.Text);
                         dr1["IDCutType"] = CbCuts.SelectedValue;
+                        if (!CheckDetailedStock())
+                        {
+                            return;
+                        }
                     }
                     //Ojo el visible de este if
                     else if (!CbCuts.Visible && dr1["StockTypeName"].ToString() == "Kilos")
@@ -504,6 +513,7 @@ namespace SistemaMLP.Forms.BillingForms
                                 MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 exists = true;
                                 UDQuantity.Value = 1;
+                                
                             }
                         }
                         if (!exists)
@@ -716,6 +726,23 @@ namespace SistemaMLP.Forms.BillingForms
             }
         }
 
+        private bool CheckDetailedStock()
+        {
+            if(CbCuts.Visible == true && CbCuts.SelectedItem != null)
+            {
+                foreach(DetailedStock detailedStock in detailedStocks)
+                {
+                    if(detailedStock.IDCutType == CbCuts.SelectedIndex && UDQuantity.Value <= detailedStock.Stock)
+                    {
+                        return true;
+                    }
+                    
+                }
+            }
+            MessageBox.Show("El valor de venta excede las existencias del corte", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
         private void CbCuts_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -729,6 +756,16 @@ namespace SistemaMLP.Forms.BillingForms
         private void UDQuantity_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Gb_Products_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CbCuts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

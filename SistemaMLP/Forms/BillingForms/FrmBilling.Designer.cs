@@ -105,6 +105,7 @@
             this.Gb_Products.TabIndex = 2;
             this.Gb_Products.TabStop = false;
             this.Gb_Products.Text = "Productos";
+            this.Gb_Products.Enter += new System.EventHandler(this.Gb_Products_Enter);
             // 
             // LblCuts
             // 
@@ -124,6 +125,7 @@
             this.CbCuts.Size = new System.Drawing.Size(145, 24);
             this.CbCuts.TabIndex = 6;
             this.CbCuts.Visible = false;
+            this.CbCuts.SelectedIndexChanged += new System.EventHandler(this.CbCuts_SelectedIndexChanged);
             this.CbCuts.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CbCuts_KeyPress);
             // 
             // LblQuantity

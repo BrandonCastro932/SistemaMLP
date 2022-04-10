@@ -93,8 +93,8 @@ namespace SistemaMLP.Forms.CreditForms
                                 report1 = new Report.CreditPayment();
                                 report1 = creditDetails.PrintCredit(report1);
                                 Report.FrmReceiptVisualizer frm = new Report.FrmReceiptVisualizer();
-                                frm.ReportViewer.ReportSource = report1;
-                                frm.ShowDialog();
+                                report1.PrintOptions.PrinterName = "POS-58";
+                                report1.PrintToPrinter(1, false, 0, 0);
                             }
                             this.DialogResult = DialogResult.OK;
                         }
