@@ -43,5 +43,18 @@ namespace SistemaMLP
                 MessageBox.Show("Pin incorrecto","Error de pin",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
+
+        private void TxtPin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void TxtPin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                button1_Click(this, e);
+            }
+        }
     }
 }

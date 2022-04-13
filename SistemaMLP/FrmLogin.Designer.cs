@@ -66,6 +66,8 @@
             this.TxtPin.PasswordChar = '*';
             this.TxtPin.Size = new System.Drawing.Size(243, 22);
             this.TxtPin.TabIndex = 2;
+            this.TxtPin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPin_KeyDown);
+            this.TxtPin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPin_KeyPress);
             // 
             // button1
             // 
