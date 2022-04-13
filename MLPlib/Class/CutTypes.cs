@@ -14,6 +14,33 @@ namespace MLPlib.Class
 
         }
 
+        public int CreateCutType()
+        {
+            SistemaMLPDataSetTableAdapters.CutTypesTableAdapter cutTypesAdapter = new SistemaMLPDataSetTableAdapters.CutTypesTableAdapter();
+
+            int result = (int)cutTypesAdapter.SPInsertCutType(this.CutName);
+
+            return result;
+        }
+
+        public int UpdateCutType()
+        {
+            SistemaMLPDataSetTableAdapters.CutTypesTableAdapter cutTypesAdapter = new SistemaMLPDataSetTableAdapters.CutTypesTableAdapter();
+
+            int result = (int)cutTypesAdapter.SPUpdateCutType(this.IDCutType,this.CutName);
+
+            return result;
+        }
+
+        public int DeleteCutType()
+        {
+            SistemaMLPDataSetTableAdapters.CutTypesTableAdapter cutTypesAdapter = new SistemaMLPDataSetTableAdapters.CutTypesTableAdapter();
+
+            int result = (int)cutTypesAdapter.SPDeleteCutType(this.IDCutType);
+
+            return result;
+        }
+
         public DataTable GetCutTypes()
         {
             SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();

@@ -61,6 +61,7 @@
             // 
             this.TxtPin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtPin.Location = new System.Drawing.Point(40, 53);
+            this.TxtPin.MaxLength = 4;
             this.TxtPin.Name = "TxtPin";
             this.TxtPin.PasswordChar = '*';
             this.TxtPin.Size = new System.Drawing.Size(243, 22);

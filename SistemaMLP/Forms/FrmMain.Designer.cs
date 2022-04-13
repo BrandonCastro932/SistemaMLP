@@ -46,6 +46,7 @@
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposDeCorteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -176,6 +177,7 @@
             // 
             this.sistemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuariosToolStripMenuItem,
+            this.tiposDeCorteToolStripMenuItem,
             this.cerrarSesiónToolStripMenuItem});
             this.sistemaToolStripMenuItem.Name = "sistemaToolStripMenuItem";
             this.sistemaToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
@@ -196,6 +198,13 @@
             this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
+            // 
+            // tiposDeCorteToolStripMenuItem
+            // 
+            this.tiposDeCorteToolStripMenuItem.Name = "tiposDeCorteToolStripMenuItem";
+            this.tiposDeCorteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tiposDeCorteToolStripMenuItem.Text = "Tipos de corte";
+            this.tiposDeCorteToolStripMenuItem.Click += new System.EventHandler(this.tiposDeCorteToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -242,5 +251,6 @@
         public System.Windows.Forms.ToolStripStatusLabel LblCredito;
         public System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel LblUsername;
+        private System.Windows.Forms.ToolStripMenuItem tiposDeCorteToolStripMenuItem;
     }
 }

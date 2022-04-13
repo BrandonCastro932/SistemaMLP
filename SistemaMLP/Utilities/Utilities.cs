@@ -17,6 +17,7 @@ namespace SistemaMLP.Utilities
         public static Forms.UserForms.FrmUsers frmUsers = new Forms.UserForms.FrmUsers();
         public static Forms.NotificationForms.FrmNotification frmNotification = new Forms.NotificationForms.FrmNotification();
         public static Forms.ReceiptForms.FrmReceipts frmReceipts = new Forms.ReceiptForms.FrmReceipts();
+        public static Forms.CutTypesForms.FrmCutTypes frmCuts = new Forms.CutTypesForms.FrmCutTypes();
 
 
         public static User user = new User();

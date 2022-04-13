@@ -431,5 +431,10 @@ namespace SistemaMLP.Forms.ProductForms
         {
 
         }
+
+        private void TxtProductName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

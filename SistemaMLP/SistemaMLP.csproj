@@ -82,6 +82,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\CutTypesForms\FrmCutTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CutTypesForms\FrmCutTypes.Designer.cs">
+      <DependentUpon>FrmCutTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CutTypesForms\FrmCutTypesInputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CutTypesForms\FrmCutTypesInputDialog.Designer.cs">
+      <DependentUpon>FrmCutTypesInputDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +236,12 @@
     </Compile>
     <Compile Include="Utilities\Tools.cs" />
     <Compile Include="Utilities\Utilities.cs" />
+    <EmbeddedResource Include="Forms\CutTypesForms\FrmCutTypes.resx">
+      <DependentUpon>FrmCutTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CutTypesForms\FrmCutTypesInputDialog.resx">
+      <DependentUpon>FrmCutTypesInputDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>

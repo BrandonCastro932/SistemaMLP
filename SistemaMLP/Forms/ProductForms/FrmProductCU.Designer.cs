@@ -117,6 +117,7 @@
             this.TxtProductName.Name = "TxtProductName";
             this.TxtProductName.Size = new System.Drawing.Size(261, 20);
             this.TxtProductName.TabIndex = 19;
+            this.TxtProductName.TextChanged += new System.EventHandler(this.TxtProductName_TextChanged);
             this.TxtProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtProductName_KeyDown);
             // 
             // label2

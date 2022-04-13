@@ -165,5 +165,14 @@ namespace SistemaMLP.Forms
                 Application.Restart();
             }
         }
+
+        private void tiposDeCorteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Utilities.Utilities.frmCuts.Visible)
+            {
+                Utilities.Utilities.frmCuts = new CutTypesForms.FrmCutTypes();
+                Utilities.Utilities.frmCuts.Show();
+            }
+        }
     }
 }
