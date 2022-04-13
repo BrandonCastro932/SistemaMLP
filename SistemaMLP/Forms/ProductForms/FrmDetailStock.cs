@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SistemaMLP.Forms.ProductForms
@@ -26,6 +27,7 @@ namespace SistemaMLP.Forms.ProductForms
         {
             CbType.DisplayMember = "CutName";
             CbType.ValueMember = "IDCutType";
+
 
             cutTypes = cutType.GetCutTypes();
             CbType.DataSource = cutTypes;
@@ -59,8 +61,11 @@ namespace SistemaMLP.Forms.ProductForms
             {
                 foreach (DetailedStock stock in stocks)
                 {
-                    DGVDetailedStock.Rows.Add(CbType.GetItemText(CbType.Items[stock.IDCutType - 1]), stock.Stock, stock.IDCutType, stock.RegDate);
+                    //Revisar con el profesor
+                    CbType.SelectedValue = stock.IDCutType;
+                    DGVDetailedStock.Rows.Add(CbType.Text, stock.Stock, stock.IDCutType, stock.RegDate);
                 }
+                CbType.SelectedIndex = 0;
             }
         }
 

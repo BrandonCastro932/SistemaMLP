@@ -350,6 +350,7 @@ namespace SistemaMLP.Forms.BillingForms
                             report = new Report.Receipt();
                             report = receipt.Print(report);
                             Report.FrmReceiptVisualizer frm = new Report.FrmReceiptVisualizer();
+                            frm.ShowDialog();
                             PrinterSettings settings = new PrinterSettings();
 
                             try
@@ -742,7 +743,7 @@ namespace SistemaMLP.Forms.BillingForms
             {
                 foreach(DetailedStock detailedStock in detailedStocks)
                 {
-                    if(detailedStock.IDCutType == CbCuts.SelectedIndex && UDQuantity.Value <= detailedStock.Stock)
+                    if(detailedStock.IDCutType == Convert.ToInt32(CbCuts.SelectedValue) && UDQuantity.Value <= detailedStock.Stock)
                     {
                         return true;
                     }
