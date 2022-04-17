@@ -35,6 +35,7 @@ namespace SistemaMLP.Forms.CutTypesForms
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.CbDeleted = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCuts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +47,7 @@ namespace SistemaMLP.Forms.CutTypesForms
             this.DGVCuts.AllowUserToResizeColumns = false;
             this.DGVCuts.AllowUserToResizeRows = false;
             this.DGVCuts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVCuts.Location = new System.Drawing.Point(12, 74);
+            this.DGVCuts.Location = new System.Drawing.Point(12, 83);
             this.DGVCuts.MultiSelect = false;
             this.DGVCuts.Name = "DGVCuts";
             this.DGVCuts.ReadOnly = true;
@@ -71,7 +72,7 @@ namespace SistemaMLP.Forms.CutTypesForms
             // BtnAdd
             // 
             this.BtnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAdd.Location = new System.Drawing.Point(12, 351);
+            this.BtnAdd.Location = new System.Drawing.Point(12, 360);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(87, 38);
             this.BtnAdd.TabIndex = 2;
@@ -83,7 +84,7 @@ namespace SistemaMLP.Forms.CutTypesForms
             // 
             this.BtnEdit.Enabled = false;
             this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEdit.Location = new System.Drawing.Point(153, 351);
+            this.BtnEdit.Location = new System.Drawing.Point(153, 360);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(87, 38);
             this.BtnEdit.TabIndex = 3;
@@ -95,7 +96,7 @@ namespace SistemaMLP.Forms.CutTypesForms
             // 
             this.BtnDelete.Enabled = false;
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.Location = new System.Drawing.Point(298, 351);
+            this.BtnDelete.Location = new System.Drawing.Point(298, 360);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(87, 38);
             this.BtnDelete.TabIndex = 4;
@@ -113,11 +114,23 @@ namespace SistemaMLP.Forms.CutTypesForms
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
+            // CbDeleted
+            // 
+            this.CbDeleted.AutoSize = true;
+            this.CbDeleted.Location = new System.Drawing.Point(17, 51);
+            this.CbDeleted.Name = "CbDeleted";
+            this.CbDeleted.Size = new System.Drawing.Size(108, 19);
+            this.CbDeleted.TabIndex = 10;
+            this.CbDeleted.Text = "Ver eliminados";
+            this.CbDeleted.UseVisualStyleBackColor = true;
+            this.CbDeleted.CheckedChanged += new System.EventHandler(this.CbDeleted_CheckedChanged);
+            // 
             // FrmCutTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(401, 406);
+            this.Controls.Add(this.CbDeleted);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnEdit);
@@ -148,5 +161,6 @@ namespace SistemaMLP.Forms.CutTypesForms
         private System.Windows.Forms.Button BtnEdit;
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox CbDeleted;
     }
 }

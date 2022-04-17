@@ -31,6 +31,9 @@ namespace SistemaMLP
                 DataTable dataTable = user.LoginUser();
                 if (dataTable.Rows.Count > 0)
                 {
+                    Forms.WaitingForm.FrmWaitingFunc frmWaitingFunc = new Forms.WaitingForm.FrmWaitingFunc();
+
+                    frmWaitingFunc.Show(this);
 
                     DataRow dt = dataTable.Rows[0];
 
@@ -39,9 +42,7 @@ namespace SistemaMLP
                     Utilities.Utilities.user.RegDate = Convert.ToDateTime(dt["RegDate"].ToString());
                     Utilities.Utilities.user.Active = Convert.ToBoolean(dt["Active"].ToString());
 
-                    Forms.WaitingForm.FrmWaitingFunc frmWaitingFunc = new Forms.WaitingForm.FrmWaitingFunc();
-
-                    frmWaitingFunc.Show(this);
+                    
                     Utilities.Utilities.main = new Forms.FrmMain();
                     Utilities.Utilities.main.Show();
                     frmWaitingFunc.Close();

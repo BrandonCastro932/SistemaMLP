@@ -4,6 +4,10 @@
 
     partial class SistemaMLPDataSet
     {
+        partial class UserDataTable
+        {
+        }
+
         partial class CreditDataTable
         {
         }

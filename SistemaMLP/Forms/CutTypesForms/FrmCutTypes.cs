@@ -14,6 +14,7 @@ namespace SistemaMLP.Forms.CutTypesForms
     public partial class FrmCutTypes : Form
     {
         public CutTypes cutTypes = new CutTypes();
+        public bool deletedMode = false;
 
         public FrmCutTypes()
         {
@@ -27,11 +28,36 @@ namespace SistemaMLP.Forms.CutTypesForms
             IdleLayout();
         }
 
+        private void DeletedMode()
+        {
+            deletedMode = true;
+            BtnDelete.Text = "Restaurar";
+            BtnAdd.Enabled = false;
+            BtnEdit.Enabled = false;
+            FillDeletedDGV();
+
+        }
+
         private void FillDGV()
         {
             DGVCuts.DataSource = cutTypes.GetCutTypes();
 
             DGVCuts.Columns["IDCutType"].Visible = false;
+            DGVCuts.Columns["Active"].Visible = false;
+            DGVCuts.Columns["CutName"].HeaderText = "Corte";
+            DGVCuts.Columns["RegDate"].HeaderText = "Fecha de registro";
+
+            DGVCuts.Columns["CutName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DGVCuts.Columns["RegDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+        }
+
+        private void FillDeletedDGV()
+        {
+            DGVCuts.DataSource = cutTypes.GetDeletedCutTypes();
+
+            DGVCuts.Columns["IDCutType"].Visible = false;
+            DGVCuts.Columns["Active"].Visible = false;
             DGVCuts.Columns["CutName"].HeaderText = "Corte";
             DGVCuts.Columns["RegDate"].HeaderText = "Fecha de registro";
 
@@ -43,10 +69,14 @@ namespace SistemaMLP.Forms.CutTypesForms
         #region Control Layouts
         private void IdleLayout()
         {
+            deletedMode = false;
             BtnAdd.Enabled = true;
             BtnEdit.Enabled = false;
             BtnDelete.Enabled = false;
+            BtnDelete.Text = "Eliminar";
             DGVCuts.ClearSelection();
+            CbDeleted.Checked = false;
+            FillDGV();
         }
 
         private void Selected()
@@ -144,37 +174,74 @@ namespace SistemaMLP.Forms.CutTypesForms
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (DGVCuts.SelectedRows.Count > 0)
+            if (!deletedMode)
             {
-                DataGridViewRow dataRow = DGVCuts.SelectedRows[0];
-                cutTypes = new CutTypes
+                if (DGVCuts.SelectedRows.Count > 0)
                 {
-                    IDCutType = Convert.ToInt32(dataRow.Cells["IDCutType"].Value)
-                };
+                    DataGridViewRow dataRow = DGVCuts.SelectedRows[0];
+                    cutTypes = new CutTypes
+                    {
+                        IDCutType = Convert.ToInt32(dataRow.Cells["IDCutType"].Value)
+                    };
 
-            
-                DialogResult dialogResult = MessageBox.Show("Desea eliminar el corte seleccionado?","Eliminar corte",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (dialogResult == DialogResult.Yes)
+                    DialogResult dialogResult = MessageBox.Show("Desea eliminar el corte seleccionado?", "Eliminar corte", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+
+                        int i = cutTypes.DeleteCutType();
+
+                        if (i == 1)
+                        {
+                            MessageBox.Show("Se ha eliminado el corte", "Corte eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            IdleLayout();
+                        }
+                        else if (i == 2)
+                        {
+                            MessageBox.Show("El corte tiene inventario regisrado, no es posible eliminarlo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se ha podido eliminar el corte, error desconocido", "Error desconocido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                if (DGVCuts.SelectedRows.Count > 0)
                 {
-                   
-                    int i = cutTypes.DeleteCutType();
+                    DataGridViewRow dataRow = DGVCuts.SelectedRows[0];
+                    cutTypes = new CutTypes
+                    {
+                        IDCutType = Convert.ToInt32(dataRow.Cells["IDCutType"].Value)
+                    };
 
-                    if (i == 1)
-                    {
-                        MessageBox.Show("Se ha eliminado el corte", "Corte eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        FillDGV();
-                        IdleLayout();
-                    }
-                    else if (i == 2)
-                    {
-                        MessageBox.Show("El corte tiene inventario regisrado, no es posible eliminarlo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se ha podido eliminar el corte, error desconocido", "Error desconocido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
 
+                    DialogResult dialogResult = MessageBox.Show("Desea restaurar el corte seleccionado?", "Restaurar corte", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+
+                        int i = cutTypes.RestoreCutType();
+
+                        if (i == 1)
+                        {
+                            MessageBox.Show("Se ha restaurado el corte", "Corte restaurado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            IdleLayout();
+                        }
+                        else if (i == 2)
+                        {
+                            MessageBox.Show("El corte tiene inventario regisrado, no es posible eliminarlo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se ha podido eliminar el corte, error desconocido", "Error desconocido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
                 }
             }
         }
@@ -187,6 +254,18 @@ namespace SistemaMLP.Forms.CutTypesForms
         private void FrmCutTypes_Click(object sender, EventArgs e)
         {
             IdleLayout();
+        }
+
+        private void CbDeleted_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CbDeleted.Checked)
+            {
+                DeletedMode();
+            }
+            else
+            {
+                IdleLayout();
+            }
         }
     }
 }

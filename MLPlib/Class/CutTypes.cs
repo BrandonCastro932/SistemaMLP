@@ -41,12 +41,30 @@ namespace MLPlib.Class
             return result;
         }
 
+        public int RestoreCutType()
+        {
+            SistemaMLPDataSetTableAdapters.CutTypesTableAdapter cutTypesAdapter = new SistemaMLPDataSetTableAdapters.CutTypesTableAdapter();
+
+            int result = (int)cutTypesAdapter.SPRestoreCutType(this.IDCutType);
+
+            return result;
+        }
+
         public DataTable GetCutTypes()
         {
             SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
             SistemaMLPDataSetTableAdapters.CutTypesTableAdapter cutTypesTableAdapter = new SistemaMLPDataSetTableAdapters.CutTypesTableAdapter();
 
-            cutTypesTableAdapter.Fill(sistemaMLPDataSet.CutTypes);
+            cutTypesTableAdapter.GetCutTypes(sistemaMLPDataSet.CutTypes);
+            return sistemaMLPDataSet.CutTypes;
+        }
+
+        public DataTable GetDeletedCutTypes()
+        {
+            SistemaMLPDataSet sistemaMLPDataSet = new SistemaMLPDataSet();
+            SistemaMLPDataSetTableAdapters.CutTypesTableAdapter cutTypesTableAdapter = new SistemaMLPDataSetTableAdapters.CutTypesTableAdapter();
+
+            cutTypesTableAdapter.GetDeletedCutTypes(sistemaMLPDataSet.CutTypes);
             return sistemaMLPDataSet.CutTypes;
         }
     }
