@@ -16,7 +16,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\Brand\Desktop\Publish\</PublishUrl>
+    <PublishUrl>C:\Users\Brand\Desktop\Publish\SistemaMLP\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -26,7 +26,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -94,6 +94,13 @@
     <Compile Include="Forms\CutTypesForms\FrmCutTypesInputDialog.Designer.cs">
       <DependentUpon>FrmCutTypesInputDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\WaitingForm\FrmWaiting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WaitingForm\FrmWaiting.Designer.cs">
+      <DependentUpon>FrmWaiting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WaitingForm\FrmWaitingFunc.cs" />
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CutTypesForms\FrmCutTypesInputDialog.resx">
       <DependentUpon>FrmCutTypesInputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WaitingForm\FrmWaiting.resx">
+      <DependentUpon>FrmWaiting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

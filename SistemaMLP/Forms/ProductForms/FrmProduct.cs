@@ -43,13 +43,10 @@ namespace SistemaMLP.Forms.CustomerForms
         {
             if (e.ChangeType != TableDependency.SqlClient.Base.Enums.ChangeType.None)
             {
-
                 if (!DeletedMode)
                 {
                     FillDGV();
                 }
-
-
             }
         }
 
@@ -368,7 +365,10 @@ namespace SistemaMLP.Forms.CustomerForms
 
         private void FrmProduct_Shown(object sender, EventArgs e)
         {
-            
+            if (Utilities.Utilities.frmWaiting.Visible)
+            {
+                Utilities.Utilities.frmWaiting.Close();
+            }
         }
 
         private void FrmProduct_FormClosed(object sender, FormClosedEventArgs e)

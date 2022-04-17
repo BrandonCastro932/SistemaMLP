@@ -349,8 +349,7 @@ namespace SistemaMLP.Forms.BillingForms
                             ReportDocument report = new ReportDocument();
                             report = new Report.Receipt();
                             report = receipt.Print(report);
-                            Report.FrmReceiptVisualizer frm = new Report.FrmReceiptVisualizer();
-                            frm.ShowDialog();
+                         
                             PrinterSettings settings = new PrinterSettings();
 
                             try

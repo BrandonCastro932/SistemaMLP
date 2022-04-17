@@ -187,7 +187,7 @@
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click_1);
             // 
@@ -195,7 +195,7 @@
             // 
             this.tiposDeCorteToolStripMenuItem.Name = "tiposDeCorteToolStripMenuItem";
             this.tiposDeCorteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.tiposDeCorteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tiposDeCorteToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.tiposDeCorteToolStripMenuItem.Text = "Tipos de corte";
             this.tiposDeCorteToolStripMenuItem.Click += new System.EventHandler(this.tiposDeCorteToolStripMenuItem_Click);
             // 
@@ -203,7 +203,7 @@
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
             this.cerrarSesiónToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 

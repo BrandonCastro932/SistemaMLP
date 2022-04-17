@@ -37,7 +37,6 @@ namespace SistemaMLP.Forms.NotificationForms
                 {
                     if (notification.NotificationsSeen() == 1)
                     {
-                        MessageBox.Show("Se han marcado las notificaciones como vistas", "Notificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         FillDGV();
                         return;
                     }

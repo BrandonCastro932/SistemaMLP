@@ -71,8 +71,11 @@ namespace SistemaMLP.Forms
         {
             if (!Utilities.Utilities.frmProduct.Visible)
             {
+                Forms.WaitingForm.FrmWaitingFunc frmWaitingFunc = new Forms.WaitingForm.FrmWaitingFunc();
+                frmWaitingFunc.Show(this);
                 Utilities.Utilities.frmProduct = new CustomerForms.FrmProduct();
                 Utilities.Utilities.frmProduct.Show();
+                frmWaitingFunc.Close();
             }
         }
 
@@ -149,7 +152,10 @@ namespace SistemaMLP.Forms
 
         private void FrmMain_Shown(object sender, EventArgs e)
         {
-            
+            if (Utilities.Utilities.frmWaiting.Visible)
+            {
+                Utilities.Utilities.frmWaiting.Close();
+            }
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
