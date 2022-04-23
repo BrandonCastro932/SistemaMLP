@@ -233,6 +233,13 @@ namespace SistemaMLP.Forms.BillingForms
             }
         }
 
+        /// <summary>
+        /// Al hacer click en el botón "Facturar" se realiza lo siguiente.
+        /// 1. Se crea el código de la factura combinando: Número de día, mes, año, hora, minuto y segundo junto con la identificación del cliente.
+        /// 2. Se crea la factura, determinando si es en efectivo, crédito o sinpe.
+        /// 3. Se registra la factura y se registran las líneas de detalle.
+        /// 4. Si todo se registra correctamente, se procede a imprimir la factura en la impresora por defecto del sistema.
+        /// </summary>
         private void BtnBilling_Click(object sender, EventArgs e)
         {
             try
@@ -384,6 +391,13 @@ namespace SistemaMLP.Forms.BillingForms
 
         }
 
+        /// <summary>
+        /// Al hacer click en el botón, se valida:
+        /// 1. Que si el producto tiene el inventario detallado en cortes, la cantidad a comprar seleccionada no sea mayor al stock del corte.
+        /// 2. Si el producto tiene el inventario normal, que la cantidad a comprar no sobrepase el límite de stock.
+        /// 3. Que si se agrega el mismo producto con diferente corte, se agregue como una nueva línea.
+        /// 4. Que si el stock son cajas o paquetes no se puede agregar en decimales.
+        /// </summary>
         private void BtnAddLine_Click(object sender, EventArgs e)
         {
             //TODO:
@@ -396,7 +410,6 @@ namespace SistemaMLP.Forms.BillingForms
             {
                 if(UDQuantity.Value > 0)
                 {
-                    
                     DataGridViewRow row = DGVProducts.SelectedRows[0];
                     dr1["IDProduct"] = Convert.ToInt32(row.Cells["IDProduct"].Value);
                     dr1["ProductName"] = Convert.ToString(row.Cells["ProductName"].Value);
