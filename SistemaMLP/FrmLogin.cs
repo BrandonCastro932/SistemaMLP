@@ -55,7 +55,7 @@ namespace SistemaMLP
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error del sistema "+ ex.Message, "Error del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error del sistema "+ ex, "Error del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

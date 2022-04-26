@@ -81,7 +81,7 @@ namespace SistemaMLP.Forms.ProductForms
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void BtnLayout()

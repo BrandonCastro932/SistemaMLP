@@ -404,7 +404,7 @@ namespace SistemaMLP.Forms.BillingForms
             //VALIDAR QUE SI SON CAJAS O PAQUETES NO SE PUEDA AGREGAR CON DECIMALES
 
             DataRow dr1 = lines.NewRow();
-            bool exists = false;
+            bool aux = false;
 
             if (DGVProducts.SelectedRows.Count > 0)
             {
@@ -460,7 +460,7 @@ namespace SistemaMLP.Forms.BillingForms
                     else
                     {
                         dr1["LineType"] = dr1["StockTypeName"].ToString();
-                    }
+                   }
 
                     if (lines.Rows.Count == 0 && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                     {
@@ -468,7 +468,7 @@ namespace SistemaMLP.Forms.BillingForms
                         {
                             MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             UDQuantity.Value = 1;
-                            exists = false;
+                            aux = false;
                             return;
                         }
                         lines.Rows.Add(dr1);
@@ -476,12 +476,12 @@ namespace SistemaMLP.Forms.BillingForms
                     }
                     else if (lines.Rows.Count == 0 && !ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                     {
-                        exists = true;
+                        aux = true;
                         MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-                        if (dr1["StockTypeName"].ToString() != "Cajas" && dr1["StockTypeName"].ToString() != "Paquetes")
+                        if (dr1["StockTypeName"].ToString() != "Cajas" && dr1["StockTypeName"].ToString() != "Paquetes" && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                         {
                             foreach (DataRow dr in lines.Rows)
                             {
@@ -496,12 +496,12 @@ namespace SistemaMLP.Forms.BillingForms
                                             dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
                                             dr["DetailPrice"] = Convert.ToDecimal(dr["DetailPrice"]) + Convert.ToDecimal(dr1["DetailPrice"]);
                                             lines.AcceptChanges();
-                                            exists = true;
+                                            aux = true;
                                         }
                                         else
                                         {
                                             MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                            exists = true;
+                                            aux = true;
                                         }
                                     }
                                     else
@@ -516,38 +516,40 @@ namespace SistemaMLP.Forms.BillingForms
                                             {
                                                 dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
                                                 lines.AcceptChanges();
-                                                exists = true;
+                                                aux = true;
                                             }
                                             else
                                             {
                                                 MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                                exists = true;
+                                                aux = true;
                                             }
                                         }
-
                                     }
                                 }
                             }
+                        }
+                        else if (dr1["StockTypeName"].ToString() != "Cajas" && dr1["StockTypeName"].ToString() != "Paquetes" && !ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
+                        {
+                            MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            aux = true;
                         }
                         else
                         {
                             if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k) || dr1["StockTypeName"].ToString() == "Unidades" && !int.TryParse(dr1["Quantity"].ToString(), out int x))
                             {
                                 MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                exists = true;
+                                aux = true;
                                 UDQuantity.Value = 1;
-                                
                             }
+                            //Se agregó el else para la validación
+                          
                         }
-                        if (!exists)
+                        if (!aux)
                         {
                             lines.Rows.Add(dr1);
                             BillingLayout();
                             UDQuantity.Value = 1;
                         }
-
-
-
                     }
                 }
                 else
