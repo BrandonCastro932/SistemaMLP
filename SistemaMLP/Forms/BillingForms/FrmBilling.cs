@@ -11,8 +11,6 @@ namespace SistemaMLP.Forms.BillingForms
 {
     public partial class FrmBilling : Form
     {
-        //TODO:
-        //Decidir que hacer con el detalle de la factura, necesita llevar si se compro general, en filet o picado
         public Product product = new Product();
         public List<DetailedStock> detailedStocks = new List<DetailedStock>();
         public List<CutTypes> cutTypes = new List<CutTypes>();
@@ -247,9 +245,8 @@ namespace SistemaMLP.Forms.BillingForms
                 DialogResult dialogResult = MessageBox.Show("¿Está seguro que desea registrar la factura?", "Registrar factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    //TODO:
-                    //Cuando se vaya a validar la venta, validar que todos los campos necesarios esten, que los botones respectivos se activen y se desactiven
-                    //Validar que la cantidad selecionada no sea mayor al stock en bodega
+                    //Se crea el código de la factura generando un número sumando el año, mes, dia, hora, minuto, segundo y numero de cédula del cliente.
+                    //De esta forma nunca se duplicará el código de las facturas y siempre será de la misma longitud.
                     DateTime dt = DateTime.Now;
                     int year = dt.Year;
                     int month = dt.Month;
@@ -296,12 +293,12 @@ namespace SistemaMLP.Forms.BillingForms
                             MessageBox.Show("Error del sistema", "Error", MessageBoxButtons.OK);
                             break;
                     }
-
-                    //TODO: Validar lo necesario
+                    //Se crea la factura y se retorna el id generado, en caso de error, la base de datos retorna 0.
                     int i = receipt.CreateReceipt();
                     if (i != 0)
                     {
                         receipt.IDReceipt = i;
+                        //Se usa un foreach para registrar cada linea de detalle
                         foreach (DataRow dr in lines.Rows)
                         {
                             ReceiptDetails receiptDetails = new ReceiptDetails
@@ -309,9 +306,7 @@ namespace SistemaMLP.Forms.BillingForms
                                 IDReceipt = i,
                                 IDProduct = Convert.ToInt32(dr["IDProduct"].ToString()),
                                 Quantity = Convert.ToDecimal(dr["Quantity"].ToString()),
-
                                 DetailPrice = Convert.ToDecimal(dr["DetailPrice"].ToString())
-
                             };
 
                             if (dr["IDCutType"].ToString() != String.Empty)
@@ -324,6 +319,7 @@ namespace SistemaMLP.Forms.BillingForms
                                 receiptDetails.IDCutType = 1;
                             }
 
+                            //Al registrar la linea, la base de datos retorna un 1 si se realizo correctamente, en caso de que no, se retorna un 0.
                             int j = receiptDetails.CreateReceiptDetail();
 
                             if (j != 1)
@@ -332,6 +328,7 @@ namespace SistemaMLP.Forms.BillingForms
                                 return;
                             }
                         }
+                        //Si la factura es a crédito, este se registra.
                         if (Convert.ToInt32(CbPaymentMethod.SelectedValue) == 3)
                         {
                             CreditDetails creditDetails = new CreditDetails
@@ -349,7 +346,7 @@ namespace SistemaMLP.Forms.BillingForms
                             }
                         }
 
-
+                        //Para imprimir la factura, se usa crystal reports y se imprime en la impresora por defecto del sistema operativo.
                         DialogResult dialogResult1 = MessageBox.Show("¿Desea imprimir la factura?", "Imprimir factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult1 == DialogResult.Yes)
                         {
@@ -397,12 +394,11 @@ namespace SistemaMLP.Forms.BillingForms
         /// 2. Si el producto tiene el inventario normal, que la cantidad a comprar no sobrepase el límite de stock.
         /// 3. Que si se agrega el mismo producto con diferente corte, se agregue como una nueva línea.
         /// 4. Que si el stock son cajas o paquetes no se puede agregar en decimales.
+        /// Se presentaron ciertos problemas. Por los que ciertas validaciones tuvieron que escribirse 2 veces, pero al ser dependiente del caso, solo se ejecutan una vez en el código.
+        /// Se planea mejorar este apartado del código.
         /// </summary>
         private void BtnAddLine_Click(object sender, EventArgs e)
         {
-            //TODO:
-            //VALIDAR QUE SI SON CAJAS O PAQUETES NO SE PUEDA AGREGAR CON DECIMALES
-
             DataRow dr1 = lines.NewRow();
             bool aux = false;
 
@@ -423,18 +419,15 @@ namespace SistemaMLP.Forms.BillingForms
                     dr1["StockTypeName"] = Convert.ToString(row.Cells["StockTypeName"].Value);
                     dr1["StockType"] = Convert.ToInt32(row.Cells["StockType"].Value);
                     dr1["Quantity"] = Convert.ToDecimal(UDQuantity.Value);
-                    /*dr1["DetailPrice"] = (Convert.ToDecimal(row.Cells["UnitPrice"].Value) *
-                                Convert.ToDecimal(UDQuantity.Value) + (
-                                Convert.ToDecimal(row.Cells["UnitPrice"].Value) *
-                                Convert.ToDecimal(UDQuantity.Value) *
-                                (Convert.ToDecimal(row.Cells["Tax"].Value) / 100))).ToString("#,#");*/
-
+                 
                     if (CBTax.Checked == false)
                     {
+                        //Si el checkbox de impuesto está sin checkear no incluye impuesto
                         dr1["DetailPrice"] = Convert.ToDecimal(dr1["UnitPrice"]) * Convert.ToDecimal(dr1["Quantity"]);
                     }
                     else
                     {
+                        //Si el checkbox de impuesto si esta chekeado, incluye el impuesto
                         dr1["DetailPrice"] = (Convert.ToDecimal(dr1["UnitPrice"].ToString()) *
                         Convert.ToDecimal(dr1["Quantity"].ToString()) + (
                         Convert.ToDecimal(dr1["UnitPrice"]) *
@@ -444,6 +437,7 @@ namespace SistemaMLP.Forms.BillingForms
 
                     if (CbCuts.Visible)
                     {
+                        //Si tiene cortes detallados, se checkean que esten disponibles
                         dr1["LineType"] = Convert.ToString(CbCuts.Text);
                         dr1["IDCutType"] = CbCuts.SelectedValue;
                         if (!CheckDetailedStock())
@@ -454,16 +448,19 @@ namespace SistemaMLP.Forms.BillingForms
                     //Ojo el visible de este if
                     else if (!CbCuts.Visible && dr1["StockTypeName"].ToString() == "Kilos")
                     {
+                        //Si no hay inventario en cortes, se establece la linea en kilos
                         dr1["LineType"] = "Kilos";
                         dr1["IDCutType"] = 1;
                     }
                     else
                     {
+                        //Si no, la linea va a ser del tipo de stock que sea, nombre del corte, caja, paquete o unidad 
                         dr1["LineType"] = dr1["StockTypeName"].ToString();
                    }
 
                     if (lines.Rows.Count == 0 && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                     {
+                        //Valida que si la linea se compra en caja, paquete o unidad, no permita decimales.
                         if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k) || dr1["StockTypeName"].ToString() == "Unidad" && !int.TryParse(dr1["Quantity"].ToString(), out int x))
                         {
                             MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -476,13 +473,16 @@ namespace SistemaMLP.Forms.BillingForms
                     }
                     else if (lines.Rows.Count == 0 && !ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                     {
+                        //Valida que si el stock de lo que se va a agregar no es sufuiciente, aparezca el error.
                         aux = true;
                         MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
                     else
                     {
                         if (dr1["StockTypeName"].ToString() != "Cajas" && dr1["StockTypeName"].ToString() != "Paquetes" && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                         {
+                            //Se recorre con un foreach para validar la existencia de lineas iguales, en caso de existir, se suma a la linea existente.
                             foreach (DataRow dr in lines.Rows)
                             {
                                 if (dr["IDProduct"].ToString() == dr1["IDProduct"].ToString())
@@ -491,7 +491,7 @@ namespace SistemaMLP.Forms.BillingForms
                                     {
                                         if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(dr1["GeneralStock"].ToString()) && ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                                         {
-                                            //Ahora validar que si la linea agregada tiene stock detallado, esta no pase de lo registrado
+                                            //Ahora valida que si la linea agregada tiene stock detallado, esta no pase de lo registrado
 
                                             dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
                                             dr["DetailPrice"] = Convert.ToDecimal(dr["DetailPrice"]) + Convert.ToDecimal(dr1["DetailPrice"]);
@@ -508,10 +508,11 @@ namespace SistemaMLP.Forms.BillingForms
                                     {
                                         DetailedStock detailed = new DetailedStock();
                                         detailed = detailedStocks.FirstOrDefault(x => x.IDCutType.Equals(Convert.ToInt32(CbCuts.SelectedValue)));
-                                        //Que si se agrega un corte distinto se agrege como una nueva linea
+                                        //Si se agrega un corte distinto de un mismo producto, se agrega como una nueva linea
 
                                         if (dr["LineType"].ToString() == CbCuts.Text.ToString() && UDQuantity.Value <= detailed.Stock && ValidateStock(detailed.Stock))
                                         {
+                                            //Se agrega a la linea existente la cantidad de la linea igual que se iba a agregar y se valida que la suma de ambas no exceda del stock. 
                                             if (Convert.ToDecimal(dr["Quantity"].ToString()) + Convert.ToDecimal(dr1["Quantity"].ToString()) <= Convert.ToDecimal(detailed.Stock))
                                             {
                                                 dr["Quantity"] = Convert.ToDecimal(dr["Quantity"]) + Convert.ToDecimal(dr1["Quantity"]);
@@ -530,11 +531,13 @@ namespace SistemaMLP.Forms.BillingForms
                         }
                         else if (dr1["StockTypeName"].ToString() != "Cajas" && dr1["StockTypeName"].ToString() != "Paquetes" && !ValidateStock(Convert.ToDecimal(dr1["GeneralStock"].ToString())))
                         {
+                            //Se valida el error del stock.
                             MessageBox.Show("No se permite agregar más del stock existente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             aux = true;
                         }
                         else
                         {
+                            //Se vuelva a validar los decimales en las cajas, paquetes o unidades.
                             if (dr1["StockTypeName"].ToString() == "Cajas" && !int.TryParse(dr1["Quantity"].ToString(), out int n) || dr1["StockTypeName"].ToString() == "Paquetes" && !int.TryParse(dr1["Quantity"].ToString(), out int k) || dr1["StockTypeName"].ToString() == "Unidades" && !int.TryParse(dr1["Quantity"].ToString(), out int x))
                             {
                                 MessageBox.Show("No se permite agregar el número de cajas o paquetes en decimales", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -544,6 +547,7 @@ namespace SistemaMLP.Forms.BillingForms
                             //Se agregó el else para la validación
                           
                         }
+                        //Si la variable auxiliar llego en false, se agrega la nueva linea
                         if (!aux)
                         {
                             lines.Rows.Add(dr1);

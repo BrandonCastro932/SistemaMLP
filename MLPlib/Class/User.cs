@@ -5,6 +5,10 @@ using System.Text;
 
 namespace MLPlib.Class
 {
+    /// <summary>
+    /// Al usar los datasets, toda la conexión a la base de datos se hace de forma automática por el .NET
+    /// Simplemente de configurar los procedimientos almacenados a usar por cada tabla y usarlos como un método.
+    /// </summary>
     public class User
     {
         public int IDUser { get; set; }
@@ -86,6 +90,7 @@ namespace MLPlib.Class
 
         }
 
+        //Cambiar a su propia clase
         public string EncriptarEnUnSentido(string Entrada)
         {
 

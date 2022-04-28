@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace MLPlib.Class
 {
+    //Clase no utilizada en el sistema.
     public class Credit
     {
         public int IDCredit { get; set; }
