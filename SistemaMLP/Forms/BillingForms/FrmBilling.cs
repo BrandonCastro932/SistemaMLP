@@ -544,8 +544,6 @@ namespace SistemaMLP.Forms.BillingForms
                                 aux = true;
                                 UDQuantity.Value = 1;
                             }
-                            //Se agregó el else para la validación
-                          
                         }
                         //Si la variable auxiliar llego en false, se agrega la nueva linea
                         if (!aux)
